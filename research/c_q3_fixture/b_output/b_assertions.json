@@ -1,0 +1,254 @@
+{
+  "passed": 62,
+  "failed": 0,
+  "assertions": [
+    {
+      "assertion": "exactly two separately reset trials; one J each",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: reset resources",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: review request/midpoint/return times",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: review commitment before information return",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: return reveals 0.6 only now",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: execution immediate at availability",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: pre-accept guard independent of hidden duration",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: execute cost and reservation committed immediately",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: all decision inputs exclude offline fields",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: distinctive rows prove gating/no future rows/no filling",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: permitted numerical channel shapes and original flags",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: midpoint snapshots are pure detached reads, not actions",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: fixed action count excludes probes",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: all events and metrics clipped to H",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: movement ledger",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final weighted_completion_rate",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final weighted_on_time_rate",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final weighted_tardiness_s",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final observed_overrun_s",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final reserved_idle_s",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final censored_units",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final cost",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final observations",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final elapsed_s",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final invalid_actions",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: final valid_protocol",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: source references only released retrospectively",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: reset resources",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: review request/midpoint/return times",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: review commitment before information return",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: return reveals 0.6 only now",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: execution immediate at availability",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: pre-accept guard independent of hidden duration",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: execute cost and reservation committed immediately",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: all decision inputs exclude offline fields",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: distinctive rows prove gating/no future rows/no filling",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: permitted numerical channel shapes and original flags",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: midpoint snapshots are pure detached reads, not actions",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: fixed action count excludes probes",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: all events and metrics clipped to H",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: movement ledger",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final weighted_completion_rate",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final weighted_on_time_rate",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final weighted_tardiness_s",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final observed_overrun_s",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final reserved_idle_s",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final censored_units",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final cost",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final observations",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final elapsed_s",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final invalid_actions",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: final valid_protocol",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: source references only released retrospectively",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: C=5 meets due=6; reservation still occupied",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: reserved-idle midpoint is busy at 6.25",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: full idle booked at completion; actually elapsed at release",
+      "passed": true
+    },
+    {
+      "assertion": "EARLY: STOP waits for equipment at 7.5 not C=5",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: WAIT does not reveal unreleased rows",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: feasible reservation accepted even though hidden C=103",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: still busy at reservation end 99.5",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: only 3.5 service seconds observed, not full p=6.5",
+      "passed": true
+    },
+    {
+      "assertion": "CROSS: H automatic termination, never completion/availability/STOP",
+      "passed": true
+    }
+  ]
+}

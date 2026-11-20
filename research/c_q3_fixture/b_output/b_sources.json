@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "path": "data/raw/C/Restocking_Tasks_and_Constraints/common_conditions.json",
+      "sha256": "d81d08a08407bc07078ca6e025a80cdcc58643a2e95a94e32076a3e14e6ccd2c"
+    },
+    {
+      "path": "data/raw/C/Restocking_Tasks_and_Constraints/service_zones.csv",
+      "sha256": "9a4740aac55537a0bea32d4198f7dc583dee178353055070557c46b80d14964d"
+    },
+    {
+      "path": "data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf",
+      "sha256": "9cc9caf7b6d373c527190b646ddd8132f44318b3012bfa3958ae9da07a13381d"
+    },
+    {
+      "path": "problem/C/2026_“ShuWei Cup”C_Problem.pdf",
+      "sha256": "a1f3e2dcb37bb875ac8084e26e741a2a90a7ebd03f4019c9f2395284ce7e6e0a"
+    },
+    {
+      "path": "problem/C/2026年第十二届数维杯全国大学生数学建模挑战赛（秋季赛）C题数据集说明.pdf",
+      "sha256": "e8e87a7a0996943954cf5c2f85d42be24fa480771224ded7a69ac2b299aff589"
+    },
+    {
+      "path": "research/c_q3_fixture/b_inputs.json",
+      "sha256": "26e91f4ab64c9782fb099525f40916de04751c13d39046bd8a3854aefae8a6d4"
+    },
+    {
+      "path": "research/c_q3_fixture/b_truth_spec.json",
+      "sha256": "2f1648977848686533adb9e80fe58dee4bdee512d67c9630f84005987b4675a3"
+    },
+    {
+      "path": "research/c_q3_fixture/b_fixture.py",
+      "sha256": "0fdedc93c425902656f36c4e52f50ed8a8dee007437f924a097dc301bd0c01d1"
+    }
+  ],
+  "requirements_pdf": "data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf",
+  "rule_locators": {
+    "R_COMMON": "Requirements p1 section 1; common_conditions.json /cases/0, /initial_zone",
+    "R_INFO": "Requirements pp1-2 section 2: allowed fields, existing samples; JSON /information_rule, /observation",
+    "R_DELAY": "Requirements p1 section 2: paid review returns only after 1s; JSON /observation",
+    "R_ACTIONS": "Requirements p2 section 3: one equipment, waiting, stopping, <=200 actions",
+    "R_EXECUTE": "Requirements p2 section 3: admission, charge, s, C, occupancy and H; JSON /service, /movement, /fees",
+    "R_SOURCE_AUDIT": "Requirements p2 section 3 and p3 section 5: references after completion or termination",
+    "R_METRICS": "Requirements pp2-3 section 4: every common metric, unfinished C=H, overrun observed only until H"
+  },
+  "official_replay_run": false,
+  "discovery_scope": "Only official problem/C, data/raw/C and names in data/raw/C/archives/C_Problem_Data.zip; no executable/replayer found. No research/agent files searched or read; *hand_expected* excluded."
+}

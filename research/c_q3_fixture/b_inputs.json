@@ -1,0 +1,22 @@
+{
+  "kind": "B independent fixed-action synthetic protocol fixture; NOT official replay",
+  "condition_source": "data/raw/C/Restocking_Tasks_and_Constraints/common_conditions.json",
+  "zone_source": "data/raw/C/Restocking_Tasks_and_Constraints/service_zones.csv",
+  "condition_case": "S1",
+  "expected_common": {"H": 100, "B": 32, "K": 4, "initial_zone": "Z0", "alpha": 1, "beta_s": 0.5},
+  "job_count_override": 1,
+  "prefix_boundary_convention": "closed window: existing sample timestamp <= annotation start + prefix seconds",
+  "probe_convention": "read-only snapshots at review midpoint and execution observable-occupancy midpoint; also early reserved-idle midpoint; not submitted actions and no added delay",
+  "trials": [
+    {
+      "trial_id": "EARLY",
+      "job": {"job_id": "J", "release_s": 0, "due_s": 6, "priority_weight": 3, "zone_id": "Z1", "predecessors": []},
+      "actions": [{"action": "REVIEW", "job_id": "J"}, {"action": "EXECUTE", "job_id": "J", "b_s": 5}, {"action": "STOP"}]
+    },
+    {
+      "trial_id": "CROSS",
+      "job": {"job_id": "J", "release_s": 94, "due_s": 98, "priority_weight": 3, "zone_id": "Z1", "predecessors": []},
+      "actions": [{"action": "WAIT", "wait_s": 94}, {"action": "REVIEW", "job_id": "J"}, {"action": "EXECUTE", "job_id": "J", "b_s": 3}]
+    }
+  ]
+}
