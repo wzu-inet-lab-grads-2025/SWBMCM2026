@@ -2,6 +2,21 @@
 
 截至 2026 年 11 月 20 日，零售企业已经把“发现缺货”和“把货放回去”做成了两类不同的系统。美国 Schnucks 的 Tally 巡检货架，员工接单补货。日本全家的冷柜机械臂能直接摆放饮料，并留有异常人工接管。C 题附件则记录了人手运动、质量标记和动作片段。研究三者的关系时，首先要问一句：手部位置、商品在架状态和作业完成时间，各自由谁测得？[Schnucks 与 Simbe 公告](https://www.globenewswire.com/news-release/2021/08/26/2287087/0/en/Schnuck-Markets-Becomes-World-s-First-Grocer-to-Deploy-Intelligence-Robots-Chainwide.html) · [全家门店公告](https://www.family.co.jp/company/news_releases/2021/20211102_01.html) · [C 题原文](<../problem/C/2026_“ShuWei Cup”C_Problem.pdf>)
 
+## C 题原题列出的八条参考文献
+
+英文原题第 6–7 页、第 6 节按以下顺序列出 3 本专著和 5 篇论文。编号沿用题面，最后一列是阅读建议。[英文原题](<../problem/C/2026_“ShuWei Cup”C_Problem.pdf>) · [可导入的完整题录](BC文献.bib)
+
+| 原题编号 | 作者、年份与文献 | 与本题的关联 |
+| --- | --- | --- |
+| [1] | Durbin 与 Koopman（2012），[Time Series Analysis by State Space Methods](https://doi.org/10.1093/acprof:oso/9780199641178.001.0001) | 第一、二问。区分用已有观测估计当前状态、预测缺测期状态，以及事后利用未来数据平滑历史轨迹。 |
+| [2] | Little 与 Rubin（2019），[Statistical Analysis with Missing Data](https://doi.org/10.1002/9781119482260) | 第一、二问。讨论哪些观测易缺失、删去低质量记录会怎样影响保留的样本。 |
+| [3] | Kaelbling、Littman 与 Cassandra（1998），[Planning and acting in partially observable stochastic domains](https://doi.org/10.1016/S0004-3702%2898%2900023-X) | 第二、三问。理解在只能部分观察作业状态时，已获得的信息怎样影响下一次请求或行动。 |
+| [4] | Howard（1966），[Information Value Theory](https://doi.org/10.1109/TSSC.1966.300074) | 第二、三问。认识多看一眼的价值来自它可能改变决策，再与复核的时间、费用比较。 |
+| [5] | Pinedo（2022），[Scheduling: Theory, Algorithms, and Systems](https://doi.org/10.1007/978-3-031-05921-6) | 第三问。厘清释放时刻、交期、完成时刻、拖期和设备占用等基本调度概念。 |
+| [6] | Rubin（1976），[Inference and missing data](https://doi.org/10.1093/biomet/63.3.581) | 第一、二问。区分随机遮蔽实验与自然遮挡的缺失机制，判断何时可以忽略缺失过程。 |
+| [7] | Gneiting 与 Raftery（2007），[Strictly Proper Scoring Rules, Prediction, and Estimation](https://doi.org/10.1198/016214506000001437) | 第一、二问。理解怎样评价概率预测，为什么报告区间覆盖率时还需要关注宽度。 |
+| [8] | Ouelhadj 与 Petrovic（2009），[A survey of dynamic scheduling in manufacturing systems](https://doi.org/10.1007/s10951-008-0090-8) | 第三问。区分事前排程与实际时长揭示后的调整，理解重调度何时触发。 |
+
 ## 真实零售系统各自解决哪一步
 
 | 案例与成熟度 | 运营流程与证据 | 可以借鉴的指标和证据边界 |
