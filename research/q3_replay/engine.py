@@ -45,6 +45,16 @@ def number(action, key):
     return value
 
 
+def execution_quote(now, origin, destination, reservation, zones, rules):
+    """Service start and execution fee from public information only (Q3 §3)."""
+    distance = math.dist(zones[origin], zones[destination])
+    movement, fees = rules['movement'], rules['fees']
+    start = now + distance / movement['speed'] + movement['changeover_s']
+    fee = (fees['service_fixed'] + fees['reserve_per_second'] * reservation
+           + fees['distance_per_unit'] * distance)
+    return start, fee
+
+
 def score(jobs, horizon, ledger, elapsed, invalid):
     executions = [x for x in ledger if x['action'] == 'EXECUTE']
     completed = {x['job_id']: x['completion'] for x in executions if x['completion'] is not None}
@@ -127,10 +137,7 @@ def run_trial(trial: Trial, policy):
                     require(all(p in completed for p in jobs[j]['predecessors']), 'predecessors')
                     b = number(action, 'b_s')
                     destination = jobs[j]['zone_id']
-                    D = math.dist(trial.zones[zone], trial.zones[destination])
-                    start = time+D/rules['movement']['speed']+rules['movement']['changeover_s']
-                    fees = rules['fees']
-                    fee = fees['service_fixed']+fees['reserve_per_second']*b+fees['distance_per_unit']*D
+                    start, fee = execution_quote(time, zone, destination, b, trial.zones, rules)
                     require(b >= service['reserve_min_s'] and start+b <= H and cost+fee <= B,
                             'reservation, horizon or budget')
                     # Hidden source is consulted only after admission. Same settlement as 850380e.

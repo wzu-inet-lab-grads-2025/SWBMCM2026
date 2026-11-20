@@ -1,0 +1,126 @@
+{
+  "FCFS": {
+    "ledger": [
+      {
+        "action": "EXECUTE",
+        "time": 0.0,
+        "zone_before": "Z0",
+        "fee": 2.6500000000000004,
+        "end": 7.0,
+        "job_id": "A",
+        "start": 1.5,
+        "b": 4.5,
+        "completion": 7.0,
+        "idle": 0.0,
+        "overrun": 1.0,
+        "censored": false,
+        "source_ref_offline": "synthetic/A",
+        "source_ref_logged_at": 7.0,
+        "zone_after": "Z1",
+        "cost_after": 2.6500000000000004
+      },
+      {
+        "action": "EXECUTE",
+        "time": 7.0,
+        "zone_before": "Z1",
+        "fee": 2.37,
+        "end": 11.2,
+        "job_id": "B",
+        "start": 7.5,
+        "b": 3.7,
+        "completion": 10.0,
+        "idle": 1.2000000000000002,
+        "overrun": 0.0,
+        "censored": false,
+        "source_ref_offline": "synthetic/B",
+        "source_ref_logged_at": 10.0,
+        "zone_after": "Z1",
+        "cost_after": 5.0200000000000005
+      },
+      {
+        "action": "STOP",
+        "time": 11.2,
+        "zone_before": "Z1",
+        "fee": 0.0,
+        "end": 11.2,
+        "zone_after": "Z1",
+        "cost_after": 5.0200000000000005
+      }
+    ],
+    "metrics": {
+      "weighted_completion_rate": 1.0,
+      "weighted_on_time_rate": 0.5,
+      "weighted_tardiness_s": 4.0,
+      "elapsed_s": 11.2,
+      "cost": 5.0200000000000005,
+      "observations": 0,
+      "observed_overrun_s": 1.0,
+      "reserved_idle_s": 1.2000000000000002,
+      "censored_units": 0,
+      "invalid_actions": 0,
+      "valid_protocol": true
+    }
+  },
+  "EDD": {
+    "ledger": [
+      {
+        "action": "EXECUTE",
+        "time": 0.0,
+        "zone_before": "Z0",
+        "fee": 2.5700000000000003,
+        "end": 5.2,
+        "job_id": "B",
+        "start": 1.5,
+        "b": 3.7,
+        "completion": 4.0,
+        "idle": 1.2000000000000002,
+        "overrun": 0.0,
+        "censored": false,
+        "source_ref_offline": "synthetic/B",
+        "source_ref_logged_at": 4.0,
+        "zone_after": "Z1",
+        "cost_after": 2.5700000000000003
+      },
+      {
+        "action": "EXECUTE",
+        "time": 5.2,
+        "zone_before": "Z1",
+        "fee": 2.45,
+        "end": 11.2,
+        "job_id": "A",
+        "start": 5.7,
+        "b": 4.5,
+        "completion": 11.2,
+        "idle": 0.0,
+        "overrun": 1.0,
+        "censored": false,
+        "source_ref_offline": "synthetic/A",
+        "source_ref_logged_at": 11.2,
+        "zone_after": "Z1",
+        "cost_after": 5.0200000000000005
+      },
+      {
+        "action": "STOP",
+        "time": 11.2,
+        "zone_before": "Z1",
+        "fee": 0.0,
+        "end": 11.2,
+        "zone_after": "Z1",
+        "cost_after": 5.0200000000000005
+      }
+    ],
+    "metrics": {
+      "weighted_completion_rate": 1.0,
+      "weighted_on_time_rate": 1.0,
+      "weighted_tardiness_s": 0,
+      "elapsed_s": 11.2,
+      "cost": 5.0200000000000005,
+      "observations": 0,
+      "observed_overrun_s": 1.0,
+      "reserved_idle_s": 1.2000000000000002,
+      "censored_units": 0,
+      "invalid_actions": 0,
+      "valid_protocol": true
+    }
+  }
+}
