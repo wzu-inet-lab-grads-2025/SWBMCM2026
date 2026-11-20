@@ -1,0 +1,1278 @@
+{
+  "scope": "given-plan verification only; no optimization or optimality certificate",
+  "q21": {
+    "target": "T2",
+    "target_xyz_m": [
+      11.02885682970026,
+      72.5,
+      35
+    ],
+    "routes": [
+      {
+        "vehicle": "V1",
+        "site": [
+          5.210066466320913,
+          72.5
+        ],
+        "waypoints": [
+          [
+            15.0,
+            14.0
+          ],
+          [
+            5.210066466320913,
+            72.5
+          ]
+        ],
+        "length_m": 59.313512782449955,
+        "travel_s": 19.77117092748332,
+        "min_distance_to_buildings_m": {
+          "B1": 7.2340997344253894,
+          "B2": 54.769088132253714,
+          "B3": 3.4863322119545535,
+          "B4": 57.55866572463264,
+          "B5": 29.604694148680768
+        },
+        "yaw_deg": 0.0,
+        "pitch_deg": 80.0,
+        "range_m": 5.818790363379347,
+        "slew_s": 2.6666666666666665
+      },
+      {
+        "vehicle": "V3",
+        "site": [
+          11.02885682970026,
+          78.31879036337935
+        ],
+        "waypoints": [
+          [
+            14.0,
+            86.0
+          ],
+          [
+            11.02885682970026,
+            78.31879036337935
+          ]
+        ],
+        "length_m": 8.235816487764449,
+        "travel_s": 2.7452721625881495,
+        "min_distance_to_buildings_m": {
+          "B1": 53.456728365571074,
+          "B2": 51.24451190127583,
+          "B3": 2.3187903633793496,
+          "B4": 75.37662421975632,
+          "B5": 44.076905897381984
+        },
+        "yaw_deg": -90.0,
+        "pitch_deg": 80.0,
+        "range_m": 5.81879036337935,
+        "slew_s": 3.0
+      }
+    ],
+    "baseline_m": 8.229012248496945,
+    "angle_deg": 90.0,
+    "r1_m": 5.818790363379347,
+    "r2_m": 5.81879036337935,
+    "sin_gamma": 1.0,
+    "rmse_m": 0.14362335792321348,
+    "station_disks_overlap": false
+  },
+  "q22": {
+    "greedy": {
+      "time_table_abs_tolerance_s": 1e-06,
+      "observation_start_s": {
+        "T1": 1.5320327144569215,
+        "T3": 5.77758935398496,
+        "T2": 10.968984244492779
+      },
+      "latest_start_s": 10.968984244492779,
+      "last_reset_end_s": 19.382719118692986,
+      "vehicle_task_sequences": {
+        "V1": [
+          "T2"
+        ],
+        "V2": [
+          "T3"
+        ],
+        "V3": [
+          "T1",
+          "T2"
+        ],
+        "V4": [
+          "T3"
+        ],
+        "V5": [
+          "T1"
+        ]
+      },
+      "idle_vehicles": [],
+      "pair_metrics": {
+        "T1": {
+          "baseline_m": 36.6742416417845,
+          "angle_deg": 20.820271074273993,
+          "r1_m": 72.43033316849498,
+          "r2_m": 41.58124577258359,
+          "sin_gamma": 0.3554376786860045,
+          "rmse_m": 4.101009524119078,
+          "station_disks_overlap": false
+        },
+        "T3": {
+          "baseline_m": 58.0,
+          "angle_deg": 69.43071662168948,
+          "r1_m": 28.356940699327097,
+          "r2_m": 61.52980682650781,
+          "sin_gamma": 0.936248025696928,
+          "rmse_m": 1.262973873938527,
+          "station_disks_overlap": false
+        },
+        "T2": {
+          "baseline_m": 72.00694410957877,
+          "angle_deg": 163.70451419464908,
+          "r1_m": 58.634631218069565,
+          "r2_m": 13.82308546376021,
+          "sin_gamma": 0.2805910873330053,
+          "rmse_m": 3.7471650594783514,
+          "station_disks_overlap": false
+        }
+      },
+      "inter_vehicle_separation": {
+        "enforced": true,
+        "minimum_required_center_distance_m": 3.0,
+        "pair_minima": [
+          {
+            "vehicles": [
+              "V1",
+              "V2"
+            ],
+            "distance_m": 73.10950690573696,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V3"
+            ],
+            "distance_m": 72.00694410957877,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V4"
+            ],
+            "distance_m": 90.80198235721508,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V5"
+            ],
+            "distance_m": 86.4060183089118,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V3"
+            ],
+            "distance_m": 106.07544484940895,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V4"
+            ],
+            "distance_m": 58.0,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V5"
+            ],
+            "distance_m": 91.28526715741155,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V4"
+            ],
+            "distance_m": 76.15773105863909,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V5"
+            ],
+            "distance_m": 36.6742416417845,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V4",
+              "V5"
+            ],
+            "distance_m": 45.48626166217664,
+            "time_s": 0.0
+          }
+        ],
+        "overlapping_pairs": []
+      },
+      "legs": [
+        {
+          "vehicle": "V1",
+          "target": "T2",
+          "previous_target": null,
+          "site": [
+            15.0,
+            14.0
+          ],
+          "waypoints": [
+            [
+              15.0,
+              14.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 7.280109889280518,
+            "B2": 65.79513659838392,
+            "B3": 51.0,
+            "B4": 57.55866572463264,
+            "B5": 35.38361202590826
+          },
+          "yaw_deg": 93.88343957934468,
+          "pitch_deg": 29.371127957936388,
+          "range_m": 58.634631218069565,
+          "slew_s": 3.129447985978156,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.129447985978156,
+          "wait_s": 7.839536258514623,
+          "observation_start_s": 10.968984244492779,
+          "observation_end_s": 15.968984244492779,
+          "reset_begin_s": 15.968984244492779,
+          "reset_end_s": 19.098432230470934,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V2",
+          "target": "T3",
+          "previous_target": null,
+          "site": [
+            88.0,
+            10.0
+          ],
+          "waypoints": [
+            [
+              88.0,
+              10.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 54.3323108288245,
+            "B2": 49.8196748283246,
+            "B3": 84.38601779915912,
+            "B4": 12.165525060596439,
+            "B5": 46.400431032480725
+          },
+          "yaw_deg": 173.3276806195488,
+          "pitch_deg": 61.85158768261381,
+          "range_m": 28.356940699327097,
+          "slew_s": 5.77758935398496,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 5.77758935398496,
+          "wait_s": 0.0,
+          "observation_start_s": 5.77758935398496,
+          "observation_end_s": 10.777589353984961,
+          "reset_begin_s": 10.777589353984961,
+          "reset_end_s": 16.555178707969922,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V3",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            14.0,
+            86.0
+          ],
+          "waypoints": [
+            [
+              14.0,
+              86.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 60.530983801686226,
+            "B2": 51.24451190127583,
+            "B3": 10.0,
+            "B4": 77.89736837660179,
+            "B5": 48.25971404805462
+          },
+          "yaw_deg": -12.762012880472385,
+          "pitch_deg": 30.696499675069486,
+          "range_m": 72.43033316849498,
+          "slew_s": 1.0232166558356495,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 1.0232166558356495,
+          "wait_s": 0.508816058621272,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 7.555249370292571,
+          "next_departure_s": 7.555249370292571
+        },
+        {
+          "vehicle": "V3",
+          "target": "T2",
+          "previous_target": "T1",
+          "site": [
+            14.0,
+            86.0
+          ],
+          "waypoints": [
+            [
+              14.0,
+              86.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 60.530983801686226,
+            "B2": 51.24451190127583,
+            "B3": 10.0,
+            "B4": 77.89736837660179,
+            "B5": 48.25971404805462
+          },
+          "yaw_deg": -102.41204622600624,
+          "pitch_deg": 67.27209777583307,
+          "range_m": 13.82308546376021,
+          "slew_s": 3.413734874200208,
+          "depart_s": 7.555249370292571,
+          "arrive_s": 7.555249370292571,
+          "turn_begin_s": 7.555249370292571,
+          "turn_end_s": 10.968984244492779,
+          "wait_s": 0.0,
+          "observation_start_s": 10.968984244492779,
+          "observation_end_s": 15.968984244492779,
+          "reset_begin_s": 15.968984244492779,
+          "reset_end_s": 19.382719118692986,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V4",
+          "target": "T3",
+          "previous_target": null,
+          "site": [
+            88.0,
+            68.0
+          ],
+          "waypoints": [
+            [
+              88.0,
+              68.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.41052550594829,
+            "B2": 9.0,
+            "B3": 64.0,
+            "B4": 34.058772731852805,
+            "B5": 43.04648650006177
+          },
+          "yaw_deg": -117.24160275876173,
+          "pitch_deg": 40.740660633884666,
+          "range_m": 61.52980682650781,
+          "slew_s": 3.908053425292058,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.908053425292058,
+          "wait_s": 1.8695359286929025,
+          "observation_start_s": 5.77758935398496,
+          "observation_end_s": 10.777589353984961,
+          "reset_begin_s": 10.777589353984961,
+          "reset_end_s": 14.68564277927702,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V5",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            50.0,
+            93.0
+          ],
+          "waypoints": [
+            [
+              50.0,
+              93.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.8839603971781,
+            "B2": 25.553864678361276,
+            "B3": 31.064449134018133,
+            "B4": 62.96824596572466,
+            "B5": 47.0
+          },
+          "yaw_deg": -33.58228395474638,
+          "pitch_deg": 45.960981433707644,
+          "range_m": 41.58124577258359,
+          "slew_s": 1.5320327144569215,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 1.5320327144569215,
+          "wait_s": 0.0,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 8.064065428913842,
+          "next_departure_s": null
+        }
+      ]
+    },
+    "optimized": {
+      "time_table_abs_tolerance_s": 1e-06,
+      "observation_start_s": {
+        "T1": 1.5320327144569215,
+        "T2": 10.204156744024589,
+        "T3": 10.352848885352655
+      },
+      "latest_start_s": 10.352848885352655,
+      "last_reset_end_s": 19.569910928748868,
+      "vehicle_task_sequences": {
+        "V1": [
+          "T2"
+        ],
+        "V2": [
+          "T2"
+        ],
+        "V3": [
+          "T1",
+          "T3"
+        ],
+        "V4": [
+          "T3"
+        ],
+        "V5": [
+          "T1"
+        ]
+      },
+      "idle_vehicles": [],
+      "pair_metrics": {
+        "T1": {
+          "baseline_m": 35.45605516692459,
+          "angle_deg": 19.795605968616115,
+          "r1_m": 71.6636667582654,
+          "r2_m": 41.58124577258359,
+          "sin_gamma": 0.3386657628066065,
+          "rmse_m": 4.269885781519168,
+          "station_disks_overlap": false
+        },
+        "T2": {
+          "baseline_m": 59.016798456032845,
+          "angle_deg": 37.08918596238366,
+          "r1_m": 58.634631218069565,
+          "r2_m": 94.02363295578829,
+          "sin_gamma": 0.6030574405632965,
+          "rmse_m": 3.206939004189583,
+          "station_disks_overlap": false
+        },
+        "T3": {
+          "baseline_m": 74.16856402142352,
+          "angle_deg": 56.987805488778044,
+          "r1_m": 86.80307510415334,
+          "r2_m": 61.52980682650781,
+          "sin_gamma": 0.8385546310443438,
+          "rmse_m": 2.214534617753979,
+          "station_disks_overlap": false
+        }
+      },
+      "inter_vehicle_separation": {
+        "enforced": true,
+        "minimum_required_center_distance_m": 3.0,
+        "pair_minima": [
+          {
+            "vehicles": [
+              "V1",
+              "V2"
+            ],
+            "distance_m": 59.016798456032845,
+            "time_s": 5.83840255930031
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V3"
+            ],
+            "distance_m": 72.00694410957877,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V4"
+            ],
+            "distance_m": 90.80198235721508,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V5"
+            ],
+            "distance_m": 86.4060183089118,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V3"
+            ],
+            "distance_m": 103.16986802356587,
+            "time_s": 5.83840255930031
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V4"
+            ],
+            "distance_m": 58.0,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V5"
+            ],
+            "distance_m": 91.28526715741155,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V4"
+            ],
+            "distance_m": 74.16856402142352,
+            "time_s": 8.3443889763532
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V5"
+            ],
+            "distance_m": 33.51518892979719,
+            "time_s": 8.3443889763532
+          },
+          {
+            "vehicles": [
+              "V4",
+              "V5"
+            ],
+            "distance_m": 45.48626166217664,
+            "time_s": 0.0
+          }
+        ],
+        "overlapping_pairs": []
+      },
+      "legs": [
+        {
+          "vehicle": "V1",
+          "target": "T2",
+          "previous_target": null,
+          "site": [
+            15.0,
+            14.0
+          ],
+          "waypoints": [
+            [
+              15.0,
+              14.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 7.280109889280518,
+            "B2": 65.79513659838392,
+            "B3": 51.0,
+            "B4": 57.55866572463264,
+            "B5": 35.38361202590826
+          },
+          "yaw_deg": 93.88343957934468,
+          "pitch_deg": 29.371127957936388,
+          "range_m": 58.634631218069565,
+          "slew_s": 3.129447985978156,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.129447985978156,
+          "wait_s": 7.074708758046433,
+          "observation_start_s": 10.204156744024589,
+          "observation_end_s": 15.204156744024589,
+          "reset_begin_s": 15.204156744024589,
+          "reset_end_s": 18.333604730002744,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V2",
+          "target": "T2",
+          "previous_target": null,
+          "site": [
+            72.68,
+            1.51
+          ],
+          "waypoints": [
+            [
+              88.0,
+              10.0
+            ],
+            [
+              72.68,
+              1.51
+            ]
+          ],
+          "length_m": 17.515207677900932,
+          "travel_s": 5.83840255930031,
+          "min_distance_to_buildings_m": {
+            "B1": 41.304993644836706,
+            "B2": 49.8196748283246,
+            "B3": 80.00451549756427,
+            "B4": 12.165525060596439,
+            "B5": 42.44458151519461
+          },
+          "yaw_deg": 130.97262554172835,
+          "pitch_deg": 19.339828086717695,
+          "range_m": 94.02363295578829,
+          "slew_s": 4.3657541847242785,
+          "depart_s": 0.0,
+          "arrive_s": 5.83840255930031,
+          "turn_begin_s": 5.83840255930031,
+          "turn_end_s": 10.204156744024589,
+          "wait_s": 0.0,
+          "observation_start_s": 10.204156744024589,
+          "observation_end_s": 15.204156744024589,
+          "reset_begin_s": 15.204156744024589,
+          "reset_end_s": 19.569910928748868,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V3",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            15.042,
+            87.078
+          ],
+          "waypoints": [
+            [
+              14.0,
+              86.0
+            ],
+            [
+              15.042,
+              87.078
+            ]
+          ],
+          "length_m": 1.4992824950622234,
+          "travel_s": 0.4997608316874078,
+          "min_distance_to_buildings_m": {
+            "B1": 60.530983801686226,
+            "B2": 50.5813389304791,
+            "B3": 10.0,
+            "B4": 77.855557592249,
+            "B5": 48.25971404805462
+          },
+          "yaw_deg": -13.786677986130261,
+          "pitch_deg": 30.964814662324613,
+          "range_m": 71.6636667582654,
+          "slew_s": 1.0321604887441538,
+          "depart_s": 0.0,
+          "arrive_s": 0.4997608316874078,
+          "turn_begin_s": 0.4997608316874078,
+          "turn_end_s": 1.5319213204315616,
+          "wait_s": 0.00011139402535986775,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 7.564193203201075,
+          "next_departure_s": 7.564193203201075
+        },
+        {
+          "vehicle": "V3",
+          "target": "T3",
+          "previous_target": "T1",
+          "site": [
+            16.767,
+            88.66
+          ],
+          "waypoints": [
+            [
+              15.042,
+              87.078
+            ],
+            [
+              16.767,
+              88.66
+            ]
+          ],
+          "length_m": 2.340587319456375,
+          "travel_s": 0.780195773152125,
+          "min_distance_to_buildings_m": {
+            "B1": 61.4730497697975,
+            "B2": 49.49106878013446,
+            "B3": 11.078000000000003,
+            "B4": 77.70714181463632,
+            "B5": 48.59238467085146
+          },
+          "yaw_deg": -60.25379726998368,
+          "pitch_deg": 31.407297746831684,
+          "range_m": 86.80307510415334,
+          "slew_s": 2.008459908999456,
+          "depart_s": 7.564193203201075,
+          "arrive_s": 8.3443889763532,
+          "turn_begin_s": 8.3443889763532,
+          "turn_end_s": 10.352848885352655,
+          "wait_s": 0.0,
+          "observation_start_s": 10.352848885352655,
+          "observation_end_s": 15.352848885352655,
+          "reset_begin_s": 15.352848885352655,
+          "reset_end_s": 17.361308794352112,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V4",
+          "target": "T3",
+          "previous_target": null,
+          "site": [
+            88.0,
+            68.0
+          ],
+          "waypoints": [
+            [
+              88.0,
+              68.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.41052550594829,
+            "B2": 9.0,
+            "B3": 64.0,
+            "B4": 34.058772731852805,
+            "B5": 43.04648650006177
+          },
+          "yaw_deg": -117.24160275876173,
+          "pitch_deg": 40.740660633884666,
+          "range_m": 61.52980682650781,
+          "slew_s": 3.908053425292058,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.908053425292058,
+          "wait_s": 6.444795460060597,
+          "observation_start_s": 10.352848885352655,
+          "observation_end_s": 15.352848885352655,
+          "reset_begin_s": 15.352848885352655,
+          "reset_end_s": 19.260902310644713,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V5",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            50.0,
+            93.0
+          ],
+          "waypoints": [
+            [
+              50.0,
+              93.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.8839603971781,
+            "B2": 25.553864678361276,
+            "B3": 31.064449134018133,
+            "B4": 62.96824596572466,
+            "B5": 47.0
+          },
+          "yaw_deg": -33.58228395474638,
+          "pitch_deg": 45.960981433707644,
+          "range_m": 41.58124577258359,
+          "slew_s": 1.5320327144569215,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 1.5320327144569215,
+          "wait_s": 0.0,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 8.064065428913842,
+          "next_departure_s": null
+        }
+      ]
+    },
+    "fixed_vehicles": {
+      "time_table_abs_tolerance_s": 1e-06,
+      "observation_start_s": {
+        "T1": 1.5320327144569215,
+        "T3": 5.77758935398496,
+        "T2": 10.773686551003602
+      },
+      "latest_start_s": 10.773686551003602,
+      "last_reset_end_s": 19.00731007483801,
+      "vehicle_task_sequences": {
+        "V1": [
+          "T2"
+        ],
+        "V2": [
+          "T3"
+        ],
+        "V3": [
+          "T1",
+          "T2"
+        ],
+        "V4": [
+          "T3"
+        ],
+        "V5": [
+          "T1"
+        ]
+      },
+      "idle_vehicles": [],
+      "pair_metrics": {
+        "T1": {
+          "baseline_m": 37.812861568519246,
+          "angle_deg": 20.65596493792836,
+          "r1_m": 73.76020745142755,
+          "r2_m": 41.58124577258359,
+          "sin_gamma": 0.35275579756572567,
+          "rmse_m": 4.189379543033344,
+          "station_disks_overlap": false
+        },
+        "T3": {
+          "baseline_m": 58.0,
+          "angle_deg": 69.43071662168948,
+          "r1_m": 28.356940699327097,
+          "r2_m": 61.52980682650781,
+          "sin_gamma": 0.936248025696928,
+          "rmse_m": 1.262973873938527,
+          "station_disks_overlap": false
+        },
+        "T2": {
+          "baseline_m": 72.53490539043943,
+          "angle_deg": 169.1078547056231,
+          "r1_m": 58.634631218069565,
+          "r2_m": 14.105400873873434,
+          "sin_gamma": 0.18896082402714845,
+          "rmse_m": 5.570269246415104,
+          "station_disks_overlap": false
+        }
+      },
+      "inter_vehicle_separation": {
+        "enforced": true,
+        "minimum_required_center_distance_m": 3.0,
+        "pair_minima": [
+          {
+            "vehicles": [
+              "V1",
+              "V2"
+            ],
+            "distance_m": 73.10950690573696,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V3"
+            ],
+            "distance_m": 72.00694410957877,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V4"
+            ],
+            "distance_m": 90.80198235721508,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V1",
+              "V5"
+            ],
+            "distance_m": 86.4060183089118,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V3"
+            ],
+            "distance_m": 106.07544484940895,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V4"
+            ],
+            "distance_m": 58.0,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V2",
+              "V5"
+            ],
+            "distance_m": 91.28526715741155,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V4"
+            ],
+            "distance_m": 76.15773105863909,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V3",
+              "V5"
+            ],
+            "distance_m": 36.6742416417845,
+            "time_s": 0.0
+          },
+          {
+            "vehicles": [
+              "V4",
+              "V5"
+            ],
+            "distance_m": 45.48626166217664,
+            "time_s": 0.0
+          }
+        ],
+        "overlapping_pairs": []
+      },
+      "legs": [
+        {
+          "vehicle": "V1",
+          "target": "T2",
+          "previous_target": null,
+          "site": [
+            15.0,
+            14.0
+          ],
+          "waypoints": [
+            [
+              15.0,
+              14.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 7.280109889280518,
+            "B2": 65.79513659838392,
+            "B3": 51.0,
+            "B4": 57.55866572463264,
+            "B5": 35.38361202590826
+          },
+          "yaw_deg": 93.88343957934468,
+          "pitch_deg": 29.371127957936388,
+          "range_m": 58.634631218069565,
+          "slew_s": 3.129447985978156,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.129447985978156,
+          "wait_s": 7.644238565025446,
+          "observation_start_s": 10.773686551003602,
+          "observation_end_s": 15.773686551003602,
+          "reset_begin_s": 15.773686551003602,
+          "reset_end_s": 18.903134536981756,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V2",
+          "target": "T3",
+          "previous_target": null,
+          "site": [
+            88.0,
+            10.0
+          ],
+          "waypoints": [
+            [
+              88.0,
+              10.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 54.3323108288245,
+            "B2": 49.8196748283246,
+            "B3": 84.38601779915912,
+            "B4": 12.165525060596439,
+            "B5": 46.400431032480725
+          },
+          "yaw_deg": 173.3276806195488,
+          "pitch_deg": 61.85158768261381,
+          "range_m": 28.356940699327097,
+          "slew_s": 5.77758935398496,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 5.77758935398496,
+          "wait_s": 0.0,
+          "observation_start_s": 5.77758935398496,
+          "observation_end_s": 10.777589353984961,
+          "reset_begin_s": 10.777589353984961,
+          "reset_end_s": 16.555178707969922,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V3",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            12.75,
+            86.5
+          ],
+          "waypoints": [
+            [
+              14.0,
+              86.0
+            ],
+            [
+              12.75,
+              86.5
+            ]
+          ],
+          "length_m": 1.346291201783626,
+          "travel_s": 0.44876373392787533,
+          "min_distance_to_buildings_m": {
+            "B1": 60.530983801686226,
+            "B2": 51.24451190127583,
+            "B3": 10.0,
+            "B4": 77.89736837660179,
+            "B5": 48.25971404805462
+          },
+          "yaw_deg": -12.926319016818017,
+          "pitch_deg": 30.24090938136817,
+          "range_m": 73.76020745142755,
+          "slew_s": 1.0080303127122723,
+          "depart_s": 0.0,
+          "arrive_s": 0.44876373392787533,
+          "turn_begin_s": 0.44876373392787533,
+          "turn_end_s": 1.4567940466401477,
+          "wait_s": 0.0752386678167738,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 7.540063027169193,
+          "next_departure_s": 7.540063027169193
+        },
+        {
+          "vehicle": "V3",
+          "target": "T2",
+          "previous_target": "T1",
+          "site": [
+            12.75,
+            86.5
+          ],
+          "waypoints": [
+            [
+              12.75,
+              86.5
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 61.20304322499005,
+            "B2": 52.58623869416789,
+            "B3": 10.5,
+            "B4": 79.1632016785577,
+            "B5": 49.37927196709162
+          },
+          "yaw_deg": -97.00870571503224,
+          "pitch_deg": 66.85637365661009,
+          "range_m": 14.105400873873434,
+          "slew_s": 3.233623523834408,
+          "depart_s": 7.540063027169193,
+          "arrive_s": 7.540063027169193,
+          "turn_begin_s": 7.540063027169193,
+          "turn_end_s": 10.773686551003602,
+          "wait_s": 0.0,
+          "observation_start_s": 10.773686551003602,
+          "observation_end_s": 15.773686551003602,
+          "reset_begin_s": 15.773686551003602,
+          "reset_end_s": 19.00731007483801,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V4",
+          "target": "T3",
+          "previous_target": null,
+          "site": [
+            88.0,
+            68.0
+          ],
+          "waypoints": [
+            [
+              88.0,
+              68.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.41052550594829,
+            "B2": 9.0,
+            "B3": 64.0,
+            "B4": 34.058772731852805,
+            "B5": 43.04648650006177
+          },
+          "yaw_deg": -117.24160275876173,
+          "pitch_deg": 40.740660633884666,
+          "range_m": 61.52980682650781,
+          "slew_s": 3.908053425292058,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 3.908053425292058,
+          "wait_s": 1.8695359286929025,
+          "observation_start_s": 5.77758935398496,
+          "observation_end_s": 10.777589353984961,
+          "reset_begin_s": 10.777589353984961,
+          "reset_end_s": 14.68564277927702,
+          "next_departure_s": null
+        },
+        {
+          "vehicle": "V5",
+          "target": "T1",
+          "previous_target": null,
+          "site": [
+            50.0,
+            93.0
+          ],
+          "waypoints": [
+            [
+              50.0,
+              93.0
+            ]
+          ],
+          "length_m": 0.0,
+          "travel_s": 0.0,
+          "min_distance_to_buildings_m": {
+            "B1": 68.8839603971781,
+            "B2": 25.553864678361276,
+            "B3": 31.064449134018133,
+            "B4": 62.96824596572466,
+            "B5": 47.0
+          },
+          "yaw_deg": -33.58228395474638,
+          "pitch_deg": 45.960981433707644,
+          "range_m": 41.58124577258359,
+          "slew_s": 1.5320327144569215,
+          "depart_s": 0.0,
+          "arrive_s": 0.0,
+          "turn_begin_s": 0.0,
+          "turn_end_s": 1.5320327144569215,
+          "wait_s": 0.0,
+          "observation_start_s": 1.5320327144569215,
+          "observation_end_s": 6.532032714456921,
+          "reset_begin_s": 6.532032714456921,
+          "reset_end_s": 8.064065428913842,
+          "next_departure_s": null
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "baseline_plan": "greedy",
+    "candidate_plan": "optimized",
+    "baseline": {
+      "latest_start_s": 10.968984244492779,
+      "latest_alerts": [
+        "T2"
+      ],
+      "limiting_vehicles": {
+        "T1": [
+          "V5"
+        ],
+        "T3": [
+          "V2"
+        ],
+        "T2": [
+          "V3"
+        ]
+      },
+      "observation_start_s": {
+        "T1": 1.5320327144569215,
+        "T3": 5.77758935398496,
+        "T2": 10.968984244492779
+      }
+    },
+    "candidate": {
+      "latest_start_s": 10.352848885352655,
+      "latest_alerts": [
+        "T3"
+      ],
+      "limiting_vehicles": {
+        "T1": [
+          "V5"
+        ],
+        "T2": [
+          "V2"
+        ],
+        "T3": [
+          "V3"
+        ]
+      },
+      "observation_start_s": {
+        "T1": 1.5320327144569215,
+        "T2": 10.204156744024589,
+        "T3": 10.352848885352655
+      }
+    },
+    "latest_start_saved_s": 0.6161353591401237,
+    "latest_start_relative_saved": 0.05617068503398281,
+    "alert_start_saved_s": {
+      "T1": 0.0,
+      "T3": -4.575259531367695,
+      "T2": 0.7648275004681899
+    }
+  }
+}

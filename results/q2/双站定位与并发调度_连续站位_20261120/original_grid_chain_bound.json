@@ -1,0 +1,46 @@
+{
+  "grid_upper_s": 10.731533771979356,
+  "lowest_chain_lower_s": 10.731533771979356,
+  "chains_within_initial_limit_s": {
+    "V1": {
+      "T1->T2": null,
+      "T1->T3": null,
+      "T2->T1": null,
+      "T2->T3": null,
+      "T3->T1": 14.439353270611306,
+      "T3->T2": null
+    },
+    "V2": {
+      "T1->T2": null,
+      "T1->T3": null,
+      "T2->T1": null,
+      "T2->T3": null,
+      "T3->T1": null,
+      "T3->T2": null
+    },
+    "V3": {
+      "T1->T2": 10.903017751350607,
+      "T1->T3": 10.731533771979356,
+      "T2->T1": null,
+      "T2->T3": null,
+      "T3->T1": null,
+      "T3->T2": null
+    },
+    "V4": {
+      "T1->T2": null,
+      "T1->T3": null,
+      "T2->T1": null,
+      "T2->T3": null,
+      "T3->T1": null,
+      "T3->T2": null
+    },
+    "V5": {
+      "T1->T2": 24.690815125255092,
+      "T1->T3": 12.131407002513722,
+      "T2->T1": null,
+      "T2->T3": null,
+      "T3->T1": null,
+      "T3->T2": null
+    }
+  }
+}

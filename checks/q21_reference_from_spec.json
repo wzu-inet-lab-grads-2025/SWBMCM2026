@@ -1,0 +1,8 @@
+{
+  "source": "docs/B_Question_2_Implementation_Spec.md §2.3；原方案既有的展示坐标，不是新求解结果",
+  "target": "T2",
+  "routes": [
+    {"vehicle": "V1", "waypoints": [[15, 14], [5.200066, 72.500000]]},
+    {"vehicle": "V3", "waypoints": [[14, 86], [11.028857, 78.328790]]}
+  ]
+}

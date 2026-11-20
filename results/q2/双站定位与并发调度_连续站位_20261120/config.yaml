@@ -1,0 +1,33 @@
+# B 题第二问归档参数。场地、楼体和闭仰角区间使用同目录快照。
+scene_config: scene_config.yaml
+
+# 英文原题第 1–2 页：五辆观测车的初始车心坐标（m）和三条标称告警。
+vehicles:
+  V1: [15.0, 14.0]
+  V2: [88.0, 10.0]
+  V3: [14.0, 86.0]
+  V4: [88.0, 68.0]
+  V5: [50.0, 93.0]
+alerts:
+  T1: {azimuth_deg: 30.0, range_m: 40.0, height_m: 45.0}
+  T2: {azimuth_deg: 150.0, range_m: 45.0, height_m: 35.0}
+  T3: {azimuth_deg: 285.0, range_m: 38.0, height_m: 55.0}
+
+# 英文原题第 2–4 页：车速 m/s，云台角速度 度/s，观测及 2（1）单车行驶时限 s。
+speed_m_s: 3.0
+gimbal_deg_s: 30.0
+observation_s: 5.0
+q21_travel_limit_s: 30.0
+bearing_sigma_deg: 1.0  # 2（1）每车独立方位测量的标准差，单位度。
+
+# 2（2）共用候选集含各级网格、场界、初始点、T2 取等站及以下细化站（m）。
+# 细化站来自对关键接续链和 V2/T2 就绪时间的局部连续选站，坐标保留到毫米。
+grid_m: [5.0, 2.5, 1.25]
+refinement_sites_m:
+  - [15.042, 87.078]
+  - [16.767, 88.660]
+  - [72.680, 1.510]
+path_polygon_sides: 64    # 膨胀障碍的外切近似边数。
+path_comparison_sides: 32 # 在相同端点和调度上复算路长。
+monte_carlo_samples: 100000  # 2（1）每个交会角的噪声样本对数。
+random_seed: 42              # 噪声复核种子。2（2）搜索是确定的。

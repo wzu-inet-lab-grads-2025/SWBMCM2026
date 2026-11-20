@@ -73,7 +73,63 @@ nohup python3 -B -m src.run q1 --profile full \
   --config results/q1/可观测区域与最优站位_连续圆弧_20261120/config.yaml
 ```
 
-自动测试：`nohup python3 -B -m pytest -q -p no:cacheprovider checks`，当前 37 项全部通过。
+第一问自动测试（37 项）：`nohup python3 -B -m pytest -q -p no:cacheprovider checks/test_q1*.py`。
+
+## 第二问结果（B 题，2026-11-20）
+
+结果、英文论文图表和运行记录保存在 `results/q2/双站定位与并发调度_连续站位_20261120/`。求解入口为 `src.run q2`，代码在 `src/q2/`，独立验收脚本在 `checks/`。 [归档结论](results/q2/双站定位与并发调度_连续站位_20261120/conclusions.md) · [英文图表](results/q2/双站定位与并发调度_连续站位_20261120/tables_and_figures.md) · [运行记录](results/q2/双站定位与并发调度_连续站位_20261120/run_record.md)
+
+### 2（1）双站定位精度与 T2 最优站位
+
+以一阶二维水平定位均方根误差 $E=\sigma\sqrt{r_1^2+r_2^2}/|\sin\gamma|$ 为精度指标。其中 $r_i$ 为各站到目标的水平距离，$\gamma$ 为水平交会角，两车的独立测角误差标准差均为 $\sigma=\pi/180$ rad。该指标同时计入两个水平分量，对坐标旋转不变，单位为米。基线 $B$ 通过 $B^2=r_1^2+r_2^2-2r_1r_2\cos\gamma$ 进入交会几何。
+
+**Table 1. Optimal station pair and travel times for T2.**
+
+| Vehicle | Station center (m) | Range to T2 (m) | Travel distance (m) | Travel time (s) | Elevation |
+| --- | --- | ---: | ---: | ---: | ---: |
+| V1 | (5.210066466, 72.500000000) | 5.818790363 | 59.313513 | 19.771171 | 80° |
+| V3 | (11.028856830, 78.318790363) | 5.818790363 | 8.235816 | 2.745272 | 80° |
+
+两站同时达到仰角约束给出的距离下界，基线 **8.229012248 m**、交会角 **90°**，取得指标最小值 **0.143623358 m**。两车的直达路段、30 s 行驶时限和三维视线均通过独立验收。近共线时优先换站，严格共线时剔除配对；合法的仰角与车体边界仍可使用，视线接触楼体时判为遮挡。 [解析站位与退化分析](results/q2/双站定位与并发调度_连续站位_20261120/conclusions.md) · [全精度站位和路线](results/q2/双站定位与并发调度_连续站位_20261120/q21_result.json) · [噪声及边界试验](results/q2/双站定位与并发调度_连续站位_20261120/q21_sensitivity.csv)
+
+![T2 station geometry and vehicle approaches](results/q2/双站定位与并发调度_连续站位_20261120/q21_stations.png)
+
+*Figure 1. Vehicle approaches and horizontal bearing geometry of the optimal T2 station pair. The two sightlines clear the roof of B3.*
+
+### 2（2）三告警分配、路线与五车时间轴
+
+三条告警各用两辆车。分配与路线以最小化三条告警的最晚同步开测为目标。两车均到站并完成指向后共同观测 5 s，复用车在本车复位后出发。
+
+**Table 2. Station assignments and synchronized observation start times.**
+
+| Alert | Optimized station centers (m) | Start (s) | Nearest-assignment station centers (m) | Start (s) |
+| --- | --- | ---: | --- | ---: |
+| T1 | V3 (15.042, 87.078), V5 (50, 93) | 1.532033 | V3 (14, 86), V5 (50, 93) | 1.532033 |
+| T2 | V1 (15, 14), V2 (72.680, 1.510) | 10.204157 | V1 (15, 14), V3 (14, 86) | **10.968984** |
+| T3 | V3 (16.767, 88.660), V4 (88, 68) | **10.352849** | V2 (88, 10), V4 (88, 68) | 5.777589 |
+
+就近法按两车避障路长之和贪心选择，路长并列时比较同步开测时间，并从六种处理顺序中取最好结果。优化由 V1、V2 并行准备 T2，让 V3 从 T1 接续 T3，缩短决定最晚开测的云台转向链。最晚开测提前 **0.616135 s（5.617%）**。连续场地的数值下界为 **10.352000 s**，与可行方案相差约 **0.849 ms**。原 1.25 m 档有限候选集的最优值为 10.731534 s。V3 的 T3 站靠近 B5 遮挡边界，复跑使用表中的毫米级坐标。
+
+![Vehicle routes and observation stations for the two schedules](results/q2/双站定位与并发调度_连续站位_20261120/q22_routes.png)
+
+*Figure 2. Vehicle routes for the optimized schedule and nearest-assignment baseline. Open circles mark stations. Stars mark alert projections.*
+
+![Complete five-vehicle observation timelines](results/q2/双站定位与并发调度_连续站位_20261120/q22_timeline.png)
+
+*Figure 3. Five-vehicle timelines. Dashed lines mark the latest synchronized observation start in each schedule.*
+
+- 时间轴记录两套方案中每辆车的出发、到站、指向、等待、观测起止、复位及后续出发。 [完整五车时间轴](results/q2/双站定位与并发调度_连续站位_20261120/q22_timeline.csv)
+- [分配底表](results/q2/双站定位与并发调度_连续站位_20261120/q22_assignments.csv) · [路线全路点](results/q2/双站定位与并发调度_连续站位_20261120/q22_routes.json) · [六序基线及关键链](results/q2/双站定位与并发调度_连续站位_20261120/q22_comparison.json)
+- [独立验收](results/q2/双站定位与并发调度_连续站位_20261120/validation.json) · [连续域下界](results/q2/双站定位与并发调度_连续站位_20261120/continuous_bound.json) · [按原题逐项审核](docs/B_Question_2_Result_Audit.md)
+
+**复跑归档结果**
+
+```bash
+nohup env OPENBLAS_NUM_THREADS=1 python3 -B -m src.run q2 --profile full \
+  --config results/q2/双站定位与并发调度_连续站位_20261120/config.yaml
+```
+
+复跑路径由命令打印，新产物写入本地 `runs/q2/`。归档快照的第一、二问共 **49 项测试通过**。 [复跑和验收命令](results/q2/双站定位与并发调度_连续站位_20261120/run_record.md)
 
 ## 协作约定
 

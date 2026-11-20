@@ -1,0 +1,414 @@
+[
+  {
+    "plan": "greedy",
+    "vehicle": "V1",
+    "target": "T2",
+    "previous_target": null,
+    "origin": [
+      15.0,
+      14.0
+    ],
+    "destination": [
+      15.0,
+      14.0
+    ],
+    "waypoints": [
+      [
+        15.0,
+        14.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "greedy",
+    "vehicle": "V2",
+    "target": "T3",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      10.0
+    ],
+    "destination": [
+      88.0,
+      10.0
+    ],
+    "waypoints": [
+      [
+        88.0,
+        10.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "greedy",
+    "vehicle": "V3",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      14.0,
+      86.0
+    ],
+    "destination": [
+      14.0,
+      86.0
+    ],
+    "waypoints": [
+      [
+        14.0,
+        86.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "greedy",
+    "vehicle": "V3",
+    "target": "T2",
+    "previous_target": "T1",
+    "origin": [
+      14.0,
+      86.0
+    ],
+    "destination": [
+      14.0,
+      86.0
+    ],
+    "waypoints": [
+      [
+        14.0,
+        86.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "greedy",
+    "vehicle": "V4",
+    "target": "T3",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      68.0
+    ],
+    "destination": [
+      88.0,
+      68.0
+    ],
+    "waypoints": [
+      [
+        88.0,
+        68.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "greedy",
+    "vehicle": "V5",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      50.0,
+      93.0
+    ],
+    "destination": [
+      50.0,
+      93.0
+    ],
+    "waypoints": [
+      [
+        50.0,
+        93.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V1",
+    "target": "T2",
+    "previous_target": null,
+    "origin": [
+      15.0,
+      14.0
+    ],
+    "destination": [
+      15.0,
+      14.0
+    ],
+    "waypoints": [
+      [
+        15.0,
+        14.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V2",
+    "target": "T2",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      10.0
+    ],
+    "destination": [
+      72.68,
+      1.51
+    ],
+    "waypoints": [
+      [
+        88.0,
+        10.0
+      ],
+      [
+        72.68,
+        1.51
+      ]
+    ],
+    "length_m": 17.515207677900932,
+    "travel_s": 5.83840255930031
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V3",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      14.0,
+      86.0
+    ],
+    "destination": [
+      15.042,
+      87.078
+    ],
+    "waypoints": [
+      [
+        14.0,
+        86.0
+      ],
+      [
+        15.042,
+        87.078
+      ]
+    ],
+    "length_m": 1.4992824950622234,
+    "travel_s": 0.4997608316874078
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V3",
+    "target": "T3",
+    "previous_target": "T1",
+    "origin": [
+      15.042,
+      87.078
+    ],
+    "destination": [
+      16.767,
+      88.66
+    ],
+    "waypoints": [
+      [
+        15.042,
+        87.078
+      ],
+      [
+        16.767,
+        88.66
+      ]
+    ],
+    "length_m": 2.340587319456375,
+    "travel_s": 0.780195773152125
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V4",
+    "target": "T3",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      68.0
+    ],
+    "destination": [
+      88.0,
+      68.0
+    ],
+    "waypoints": [
+      [
+        88.0,
+        68.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "optimized",
+    "vehicle": "V5",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      50.0,
+      93.0
+    ],
+    "destination": [
+      50.0,
+      93.0
+    ],
+    "waypoints": [
+      [
+        50.0,
+        93.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V1",
+    "target": "T2",
+    "previous_target": null,
+    "origin": [
+      15.0,
+      14.0
+    ],
+    "destination": [
+      15.0,
+      14.0
+    ],
+    "waypoints": [
+      [
+        15.0,
+        14.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V2",
+    "target": "T3",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      10.0
+    ],
+    "destination": [
+      88.0,
+      10.0
+    ],
+    "waypoints": [
+      [
+        88.0,
+        10.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V3",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      14.0,
+      86.0
+    ],
+    "destination": [
+      12.75,
+      86.5
+    ],
+    "waypoints": [
+      [
+        14.0,
+        86.0
+      ],
+      [
+        12.75,
+        86.5
+      ]
+    ],
+    "length_m": 1.346291201783626,
+    "travel_s": 0.44876373392787533
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V3",
+    "target": "T2",
+    "previous_target": "T1",
+    "origin": [
+      12.75,
+      86.5
+    ],
+    "destination": [
+      12.75,
+      86.5
+    ],
+    "waypoints": [
+      [
+        12.75,
+        86.5
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V4",
+    "target": "T3",
+    "previous_target": null,
+    "origin": [
+      88.0,
+      68.0
+    ],
+    "destination": [
+      88.0,
+      68.0
+    ],
+    "waypoints": [
+      [
+        88.0,
+        68.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  },
+  {
+    "plan": "fixed_vehicles",
+    "vehicle": "V5",
+    "target": "T1",
+    "previous_target": null,
+    "origin": [
+      50.0,
+      93.0
+    ],
+    "destination": [
+      50.0,
+      93.0
+    ],
+    "waypoints": [
+      [
+        50.0,
+        93.0
+      ]
+    ],
+    "length_m": 0.0,
+    "travel_s": 0.0
+  }
+]
