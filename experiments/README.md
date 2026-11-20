@@ -9,6 +9,7 @@
 | [二（2）双车复用算例](b/q2_reuse_example.py) | `python3 experiments/b/q2_reuse_example.py` | 固定 T3 与两个站位，给定三辆车的可出发时刻，按新增路程和按共同开始时间分别会选谁？[手算记录](../docs/q2-baseline.md) |
 | [二（2）六种顺序的配对比较](b/q2_order_probe.py) | `python3 experiments/b/q2_order_probe.py` | 用初始站与独立 20 m 网格，比较新增路程之和、较长单车路程及同步就绪。逐告警输出在 `runs/b/q2_order_probe.csv`。 |
 | [二（2）零行驶穷举](b/q2_stationary_check.py) | `python3 experiments/b/q2_stationary_check.py` | 固定每车在初始站，穷举可见车对与共享车辆的先后顺序，核对该子问题的最晚观测开始时刻。 |
+| [第二问独立方案复核](b/check_q2_solutions.py) | `python3 experiments/b/check_q2_solutions.py 路径/summary.json` | 根据候选方案的站位、路线和事件重算二（1）的水平定位误差与行驶时间，以及二（2）的逐车时间轴。可同时传入多份方案。 |
 
 [题面参数转录](b/scene.json) 的数字保留原题单位。核查脚本只读，在终端输出结果。核查发现和实验优先级见[建模笔记](../docs/modeling-notes.md)。方法被采用时，将正式实现整理进 `src/`，将独立复核材料放入 `checks/`，保留从正式实现回到原实验的记录。
 

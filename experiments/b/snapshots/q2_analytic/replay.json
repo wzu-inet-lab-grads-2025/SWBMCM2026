@@ -1,0 +1,101 @@
+{
+  "q21": {
+    "checks": [
+      {
+        "target": "T2",
+        "vehicle": "V3",
+        "body_building_margin_m": 0.6043195078546226,
+        "low_ray_xy_clearance_m": 3.0266637265944363
+      },
+      {
+        "target": "T2",
+        "vehicle": "V5",
+        "body_building_margin_m": 0.8187903633793496,
+        "low_ray_xy_clearance_m": 0.5555205562946952
+      }
+    ],
+    "minimum_vehicle_center_separation_m": 8.229012248496943
+  },
+  "q22": {
+    "checks": [
+      {
+        "target": "T1",
+        "vehicle": "V3",
+        "body_building_margin_m": 8.5,
+        "low_ray_xy_clearance_m": 8.221639732629365
+      },
+      {
+        "target": "T1",
+        "vehicle": "V5",
+        "body_building_margin_m": 24.053864678361276,
+        "low_ray_xy_clearance_m": 8.09302325581396
+      },
+      {
+        "target": "T2",
+        "vehicle": "V1",
+        "body_building_margin_m": 5.780109889280518,
+        "low_ray_xy_clearance_m": 7.119381117757509
+      },
+      {
+        "target": "T2",
+        "vehicle": "V4",
+        "body_building_margin_m": 7.5,
+        "low_ray_xy_clearance_m": 0.1753571103550981
+      },
+      {
+        "target": "T3",
+        "vehicle": "V2",
+        "body_building_margin_m": 10.665525060596439,
+        "low_ray_xy_clearance_m": 10.632339448635117
+      },
+      {
+        "target": "T3",
+        "vehicle": "V3",
+        "body_building_margin_m": 9.57805683386269,
+        "low_ray_xy_clearance_m": 4.339622648785735e-06
+      }
+    ],
+    "minimum_vehicle_center_separation_m": 33.516708991248024
+  },
+  "q22_0.1m": {
+    "checks": [
+      {
+        "target": "T1",
+        "vehicle": "V3",
+        "body_building_margin_m": 8.5,
+        "low_ray_xy_clearance_m": 8.226930387552745
+      },
+      {
+        "target": "T1",
+        "vehicle": "V5",
+        "body_building_margin_m": 24.053864678361276,
+        "low_ray_xy_clearance_m": 8.09302325581396
+      },
+      {
+        "target": "T2",
+        "vehicle": "V1",
+        "body_building_margin_m": 5.780109889280518,
+        "low_ray_xy_clearance_m": 7.119381117757509
+      },
+      {
+        "target": "T2",
+        "vehicle": "V4",
+        "body_building_margin_m": 7.5,
+        "low_ray_xy_clearance_m": 0.1753571103550981
+      },
+      {
+        "target": "T3",
+        "vehicle": "V2",
+        "body_building_margin_m": 10.665525060596439,
+        "low_ray_xy_clearance_m": 10.632339448635117
+      },
+      {
+        "target": "T3",
+        "vehicle": "V3",
+        "body_building_margin_m": 9.587603585950262,
+        "low_ray_xy_clearance_m": 0.04339622641509777
+      }
+    ],
+    "minimum_vehicle_center_separation_m": 33.446349060650796
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "q21": {
+    "target": "T2",
+    "legs": [
+      {
+        "vehicle": "V5",
+        "station": [
+          13.019000343765285,
+          77.96787436636772
+        ],
+        "path": [
+          [
+            50.0,
+            93.0
+          ],
+          [
+            13.019000343765285,
+            77.96787436636772
+          ]
+        ],
+        "distance_m": 39.91940801965551,
+        "travel_s": 13.30646933988517
+      },
+      {
+        "vehicle": "V3",
+        "station": [
+          5.560982463332533,
+          74.49014351406502
+        ],
+        "path": [
+          [
+            14.0,
+            86.0
+          ],
+          [
+            5.560982463332533,
+            74.49014351406502
+          ]
+        ],
+        "distance_m": 14.272134154042991,
+        "travel_s": 4.757378051347664
+      }
+    ],
+    "ranges_m": [
+      5.818790363379344,
+      5.818790363379347
+    ],
+    "baseline_m": 8.229012248496941,
+    "intersection_deg": 90.00000000000001,
+    "first_order_horizontal_rmse_m": 0.1436233579232134,
+    "elevation_deg": [
+      80.0,
+      80.0
+    ],
+    "lower_bound_rmse_m": 0.14362335792321346,
+    "scan": {
+      "angular_step_deg": 0.25,
+      "feasible_vehicle_station_pairs": 863,
+      "safe_10_degree_candidates": 20,
+      "selected_phi_deg": 70.0
+    },
+    "optimum_scope": "continuous global first-order RMSE; tie: 10-degree family, 0.1 m geometric/shadow margin, then total direct distance",
+    "nonlinear_validation": {
+      "seed": 20261120,
+      "n": 1000000,
+      "empirical_horizontal_rmse_m": 0.14373452520786845,
+      "bias_xy_m": [
+        -0.00017810909142671548,
+        -0.00010067267407847259
+      ],
+      "empirical_covariance_m2": [
+        [
+          0.010327876169970886,
+          -1.19791564568278e-05
+        ],
+        [
+          -1.19791564568278e-05,
+          0.010331716368517251
+        ]
+      ],
+      "radial_error_quantiles_m": {
+        "0.5": 0.11960356469803796,
+        "0.9": 0.21796912971117444,
+        "0.95": 0.2487720391277206,
+        "0.99": 0.30909065589535056,
+        "0.999": 0.3784660312503946
+      },
+      "max_sample_error_m": 0.5760507890327476,
+      "warning": "Exact untruncated Gaussian bearing-line intersection has nonzero density at parallel rays: population second moment is infinite. Empirical RMSE is a local approximation check, not that population moment."
+    }
+  },
+  "q22": {
+    "latest_start_s": 10.3521185907042,
+    "jobs": [
+      {
+        "target": "T1",
+        "start_s": 1.5320327145575703,
+        "legs": [
+          {
+            "vehicle": "V3",
+            "station": [
+              15.042068482523437,
+              87.07839997436871
+            ],
+            "path": [
+              [
+                14.0,
+                86.0
+              ],
+              [
+                15.042068482523437,
+                87.07839997436871
+              ]
+            ],
+            "depart_s": 0.0,
+            "distance_m": 1.4996176936096504,
+            "travel_s": 0.4998725645365501,
+            "arrival_s": 0.4998725645365501,
+            "slew_s": 1.0321601500210202,
+            "ready_s": 1.5320327145575703,
+            "wait_s": 0.0,
+            "observation_end_s": 6.5320327145575705,
+            "reset_end_s": 7.56419286457859
+          },
+          {
+            "vehicle": "V5",
+            "station": [
+              50.0,
+              93.0
+            ],
+            "path": [
+              [
+                50.0,
+                93.0
+              ],
+              [
+                50.0,
+                93.0
+              ]
+            ],
+            "depart_s": 0.0,
+            "distance_m": 0.0,
+            "travel_s": 0.0,
+            "arrival_s": 0.0,
+            "slew_s": 1.5320327144569217,
+            "ready_s": 1.5320327144569217,
+            "wait_s": 1.0064860056502312e-10,
+            "observation_end_s": 6.5320327145575705,
+            "reset_end_s": 8.064065429014493
+          }
+        ],
+        "geometry": {
+          "ranges_m": [
+            71.66369556683783,
+            41.58124577258359
+          ],
+          "baseline_m": 35.45592084326873,
+          "intersection_deg": 19.795282350580383,
+          "first_order_horizontal_rmse_m": 4.269954070950514
+        }
+      },
+      {
+        "target": "T2",
+        "start_s": 10.197744025090035,
+        "legs": [
+          {
+            "vehicle": "V2",
+            "station": [
+              72.70860061292497,
+              1.5000000000000155
+            ],
+            "path": [
+              [
+                88.0,
+                10.0
+              ],
+              [
+                72.70860061292497,
+                1.5000000000000155
+              ]
+            ],
+            "depart_s": 0.0,
+            "distance_m": 17.495053449905157,
+            "travel_s": 5.831684483301719,
+            "arrival_s": 5.831684483301719,
+            "slew_s": 4.366059541788316,
+            "ready_s": 10.197744025090035,
+            "wait_s": 0.0,
+            "observation_end_s": 15.197744025090035,
+            "reset_end_s": 19.563803566878352
+          },
+          {
+            "vehicle": "V4",
+            "station": [
+              88.0617924528964,
+              70.80002275602222
+            ],
+            "path": [
+              [
+                88.0,
+                68.0
+              ],
+              [
+                88.0617924528964,
+                70.80002275602222
+              ]
+            ],
+            "depart_s": 0.0,
+            "distance_m": 2.8007045080617123,
+            "travel_s": 0.9335681693539041,
+            "arrival_s": 0.9335681693539041,
+            "slew_s": 5.957859707017226,
+            "ready_s": 6.8914278763711305,
+            "wait_s": 3.3063161487189046,
+            "observation_end_s": 15.197744025090035,
+            "reset_end_s": 21.15560373210726
+          }
+        ],
+        "geometry": {
+          "ranges_m": [
+            94.0499377626814,
+            77.05169104800702
+          ],
+          "baseline_m": 70.98037513045531,
+          "intersection_deg": 47.75400495686731,
+          "first_order_horizontal_rmse_m": 2.8665655424324856
+        }
+      },
+      {
+        "target": "T3",
+        "start_s": 10.3521185907042,
+        "legs": [
+          {
+            "vehicle": "V3",
+            "station": [
+              16.765599428764858,
+              88.65893236587225
+            ],
+            "path": [
+              [
+                15.042068482523437,
+                87.07839997436871
+              ],
+              [
+                16.765599428764858,
+                88.65893236587225
+              ]
+            ],
+            "depart_s": 7.56419286457859,
+            "distance_m": 2.3385126818650663,
+            "travel_s": 0.7795042272883554,
+            "arrival_s": 8.343697091866947,
+            "slew_s": 2.008421498837253,
+            "ready_s": 10.3521185907042,
+            "wait_s": 0.0,
+            "observation_end_s": 15.3521185907042,
+            "reset_end_s": 17.360540089541452
+          },
+          {
+            "vehicle": "V1",
+            "station": [
+              15.0,
+              14.0
+            ],
+            "path": [
+              [
+                15.0,
+                14.0
+              ],
+              [
+                15.0,
+                14.0
+              ]
+            ],
+            "depart_s": 0.0,
+            "distance_m": 0.0,
+            "travel_s": 0.0,
+            "arrival_s": 0.0,
+            "slew_s": 1.6589032419832925,
+            "ready_s": 1.6589032419832925,
+            "wait_s": 8.693215348720907,
+            "observation_end_s": 15.3521185907042,
+            "reset_end_s": 17.01102183268749
+          }
+        ],
+        "geometry": {
+          "ranges_m": [
+            86.8028430738865,
+            44.840669032094205
+          ],
+          "baseline_m": 74.67980666388165,
+          "intersection_deg": 59.35155262074705,
+          "first_order_horizontal_rmse_m": 1.982071180445543
+        }
+      }
+    ],
+    "total_distance_m": 24.133888333441586,
+    "idle_vehicles": [],
+    "continuous_optimum_bounds": {
+      "lower_s": 10.352050870444076,
+      "feasible_upper_s": 10.3521185907042,
+      "gap_s": 6.772026012313859e-05,
+      "status": "numerical global bounds from conservative analytic cell formulas; NOT directed-rounding interval proof; optical boundary may mean infimum"
+    },
+    "stationary_optimum_s": 10.968984244492779,
+    "improvement_s": 0.6168656537885795,
+    "finite_common_candidate_optimum_s": 10.3521185907042,
+    "deployment_order": [
+      "T1",
+      "T2",
+      "T3"
+    ]
+  },
+  "evidence": {
+    "report": "experiments/b/q2_numerical/REPORT.md",
+    "independent_replay_passed": true,
+    "replay_checks": 8030,
+    "baseline_plans": 90,
+    "baseline_csv": "runs/b/q2_numerical/baselines.csv",
+    "events_csv": "runs/b/q2_numerical/events.csv",
+    "bounds": "runs/b/q2_numerical/q22_strong_lower_bound.json",
+    "interior_1mm_latest_s": 10.352584635607048,
+    "software": {
+      "python": "3.10.12",
+      "numpy": "2.2.4",
+      "scipy": "1.15.2"
+    }
+  },
+  "units": {
+    "position": "m",
+    "time": "s",
+    "vehicle_speed": "m/s",
+    "bearing": "degrees unless explicitly radians"
+  }
+}

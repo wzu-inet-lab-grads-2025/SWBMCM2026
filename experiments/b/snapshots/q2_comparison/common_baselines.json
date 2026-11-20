@@ -1,0 +1,1829 @@
+{
+  "stations": [
+    [
+      14,
+      86
+    ],
+    [
+      15,
+      14
+    ],
+    [
+      15.042068482523437,
+      87.07839997436871
+    ],
+    [
+      15.042402841710667,
+      87.07805683386269
+    ],
+    [
+      16.765599428764858,
+      88.65893236587225
+    ],
+    [
+      16.76560517629299,
+      88.65894225954514
+    ],
+    [
+      50,
+      93
+    ],
+    [
+      72.70860061292497,
+      1.5000000000000155
+    ],
+    [
+      88,
+      10
+    ],
+    [
+      88,
+      68
+    ],
+    [
+      88.0,
+      71.0
+    ],
+    [
+      88.0617924528964,
+      70.80002275602222
+    ]
+  ],
+  "direct_feasible_legs_only": true,
+  "rows": [
+    {
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "rule": "sum",
+      "latest_s": 22.332111045014816,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 22.332111045014816,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "rule": "max",
+      "latest_s": 22.332111045014816,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 22.332111045014816,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "rule": "sum_time",
+      "latest_s": 10.968984244492779,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V2",
+          "vehicle_2": "V4",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            88,
+            68
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "rule": "max_time",
+      "latest_s": 10.968984244492779,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V2",
+          "vehicle_2": "V4",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            88,
+            68
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "rule": "ready",
+      "latest_s": 10.829585935957326,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 6.89142787637113,
+          "added_m": 2.8007045080617123,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V4",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88.0617924528964,
+            70.80002275602222
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 10.829585935957326,
+          "added_m": 17.495053449905157,
+          "ties": 2,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            72.70860061292497,
+            1.5000000000000155
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "rule": "sum",
+      "latest_s": 26.779557155981426,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 16.991205928019976,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 26.779557155981426,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "rule": "max",
+      "latest_s": 26.779557155981426,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 16.991205928019976,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 26.779557155981426,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "rule": "sum_time",
+      "latest_s": 13.13920784472012,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V4",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            68
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 13.13920784472012,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "rule": "max_time",
+      "latest_s": 13.13920784472012,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V4",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            68
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 13.13920784472012,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "rule": "ready",
+      "latest_s": 10.968984244492779,
+      "events": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V3",
+          "vehicle_2": "V5",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V4",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            68
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "added_m": 17.495053449905157,
+          "ties": 1,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            72.70860061292497,
+            1.5000000000000155
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "rule": "sum",
+      "latest_s": 26.735084045238537,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 26.735084045238537,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "rule": "max",
+      "latest_s": 26.735084045238537,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 26.735084045238537,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "rule": "sum_time",
+      "latest_s": 12.404361508517912,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "rule": "max_time",
+      "latest_s": 12.404361508517912,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "rule": "ready",
+      "latest_s": 12.404361508517912,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "rule": "sum",
+      "latest_s": 27.086483743164127,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 13.202086102161658,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 27.086483743164127,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "rule": "max",
+      "latest_s": 27.086483743164127,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 13.202086102161658,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 27.086483743164127,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "rule": "sum_time",
+      "latest_s": 12.850686404236068,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "rule": "max_time",
+      "latest_s": 12.850686404236068,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "rule": "ready",
+      "latest_s": 12.850686404236068,
+      "events": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V4",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            68
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "rule": "sum",
+      "latest_s": 29.09893852502329,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 19.66198699498743,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 29.09893852502329,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "rule": "max",
+      "latest_s": 29.09893852502329,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 19.66198699498743,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 29.09893852502329,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "rule": "sum_time",
+      "latest_s": 12.553871735004932,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "rule": "max_time",
+      "latest_s": 12.553871735004932,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "rule": "ready",
+      "latest_s": 12.543759817053367,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "added_m": 0.0,
+          "ties": 5,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "added_m": 3.0,
+          "ties": 2,
+          "vehicle_1": "V3",
+          "vehicle_2": "V4",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            88.0,
+            71.0
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "rule": "sum",
+      "latest_s": 25.00289211198227,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 15.56594058194641,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 25.00289211198227,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "rule": "max",
+      "latest_s": 25.00289211198227,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V2",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            88,
+            10
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 15.56594058194641,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 25.00289211198227,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V3",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "rule": "sum_time",
+      "latest_s": 12.553871735004932,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "rule": "max_time",
+      "latest_s": 12.553871735004932,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 6,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V1",
+          "vehicle_2": "V3",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            14,
+            86
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "added_m": 0.0,
+          "ties": 3,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "rule": "ready",
+      "latest_s": 12.063073728543888,
+      "events": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V1",
+          "vehicle_2": "V5",
+          "station_1": [
+            15,
+            14
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 6.89142787637113,
+          "added_m": 2.8007045080617123,
+          "ties": 5,
+          "vehicle_1": "V3",
+          "vehicle_2": "V4",
+          "station_1": [
+            14,
+            86
+          ],
+          "station_2": [
+            88.0617924528964,
+            70.80002275602222
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "added_m": 0.0,
+          "ties": 1,
+          "vehicle_1": "V2",
+          "vehicle_2": "V5",
+          "station_1": [
+            88,
+            10
+          ],
+          "station_2": [
+            50,
+            93
+          ]
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    "runs/b/q2_analytic/summary.json",
+    "runs/b/q2_numerical/summary.json"
+  ]
+}

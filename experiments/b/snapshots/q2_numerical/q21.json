@@ -1,0 +1,90 @@
+{
+  "target": "T2",
+  "legs": [
+    {
+      "vehicle": "V5",
+      "station": [
+        13.019000343765285,
+        77.96787436636772
+      ],
+      "path": [
+        [
+          50.0,
+          93.0
+        ],
+        [
+          13.019000343765285,
+          77.96787436636772
+        ]
+      ],
+      "distance_m": 39.91940801965551,
+      "travel_s": 13.30646933988517
+    },
+    {
+      "vehicle": "V3",
+      "station": [
+        5.560982463332533,
+        74.49014351406502
+      ],
+      "path": [
+        [
+          14.0,
+          86.0
+        ],
+        [
+          5.560982463332533,
+          74.49014351406502
+        ]
+      ],
+      "distance_m": 14.272134154042991,
+      "travel_s": 4.757378051347664
+    }
+  ],
+  "ranges_m": [
+    5.818790363379344,
+    5.818790363379347
+  ],
+  "baseline_m": 8.229012248496941,
+  "intersection_deg": 90.00000000000001,
+  "first_order_horizontal_rmse_m": 0.1436233579232134,
+  "elevation_deg": [
+    80.0,
+    80.0
+  ],
+  "lower_bound_rmse_m": 0.14362335792321346,
+  "scan": {
+    "angular_step_deg": 0.25,
+    "feasible_vehicle_station_pairs": 863,
+    "safe_10_degree_candidates": 20,
+    "selected_phi_deg": 70.0
+  },
+  "optimum_scope": "continuous global first-order RMSE; tie: 10-degree family, 0.1 m geometric/shadow margin, then total direct distance",
+  "nonlinear_validation": {
+    "seed": 20261120,
+    "n": 1000000,
+    "empirical_horizontal_rmse_m": 0.14373452520786845,
+    "bias_xy_m": [
+      -0.00017810909142671548,
+      -0.00010067267407847259
+    ],
+    "empirical_covariance_m2": [
+      [
+        0.010327876169970886,
+        -1.19791564568278e-05
+      ],
+      [
+        -1.19791564568278e-05,
+        0.010331716368517251
+      ]
+    ],
+    "radial_error_quantiles_m": {
+      "0.5": 0.11960356469803796,
+      "0.9": 0.21796912971117444,
+      "0.95": 0.2487720391277206,
+      "0.99": 0.30909065589535056,
+      "0.999": 0.3784660312503946
+    },
+    "max_sample_error_m": 0.5760507890327476,
+    "warning": "Exact untruncated Gaussian bearing-line intersection has nonzero density at parallel rays: population second moment is infinite. Empirical RMSE is a local approximation check, not that population moment."
+  }
+}
