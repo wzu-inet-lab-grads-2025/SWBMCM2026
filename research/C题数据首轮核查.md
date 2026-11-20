@@ -109,17 +109,17 @@
 ```bash
 PY=/mnt/disk/zhoutianyu/miniconda3/envs/LLM4AD/bin/python
 # P　解压目录校验和、案例约束与前置关系
-python3 -B research/c_audit_package.py
+python3 -B experiments/c_audit_package.py
 # I　已有盘点脚本，读取内部 UUID、源索引、ZIP 成员和记录划分
-"$PY" -B research/check_c_data.py
+"$PY" -B experiments/check_c_data.py
 # F　三条记录的字段、时间与 MP4 展示时间戳；需要 ffprobe
-/mnt/disk/zhoutianyu/miniconda3/envs/collm/bin/python -B research/c_audit_fields.py
+/mnt/disk/zhoutianyu/miniconda3/envs/collm/bin/python -B experiments/c_audit_fields.py
 # Q　全量坐标、标记、时序与集间 ID 对照，输出含各环境分母。加 --json --records 可看逐记录明细。
-/mnt/disk/zhoutianyu/miniconda3/bin/python -B research/c_audit_quality.py
+/mnt/disk/zhoutianyu/miniconda3/bin/python -B experiments/c_audit_quality.py
 # S　逐片段/作业关联、长度边界和视频播放终点。加 --details 可看逐段证据。
-/mnt/disk/zhoutianyu/miniconda3/bin/python -B research/c_audit_segments.py
+/mnt/disk/zhoutianyu/miniconda3/bin/python -B experiments/c_audit_segments.py
 # V　逐节点核对规程原文与一条训练记录的三个前缀
-python3 -B research/c_audit_prefix.py --pdf-quotes
+python3 -B experiments/c_audit_prefix.py --pdf-quotes
 # R　直接查看第三问规程和数值条件。此命令只读取任务目录。
 python3 -B - <<'PY'
 from pathlib import Path

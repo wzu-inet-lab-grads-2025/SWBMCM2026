@@ -6,7 +6,7 @@ C 题把三个不同层次的问题连在一起。第一问研究人手轨迹和
 
 ## 本地附件实际提供了什么
 
-以下是按记录内部的 `episode_uuid` 去重、把三包逐项与官方划分表连接后的盘点。时间戳按每条手部轨迹的时间计，左右手和摄像机各路不会重复增加分母。标记数按“至少一只手被标记”的时间戳计，Demo 读取稀疏 JSON，另两组读取逐帧质量表。标记占比涉及全部记录的附件清点，时长分布只统计训练集。[数据核查脚本](check_c_data.py) · [官方环境划分副本](../data/raw/C/Restocking_Tasks_and_Constraints/record_split.csv)
+以下是按记录内部的 `episode_uuid` 去重、把三包逐项与官方划分表连接后的盘点。时间戳按每条手部轨迹的时间计，左右手和摄像机各路不会重复增加分母。标记数按“至少一只手被标记”的时间戳计，Demo 读取稀疏 JSON，另两组读取逐帧质量表。标记占比涉及全部记录的附件清点，时长分布只统计训练集。[数据核查脚本](../experiments/check_c_data.py) · [官方环境划分副本](../data/raw/C/Restocking_Tasks_and_Constraints/record_split.csv)
 
 | 本地数据组 | 记录 | 时间戳 | 带手部质量标记 | 实际文件与视角 |
 | --- | ---: | ---: | ---: | --- |
@@ -19,7 +19,7 @@ C 题把三个不同层次的问题连在一起。第一问研究人手轨迹和
 
 解开外层 `C_Problem_Data.zip` 并核对内层 `Restocking_Problem_and_Data_EN.zip` 的成员目录后，能找到三份原始 ZIP、六个 CSV/JSON 规则文件和三页的 `Problem_3_Requirements.pdf`。题面所指的 `Data_Documentation/`、`missing_observation_experiments.md`、`file_manifest.csv` 和 `tasks_and_evaluation.md` 均未列在这份内层目录。已逐文件核对本地七个规则文件与内层包中同名文件的 SHA-256，七项全部一致。第三问可直接查 PDF、JSON 和任务表。第二问先依据题面明确的共同回放原则，窗口、预算与延迟的具体数值需注明来源。若有答疑补件，应优先核对。官网可核实分发通知，指定答疑专区的具体回复本次未能读取。[第三问规程 PDF](../data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf) · [共同数值条件](../data/raw/C/Restocking_Tasks_and_Constraints/common_conditions.json) · [组委会数据集说明](https://www.nmmcm.org.cn/News/227.html) · [答疑入口说明](https://www.nmmcm.org.cn/News/225.html)
 
-**文件夹名称容易让划分失效。** 三包共 69 条记录，逐条比较发现 69 个目录名都与内部 UUID 不同。即便 Pro、Standard 的目录名看起来已经是 UUID，也要从 `session_metadata.csv` 的 `task_info.episode_uuid` 读取内部标识。Demo 则从 `meta/episodes` 的 Parquet 里读 `episode_uuid`。原始记录与划分表的匹配可逐条复核。[C 题本地数据目录](../data/raw/C/Raw_Data/) · [只读核查脚本](check_c_data.py)
+**文件夹名称容易让划分失效。** 三包共 69 条记录，逐条比较发现 69 个目录名都与内部 UUID 不同。即便 Pro、Standard 的目录名看起来已经是 UUID，也要从 `session_metadata.csv` 的 `task_info.episode_uuid` 读取内部标识。Demo 则从 `meta/episodes` 的 Parquet 里读 `episode_uuid`。原始记录与划分表的匹配可逐条复核。[C 题本地数据目录](../data/raw/C/Raw_Data/) · [只读核查脚本](../experiments/check_c_data.py)
 
 ## 哪些差异能用数据检验
 
@@ -75,4 +75,4 @@ C 题把三个不同层次的问题连在一起。第一问研究人手轨迹和
 
 三人团队可用三项能力判断能否承担 C 题。一是能从三个来源的两种文件组织中复现同一状态、同一质量口径并给出剔除清单。二是能让两种策略共享窗口、预算和延迟，用一张时间图证明没有用到未来数据。三是能从任一试验的日志独立重算花费、完成与占用，并解释一次延迟返回或跨 H 截尾。若第三项没人负责，前两问的预测图再丰富也补不上共同评测的缺口。
 
-附件盘点可在仓库根目录运行 `python research/check_c_data.py` 复做，需要 pandas 和 pyarrow。本次核查使用 Python 3.11 环境、pandas 2.3.3、pyarrow 22.0.0。脚本逐条匹配内部 ID、清点时间戳及标记、核对环境划分与训练片段分布。本地 C 原始数据按仓库约定不进 Git。[核查脚本](check_c_data.py) · [仓库目录说明](../README.md)
+附件盘点可在仓库根目录运行 `python experiments/check_c_data.py` 复做，需要 pandas 和 pyarrow。本次核查使用 Python 3.11 环境、pandas 2.3.3、pyarrow 22.0.0。脚本逐条匹配内部 ID、清点时间戳及标记、核对环境划分与训练片段分布。本地 C 原始数据按仓库约定不进 Git。[核查脚本](../experiments/check_c_data.py) · [仓库目录说明](../README.md)

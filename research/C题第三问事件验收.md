@@ -4,7 +4,7 @@
 
 - **已通过**　复现首轮的一条训练片段 `U_883c40426953`，核对了三个累计前缀的样本数和时间边界。
 - **失败**　本轮已执行的样例检查中无失败项。
-- **未运行**　手算与实际日志对账、请求期间的信息隔离、设备占用和截止结算。现有脚本只输出离线核查数据。`audit_source_only` 中可见源 ID、终点和完整时长，片段脚本也标明只做离线分配。缺少逐次决策的实际输入，尚不能确认这些字段及全段统计是否与决策隔离。[前缀脚本](c_audit_prefix.py) · [片段脚本](c_audit_segments.py)
+- **未运行**　手算与实际日志对账、请求期间的信息隔离、设备占用和截止结算。现有脚本只输出离线核查数据。`audit_source_only` 中可见源 ID、终点和完整时长，片段脚本也标明只做离线分配。缺少逐次决策的实际输入，尚不能确认这些字段及全段统计是否与决策隔离。[前缀脚本](../experiments/c_audit_prefix.py) · [片段脚本](../experiments/c_audit_segments.py)
 
 ## 事件对账表
 
@@ -28,7 +28,7 @@
 **复现入口。** 在仓库根目录运行以下命令。第一条只读上述单条样本，第二条列出原始采集目录以外的本地文件，便于定位回放器、日志或补件。
 
 ```bash
-python3 -B research/c_audit_prefix.py --pdf-quotes | rg '^(scope|audit_source_only|boundary_precision|PASS)'
+python3 -B experiments/c_audit_prefix.py --pdf-quotes | rg '^(scope|audit_source_only|boundary_precision|PASS)'
 rg --files --hidden --no-ignore -g '!.git' -g '!data/raw/C/Raw_Data' | sort
 ```
 

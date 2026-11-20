@@ -1,6 +1,6 @@
 # C 题第三问正式回放入口核查
 
-**首个阻塞点是缺少队员正式回放的启动入口和实际接收决策请求的策略函数。** 核查基线为 `850380e`。当时本地只有 `main` 工作树，远程也只列出同一提交的 `main`。在工作区可见的源码和项目说明中，`FixedTrial.run()` 按固定动作列表执行，`policy_view()` 构造快照，`replay_pair()` 编排离线合成事件。三处均未调用队员策略。[固定动作执行代码](c_q3_fixture/b_fixture.py) · [双作业编排](c_q3_fixture/pair_test.py)
+**首个阻塞点是缺少队员正式回放的启动入口和实际接收决策请求的策略函数。** 核查基线为 `850380e`。当时本地只有 `main` 工作树，远程也只列出同一提交的 `main`。在工作区可见的源码和项目说明中，`FixedTrial.run()` 按固定动作列表执行，`policy_view()` 构造快照，`replay_pair()` 编排离线合成事件。三处均未调用队员策略。[固定动作执行代码](../experiments/c_q3_fixture/b_fixture.py) · [双作业编排](../experiments/c_q3_fixture/pair_test.py)
 
 | 核查项 | 状态 | 依据 |
 |---|---|---|
@@ -17,5 +17,5 @@ git worktree list
 git branch -avv
 git ls-remote --heads origin
 rg --files --hidden --no-ignore -g '!.git' -g '!data/raw/C/Raw_Data/**' | sort
-rg -n 'def (policy_view|replay_pair|run)\(|for action in self\.trial|policy_callback_noninterference' research/c_q3_fixture/*.py
+rg -n 'def (policy_view|replay_pair|run)\(|for action in self\.trial|policy_callback_noninterference' experiments/c_q3_fixture/*.py
 ```

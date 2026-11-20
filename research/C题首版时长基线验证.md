@@ -1,6 +1,6 @@
 # C 题首版时长基线验证
 
-**类别中位数基线在 35 个验证片段上的 MAE 为 3.477 秒。** 按队伍本轮确认的规格，以原始标注时长 `d`（秒）为目标。官方训练集的 246 个配对片段各计一次，P 类 124 段、A 类 112 段、L 类 10 段，拟合得到中位数 4.0、3.2、3.6 秒。预测时只读取验证片段类别，评分时按片段取绝对误差的算术平均。验证集覆盖 7 条记录、4 个环境。[配对输入说明](C题前缀信息配对诊断.md) · [分组结果 CSV](q3_prefix/family_median_validation.csv)
+**类别中位数基线在 35 个验证片段上的 MAE 为 3.477 秒。** 按队伍本轮确认的规格，以原始标注时长 `d`（秒）为目标。官方训练集的 246 个配对片段各计一次，P 类 124 段、A 类 112 段、L 类 10 段，拟合得到中位数 4.0、3.2、3.6 秒。预测时只读取验证片段类别，评分时按片段取绝对误差的算术平均。验证集覆盖 7 条记录、4 个环境。[配对输入说明](C题前缀信息配对诊断.md) · [分组结果 CSV](../experiments/q3_prefix/family_median_validation.csv)
 
 ## 第三问配对结果
 
@@ -33,5 +33,5 @@
 **最短复现命令**（从仓库根目录复用本地配对库）。
 
 ```bash
-python3 -B -m research.q3_prefix.evaluate --family-median --summary runs/q3_prefix/baseline.csv
+python3 -B -m experiments.q3_prefix.evaluate --family-median --summary runs/q3_prefix/baseline.csv
 ```

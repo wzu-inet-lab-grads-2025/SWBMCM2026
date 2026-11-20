@@ -1,6 +1,6 @@
 # 第三问固定动作合成对账
 
-**合成结算无数值差异，正式回放未运行。** 两条独立单作业时间线各有 11 项共同指标，A 的手算与 B 的导出结果 22/22 一致。提前完成例在 5 秒完成、7.5 秒释放设备。跨时限例在 100 秒截尾，实际可记超预留 0.5 秒、加权拖期 6。两次复核的中点快照均仅有免费前缀的 3 行，返回事件才扩为 7 行。[独立手算](c_q3_hand_expected.md) · [结算日志](c_q3_fixture/b_output/b_summary.json) · [决策视图](c_q3_fixture/b_output/b_policy_views.jsonl)
+**合成结算无数值差异，正式回放未运行。** 两条独立单作业时间线各有 11 项共同指标，A 的手算与 B 的导出结果 22/22 一致。提前完成例在 5 秒完成、7.5 秒释放设备。跨时限例在 100 秒截尾，实际可记超预留 0.5 秒、加权拖期 6。两次复核的中点快照均仅有免费前缀的 3 行，返回事件才扩为 7 行。[独立手算](c_q3_hand_expected.md) · [结算日志](../experiments/c_q3_fixture/b_output/b_summary.json) · [决策视图](../experiments/c_q3_fixture/b_output/b_policy_views.jsonl)
 
 | 差异 | 规程依据与需队员确认的解释 |
 |---|---|
@@ -9,4 +9,4 @@
 | **中间事件的记录粒度。** A 在两项交期 6、98 秒各列一行。B 没有交期行，对应状态可由相邻事件还原。移动时 B 保留出发区，抵达后切换为 Z1。 | 第 2 页 §3–4、第 3 页 §5。交期用于计分，规程未要求交期单列事件，也未指定移动途中何时改写区域。需确认按事件行还是按持续区间核对。 |
 | **额外执行快照的时间来源。** B 除固定的复核中点外，还输出 4.25、6.25、97.5 秒的执行或空闲快照，其中执行中点由离线引擎根据占用终点计算。这些点没有触发固定动作。 | 第 1–2 页 §2 禁止用未披露时长或后续状态决策。正式接口需确认这些离线探针只进审计日志；若按这些时刻回调策略，回调时钟本身可能携带未来信息。另需固定数值窗口的端点约定，B 的合成网格按闭区间计数。 |
 
-[正式规程](../data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf) · [固定输入](c_q3_fixture/b_inputs.json) · [逐事件日志](c_q3_fixture/b_output/b_events.jsonl) · [运行命令及断言说明](c_q3_fixture/b_README.md)
+[正式规程](../data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf) · [固定输入](../experiments/c_q3_fixture/b_inputs.json) · [逐事件日志](../experiments/c_q3_fixture/b_output/b_events.jsonl) · [运行命令及断言说明](../experiments/c_q3_fixture/b_README.md)

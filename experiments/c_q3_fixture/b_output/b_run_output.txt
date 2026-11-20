@@ -1,0 +1,6 @@
+B fixed-action synthetic fixture; official replay NOT RUN.
+EARLY events: 0:RESET -> 0:RELEASE -> 0:REVIEW_ACCEPTED -> 0.5:READ_ONLY_SNAPSHOT -> 1:REVIEW_RETURN -> 1:EXECUTE_ACCEPTED -> 2:ARRIVE -> 2.5:SERVICE_START -> 4.25:READ_ONLY_SNAPSHOT -> 5:COMPLETE -> 6.25:READ_ONLY_SNAPSHOT -> 7.5:EQUIPMENT_AVAILABLE -> 7.5:STOP
+EARLY metrics: {"censored_units": 0, "cost": 3.7, "elapsed_s": 7.5, "invalid_actions": 0, "observations": 1, "observed_overrun_s": 0.0, "reserved_idle_s": 2.5, "valid_protocol": true, "weighted_completion_rate": 1.0, "weighted_on_time_rate": 1.0, "weighted_tardiness_s": 0.0}
+CROSS events: 0:RESET -> 0:WAIT_ACCEPTED -> 94:WAIT_RETURN -> 94:RELEASE -> 94:REVIEW_ACCEPTED -> 94.5:READ_ONLY_SNAPSHOT -> 95:REVIEW_RETURN -> 95:EXECUTE_ACCEPTED -> 96:ARRIVE -> 96.5:SERVICE_START -> 97.5:READ_ONLY_SNAPSHOT -> 99.5:RESERVATION_END_BUSY -> 100:HORIZON_TERMINATE
+CROSS metrics: {"censored_units": 1, "cost": 3.5, "elapsed_s": 100, "invalid_actions": 0, "observations": 1, "observed_overrun_s": 0.5, "reserved_idle_s": 0.0, "valid_protocol": true, "weighted_completion_rate": 0.0, "weighted_on_time_rate": 0.0, "weighted_tardiness_s": 6}
+PASS 62 independent assertions; 2 fresh trials; output: experiments/c_q3_fixture/b_output

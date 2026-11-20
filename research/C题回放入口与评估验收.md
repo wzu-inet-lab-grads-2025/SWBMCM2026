@@ -1,6 +1,6 @@
 # C 题回放入口与评估验收
 
-**第三问通过双作业回调验收及 S1 单种子冒烟。** 团队入口为 `run_trial(trial: Trial, policy)`，策略签名为 `policy(view: dict) -> dict`。`validation_trial(case_id, seed)` 按正式顺序在验证分层池中有放回抽样。每次试验传入新的策略实例，`fixed_actions(actions)` 可直接适配固定动作。引擎仅在设备可接单时调用策略，传入公开条件、已返回前缀、反馈及当前资源的独立副本。日志按实际调用保存入参、动作、序号和时刻。函数式边界适用于遵守信息规则的队伍代码。[回放入口](q3_replay/engine.py) · [官方数据适配](q3_replay/data.py) · [规程第 1–3 页](../data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf)
+**第三问通过双作业回调验收及 S1 单种子冒烟。** 团队入口为 `run_trial(trial: Trial, policy)`，策略签名为 `policy(view: dict) -> dict`。`validation_trial(case_id, seed)` 按正式顺序在验证分层池中有放回抽样。每次试验传入新的策略实例，`fixed_actions(actions)` 可直接适配固定动作。引擎仅在设备可接单时调用策略，传入公开条件、已返回前缀、反馈及当前资源的独立副本。日志按实际调用保存入参、动作、序号和时刻。函数式边界适用于遵守信息规则的队伍代码。[回放入口](../experiments/q3_replay/engine.py) · [官方数据适配](../experiments/q3_replay/data.py) · [规程第 1–3 页](../data/raw/C/Restocking_Tasks_and_Constraints/Problem_3_Requirements.pdf)
 
 | 第三问验收项 | 实测结果（情景秒） |
 |---|---|
@@ -29,16 +29,16 @@
 
 ## 复现
 
-在仓库根目录运行。S1 日志含真实前缀，以下命令保存到本机私有文件。仓库仅附合成日志，其中重复数值前缀以 SHA-256 指向同一文件内的完整载荷。[合成调用日志](q3_replay/synthetic_calls.json) · [独立验收与复算入口](q3_replay/acceptance.py)
+在仓库根目录运行。S1 日志含真实前缀，以下命令保存到本机私有文件。仓库仅附合成日志，其中重复数值前缀以 SHA-256 指向同一文件内的完整载荷。[合成调用日志](../experiments/q3_replay/synthetic_calls.json) · [独立验收与复算入口](../experiments/q3_replay/acceptance.py)
 
 ```bash
-python3 -B -m unittest research.q3_replay.test_engine
-python3 -B -m research.q3_replay.acceptance pair
-python3 -B -m research.q3_replay.acceptance verify-log --input research/q3_replay/synthetic_calls.json
+python3 -B -m unittest experiments.q3_replay.test_engine
+python3 -B -m experiments.q3_replay.acceptance pair
+python3 -B -m experiments.q3_replay.acceptance verify-log --input experiments/q3_replay/synthetic_calls.json
 umask 077
 PY=/mnt/disk/zhoutianyu/miniconda3/bin/python
 LOG=/tmp/opencode/c_q3_S1_validation_2026111700_private.json
-"$PY" -B -m research.q3_replay.acceptance smoke --output "$LOG"
-python3 -B -m research.q3_replay.acceptance verify-log --input "$LOG"
-"$PY" -B research/c_audit_quality.py --json --records
+"$PY" -B -m experiments.q3_replay.acceptance smoke --output "$LOG"
+python3 -B -m experiments.q3_replay.acceptance verify-log --input "$LOG"
+"$PY" -B experiments/c_audit_quality.py --json --records
 ```

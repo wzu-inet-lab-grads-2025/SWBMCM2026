@@ -8,7 +8,8 @@
 
 ```text
 SWBMCM2026/
-├── research/              # 专题调研，每篇笔记附参考文献
+├── research/              # 成果型调研笔记、参考文献及纯聚合结果
+├── experiments/           # 探索性脚本、原型与配套测试/合成样例
 ├── docs/
 │   ├── modeling-notes.md  # 题意拆解、初步思路、假设和验证计划
 │   └── decisions.md       # 关键决定、依据和受影响的结果
@@ -20,8 +21,8 @@ SWBMCM2026/
 ├── data/
 │   ├── README.md          # 数据来源、版本、获取方式和预期路径
 │   └── raw/               # 原始数据，按题号存放
-├── src/
-│   ├── run.py             # 统一运行入口
+├── src/                   # 经确认的正式建模实现（按需创建）
+│   ├── run.py             # 统一运行入口（规划）
 │   ├── qN/                # 各小问的代码，按需要拆分模块
 │   └── shared/            # 已有跨问复用的数据处理、模型或指标
 ├── configs/               # 各问的参数和实验配置
@@ -38,7 +39,11 @@ SWBMCM2026/
 
 ## 协作约定
 
+C 题当前讨论从[工作树讨论记录](docs/modeling-notes.md)进入。实验对照的原始输入、质量与特征可见性见[预处理与特征口径](docs/C题预处理与特征口径.md)。[验收清单](docs/C题验收清单.md)逐项列出正式要求、已测范围及复核依据。
+
 - 队员和 agent 开工前先查看本说明，优先沿用已有目录和文件。按任务范围创建文件，各问的代码、配置、结果和论文段落使用同一编号。
+- `research/` 留成果型笔记、参考文献和不带代码的聚合目录（如 `research/q2_diagnostic/`）；探索脚本、原型、配套测试与合成成品放 `experiments/`。当前 C 题探索代码入口见 [experiments/README.md](experiments/README.md)。
+- `src/` 留给经队伍确认的正式建模实现；探索代码通过验收后再按小问迁入，不因本次目录整理而宣称正式化。`src/run.py` 等尚未创建的条目只是规划。
 - 跨问共用的假设、数据口径或指标发生变化时，在 `docs/decisions.md` 记录依据和需要重跑的结果。待验证的思路先记在 `docs/modeling-notes.md`。
 - 原始附件保持原样，实验产物先写入当前检出的 `runs/`。经队员复核并用于论文的产物放入 `results/qN/`，附上配置、运行命令和代码版本。
 - `data/raw/C/`、`runs/`、`scratch/` 和 `submission/` 由 `.gitignore` 管理，保留在本地。手工创建的 worktree 默认放在同级的 `../SWBMCM2026-worktrees/`，由工具创建的 worktree 沿用工具自己的位置。

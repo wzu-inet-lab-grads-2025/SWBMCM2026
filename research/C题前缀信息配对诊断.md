@@ -9,7 +9,7 @@
 | 类别＋累计 0.6 秒 `review1` | 免费 0.2 秒 | 35 | | |
 | 类别＋累计 1.0 秒 `review2` | 累计 0.6 秒 | 35 | | |
 
-误差减少按每段的「上一档绝对误差减本档绝对误差」取均值，正值表示这一档更准确。评分入口同时给出每个验证环境、每个类别的配对差及记录数。若有预测区间，再列有区间的样本数、经验覆盖率和平均宽度。各档缺失或重复预测会报错。队伍尚未提供预留量或判定口径，超预留判断未运行。本轮比较的是离线时长信息收益，调度收益需另行评估。[分组空结果表](q3_prefix/validation_template.csv) · [评分入口](q3_prefix/evaluate.py)
+误差减少按每段的「上一档绝对误差减本档绝对误差」取均值，正值表示这一档更准确。评分入口同时给出每个验证环境、每个类别的配对差及记录数。若有预测区间，再列有区间的样本数、经验覆盖率和平均宽度。各档缺失或重复预测会报错。队伍尚未提供预留量或判定口径，超预留判断未运行。本轮比较的是离线时长信息收益，调度收益需另行评估。[分组空结果表](../experiments/q3_prefix/validation_template.csv) · [评分入口](../experiments/q3_prefix/evaluate.py)
 
 ## 覆盖与输入边界
 
@@ -20,19 +20,19 @@
 | **L 检查贴标** | **10 / 3 / 2** | **7 / 2 / 1** |
 | 全部（记录、环境去重） | 246 / 55 / 16 | 35 / 7 / 4 |
 
-训练索引共 252 段，其中 P、A、L 分别有 3、2、1 段未达到官方抽样长度条件。验证索引 35 段均合格。四档配对覆盖均为合格池的 100%，两次延长窗口在每段都新增了采样行。覆盖仅指数据可读且窗口有原始采样，质量标注原样保留。4 个验证环境各有 3、14、12、6 段，L 类只覆盖其中 1 个环境。各环境和全部 62 条记录的逐档分母、缺项原因见明细。[覆盖汇总 CSV](q3_prefix/coverage.csv)
+训练索引共 252 段，其中 P、A、L 分别有 3、2、1 段未达到官方抽样长度条件。验证索引 35 段均合格。四档配对覆盖均为合格池的 100%，两次延长窗口在每段都新增了采样行。覆盖仅指数据可读且窗口有原始采样，质量标注原样保留。4 个验证环境各有 3、14、12、6 段，L 类只覆盖其中 1 个环境。各环境和全部 62 条记录的逐档分母、缺项原因见明细。[覆盖汇总 CSV](../experiments/q3_prefix/coverage.csv)
 
-**模型输入。** 基线仅含 `family_id`。另外三档增加 `rows`，每行只含相对片段起点的 `timestamp_s`、双手各 21 点的位置与四元数、头及左右头部相机位姿、当时的原始手部质量标记。四元数分量顺序为 xyzw。窗口沿用已核对的闭区间，Demo 未列质量保持未知。模型侧收到原始前缀，由队伍选特征。配对键、环境、记录索引和时长标签保存在独立表中。训练标签只作为 `fit` 的目标，验证标签只进评分端。读取共享索引时先按 split 过滤，测试片段的时长与端点未取用。[前缀提取](q3_replay/data.py) · [配对输入](q3_prefix/data.py)
+**模型输入。** 基线仅含 `family_id`。另外三档增加 `rows`，每行只含相对片段起点的 `timestamp_s`、双手各 21 点的位置与四元数、头及左右头部相机位姿、当时的原始手部质量标记。四元数分量顺序为 xyzw。窗口沿用已核对的闭区间，Demo 未列质量保持未知。模型侧收到原始前缀，由队伍选特征。配对键、环境、记录索引和时长标签保存在独立表中。训练标签只作为 `fit` 的目标，验证标签只进评分端。读取共享索引时先按 split 过滤，测试片段的时长与端点未取用。[前缀提取](../experiments/q3_replay/data.py) · [配对输入](../experiments/q3_prefix/data.py)
 
-**通过。** 实查 1,124 份输入的四档键集和字段。合成回归修改窗口后的坐标、质量和总行数，并注入完整段均值、结束时刻和来源标识，当前档模型输入逐值相同。修改恰在右端点的已披露坐标则能观测到变化。测试另覆盖过滤测试行、空窗口的共同分母、训练与预测函数入参，以及打乱顺序后的 MAE、边际增益和区间评分。[回归测试及合成样例](q3_prefix/test_prefix.py)
+**通过。** 实查 1,124 份输入的四档键集和字段。合成回归修改窗口后的坐标、质量和总行数，并注入完整段均值、结束时刻和来源标识，当前档模型输入逐值相同。修改恰在右端点的已披露坐标则能观测到变化。测试另覆盖过滤测试行、空窗口的共同分母、训练与预测函数入参，以及打乱顺序后的 MAE、边际增益和区间评分。[回归测试及合成样例](../experiments/q3_prefix/test_prefix.py)
 
 ## 复现与接模
 
 ```bash
 PY=/mnt/disk/zhoutianyu/miniconda3/bin/python
-"$PY" -B -m research.q3_prefix.data --coverage runs/q3_prefix/coverage.csv
-python3 -B -m unittest -v research.q3_prefix.test_prefix
-python3 -B -m research.q3_prefix.evaluate --template --summary runs/q3_prefix/template.csv
+"$PY" -B -m experiments.q3_prefix.data --coverage runs/q3_prefix/coverage.csv
+python3 -B -m unittest -v experiments.q3_prefix.test_prefix
+python3 -B -m experiments.q3_prefix.evaluate --template --summary runs/q3_prefix/template.csv
 ```
 
 下一项输入是**队伍确认的时长模型工厂 `module:factory`**。`factory(tier)` 为每档创建独立实例，使用同一模型族和训练约定。`fit(X_train, y_train)` 仅接收训练片段及秒数，`predict(X_validation)` 按输入顺序返回 `{'pred_s': 秒数}`，可选 `lower_s`、`upper_s`。将 `--template` 换成 `--model module:factory` 即可汇总。已生成的验证预测也可用 `--predictions 文件.csv` 接入，列为 `pair_key,tier,pred_s` 加可选区间列。私有数据库默认在 `runs/q3_prefix/private.sqlite`，其 `pairing` 表可供离线连接，`pair_key` 为 `sha256('q3-prefix-v1/'+unit_id)` 的十六进制编码。仓库中仅附聚合结果和合成测试。

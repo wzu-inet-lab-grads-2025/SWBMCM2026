@@ -1,6 +1,6 @@
 # 双腕缺测时长与首轮回访诊断
 
-在相同的 50 个验证窗中，各手保持最后一个可靠腕点。按环境等权计算，缺测前 0.5 秒的平均三维距离误差为左 0.0509、右 0.0567，最后半秒为左 0.3652、右 0.3642。距离沿用记录坐标单位。下图每一点都是整个时段的均值。[队伍决定](../docs/decisions.md) · [脚本](c_q2_diagnostic.py)
+在相同的 50 个验证窗中，各手保持最后一个可靠腕点。按环境等权计算，缺测前 0.5 秒的平均三维距离误差为左 0.0509、右 0.0567，最后半秒为左 0.3652、右 0.3642。距离沿用记录坐标单位。下图每一点都是整个时段的均值。[队伍决定](../docs/decisions.md) · [脚本](../experiments/c_q2_diagnostic.py)
 
 ![左右腕在四个缺测时长区间的验证集平均三维距离误差](q2_diagnostic/validation_no_request.png)
 
@@ -39,7 +39,7 @@
 ```bash
 PY=/mnt/disk/zhoutianyu/miniconda3/bin/python
 CROOT=../SWBMCM2026/data/raw/C
-"$PY" -B research/c_q2_diagnostic.py --root "$CROOT" --split validation
-"$PY" -B research/c_q2_diagnostic.py --root "$CROOT" --split train
-"$PY" -B research/test_c_q2_diagnostic.py
+"$PY" -B experiments/c_q2_diagnostic.py --root "$CROOT" --split validation
+"$PY" -B experiments/c_q2_diagnostic.py --root "$CROOT" --split train
+"$PY" -B experiments/test_c_q2_diagnostic.py
 ```
