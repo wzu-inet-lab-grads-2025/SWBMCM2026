@@ -1,0 +1,9 @@
+{
+  "method": "q2_numerical",
+  "scene": "../../experiments/b/scene.json",
+  "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+  "plan": "../../experiments/b/snapshots/q2_numerical/summary.json",
+  "plan_sha256": "33d96078dec8a0034cb5596934a184b40a7223dee7721df8a2b36d0c8cddc15e",
+  "snapshot_s": 5,
+  "record_until_s": 60
+}
