@@ -1,0 +1,549 @@
+{
+  "scene": {
+    "range_m": 40,
+    "position_sd_intercept_m": 0.3,
+    "position_sd_slope_m_per_m": 0.02,
+    "zero_sd_deg": 0.8,
+    "control_sd_deg": 0.6,
+    "tolerance_deg": 5,
+    "coverage": 0.95,
+    "design_travel_m": 80
+  },
+  "source_pdf": "problem/B/2026_“ShuWei Cup”B_Problem.pdf",
+  "source_pdf_sha256": "9585081e724cef939d4e5713ea72f9eddefd4469a3b519a8ce184677d407692a",
+  "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.4",
+    "scipy": "1.15.2"
+  },
+  "settings": {
+    "quadrature_epsabs_total": 1e-14,
+    "quadrature_epsrel": 3e-13,
+    "brent_xtol_sigma_m": 1e-13,
+    "brent_rtol": 1e-15,
+    "gimbal_image_indices": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "simpson_panels": 32768,
+    "simpson_normal_truncation": 10,
+    "float_allowance_halfplane": 2e-14
+  },
+  "total_pointing": {
+    "gimbal_sd_deg": 1.0,
+    "max_sigma_m": 1.6367451685588887,
+    "max_travel_m": 66.83725842794443,
+    "region_at_design": {
+      "a_min_m": 0.0,
+      "b_min_m_per_m": 0.0,
+      "b_multiplier_m": 80,
+      "a_plus_design_times_b_max_m": 1.6367451685588887,
+      "boundary_inclusive": true,
+      "b_axis_intercept_m_per_m": 0.02045931460698611,
+      "b_max_if_a_original": 0.01670931460698611,
+      "a_max_if_b_original": 0.03674516855888865
+    },
+    "linearized": {
+      "max_sigma_m": 1.638445984781626,
+      "max_travel_m": 66.9222992390813,
+      "travel_overestimate_m": 0.08504081113686368,
+      "exact_coverage_at_linear_threshold": 0.9497982126065669
+    },
+    "at_zero_travel": {
+      "travel_m": 0.0,
+      "sigma_m": 0.3,
+      "coverage": 0.999995647039037,
+      "failure": 4.352960963130474e-06,
+      "quad_error_estimate_coverage": 1.1110824406882025e-14,
+      "quad_error_estimate_failure": 4.9589924223980065e-20,
+      "normalization_residual": 2.220446049250313e-16,
+      "linear_coverage": 0.9999956478548808,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.9999956470383414,
+          0.9999956470397323
+        ],
+        "marginal_failure_sum_truncated": 4.352960963130474e-06,
+        "simpson_bound": 6.754534300940537e-13,
+        "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+        "halfplane_overlap_bound": 0.0
+      },
+      "direct_atan2_gh_coverage": {
+        "128": 0.9999956470390367,
+        "256": 0.9999956470390378
+      }
+    },
+    "at_design_travel": {
+      "travel_m": 80,
+      "sigma_m": 1.9000000000000001,
+      "coverage": 0.9150682311608253,
+      "failure": 0.08493176883917486,
+      "quad_error_estimate_coverage": 1.0163129410817742e-14,
+      "quad_error_estimate_failure": 9.431839590317562e-16,
+      "normalization_residual": 0.0,
+      "linear_coverage": 0.9153756669066699,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.9150682311607523,
+          0.915068231160898
+        ],
+        "marginal_failure_sum_truncated": 0.08493176883917485,
+        "simpson_bound": 5.281920162867257e-14,
+        "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+        "halfplane_overlap_bound": 8.765385691668305e-96
+      },
+      "direct_atan2_gh_coverage": {
+        "128": 0.9150682311608155,
+        "256": 0.9150682311608269
+      }
+    },
+    "at_root": {
+      "travel_m": 66.83725842794443,
+      "sigma_m": 1.6367451685588887,
+      "coverage": 0.95,
+      "failure": 0.05000000000000015,
+      "quad_error_estimate_coverage": 1.0547118762517963e-14,
+      "quad_error_estimate_failure": 5.553660825984261e-16,
+      "normalization_residual": 0.0,
+      "linear_coverage": 0.9502010992769401,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.9499999999999235,
+          0.9500000000000762
+        ],
+        "marginal_failure_sum_truncated": 0.05000000000000015,
+        "simpson_bound": 5.6404469247821475e-14,
+        "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+        "halfplane_overlap_bound": 2.739820942146642e-128
+      },
+      "direct_atan2_gh_coverage": {
+        "128": 0.9499999999999994,
+        "256": 0.9500000000000013
+      }
+    },
+    "root_enclosure": [
+      {
+        "travel_m": 66.83725832794444,
+        "sigma_m": 1.6367451665588888,
+        "coverage": 0.950000000237072,
+        "failure": 0.049999999762928,
+        "quad_error_estimate_coverage": 1.0547118765150067e-14,
+        "quad_error_estimate_failure": 5.553660799664391e-16,
+        "normalization_residual": 0.0,
+        "linear_coverage": 0.9502010995132032,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9500000002369956,
+            0.9500000002371484
+          ],
+          "marginal_failure_sum_truncated": 0.04999999976292798,
+          "simpson_bound": 5.640446928103276e-14,
+          "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+          "halfplane_overlap_bound": 2.7398189995697333e-128
+        },
+        "direct_atan2_gh_coverage": {
+          "128": 0.9500000002370717,
+          "256": 0.9500000002370734
+        }
+      },
+      {
+        "travel_m": 66.83725852794443,
+        "sigma_m": 1.6367451705588887,
+        "coverage": 0.9499999997629279,
+        "failure": 0.050000000237072316,
+        "quad_error_estimate_coverage": 1.0547118759885896e-14,
+        "quad_error_estimate_failure": 5.553660852302799e-16,
+        "normalization_residual": 2.220446049250313e-16,
+        "linear_coverage": 0.950201099040677,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9499999997628513,
+            0.9499999997630041
+          ],
+          "marginal_failure_sum_truncated": 0.0500000002370723,
+          "simpson_bound": 5.6404469214610204e-14,
+          "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+          "halfplane_overlap_bound": 2.73982288472524e-128
+        },
+        "direct_atan2_gh_coverage": {
+          "128": 0.9499999997629273,
+          "256": 0.949999999762929
+        }
+      }
+    ],
+    "travel_0p01m_either_side": [
+      {
+        "travel_m": 66.82725842794443,
+        "sigma_m": 1.6365451685588885,
+        "coverage": 0.9500237047347877,
+        "failure": 0.049976295265212335,
+        "quad_error_estimate_coverage": 1.0547381938028922e-14,
+        "quad_error_estimate_failure": 5.55102908850688e-16,
+        "normalization_residual": 0.0,
+        "linear_coverage": 0.9502247231139637,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9500237047347113,
+            0.9500237047348641
+          ],
+          "marginal_failure_sum_truncated": 0.04997629526521233,
+          "simpson_bound": 5.6407790926519907e-14,
+          "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+          "halfplane_overlap_bound": 2.552256708004222e-128
+        },
+        "direct_atan2_gh_coverage": {
+          "128": 0.9500237047347873,
+          "256": 0.950023704734789
+        }
+      },
+      {
+        "travel_m": 66.84725842794444,
+        "sigma_m": 1.636945168558889,
+        "coverage": 0.9499762903025017,
+        "failure": 0.05002370969749843,
+        "quad_error_estimate_coverage": 1.0546855531910013e-14,
+        "quad_error_estimate_failure": 5.55629311442087e-16,
+        "normalization_residual": 2.220446049250313e-16,
+        "linear_coverage": 0.9501774704810758,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9499762903024251,
+            0.9499762903025779
+          ],
+          "marginal_failure_sum_truncated": 0.05002370969749842,
+          "simpson_bound": 5.6401148670957016e-14,
+          "omitted_gimbal_tail_bound": 1.523970604832094e-23,
+          "halfplane_overlap_bound": 2.941092833872535e-128
+        },
+        "direct_atan2_gh_coverage": {
+          "128": 0.9499762903025011,
+          "256": 0.949976290302503
+        }
+      }
+    ],
+    "at_zero_position_sd": 0.9999994266968562
+  },
+  "command_only": {
+    "gimbal_sd_deg": 0.0,
+    "max_sigma_m": 1.7787213119247411,
+    "max_travel_m": 73.93606559623706,
+    "region_at_design": {
+      "a_min_m": 0.0,
+      "b_min_m_per_m": 0.0,
+      "b_multiplier_m": 80,
+      "a_plus_design_times_b_max_m": 1.7787213119247411,
+      "boundary_inclusive": true,
+      "b_axis_intercept_m_per_m": 0.022234016399059264,
+      "b_max_if_a_original": 0.018484016399059264,
+      "a_max_if_b_original": 0.17872131192474106
+    },
+    "linearized": {
+      "max_sigma_m": 1.7809809422634948,
+      "max_travel_m": 74.04904711317474,
+      "travel_overestimate_m": 0.11298151693767977,
+      "exact_coverage_at_linear_threshold": 0.9497086181990139
+    },
+    "at_zero_travel": {
+      "travel_m": 0.0,
+      "sigma_m": 0.3,
+      "coverage": 1.0,
+      "failure": 3.2322626360751257e-31,
+      "quad_error_estimate_coverage": 1.1102276236452687e-14,
+      "quad_error_estimate_failure": 3.639378585475014e-45,
+      "normalization_residual": 2.220446049250313e-16,
+      "linear_coverage": 1.0,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.99999999999998,
+          1.0
+        ],
+        "marginal_failure_sum_truncated": 3.2322626360750106e-31,
+        "simpson_bound": 0.0,
+        "omitted_gimbal_tail_bound": 0.0,
+        "halfplane_overlap_bound": 0.0
+      }
+    },
+    "at_design_travel": {
+      "travel_m": 80,
+      "sigma_m": 1.9000000000000001,
+      "coverage": 0.9334732296185211,
+      "failure": 0.06652677038147911,
+      "quad_error_estimate_coverage": 1.0363634723936878e-14,
+      "quad_error_estimate_failure": 7.388465978857348e-16,
+      "normalization_residual": 2.220446049250313e-16,
+      "linear_coverage": 0.9338179547179776,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.933473229618501,
+          0.933473229618541
+        ],
+        "marginal_failure_sum_truncated": 0.06652677038147903,
+        "simpson_bound": 0.0,
+        "omitted_gimbal_tail_bound": 0.0,
+        "halfplane_overlap_bound": 1.0816451293602866e-98
+      }
+    },
+    "at_root": {
+      "travel_m": 73.93606559623706,
+      "sigma_m": 1.7787213119247411,
+      "coverage": 0.9500000000000002,
+      "failure": 0.05000000000000011,
+      "quad_error_estimate_coverage": 1.0547118733938989e-14,
+      "quad_error_estimate_failure": 5.553645355942603e-16,
+      "normalization_residual": 2.220446049250313e-16,
+      "linear_coverage": 0.9502903325622108,
+      "independent_halfplane": {
+        "coverage_interval": [
+          0.94999999999998,
+          0.9500000000000199
+        ],
+        "marginal_failure_sum_truncated": 0.05000000000000007,
+        "simpson_bound": 0.0,
+        "omitted_gimbal_tail_bound": 0.0,
+        "halfplane_overlap_bound": 2.715868481490755e-112
+      }
+    },
+    "root_enclosure": [
+      {
+        "travel_m": 73.93606549623706,
+        "sigma_m": 1.7787213099247414,
+        "coverage": 0.9500000002576012,
+        "failure": 0.04999999974239883,
+        "quad_error_estimate_coverage": 1.0547118736798936e-14,
+        "quad_error_estimate_failure": 5.553645327344596e-16,
+        "normalization_residual": 0.0,
+        "linear_coverage": 0.9502903328188829,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9500000002575812,
+            0.9500000002576212
+          ],
+          "marginal_failure_sum_truncated": 0.04999999974239881,
+          "simpson_bound": 0.0,
+          "omitted_gimbal_tail_bound": 0.0,
+          "halfplane_overlap_bound": 2.7158669341380593e-112
+        }
+      },
+      {
+        "travel_m": 73.93606569623705,
+        "sigma_m": 1.778721313924741,
+        "coverage": 0.9499999997423987,
+        "failure": 0.050000000257601415,
+        "quad_error_estimate_coverage": 1.0547118731079038e-14,
+        "quad_error_estimate_failure": 5.553645384540845e-16,
+        "normalization_residual": 0.0,
+        "linear_coverage": 0.9502903323055387,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9499999997423786,
+            0.9499999997424186
+          ],
+          "marginal_failure_sum_truncated": 0.05000000025760138,
+          "simpson_bound": 0.0,
+          "omitted_gimbal_tail_bound": 0.0,
+          "halfplane_overlap_bound": 2.7158700288446424e-112
+        }
+      }
+    ],
+    "travel_0p01m_either_side": [
+      {
+        "travel_m": 73.92606559623705,
+        "sigma_m": 1.7785213119247412,
+        "coverage": 0.9500257574630919,
+        "failure": 0.049974242536908256,
+        "quad_error_estimate_coverage": 1.0547404699224793e-14,
+        "quad_error_estimate_failure": 5.55078573019104e-16,
+        "normalization_residual": 2.220446049250313e-16,
+        "linear_coverage": 0.950315997101912,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9500257574630718,
+            0.9500257574631118
+          ],
+          "marginal_failure_sum_truncated": 0.049974242536908214,
+          "simpson_bound": 0.0,
+          "omitted_gimbal_tail_bound": 0.0,
+          "halfplane_overlap_bound": 2.565433953797055e-112
+        }
+      },
+      {
+        "travel_m": 73.94606559623706,
+        "sigma_m": 1.7789213119247413,
+        "coverage": 0.9499742372031643,
+        "failure": 0.05002576279683584,
+        "quad_error_estimate_coverage": 1.054683270943673e-14,
+        "quad_error_estimate_failure": 5.556505573841847e-16,
+        "normalization_residual": 2.220446049250313e-16,
+        "linear_coverage": 0.9502646626798192,
+        "independent_halfplane": {
+          "coverage_interval": [
+            0.9499742372031442,
+            0.9499742372031842
+          ],
+          "marginal_failure_sum_truncated": 0.05002576279683583,
+          "simpson_bound": 0.0,
+          "omitted_gimbal_tail_bound": 0.0,
+          "halfplane_overlap_bound": 2.8750691586449545e-112
+        }
+      }
+    ],
+    "at_zero_position_sd": 1.0
+  },
+  "first_order_variance_budget": [
+    {
+      "travel_m": 0.0,
+      "variance_deg2": {
+        "position": 0.18465785718816058,
+        "zero_offset": 0.6400000000000001,
+        "control": 0.36
+      },
+      "fraction": {
+        "position": 0.1558744206757337,
+        "zero_offset": 0.5402403707675306,
+        "control": 0.3038852085567359
+      },
+      "exact_coverage_when_named_source_removed": {
+        "position": 0.9999994266968562,
+        "zero_offset": 0.9999999999875253,
+        "control": 0.9999999632619662
+      }
+    },
+    {
+      "travel_m": 66.83725842794443,
+      "variance_deg2": {
+        "position": 5.496514998790616,
+        "zero_offset": 0.6400000000000001,
+        "control": 0.36
+      },
+      "fraction": {
+        "position": 0.8460713166696052,
+        "zero_offset": 0.0985143573314526,
+        "control": 0.05541432599894207
+      },
+      "exact_coverage_when_named_source_removed": {
+        "position": 0.9999994266968562,
+        "zero_offset": 0.9609659108990152,
+        "control": 0.9562427572696378
+      }
+    },
+    {
+      "travel_m": 80,
+      "variance_deg2": {
+        "position": 7.406831827213998,
+        "zero_offset": 0.6400000000000001,
+        "control": 0.36
+      },
+      "fraction": {
+        "position": 0.88104912521708,
+        "zero_offset": 0.07612855986106891,
+        "control": 0.042822314921851255
+      },
+      "exact_coverage_when_named_source_removed": {
+        "position": 0.9999994266968562,
+        "zero_offset": 0.9268736515897774,
+        "control": 0.9217149466086985
+      }
+    }
+  ],
+  "position_equals_combined_gimbal_at_travel_m": 19.90658503988659,
+  "extreme_sigma_checks": [
+    {
+      "sigma_m": 40,
+      "rear_probability_polar": 0.1586552539314571,
+      "rear_probability_cartesian": 0.15865525393145707,
+      "total_coverage": 0.07523987395530744,
+      "command_coverage": 0.0752600837645808
+    },
+    {
+      "sigma_m": 400,
+      "rear_probability_polar": 0.46017216272297107,
+      "rear_probability_cartesian": 0.460172162722971,
+      "total_coverage": 0.03139219380967592,
+      "command_coverage": 0.03139281287672123
+    },
+    {
+      "sigma_m": 4000000.0,
+      "rear_probability_polar": 0.49999601057719606,
+      "rear_probability_cartesian": 0.49999601057719606,
+      "total_coverage": 0.027778125427312526,
+      "command_coverage": 0.027778125480267243
+    }
+  ],
+  "uniform_direction_coverage_limit": 0.027777777777777776,
+  "angle_examples": [
+    {
+      "case": "estimate_beyond_target",
+      "true_bearing_deg": 0.0,
+      "dx_m": 45.0,
+      "dy_m": 0.0,
+      "gimbal_error_deg": 0.0,
+      "command_error_deg": -180.0,
+      "total_error_deg": -180.0
+    },
+    {
+      "case": "rear_quadrant",
+      "true_bearing_deg": 0.0,
+      "dx_m": 41.0,
+      "dy_m": -1.0,
+      "gimbal_error_deg": 0.0,
+      "command_error_deg": 135.0,
+      "total_error_deg": 135.0
+    },
+    {
+      "case": "just_at_transverse_plane",
+      "true_bearing_deg": 0.0,
+      "dx_m": 40,
+      "dy_m": -1.0,
+      "gimbal_error_deg": 0.0,
+      "command_error_deg": 90.0,
+      "total_error_deg": 90.0
+    },
+    {
+      "case": "almost_coincident",
+      "true_bearing_deg": 0.0,
+      "dx_m": 40,
+      "dy_m": -1e-12,
+      "gimbal_error_deg": 0.0,
+      "command_error_deg": 90.0,
+      "total_error_deg": 90.0
+    },
+    {
+      "case": "cross_absolute_bearing_cut",
+      "true_bearing_deg": 179.0,
+      "dx_m": 0.0,
+      "dy_m": 1.396192514982681,
+      "gimbal_error_deg": 0.0,
+      "command_error_deg": 1.9999999999999774,
+      "total_error_deg": 1.9999999999999774
+    },
+    {
+      "case": "gimbal_crosses_cut",
+      "true_bearing_deg": 0.0,
+      "dx_m": 41.0,
+      "dy_m": -0.017455064928217585,
+      "gimbal_error_deg": 3.0,
+      "command_error_deg": 179.0,
+      "total_error_deg": -178.00000000000003
+    },
+    {
+      "case": "full_turn_plus_one_degree",
+      "true_bearing_deg": 0.0,
+      "dx_m": 0.0,
+      "dy_m": 0.0,
+      "gimbal_error_deg": 361.0,
+      "command_error_deg": 0.0,
+      "total_error_deg": 0.9999999999999378
+    },
+    {
+      "case": "exactly_coincident",
+      "dx_m": 40,
+      "dy_m": 0.0,
+      "command_error_deg": null,
+      "probability": 0.0
+    }
+  ]
+}
