@@ -1,0 +1,42 @@
+# B 题第三问（原题第 4–5 页）。距离为水平距离，定位标准差是每轴的标准差。
+model:
+  range_m: 40.0                 # 题定车辆至已知目标的水平距离（m）
+  threshold_deg: 5.0             # 题定允许水平偏差的绝对值（度）
+  zero_deg: 0.8                  # 题定独立零位误差标准差（度）
+  control_deg: 0.6               # 题定独立控制误差标准差（度）
+  initial_sigma_m: 0.3           # 题定基准定位模型的初始标准差（m）
+  growth: 0.02                  # 题定基准定位标准差随累计里程的斜率（m/m）
+  minimum_probability: 0.95     # 题定达标概率下限（无量纲）
+  design_distance_m: 80.0       # 题定 a-b 改进目标的累计里程（m）
+
+validation:
+  quad_tolerance: 2.0e-12       # 主积分绝对（每段分配）及相对容差
+  alternate_quad_tolerance: 1.0e-13  # 分段独立改变后的复算容差
+  wrap_tail_tolerance: 1.0e-16  # 省略回绕周期窗的总概率上界
+  root_tolerance_m: 1.0e-11     # 临界定位标准差的 Brent 求根绝对容差（m）
+  quadrature_agreement: 1.0e-8 # 容差与分段复算的概率核对阈值
+  hermite_agreement: 1.0e-7    # 高阶 Hermite 的概率一致性阈值
+  root_agreement_m: 1.0e-6     # 两种确定性方法根差阈值（m）
+  deterministic_probe_m: 0.01  # 在临界里程两侧验证的偏移（m）
+  stochastic_probe_m: 0.5      # 抽样验证使用的两侧偏移（m），使差值大于抽样噪声
+  plot_max_distance_m: 105.0   # 可靠性图覆盖临界点与 80 m（m）
+  plot_points: 151             # 可靠性曲线的均匀网格点数，另加精确根和 80 m
+  monotonic_points: 81         # 几何级数 σ 网格覆盖 0.001 至 1000 倍目标距离
+  confidence_alpha: 0.05       # Monte Carlo 区间和 Sobol 重复组的统计参考水平
+  sobol_absolute_tolerance: 1.0e-5  # 末档均值与主值的概率差容差下限，亦考虑组间标准误
+
+profiles:
+  full:
+    hermite_orders: [16, 24, 32, 48, 64, 96, 128, 192, 256]  # 每个轴节点数
+    mc_samples: 1000000         # 每个预设种子独立抽样次数
+    mc_batch: 100000            # 每批四元独立正态，节省内存
+    mc_seeds: [42013, 42017, 42019, 42023, 42043]
+    sobol_powers: [12, 14, 16, 18, 20]  # 每组 2^m 个二维 Sobol 点
+    sobol_seeds: [52103, 52121, 52127, 52147, 52153, 52163, 52177, 52181]
+  debug:
+    hermite_orders: [24, 128, 256]  # 保留高阶确定性复核
+    mc_samples: 40000              # 冒烟档观察估计和区间，不验收临界两侧
+    mc_batch: 20000
+    mc_seeds: [42013, 42017, 42019]
+    sobol_powers: [10, 13, 15]
+    sobol_seeds: [52103, 52121, 52127, 52147]

@@ -1,0 +1,9 @@
+parameter,value,unit
+target_horizontal_distance,40.0,m
+baseline_localization_sigma(s),0.3 + 0.02 s,m per axis
+gimbal_zero_offset_sigma,0.8,deg
+gimbal_control_sigma,0.6,deg
+absolute_error_threshold,5.0,deg
+minimum_probability,0.95,dimensionless
+angular_wrapping_interval,"[-180, 180)",deg
+design_cumulative_distance,80.0,m

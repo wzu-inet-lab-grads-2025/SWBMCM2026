@@ -1,0 +1,3 @@
+mode,error,localization,zero,control,use
+actual,wrap180(alpha + zero + control),True,True,True,"primary, includes all stated sources"
+command,wrap180(alpha),True,False,False,literal wording sensitivity

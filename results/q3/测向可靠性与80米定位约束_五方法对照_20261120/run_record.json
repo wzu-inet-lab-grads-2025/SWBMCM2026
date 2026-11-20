@@ -1,0 +1,72 @@
+{
+  "command": "python3 -B -m src.run q3 --profile full",
+  "elapsed_s": 8.056297163013369,
+  "python": "3.13.9",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "PyYAML": "6.0.3"
+  },
+  "git_head": "e22186b25a6b7187405522f6cf0758e6b2a737b8",
+  "git_status_q3": [
+    " M src/run.py",
+    "?? checks/q3_reference.py",
+    "?? checks/test_q3.py",
+    "?? configs/q3.yaml",
+    "?? src/q3/config.py",
+    "?? src/q3/experiment.py",
+    "?? src/q3/methods.py",
+    "?? src/q3/model.py",
+    "?? src/q3/plots.py",
+    "?? src/q3/report.py",
+    "?? src/q3/validation.py"
+  ],
+  "input_sha256": "b3e43375dd4aac72f8baac15366c198a985369a580c1560f539e2f25dd166f4b",
+  "source_sha256": {
+    "checks/q3_reference.py": "82aaf4ba27f266f181876d27c6fff36fbbdee2ee0760e419abcb76578b3d0f7d",
+    "checks/test_q3.py": "f2760c8cb68b99a0437a0051f49316bfa4fc1bbebdc296bf69171c37aeb23b13",
+    "src/q3/config.py": "b013298328ec26cd4eba09a860edc53424066ea2013fa3e05d3692c5430dafca",
+    "src/q3/experiment.py": "74355b38f49b9345a01108b516abe6828dc29dd0e5905e8b4ed99d830274f94a",
+    "src/q3/methods.py": "f54fd3e517387100bf3e987ac6068321c26cca01703f0d7ad9ce331cdadcd108",
+    "src/q3/model.py": "e4cd5b670f7630d13c2a9080b766dd32808a5d7f5ef36b298058d499c2f12557",
+    "src/q3/plots.py": "28a95ed5789c88a4577f0de825a9721c3dfd1660c0d383eefe0477318dc23e03",
+    "src/q3/report.py": "55c44094119bc0bf5cea3077beeef21d8e98e3fcc55c0ca3115f8f6a44eb6aea",
+    "src/q3/validation.py": "34ab27e11f492d311a238e22f3f352570f4d5a1ee7de514f2a4b2397832dbcd6",
+    "src/run.py": "15932746c882cc1538de11d48649d1973d5a5af1cc750b78fa4511678f826550"
+  },
+  "ai_assistance": "OpenCode (Anomaly) / Magpie gpt-6.2-sol (OpenAI), 2026-11-20; release date unavailable",
+  "profile": "full",
+  "workers": [
+    {
+      "method": "taylor",
+      "pid": 1809794,
+      "start_offset_s": 5.603500176221132e-05,
+      "runtime_s": 0.0001719759893603623
+    },
+    {
+      "method": "hermite",
+      "pid": 1809793,
+      "start_offset_s": 8.423099643550813e-05,
+      "runtime_s": 0.11296222900273278
+    },
+    {
+      "method": "projected_normal",
+      "pid": 1809792,
+      "start_offset_s": 0.00020083700655959547,
+      "runtime_s": 0.11325670298538171
+    },
+    {
+      "method": "monte_carlo",
+      "pid": 1809788,
+      "start_offset_s": 0.0002505859883967787,
+      "runtime_s": 2.1449777990055736
+    },
+    {
+      "method": "sobol",
+      "pid": 1809791,
+      "start_offset_s": 0.0,
+      "runtime_s": 6.168478245002916
+    }
+  ]
+}

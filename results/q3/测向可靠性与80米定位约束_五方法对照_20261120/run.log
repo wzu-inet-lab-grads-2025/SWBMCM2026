@@ -1,0 +1,9 @@
+q3 full: /mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q3/20261120T132344Z_ixasqkep，并行启动五种方法
+q3 taylor: 完成，PID 1809794，耗时 0.000 s
+q3 hermite: 完成，PID 1809793，耗时 0.113 s
+q3 projected_normal: 完成，PID 1809792，耗时 0.113 s
+q3 monte_carlo: 完成，PID 1809788，耗时 2.145 s
+q3 sobol: 完成，PID 1809791，耗时 6.168 s
+/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q3/20261120T132344Z_ixasqkep
+actual: 半平面复核 通过，σ*=1.636745168559 m，根差=4.44e-16 m
+command: 半平面复核 通过，σ*=1.778721311925 m，根差=7.77e-15 m
