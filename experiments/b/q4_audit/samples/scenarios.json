@@ -1,0 +1,32 @@
+{
+  "scenarios": [
+    {
+      "id": "nominal_ok",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "new_alert_counted_ok",
+      "new_alert": [
+        90,
+        40,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "failure_during_observation_ok",
+      "new_alert": null,
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "outage_initial_instructions_ok",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": 12
+    }
+  ]
+}

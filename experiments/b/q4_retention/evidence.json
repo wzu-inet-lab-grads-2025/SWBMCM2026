@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "representative_scenarios": 120,
+  "protocols": [
+    "preloaded",
+    "current_only"
+  ],
+  "regression_checks": 2861,
+  "independent_audit_checks": 163198,
+  "random_seed": 20261120,
+  "random_property_scenarios": 100,
+  "named_tests": [
+    "all q22 starts, arrivals, slew readiness, observation ends and reset ends match snapshot",
+    "5s full-fleet physical state and independent arc-length/gimbal hand calculation",
+    "continuous multi-segment interpolation, exact vertex, zero-length segment and clamps",
+    "synthetic multi-segment drive truncated by 5s failure, vertex continuity and post-turn state replay",
+    "all five failure identities: truncate wait/drive/slew/observe, preserve score and healthy occupancy",
+    "120 main scenarios and 120 current-only sensitivities checked against hand topology and independent geometry/events",
+    "deterministic duplicate runs, identical 5-minus states, event-for-event preloaded outage invariance",
+    "restoration 8/35/60/70s outside main range explicitly labelled; no completion after deadline counted",
+    "synthetic 5s disturbance-before-start; unrelated failure permits 5s start; exact 60 succeeds, 60+1e-8 does not",
+    "synthetic broken T1 dependency blocks V3-to-T3 rather than skipping the original task",
+    "100 fixed-seed contract-valid location/recovery property samples, no assumed sampling weights",
+    "independent checker rejects wrong score, mutated path, premature release and offline command",
+    "input contract validation and single/list/container/JSONL parsing",
+    "CLI stdin -> JSONL independently matches run(scenario)"
+  ],
+  "exact_time_tests": [
+    {
+      "arrival_s": 5.0,
+      "failed_vehicle": "V1",
+      "k": 0,
+      "t_last_s": 60.0
+    },
+    {
+      "arrival_s": 60.0,
+      "failed_vehicle": null,
+      "k": 1,
+      "t_last_s": 60.0
+    },
+    {
+      "arrival_s": 60.00000001,
+      "failed_vehicle": null,
+      "k": 0,
+      "t_last_s": 60.0
+    },
+    {
+      "arrival_s": 5.0,
+      "failed_vehicle": "V5",
+      "k": 1,
+      "locked": false
+    }
+  ],
+  "failure_oracle": {
+    "V1": {
+      "k": 2,
+      "N": 3,
+      "eta": 0.6666666666666666,
+      "t_last_s": 60.0,
+      "starts": {
+        "T1": 1.5320327145575703,
+        "T2": 10.197744025090035,
+        "T3": null
+      }
+    },
+    "V2": {
+      "k": 2,
+      "N": 3,
+      "eta": 0.6666666666666666,
+      "t_last_s": 60.0,
+      "starts": {
+        "T1": 1.5320327145575703,
+        "T2": null,
+        "T3": 10.3521185907042
+      }
+    },
+    "V3": {
+      "k": 2,
+      "N": 3,
+      "eta": 0.6666666666666666,
+      "t_last_s": 60.0,
+      "starts": {
+        "T1": 1.5320327145575703,
+        "T2": 10.197744025090035,
+        "T3": null
+      }
+    },
+    "V4": {
+      "k": 2,
+      "N": 3,
+      "eta": 0.6666666666666666,
+      "t_last_s": 60.0,
+      "starts": {
+        "T1": 1.5320327145575703,
+        "T2": null,
+        "T3": 10.3521185907042
+      }
+    },
+    "V5": {
+      "k": 3,
+      "N": 3,
+      "eta": 1.0,
+      "t_last_s": 10.3521185907042,
+      "starts": {
+        "T1": 1.5320327145575703,
+        "T2": 10.197744025090035,
+        "T3": 10.3521185907042
+      }
+    }
+  },
+  "software": {
+    "python": "3.10.12",
+    "runtime_dependencies": "standard library only"
+  },
+  "source_sha256": {
+    "experiments/b/snapshots/q2_numerical/summary.json": "33d96078dec8a0034cb5596934a184b40a7223dee7721df8a2b36d0c8cddc15e",
+    "experiments/b/scene.json": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "experiments/b/q4_retention/retention.py": "3098870f479b66e4230214fef63a7812fd4070604415988b0b3d5867d4f4ca62",
+    "experiments/b/q4_retention/audit.py": "f6f980b9a31515b65e7c7d1a92d3abe8fdb6145af5782c9f0db54971385c22a2",
+    "experiments/b/q4_retention/verify.py": "65289cd4dea536c7b324c690bb25194c72e8c65273ab5ef14cc81a30502add0c",
+    "experiments/b/q4_retention/scenarios.json": "06e81da656fb625cc57611b7004a958b98feb7c8d593b254795a42b55cc679f7"
+  },
+  "artifacts_sha256": {
+    "runs/b/q4_retention/preloaded.jsonl": "e3f80f17d1b63fc3d6ae8c1a384cee206a652df5b2b8a78225b865c73ce593b8",
+    "runs/b/q4_retention/current_only.jsonl": "9de2f629c7ba5a76b2888654e60ac9357e36373792ff85bc8f7307d72d4b8f5e",
+    "runs/b/q4_retention/range_sensitivity.jsonl": "8c592fff1de107ee988a8437a6fc7fd802b6e075a034ffa2a4c927b99045eabf",
+    "runs/b/q4_retention/summary.csv": "b1bb98cd14608c244fb1c0eaff2199e115c84ffd5e8701169f80df124f5e454e"
+  }
+}

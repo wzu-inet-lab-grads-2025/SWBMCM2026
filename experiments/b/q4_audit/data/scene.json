@@ -1,0 +1,24 @@
+{
+  "source": "problem/B/2026_“ShuWei Cup”B_Problem.pdf",
+  "sha256": "9585081e724cef939d4e5713ea72f9eddefd4469a3b519a8ce184677d407692a",
+  "field_side_m": 100,
+  "centre_xy_m": [50, 50],
+  "buildings_xyxy_height_m": {
+    "B1": [22, 16, 34, 26, 20],
+    "B2": [63, 59, 79, 71, 28],
+    "B3": [10, 65, 24, 76, 12],
+    "B4": [72, 22, 86, 34, 24],
+    "B5": [41, 38, 51, 46, 32]
+  },
+  "vehicles_xy_m": {"V1": [15, 14], "V2": [88, 10], "V3": [14, 86], "V4": [88, 68], "V5": [50, 93]},
+  "alerts_azimuth_deg_range_m_altitude_m": {"T1": [30, 40, 45], "T2": [150, 45, 35], "T3": [285, 38, 55]},
+  "vehicle_radius_m": 1.5,
+  "vehicle_speed_m_s": 3,
+  "camera_height_m": 2,
+  "elevation_deg": [-10, 80],
+  "axis_speed_deg_s": 30,
+  "joint_observation_s": 5,
+  "q2_1": {"travel_limit_s": 30, "bearing_sd_deg": 1},
+  "q3": {"range_m": 40, "position_sd_intercept_m": 0.3, "position_sd_slope_m_per_m": 0.02, "zero_sd_deg": 0.8, "control_sd_deg": 0.6, "tolerance_deg": 5, "coverage": 0.95, "design_travel_m": 80},
+  "q4": {"disturbance_s": 5, "window_s": [0, 60], "new_azimuth_deg_half_open": [0, 360], "new_range_m": [30, 50], "new_altitude_m": 50, "recovery_s_left_open": [5, 30], "outage_duration_s_as_printed": [5, 30]}
+}

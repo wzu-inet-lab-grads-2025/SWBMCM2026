@@ -1,0 +1,1108 @@
+{
+  "scenarios": [
+    {
+      "id": "none__healthy__online",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "none__healthy__10",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": 10
+    },
+    {
+      "id": "none__healthy__20",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": 20
+    },
+    {
+      "id": "none__healthy__30",
+      "new_alert": null,
+      "failed_vehicle": null,
+      "recovery_s": 30
+    },
+    {
+      "id": "none__V1__online",
+      "new_alert": null,
+      "failed_vehicle": "V1",
+      "recovery_s": null
+    },
+    {
+      "id": "none__V1__10",
+      "new_alert": null,
+      "failed_vehicle": "V1",
+      "recovery_s": 10
+    },
+    {
+      "id": "none__V1__20",
+      "new_alert": null,
+      "failed_vehicle": "V1",
+      "recovery_s": 20
+    },
+    {
+      "id": "none__V1__30",
+      "new_alert": null,
+      "failed_vehicle": "V1",
+      "recovery_s": 30
+    },
+    {
+      "id": "none__V2__online",
+      "new_alert": null,
+      "failed_vehicle": "V2",
+      "recovery_s": null
+    },
+    {
+      "id": "none__V2__10",
+      "new_alert": null,
+      "failed_vehicle": "V2",
+      "recovery_s": 10
+    },
+    {
+      "id": "none__V2__20",
+      "new_alert": null,
+      "failed_vehicle": "V2",
+      "recovery_s": 20
+    },
+    {
+      "id": "none__V2__30",
+      "new_alert": null,
+      "failed_vehicle": "V2",
+      "recovery_s": 30
+    },
+    {
+      "id": "none__V3__online",
+      "new_alert": null,
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "none__V3__10",
+      "new_alert": null,
+      "failed_vehicle": "V3",
+      "recovery_s": 10
+    },
+    {
+      "id": "none__V3__20",
+      "new_alert": null,
+      "failed_vehicle": "V3",
+      "recovery_s": 20
+    },
+    {
+      "id": "none__V3__30",
+      "new_alert": null,
+      "failed_vehicle": "V3",
+      "recovery_s": 30
+    },
+    {
+      "id": "none__V4__online",
+      "new_alert": null,
+      "failed_vehicle": "V4",
+      "recovery_s": null
+    },
+    {
+      "id": "none__V4__10",
+      "new_alert": null,
+      "failed_vehicle": "V4",
+      "recovery_s": 10
+    },
+    {
+      "id": "none__V4__20",
+      "new_alert": null,
+      "failed_vehicle": "V4",
+      "recovery_s": 20
+    },
+    {
+      "id": "none__V4__30",
+      "new_alert": null,
+      "failed_vehicle": "V4",
+      "recovery_s": 30
+    },
+    {
+      "id": "none__V5__online",
+      "new_alert": null,
+      "failed_vehicle": "V5",
+      "recovery_s": null
+    },
+    {
+      "id": "none__V5__10",
+      "new_alert": null,
+      "failed_vehicle": "V5",
+      "recovery_s": 10
+    },
+    {
+      "id": "none__V5__20",
+      "new_alert": null,
+      "failed_vehicle": "V5",
+      "recovery_s": 20
+    },
+    {
+      "id": "none__V5__30",
+      "new_alert": null,
+      "failed_vehicle": "V5",
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__healthy__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__healthy__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__healthy__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__healthy__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__V1__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__V1__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__V1__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__V1__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__V2__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__V2__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__V2__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__V2__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__V3__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__V3__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__V3__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__V3__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__V4__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__V4__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__V4__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__V4__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 30
+    },
+    {
+      "id": "NE30__V5__online",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": null
+    },
+    {
+      "id": "NE30__V5__10",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 10
+    },
+    {
+      "id": "NE30__V5__20",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 20
+    },
+    {
+      "id": "NE30__V5__30",
+      "new_alert": [
+        45,
+        30,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__healthy__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "E40__healthy__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__healthy__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__healthy__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__V1__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": null
+    },
+    {
+      "id": "E40__V1__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__V1__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__V1__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__V2__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": null
+    },
+    {
+      "id": "E40__V2__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__V2__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__V2__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__V3__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "E40__V3__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__V3__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__V3__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__V4__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": null
+    },
+    {
+      "id": "E40__V4__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__V4__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__V4__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 30
+    },
+    {
+      "id": "E40__V5__online",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": null
+    },
+    {
+      "id": "E40__V5__10",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 10
+    },
+    {
+      "id": "E40__V5__20",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 20
+    },
+    {
+      "id": "E40__V5__30",
+      "new_alert": [
+        0,
+        40,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__healthy__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__healthy__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__healthy__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__healthy__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__V1__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__V1__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__V1__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__V1__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__V2__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__V2__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__V2__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__V2__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__V3__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__V3__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__V3__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__V3__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__V4__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__V4__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__V4__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__V4__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 30
+    },
+    {
+      "id": "NW50__V5__online",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": null
+    },
+    {
+      "id": "NW50__V5__10",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 10
+    },
+    {
+      "id": "NW50__V5__20",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 20
+    },
+    {
+      "id": "NW50__V5__30",
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__healthy__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": null
+    },
+    {
+      "id": "S50__healthy__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__healthy__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__healthy__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": null,
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__V1__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": null
+    },
+    {
+      "id": "S50__V1__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__V1__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__V1__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V1",
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__V2__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": null
+    },
+    {
+      "id": "S50__V2__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__V2__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__V2__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V2",
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__V3__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": null
+    },
+    {
+      "id": "S50__V3__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__V3__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__V3__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V3",
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__V4__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": null
+    },
+    {
+      "id": "S50__V4__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__V4__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__V4__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V4",
+      "recovery_s": 30
+    },
+    {
+      "id": "S50__V5__online",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": null
+    },
+    {
+      "id": "S50__V5__10",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 10
+    },
+    {
+      "id": "S50__V5__20",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 20
+    },
+    {
+      "id": "S50__V5__30",
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "failed_vehicle": "V5",
+      "recovery_s": 30
+    }
+  ]
+}

@@ -1,0 +1,1399 @@
+{
+  "scope": "Static nominal geometry; not path reachability, dynamic vehicle availability, or a Q4 schedule feasibility claim.",
+  "sha256": {
+    "experiments/b/scene.json": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "experiments/b/q4_scenarios/manifest.json": "2e16e0a553272c2c7cb214711dc7977d335c4153fcae0c0338c59024a24212fd"
+  },
+  "vehicle_disk_tangency": "allowed; all initial-station witnesses have strictly positive clearance",
+  "ray_tangency": "blocked, including finite segment endpoints",
+  "grid": {
+    "x_y_m": "2,4,...,98",
+    "spacing_m": 2,
+    "points": 2401,
+    "interpretation": "counts, not area fractions or probabilities"
+  },
+  "minimum_horizontal_range_for_H50_m": 8.463695074006322,
+  "alerts": [
+    {
+      "new_alert": [
+        30,
+        30,
+        50
+      ],
+      "target_xyz_m": [
+        75.98076211353316,
+        65.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [
+        "B2"
+      ],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 79.49624738279991,
+          "elevation_deg": 31.12366691478467,
+          "elevation_upper_margin_deg": 48.87633308521533,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B1": [
+              0.11479030037321433,
+              0.23529411764705882
+            ],
+            "B5": [
+              0.47058823529411764,
+              0.5903501162051022
+            ]
+          },
+          "observable": false
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 56.29797580172381,
+          "elevation_deg": 40.45111369148995,
+          "elevation_upper_margin_deg": 39.54888630851005,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B4": [
+              0.21818181818181817,
+              0.43636363636363634
+            ]
+          },
+          "observable": false
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 65.4416906274157,
+          "elevation_deg": 36.25920449991719,
+          "elevation_upper_margin_deg": 43.74079550008281,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 12.387981246816604,
+          "elevation_deg": 75.52871606363566,
+          "elevation_upper_margin_deg": 4.471283936364344,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 38.19685850956856,
+          "elevation_deg": 51.48835234238121,
+          "elevation_upper_margin_deg": 28.511647657618788,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        }
+      },
+      "initial_observable_vehicles": [
+        "V3",
+        "V4",
+        "V5"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.875944089487881,
+          "intersection_deg": 118.84309403333434
+        },
+        "V1": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.875944089487881,
+          "intersection_deg": 118.84309403333434
+        },
+        "V2": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.875944089487881,
+          "intersection_deg": 118.84309403333434
+        },
+        "V3": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.875944089487881,
+          "intersection_deg": 118.84309403333434
+        },
+        "V4": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.4760095388602218,
+          "intersection_deg": 28.425101372616457
+        },
+        "V5": {
+          "vehicles": [
+            "V3",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 76.15773105863909,
+          "absolute_sin_intersection": 0.540707355550854,
+          "intersection_deg": 147.2681954059508
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 565,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 8,
+        "observable": 1559
+      }
+    },
+    {
+      "new_alert": [
+        30,
+        50,
+        50
+      ],
+      "target_xyz_m": [
+        93.30127018922194,
+        75.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 99.25768944140064,
+          "elevation_deg": 25.807934145985442,
+          "elevation_upper_margin_deg": 54.19206585401456,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B1": [
+              0.08939829434546696,
+              0.19672131147540983
+            ],
+            "B5": [
+              0.39344262295081966,
+              0.4597626566338301
+            ]
+          },
+          "observable": false
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 65.21582220304467,
+          "elevation_deg": 36.353726398332526,
+          "elevation_upper_margin_deg": 43.646273601667474,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 80.06054867176455,
+          "elevation_deg": 30.944635648002453,
+          "elevation_upper_margin_deg": 49.05536435199755,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 8.780857909061803,
+          "elevation_deg": 79.63324992207227,
+          "elevation_upper_margin_deg": 0.3667500779277333,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 46.893496350773425,
+          "elevation_deg": 45.66806597341995,
+          "elevation_upper_margin_deg": 34.33193402658005,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        }
+      },
+      "initial_observable_vehicles": [
+        "V2",
+        "V3",
+        "V4",
+        "V5"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V2",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 106.07544484940895,
+          "absolute_sin_intersection": 0.9984068891896826,
+          "intersection_deg": 93.23458297244785
+        },
+        "V1": {
+          "vehicles": [
+            "V2",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 106.07544484940895,
+          "absolute_sin_intersection": 0.9984068891896826,
+          "intersection_deg": 93.23458297244785
+        },
+        "V2": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.9678618399793931,
+          "intersection_deg": 75.43474246822768
+        },
+        "V3": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.9678618399793931,
+          "intersection_deg": 75.43474246822768
+        },
+        "V4": {
+          "vehicles": [
+            "V2",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 106.07544484940895,
+          "absolute_sin_intersection": 0.9984068891896826,
+          "intersection_deg": 93.23458297244785
+        },
+        "V5": {
+          "vehicles": [
+            "V2",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 106.07544484940895,
+          "absolute_sin_intersection": 0.9984068891896826,
+          "intersection_deg": 93.23458297244785
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 632,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 50,
+        "observable": 1450
+      }
+    },
+    {
+      "new_alert": [
+        150,
+        30,
+        50
+      ],
+      "target_xyz_m": [
+        24.01923788646684,
+        65.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 51.7913762324644,
+          "elevation_deg": 42.8242065225885,
+          "elevation_upper_margin_deg": 37.1757934774115,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 84.37142834294391,
+          "elevation_deg": 29.63610925033075,
+          "elevation_upper_margin_deg": 50.36389074966925,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B4": [
+              0.21818181818181817,
+              0.2500751705896872
+            ],
+            "B5": [
+              0.5782988319886516,
+              0.625
+            ]
+          },
+          "observable": false
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 23.267684195587933,
+          "elevation_deg": 64.13851737412017,
+          "elevation_upper_margin_deg": 15.86148262587983,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 64.05105713903964,
+          "elevation_deg": 36.84796865387386,
+          "elevation_upper_margin_deg": 43.15203134612614,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B2": [
+              0.14066728345669904,
+              0.39074245404638625
+            ]
+          },
+          "observable": false
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 38.19685850956856,
+          "elevation_deg": 51.48835234238121,
+          "elevation_upper_margin_deg": 28.511647657618788,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        }
+      },
+      "initial_observable_vehicles": [
+        "V1",
+        "V3",
+        "V5"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.9295441869234699,
+          "intersection_deg": 68.36387320182233
+        },
+        "V1": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.9295441869234699,
+          "intersection_deg": 68.36387320182233
+        },
+        "V2": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.9295441869234699,
+          "intersection_deg": 68.36387320182233
+        },
+        "V3": {
+          "vehicles": [
+            "V1",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 86.4060183089118,
+          "absolute_sin_intersection": 0.5421309334548617,
+          "intersection_deg": 147.17118112861718
+        },
+        "V4": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.9295441869234699,
+          "intersection_deg": 68.36387320182233
+        },
+        "V5": {
+          "vehicles": [
+            "V1",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 72.00694410957877,
+          "absolute_sin_intersection": 0.5812009338477961,
+          "intersection_deg": 144.4649456695605
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 504,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 35,
+        "observable": 1593
+      }
+    },
+    {
+      "new_alert": [
+        150,
+        50,
+        50
+      ],
+      "target_xyz_m": [
+        6.698729810778062,
+        75.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 61.56225374979757,
+          "elevation_deg": 37.94349080894971,
+          "elevation_upper_margin_deg": 42.05650919105029,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 104.090809077367,
+          "elevation_deg": 24.756118980555538,
+          "elevation_upper_margin_deg": 55.24388101944446,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B4": [
+              0.18461538461538463,
+              0.19679889333538494
+            ],
+            "B5": [
+              0.4550974408380777,
+              0.5538461538461539
+            ]
+          },
+          "observable": false
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 13.20259619832482,
+          "elevation_deg": 74.62086769074926,
+          "elevation_upper_margin_deg": 5.3791323092507355,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 81.60206207186721,
+          "elevation_deg": 30.46491217633143,
+          "elevation_upper_margin_deg": 49.53508782366857,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B2": [
+              0.11069937750115404,
+              0.30749827083653897
+            ]
+          },
+          "observable": false
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 46.893496350773425,
+          "elevation_deg": 45.66806597341995,
+          "elevation_upper_margin_deg": 34.33193402658005,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        }
+      },
+      "initial_observable_vehicles": [
+        "V1",
+        "V3",
+        "V5"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V1",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 86.4060183089118,
+          "absolute_sin_intersection": 0.966722090295025,
+          "intersection_deg": 104.822703906841
+        },
+        "V1": {
+          "vehicles": [
+            "V3",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              14,
+              86
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 36.6742416417845,
+          "absolute_sin_intersection": 0.5570703490951695,
+          "intersection_deg": 33.853434010042236
+        },
+        "V2": {
+          "vehicles": [
+            "V1",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 86.4060183089118,
+          "absolute_sin_intersection": 0.966722090295025,
+          "intersection_deg": 104.822703906841
+        },
+        "V3": {
+          "vehicles": [
+            "V1",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 86.4060183089118,
+          "absolute_sin_intersection": 0.966722090295025,
+          "intersection_deg": 104.822703906841
+        },
+        "V4": {
+          "vehicles": [
+            "V1",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 86.4060183089118,
+          "absolute_sin_intersection": 0.966722090295025,
+          "intersection_deg": 104.822703906841
+        },
+        "V5": {
+          "vehicles": [
+            "V1",
+            "V3"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              14,
+              86
+            ]
+          ],
+          "baseline_m": 72.00694410957877,
+          "absolute_sin_intersection": 0.6603144911273074,
+          "intersection_deg": 138.67613791688325
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 469,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 38,
+        "observable": 1625
+      }
+    },
+    {
+      "new_alert": [
+        270,
+        30,
+        50
+      ],
+      "target_xyz_m": [
+        49.99999999999999,
+        20.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 35.5105618091294,
+          "elevation_deg": 53.505839229552926,
+          "elevation_upper_margin_deg": 26.494160770447074,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B1": [
+              0.3333333333333333,
+              0.375
+            ]
+          },
+          "observable": false
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 39.293765408777006,
+          "elevation_deg": 50.69555377714686,
+          "elevation_upper_margin_deg": 29.304446222853137,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 75.17978451685,
+          "elevation_deg": 32.55699016274993,
+          "elevation_upper_margin_deg": 47.44300983725007,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B3": [
+              0.15151515151515152,
+              0.20833333333333334
+            ]
+          },
+          "observable": false
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 61.22091146005587,
+          "elevation_deg": 38.09807211692865,
+          "elevation_upper_margin_deg": 41.90192788307135,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 73.0,
+          "elevation_deg": 33.326289687115214,
+          "elevation_upper_margin_deg": 46.673710312884786,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        }
+      },
+      "initial_observable_vehicles": [
+        "V2",
+        "V4",
+        "V5"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V2",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 91.28526715741155,
+          "absolute_sin_intersection": 0.9670745372626465,
+          "intersection_deg": 104.74356283647073
+        },
+        "V1": {
+          "vehicles": [
+            "V2",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 91.28526715741155,
+          "absolute_sin_intersection": 0.9670745372626465,
+          "intersection_deg": 104.74356283647073
+        },
+        "V2": {
+          "vehicles": [
+            "V4",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              68
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 45.48626166217664,
+          "absolute_sin_intersection": 0.6207029443655611,
+          "intersection_deg": 38.36748538486153
+        },
+        "V3": {
+          "vehicles": [
+            "V2",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 91.28526715741155,
+          "absolute_sin_intersection": 0.9670745372626465,
+          "intersection_deg": 104.74356283647073
+        },
+        "V4": {
+          "vehicles": [
+            "V2",
+            "V5"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              50,
+              93
+            ]
+          ],
+          "baseline_m": 91.28526715741155,
+          "absolute_sin_intersection": 0.9670745372626465,
+          "intersection_deg": 104.74356283647073
+        },
+        "V5": {
+          "vehicles": [
+            "V2",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 58.0,
+          "absolute_sin_intersection": 0.9161954930682488,
+          "intersection_deg": 66.3760774516092
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 684,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 57,
+        "observable": 1391
+      }
+    },
+    {
+      "new_alert": [
+        270,
+        50,
+        50
+      ],
+      "target_xyz_m": [
+        49.99999999999999,
+        0.0,
+        50
+      ],
+      "projection_inside_or_on_buildings": [],
+      "initial_station_checks": {
+        "V1": {
+          "station_xy_m": [
+            15,
+            14
+          ],
+          "horizontal_range_m": 37.69615364994152,
+          "elevation_deg": 51.85615800514635,
+          "elevation_upper_margin_deg": 28.143841994853652,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 5.780109889280518,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V2": {
+          "station_xy_m": [
+            88,
+            10
+          ],
+          "horizontal_range_m": 39.293765408777006,
+          "elevation_deg": 50.69555377714686,
+          "elevation_upper_margin_deg": 29.304446222853137,
+          "disk_ok": true,
+          "field_clearance_m": 8.5,
+          "minimum_building_clearance_m": 10.665525060596439,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V3": {
+          "station_xy_m": [
+            14,
+            86
+          ],
+          "horizontal_range_m": 93.23089616645332,
+          "elevation_deg": 27.241709769579384,
+          "elevation_upper_margin_deg": 52.75829023042061,
+          "disk_ok": true,
+          "field_clearance_m": 12.5,
+          "minimum_building_clearance_m": 8.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B3": [
+              0.11627906976744186,
+              0.20833333333333334
+            ]
+          },
+          "observable": false
+        },
+        "V4": {
+          "station_xy_m": [
+            88,
+            68
+          ],
+          "horizontal_range_m": 77.89736837660179,
+          "elevation_deg": 31.64118451002112,
+          "elevation_upper_margin_deg": 48.35881548997888,
+          "disk_ok": true,
+          "field_clearance_m": 10.5,
+          "minimum_building_clearance_m": 7.5,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {},
+          "observable": true
+        },
+        "V5": {
+          "station_xy_m": [
+            50,
+            93
+          ],
+          "horizontal_range_m": 93.0,
+          "elevation_deg": 27.299572211332805,
+          "elevation_upper_margin_deg": 52.7004277886672,
+          "disk_ok": true,
+          "field_clearance_m": 5.5,
+          "minimum_building_clearance_m": 24.053864678361276,
+          "elevation_ok": true,
+          "blockers_segment_parameter_intervals": {
+            "B5": [
+              0.5053763440860215,
+              0.5913978494623656
+            ]
+          },
+          "observable": false
+        }
+      },
+      "initial_observable_vehicles": [
+        "V1",
+        "V2",
+        "V4"
+      ],
+      "static_pair_witness_by_failed_vehicle": {
+        "none": {
+          "vehicles": [
+            "V1",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 90.80198235721508,
+          "absolute_sin_intersection": 0.9916799795878228,
+          "intersection_deg": 97.39607655971267
+        },
+        "V1": {
+          "vehicles": [
+            "V2",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              88,
+              10
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 58.0,
+          "absolute_sin_intersection": 0.7200541472731121,
+          "intersection_deg": 46.058951117464794
+        },
+        "V2": {
+          "vehicles": [
+            "V1",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 90.80198235721508,
+          "absolute_sin_intersection": 0.9916799795878228,
+          "intersection_deg": 97.39607655971267
+        },
+        "V3": {
+          "vehicles": [
+            "V1",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 90.80198235721508,
+          "absolute_sin_intersection": 0.9916799795878228,
+          "intersection_deg": 97.39607655971267
+        },
+        "V4": {
+          "vehicles": [
+            "V1",
+            "V2"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              88,
+              10
+            ]
+          ],
+          "baseline_m": 73.10950690573696,
+          "absolute_sin_intersection": 0.5954535628464418,
+          "intersection_deg": 143.45502767717747
+        },
+        "V5": {
+          "vehicles": [
+            "V1",
+            "V4"
+          ],
+          "stations_xy_m": [
+            [
+              15,
+              14
+            ],
+            [
+              88,
+              68
+            ]
+          ],
+          "baseline_m": 90.80198235721508,
+          "absolute_sin_intersection": 0.9916799795878228,
+          "intersection_deg": 97.39607655971267
+        }
+      },
+      "grid_mutually_exclusive_counts": {
+        "blocked_after_disk_and_elevation": 786,
+        "disk_invalid": 269,
+        "elevation_invalid_after_disk": 24,
+        "observable": 1322
+      }
+    }
+  ],
+  "acceptance": {
+    "synthetic_and_T2_regressions": "passed",
+    "targets": 6,
+    "all_failure_identities_have_noncollinear_static_pair": true
+  }
+}

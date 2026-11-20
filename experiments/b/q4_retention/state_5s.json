@@ -1,0 +1,811 @@
+{
+  "before": {
+    "V1": {
+      "vehicle": "V1",
+      "t_s": 5.0,
+      "side": "left",
+      "phase": "wait",
+      "active": true,
+      "position_xy_m": [
+        15.0,
+        14.0
+      ],
+      "gimbal_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ],
+      "target": "T3",
+      "occupied": true,
+      "locked_occupancy": false,
+      "reassignable": true,
+      "command_reachable": true,
+      "release_after_reset_s": null,
+      "reset_from_current_pose_s": 1.658903241983292,
+      "phase_end_s": null,
+      "remaining_observation_s": 0.0,
+      "remaining_original_tasks": [
+        "T3"
+      ]
+    },
+    "V2": {
+      "vehicle": "V2",
+      "t_s": 5.0,
+      "side": "left",
+      "phase": "drive",
+      "active": true,
+      "position_xy_m": [
+        74.88938039184048,
+        2.712225751977285
+      ],
+      "gimbal_deg": [
+        0.0,
+        0.0
+      ],
+      "target": "T2",
+      "occupied": true,
+      "locked_occupancy": false,
+      "reassignable": true,
+      "command_reachable": true,
+      "release_after_reset_s": null,
+      "reset_from_current_pose_s": 0.0,
+      "phase_end_s": 5.831684483301719,
+      "remaining_observation_s": 0.0,
+      "remaining_original_tasks": [
+        "T2"
+      ]
+    },
+    "V3": {
+      "vehicle": "V3",
+      "t_s": 5.0,
+      "side": "left",
+      "phase": "observe",
+      "active": true,
+      "position_xy_m": [
+        15.042068482523437,
+        87.07839997436871
+      ],
+      "gimbal_deg": [
+        -13.787001604165999,
+        30.964804500630606
+      ],
+      "target": "T1",
+      "occupied": true,
+      "locked_occupancy": true,
+      "reassignable": false,
+      "command_reachable": true,
+      "release_after_reset_s": 7.56419286457859,
+      "reset_from_current_pose_s": 1.0321601500210202,
+      "phase_end_s": 6.5320327145575705,
+      "remaining_observation_s": 1.5320327145575705,
+      "remaining_original_tasks": [
+        "T1",
+        "T3"
+      ]
+    },
+    "V4": {
+      "vehicle": "V4",
+      "t_s": 5.0,
+      "side": "left",
+      "phase": "slew",
+      "active": true,
+      "position_xy_m": [
+        88.0617924528964,
+        70.80002275602222
+      ],
+      "gimbal_deg": [
+        121.99295491938287,
+        23.184672017939654
+      ],
+      "target": "T2",
+      "occupied": true,
+      "locked_occupancy": false,
+      "reassignable": true,
+      "command_reachable": true,
+      "release_after_reset_s": null,
+      "reset_from_current_pose_s": 4.066431830646096,
+      "phase_end_s": 6.89142787637113,
+      "remaining_observation_s": 0.0,
+      "remaining_original_tasks": [
+        "T2"
+      ]
+    },
+    "V5": {
+      "vehicle": "V5",
+      "t_s": 5.0,
+      "side": "left",
+      "phase": "observe",
+      "active": true,
+      "position_xy_m": [
+        50.0,
+        93.0
+      ],
+      "gimbal_deg": [
+        -33.58228395474638,
+        45.960981433707644
+      ],
+      "target": "T1",
+      "occupied": true,
+      "locked_occupancy": true,
+      "reassignable": false,
+      "command_reachable": true,
+      "release_after_reset_s": 8.064065429014493,
+      "reset_from_current_pose_s": 1.5320327144569215,
+      "phase_end_s": 6.5320327145575705,
+      "remaining_observation_s": 1.5320327145575705,
+      "remaining_original_tasks": [
+        "T1"
+      ]
+    }
+  },
+  "after_each_failure": {
+    "V1": {
+      "V1": {
+        "vehicle": "V1",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "failed",
+        "active": false,
+        "position_xy_m": null,
+        "last_position_xy_m": [
+          15.0,
+          14.0
+        ],
+        "gimbal_deg": [
+          -0.9010923443705342,
+          49.76709725949876
+        ],
+        "target": "T3",
+        "occupied": false,
+        "locked_occupancy": false,
+        "reassignable": false,
+        "command_reachable": false,
+        "release_after_reset_s": null,
+        "remaining_original_tasks": []
+      },
+      "V2": {
+        "vehicle": "V2",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "drive",
+        "active": true,
+        "position_xy_m": [
+          74.88938039184048,
+          2.712225751977285
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 0.0,
+        "phase_end_s": 5.831684483301719,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V3": {
+        "vehicle": "V3",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          15.042068482523437,
+          87.07839997436871
+        ],
+        "gimbal_deg": [
+          -13.787001604165999,
+          30.964804500630606
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 7.56419286457859,
+        "reset_from_current_pose_s": 1.0321601500210202,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1",
+          "T3"
+        ]
+      },
+      "V4": {
+        "vehicle": "V4",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "slew",
+        "active": true,
+        "position_xy_m": [
+          88.0617924528964,
+          70.80002275602222
+        ],
+        "gimbal_deg": [
+          121.99295491938287,
+          23.184672017939654
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 4.066431830646096,
+        "phase_end_s": 6.89142787637113,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V5": {
+        "vehicle": "V5",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          50.0,
+          93.0
+        ],
+        "gimbal_deg": [
+          -33.58228395474638,
+          45.960981433707644
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 8.064065429014493,
+        "reset_from_current_pose_s": 1.5320327144569215,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1"
+        ]
+      }
+    },
+    "V2": {
+      "V1": {
+        "vehicle": "V1",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "wait",
+        "active": true,
+        "position_xy_m": [
+          15.0,
+          14.0
+        ],
+        "gimbal_deg": [
+          -0.9010923443705342,
+          49.76709725949876
+        ],
+        "target": "T3",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 1.658903241983292,
+        "phase_end_s": null,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T3"
+        ]
+      },
+      "V2": {
+        "vehicle": "V2",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "failed",
+        "active": false,
+        "position_xy_m": null,
+        "last_position_xy_m": [
+          74.88938039184048,
+          2.712225751977285
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ],
+        "target": "T2",
+        "occupied": false,
+        "locked_occupancy": false,
+        "reassignable": false,
+        "command_reachable": false,
+        "release_after_reset_s": null,
+        "remaining_original_tasks": []
+      },
+      "V3": {
+        "vehicle": "V3",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          15.042068482523437,
+          87.07839997436871
+        ],
+        "gimbal_deg": [
+          -13.787001604165999,
+          30.964804500630606
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 7.56419286457859,
+        "reset_from_current_pose_s": 1.0321601500210202,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1",
+          "T3"
+        ]
+      },
+      "V4": {
+        "vehicle": "V4",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "slew",
+        "active": true,
+        "position_xy_m": [
+          88.0617924528964,
+          70.80002275602222
+        ],
+        "gimbal_deg": [
+          121.99295491938287,
+          23.184672017939654
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 4.066431830646096,
+        "phase_end_s": 6.89142787637113,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V5": {
+        "vehicle": "V5",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          50.0,
+          93.0
+        ],
+        "gimbal_deg": [
+          -33.58228395474638,
+          45.960981433707644
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 8.064065429014493,
+        "reset_from_current_pose_s": 1.5320327144569215,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1"
+        ]
+      }
+    },
+    "V3": {
+      "V1": {
+        "vehicle": "V1",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "wait",
+        "active": true,
+        "position_xy_m": [
+          15.0,
+          14.0
+        ],
+        "gimbal_deg": [
+          -0.9010923443705342,
+          49.76709725949876
+        ],
+        "target": "T3",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 1.658903241983292,
+        "phase_end_s": null,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T3"
+        ]
+      },
+      "V2": {
+        "vehicle": "V2",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "drive",
+        "active": true,
+        "position_xy_m": [
+          74.88938039184048,
+          2.712225751977285
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 0.0,
+        "phase_end_s": 5.831684483301719,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V3": {
+        "vehicle": "V3",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "failed",
+        "active": false,
+        "position_xy_m": null,
+        "last_position_xy_m": [
+          15.042068482523437,
+          87.07839997436871
+        ],
+        "gimbal_deg": [
+          -13.787001604165999,
+          30.964804500630606
+        ],
+        "target": "T1",
+        "occupied": false,
+        "locked_occupancy": false,
+        "reassignable": false,
+        "command_reachable": false,
+        "release_after_reset_s": null,
+        "remaining_original_tasks": []
+      },
+      "V4": {
+        "vehicle": "V4",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "slew",
+        "active": true,
+        "position_xy_m": [
+          88.0617924528964,
+          70.80002275602222
+        ],
+        "gimbal_deg": [
+          121.99295491938287,
+          23.184672017939654
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 4.066431830646096,
+        "phase_end_s": 6.89142787637113,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V5": {
+        "vehicle": "V5",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          50.0,
+          93.0
+        ],
+        "gimbal_deg": [
+          -33.58228395474638,
+          45.960981433707644
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 8.064065429014493,
+        "reset_from_current_pose_s": 1.5320327144569215,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1"
+        ]
+      }
+    },
+    "V4": {
+      "V1": {
+        "vehicle": "V1",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "wait",
+        "active": true,
+        "position_xy_m": [
+          15.0,
+          14.0
+        ],
+        "gimbal_deg": [
+          -0.9010923443705342,
+          49.76709725949876
+        ],
+        "target": "T3",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 1.658903241983292,
+        "phase_end_s": null,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T3"
+        ]
+      },
+      "V2": {
+        "vehicle": "V2",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "drive",
+        "active": true,
+        "position_xy_m": [
+          74.88938039184048,
+          2.712225751977285
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 0.0,
+        "phase_end_s": 5.831684483301719,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V3": {
+        "vehicle": "V3",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          15.042068482523437,
+          87.07839997436871
+        ],
+        "gimbal_deg": [
+          -13.787001604165999,
+          30.964804500630606
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 7.56419286457859,
+        "reset_from_current_pose_s": 1.0321601500210202,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1",
+          "T3"
+        ]
+      },
+      "V4": {
+        "vehicle": "V4",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "failed",
+        "active": false,
+        "position_xy_m": null,
+        "last_position_xy_m": [
+          88.0617924528964,
+          70.80002275602222
+        ],
+        "gimbal_deg": [
+          121.99295491938287,
+          23.184672017939654
+        ],
+        "target": "T2",
+        "occupied": false,
+        "locked_occupancy": false,
+        "reassignable": false,
+        "command_reachable": false,
+        "release_after_reset_s": null,
+        "remaining_original_tasks": []
+      },
+      "V5": {
+        "vehicle": "V5",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          50.0,
+          93.0
+        ],
+        "gimbal_deg": [
+          -33.58228395474638,
+          45.960981433707644
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 8.064065429014493,
+        "reset_from_current_pose_s": 1.5320327144569215,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1"
+        ]
+      }
+    },
+    "V5": {
+      "V1": {
+        "vehicle": "V1",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "wait",
+        "active": true,
+        "position_xy_m": [
+          15.0,
+          14.0
+        ],
+        "gimbal_deg": [
+          -0.9010923443705342,
+          49.76709725949876
+        ],
+        "target": "T3",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 1.658903241983292,
+        "phase_end_s": null,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T3"
+        ]
+      },
+      "V2": {
+        "vehicle": "V2",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "drive",
+        "active": true,
+        "position_xy_m": [
+          74.88938039184048,
+          2.712225751977285
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 0.0,
+        "phase_end_s": 5.831684483301719,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V3": {
+        "vehicle": "V3",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "observe",
+        "active": true,
+        "position_xy_m": [
+          15.042068482523437,
+          87.07839997436871
+        ],
+        "gimbal_deg": [
+          -13.787001604165999,
+          30.964804500630606
+        ],
+        "target": "T1",
+        "occupied": true,
+        "locked_occupancy": true,
+        "reassignable": false,
+        "command_reachable": true,
+        "release_after_reset_s": 7.56419286457859,
+        "reset_from_current_pose_s": 1.0321601500210202,
+        "phase_end_s": 6.5320327145575705,
+        "remaining_observation_s": 1.5320327145575705,
+        "remaining_original_tasks": [
+          "T1",
+          "T3"
+        ]
+      },
+      "V4": {
+        "vehicle": "V4",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "slew",
+        "active": true,
+        "position_xy_m": [
+          88.0617924528964,
+          70.80002275602222
+        ],
+        "gimbal_deg": [
+          121.99295491938287,
+          23.184672017939654
+        ],
+        "target": "T2",
+        "occupied": true,
+        "locked_occupancy": false,
+        "reassignable": true,
+        "command_reachable": true,
+        "release_after_reset_s": null,
+        "reset_from_current_pose_s": 4.066431830646096,
+        "phase_end_s": 6.89142787637113,
+        "remaining_observation_s": 0.0,
+        "remaining_original_tasks": [
+          "T2"
+        ]
+      },
+      "V5": {
+        "vehicle": "V5",
+        "t_s": 5.0,
+        "side": "right",
+        "phase": "failed",
+        "active": false,
+        "position_xy_m": null,
+        "last_position_xy_m": [
+          50.0,
+          93.0
+        ],
+        "gimbal_deg": [
+          -33.58228395474638,
+          45.960981433707644
+        ],
+        "target": "T1",
+        "occupied": false,
+        "locked_occupancy": false,
+        "reassignable": false,
+        "command_reachable": false,
+        "release_after_reset_s": null,
+        "remaining_original_tasks": []
+      }
+    }
+  }
+}

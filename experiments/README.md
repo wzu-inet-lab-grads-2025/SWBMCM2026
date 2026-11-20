@@ -13,6 +13,8 @@
 | [第三问解析推导](b/q3_analytic/REPORT.md) | `python3 experiments/b/q3_analytic/verify.py` | 检验位置误差传播、角差折回、单调性与一阶近似的适用范围。 |
 | [第三问圆周积分](b/q3_quadrature/README.md) | `python3 experiments/b/check_q3_thresholds.py` | 用旋转坐标中的独立求积复核两种误差口径的临界里程、80 m 覆盖率。[汇总记录](../docs/q3-independent.md) |
 | [第三问随机仿真](b/q3_simulation/report.md) | `python3 experiments/b/q3_simulation/simulation.py` | 独立样本检验 80 m 及临界里程附近的覆盖率，并估计限程的抽样不确定度。 |
+| [第四问共同情景](b/q4_scenarios/README.md) | `python3 -B experiments/b/q4_scenarios/generate.py --check` | 验证新增告警、故障车和恢复时刻的 126 项主情景，以及单列的恢复时间敏感性实验。 |
+| [第四问策略对照](../docs/q4-comparison.md) | `sh experiments/b/q4_reschedule/reproduce.sh` | 从同一初始计划回放保留和重调度策略，核对车辆状态、时序和逐情景得分。 |
 
 [题面参数转录](b/scene.json) 的数字保留原题单位。核查脚本只读，在终端输出结果。核查发现和实验优先级见[建模笔记](../docs/modeling-notes.md)。方法被采用时，将正式实现整理进 `src/`，将独立复核材料放入 `checks/`，保留从正式实现回到原实验的记录。
 

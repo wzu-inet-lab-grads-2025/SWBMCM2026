@@ -1,0 +1,182 @@
+[
+  {
+    "name": "NE30",
+    "polar": [
+      45,
+      30,
+      50
+    ],
+    "xyz_m": [
+      71.21320343559643,
+      71.21320343559643,
+      50
+    ],
+    "initial_station_visibility": {
+      "V1": {
+        "elevation_deg": 30.898255258753125,
+        "blocking_buildings": [
+          "B1",
+          "B5"
+        ],
+        "observable": false
+      },
+      "V2": {
+        "elevation_deg": 37.09745145244601,
+        "blocking_buildings": [
+          "B4"
+        ],
+        "observable": false
+      },
+      "V3": {
+        "elevation_deg": 39.08615946383678,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V4": {
+        "elevation_deg": 70.40050557950634,
+        "blocking_buildings": [
+          "B2"
+        ],
+        "observable": false
+      },
+      "V5": {
+        "elevation_deg": 57.64548881653907,
+        "blocking_buildings": [],
+        "observable": true
+      }
+    }
+  },
+  {
+    "name": "E40",
+    "polar": [
+      0,
+      40,
+      50
+    ],
+    "xyz_m": [
+      90.0,
+      50.0,
+      50
+    ],
+    "initial_station_visibility": {
+      "V1": {
+        "elevation_deg": 29.983860919002822,
+        "blocking_buildings": [
+          "B1"
+        ],
+        "observable": false
+      },
+      "V2": {
+        "elevation_deg": 50.15924609639963,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V3": {
+        "elevation_deg": 29.71693772791129,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V4": {
+        "elevation_deg": 69.32812191986392,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V5": {
+        "elevation_deg": 39.259978636951814,
+        "blocking_buildings": [
+          "B2"
+        ],
+        "observable": false
+      }
+    }
+  },
+  {
+    "name": "NW50",
+    "polar": [
+      150,
+      50,
+      50
+    ],
+    "xyz_m": [
+      6.698729810778062,
+      75.0,
+      50
+    ],
+    "initial_station_visibility": {
+      "V1": {
+        "elevation_deg": 37.94349080894971,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V2": {
+        "elevation_deg": 24.756118980555538,
+        "blocking_buildings": [
+          "B4",
+          "B5"
+        ],
+        "observable": false
+      },
+      "V3": {
+        "elevation_deg": 74.62086769074926,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V4": {
+        "elevation_deg": 30.46491217633143,
+        "blocking_buildings": [
+          "B2"
+        ],
+        "observable": false
+      },
+      "V5": {
+        "elevation_deg": 45.66806597341995,
+        "blocking_buildings": [],
+        "observable": true
+      }
+    }
+  },
+  {
+    "name": "S50",
+    "polar": [
+      270,
+      50,
+      50
+    ],
+    "xyz_m": [
+      49.99999999999999,
+      0.0,
+      50
+    ],
+    "initial_station_visibility": {
+      "V1": {
+        "elevation_deg": 51.85615800514635,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V2": {
+        "elevation_deg": 50.69555377714686,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V3": {
+        "elevation_deg": 27.241709769579384,
+        "blocking_buildings": [
+          "B3"
+        ],
+        "observable": false
+      },
+      "V4": {
+        "elevation_deg": 31.64118451002112,
+        "blocking_buildings": [],
+        "observable": true
+      },
+      "V5": {
+        "elevation_deg": 27.299572211332805,
+        "blocking_buildings": [
+          "B5"
+        ],
+        "observable": false
+      }
+    }
+  }
+]

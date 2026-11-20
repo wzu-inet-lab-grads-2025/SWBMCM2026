@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-11-20T19:40:14+08:00",
+  "access": "Read-only public pages in an agent-opened browser; no login, join, comment, or post.",
+  "official_channel_basis": {
+    "url": "https://www.nmmcm.org.cn/News/225.html",
+    "section": "六、其他注意事项，第4项",
+    "quote": "竞赛期间仅开放数维杯组委会指定的网上唯一答疑专区：https://pd.qq.com/s/f4pnq4egk?b=9。",
+    "classification": "official organizer announcement"
+  },
+  "duration_thread": {
+    "url": "https://pd.qq.com/g/pd52619943/post/B_e4b7ff6a0ac20e001441152187121863520X60?subc=745397906",
+    "question_title": "这道题不应该是（0-25】吗",
+    "question_classification": "participant question, not itself official clarification",
+    "browser_question_date_display": "2026-11-19",
+    "static_fetch_date_display": "2026-11-20",
+    "date_note": "Different extraction layers disagree on question date; do not infer exact posting or reply timestamps.",
+    "visible_reply_author": "B题命题人",
+    "visible_reply_relative_time": "5小时前",
+    "visible_reply_status": "置顶评论",
+    "reply_classification": "public pinned reply presented as B-problem setter in organizer-designated forum; no independent real-name identity check",
+    "reply_text": "感谢同学的仔细核对。这里[5,trec]表示时间轴上的通信中断区间，trec是通信恢复时刻，且trec ∈(5,30]。也就是说，通信在第5秒后发生中断，并在不晚于第30秒时恢复。因此，中断持续时长为trec-5，取值范围是(0,25]s。题目中\"meaning the outage duration falls within [5,30]\"这一表述容易把恢复时刻范围和中断持续时长范围混淆。题目的实际设定是通信恢复时刻不超过30s，数值30不需要修改。做题时请按上述时间区间理解。",
+    "snapshot_observations": ["评论5", "B题命题人", "5小时前", "置顶评论", "- 暂无更多评论 -", "登录后评论"],
+    "static_fetch_limitation": "Exa extraction returned only the participant title/body, not the pinned reply. A browser-rendered snapshot was needed.",
+    "consequence": "Use recovery_s in (5,30]. Main 10/30 is valid but not exhaustive. Recovery 8 is in-scope sensitivity; recovery 35 is out-of-scope stress test."
+  },
+  "duration_corroboration_thread": {
+    "url": "https://pd.qq.com/g/pd52619943/post/B_bed7ff6aa0800d001441152188103493870X60?subc=745397906",
+    "question_title": "问题如图，B题问题，麻烦组委会老师解答",
+    "question_classification": "participant question",
+    "visible_reply_author": "B题命题人",
+    "visible_reply_relative_time": "5小时前",
+    "visible_reply_status": "置顶评论",
+    "reply_text": "Same clarification verbatim as duration_thread.reply_text, observed in a separate browser-rendered thread.",
+    "visible_author_response": "十分感谢老师回答我们的问题，对我们队伍帮助很大"
+  },
+  "retaining_policy_thread": {
+    "url": "https://pd.qq.com/g/pd52619943/post/B_bc12006bd8b509001441152191012237580X60?subc=745397906",
+    "question_classification": "participant question about queued tasks and retaining assignments/stations/order",
+    "visible_reply_status": "暂无评论",
+    "official_reply_verified": false
+  },
+  "queued_tasks_thread": {
+    "url": "https://pd.qq.com/g/pd52619943/post/B_6c01006bb84002001441152186789026900X60?subc=745397906",
+    "question_classification": "participant question",
+    "question_text": "老师您好，我们有一个关于任务执行的细节想确认。题面说，断联期间车辆继续执行当前任务，恢复通信后才能接收新的调度指令。如果一辆车在断联期间完成了当前任务并复位，而原调度已经为它排定了下一项任务，请问应视为完整原调度已在t=0下发，车辆可以按原计划直接出发，还是应视为断联期间只能完成当前任务，车辆需要原地等待，通信恢复后才能执行下一项任务？谢谢老师！",
+    "browser_question_date_display": "2026-11-20",
+    "visible_reply_status": "暂无评论",
+    "official_reply_verified": false,
+    "consequence": "Full schedule issued at t=0 remains an experimental convention, not an official answer on this thread."
+  },
+  "search_scope": {
+    "urls": ["https://www.nmmcm.org.cn/", "https://www.nmmcm.org.cn/News/", "https://www.nmmcm.org.cn/Awards/", "https://pd.qq.com/s/f4pnq4egk?b=9"],
+    "queries": ["2026 数维杯 秋季赛 B题 通信 中断 时长 恢复 官方 答疑 澄清", "site:pd.qq.com \"2026数维杯秋季赛答疑论坛\" \"B题\""],
+    "limitations": "Search results were sparse and static extraction omitted comments. Absence in search or extracts is not proof that no official reply exists. Only explicitly recorded browser-visible replies support semantic conclusions."
+  }
+}

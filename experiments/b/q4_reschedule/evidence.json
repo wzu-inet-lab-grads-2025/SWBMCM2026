@@ -1,0 +1,496 @@
+{
+  "panels": {
+    "main": {
+      "independent_audits_pass": 126,
+      "nominal_prefix_pass": 126,
+      "cancellation_resets": 52,
+      "tie": 6,
+      "reschedule_full": 126,
+      "outage_prefix_pass": 84,
+      "win": 120,
+      "latest_start_max_s": 35.38523728205422,
+      "min_work_area_center_separation_m": 6.0,
+      "trace_sha256": "e9cbc00cbff2ec9c0416a1b64c0fb238ccd51f5a68b5699a6f8a1bb23674b282"
+    },
+    "sensitivity": {
+      "independent_audits_pass": 126,
+      "nominal_prefix_pass": 126,
+      "outage_prefix_pass": 126,
+      "cancellation_resets": 40,
+      "tie": 6,
+      "reschedule_full": 126,
+      "win": 120,
+      "latest_start_max_s": 40.38523728205422,
+      "min_work_area_center_separation_m": 6.0,
+      "trace_sha256": "4be14c3d90daf57ccf575d60542f7802abaaf20868edc57e9d93c1b3a6efaac9"
+    }
+  },
+  "same_factors_different_recovery_prefixes": 168,
+  "endpoint_checks": [
+    "joint start at 60 accepted",
+    "one ULP beyond 60 rejected",
+    "incomplete => 60 s"
+  ],
+  "cases": [
+    {
+      "panel": "main",
+      "scenario_id": "main_a-none_f-none_c-none",
+      "factors": "none",
+      "N": 3,
+      "keep_k": 3,
+      "keep_eta": 1.0,
+      "keep_t_last_s": 10.3521185907042,
+      "reschedule_k": 3,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 10.3521185907042,
+      "decision": "no_disturbance",
+      "comparison": "tie",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.3521185907042,
+          [
+            "V3",
+            "V1"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-030-30_f-none_c-none",
+      "factors": "A",
+      "N": 4,
+      "keep_k": 3,
+      "keep_eta": 0.75,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 18.592887557990537,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.3521185907042,
+          [
+            "V1",
+            "V3"
+          ]
+        ],
+        "T4": [
+          18.592887557990537,
+          [
+            "V3",
+            "V5"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-none_f-V3_c-none",
+      "factors": "F",
+      "N": 3,
+      "keep_k": 2,
+      "keep_eta": 0.6666666666666666,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 3,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 10.829585936057976,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.829585936057976,
+          [
+            "V1",
+            "V5"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-none_f-none_c-10",
+      "factors": "C",
+      "N": 3,
+      "keep_k": 3,
+      "keep_eta": 1.0,
+      "keep_t_last_s": 10.3521185907042,
+      "reschedule_k": 3,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 10.3521185907042,
+      "decision": "keep_preloaded",
+      "comparison": "tie",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.3521185907042,
+          [
+            "V3",
+            "V1"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-270-50_f-V3_c-none",
+      "factors": "AF",
+      "N": 4,
+      "keep_k": 2,
+      "keep_eta": 0.5,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 23.670248858907733,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          23.670248858907733,
+          [
+            "V1",
+            "V5"
+          ]
+        ],
+        "T3": [
+          10.829585936057976,
+          [
+            "V2",
+            "V5"
+          ]
+        ],
+        "T4": [
+          13.008508048128697,
+          [
+            "V1",
+            "V4"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-150-50_f-none_c-30",
+      "factors": "AC",
+      "N": 4,
+      "keep_k": 3,
+      "keep_eta": 0.75,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 34.213028581480856,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.3521185907042,
+          [
+            "V3",
+            "V1"
+          ]
+        ],
+        "T4": [
+          34.213028581480856,
+          [
+            "V1",
+            "V3"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-none_f-V1_c-10",
+      "factors": "FC",
+      "N": 3,
+      "keep_k": 2,
+      "keep_eta": 0.6666666666666666,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 3,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 12.765520507043483,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090033,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          12.765520507043483,
+          [
+            "V3",
+            "V5"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-150-50_f-V3_c-30",
+      "factors": "AFC",
+      "N": 4,
+      "keep_k": 2,
+      "keep_eta": 0.5,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 34.917222267060204,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          33.87147683675556,
+          [
+            "V4",
+            "V5"
+          ]
+        ],
+        "T4": [
+          34.917222267060204,
+          [
+            "V1",
+            "V2"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-none_f-V5_c-none",
+      "factors": "F",
+      "N": 3,
+      "keep_k": 3,
+      "keep_eta": 1.0,
+      "keep_t_last_s": 10.3521185907042,
+      "reschedule_k": 3,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 10.3521185907042,
+      "decision": "keep_preloaded",
+      "comparison": "tie",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          10.197744025090035,
+          [
+            "V2",
+            "V4"
+          ]
+        ],
+        "T3": [
+          10.3521185907042,
+          [
+            "V3",
+            "V1"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-030-30_f-V3_c-none",
+      "factors": "AF",
+      "N": 4,
+      "keep_k": 2,
+      "keep_eta": 0.5,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 20.174599606332094,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          9.78835122796145,
+          [
+            "V1",
+            "V4"
+          ]
+        ],
+        "T3": [
+          20.174599606332094,
+          [
+            "V1",
+            "V5"
+          ]
+        ],
+        "T4": [
+          10.692800687875906,
+          [
+            "V2",
+            "V5"
+          ]
+        ]
+      }
+    },
+    {
+      "panel": "main",
+      "scenario_id": "main_a-030-30_f-V3_c-10",
+      "factors": "AFC",
+      "N": 4,
+      "keep_k": 2,
+      "keep_eta": 0.5,
+      "keep_t_last_s": 60.0,
+      "reschedule_k": 4,
+      "reschedule_eta": 1.0,
+      "reschedule_t_last_s": 22.553871735004932,
+      "decision": "replace_pending_queues",
+      "comparison": "win",
+      "jobs": {
+        "T1": [
+          1.5320327145575703,
+          [
+            "V3",
+            "V5"
+          ]
+        ],
+        "T2": [
+          22.553871735004932,
+          [
+            "V1",
+            "V4"
+          ]
+        ],
+        "T3": [
+          12.765520507043483,
+          [
+            "V1",
+            "V5"
+          ]
+        ],
+        "T4": [
+          22.247319425499672,
+          [
+            "V2",
+            "V5"
+          ]
+        ]
+      }
+    }
+  ],
+  "source_sha256": {
+    "experiments/b/scene.json": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "experiments/b/snapshots/q2_numerical/summary.json": "33d96078dec8a0034cb5596934a184b40a7223dee7721df8a2b36d0c8cddc15e",
+    "experiments/b/q4_retention/retention.py": "3098870f479b66e4230214fef63a7812fd4070604415988b0b3d5867d4f4ca62",
+    "experiments/b/q4_audit/audit.py": "4cd836aa32ec394e4ce6b84fb17531786fa5b115abddd2a409ee6e5ed6ba7525",
+    "experiments/b/q4_reschedule/geometry.py": "1cdd7ecc64b781b094bba37e52ffc23212cb8fa64013c81b7d4be47b2ec8655f",
+    "experiments/b/q4_reschedule/reschedule.py": "b979b2436d3490ffccb225589805944afadee3b69ef858e2dc3e2c86508dff8b",
+    "experiments/b/q4_reschedule/verify.py": "2ca0b1f8a0b3e2f1a8adf0f653ac6b046de989d9716580a80497c2cfff86a768",
+    "experiments/b/q4_scenarios/manifest.json": "2e16e0a553272c2c7cb214711dc7977d335c4153fcae0c0338c59024a24212fd",
+    "experiments/b/q4_scenarios/sensitivity.json": "856d68efe358c9e7db50a25fbece254db21f9d7ba88e2203ab37bd55f23df538"
+  }
+}
