@@ -4,8 +4,9 @@
 
 - 正式运行 ID：`20261120T105624Z_byf9quhb`（本地 `runs/q1/`，`runs/` 按仓库约定不入库）。
 - 运行日期：2026-11-20。
-- 代码基线提交：`4f5334ee22b0af3517601d5357d121795e685243`。
-- 入库分支：`yyl-b1`。代码版本以 `summary.json` 的 `run.source_sha256` 为准；该字段逐文件记录 `src/run.py`、`src/q1/*.py` 的 SHA-256。
+- 运行时基线：`main` 上的 `4f5334ee22b0af3517601d5357d121795e685243`。
+- 归档位置：`yyl-b1` 分支；归档时已并入该分支已有的 C 题提交，代码版本仍以 `summary.json` 的 `run.source_sha256` 为准。
+- 代码版本：`summary.json` 的 `run.source_sha256` 逐文件记录 `src/run.py`、`src/q1/*.py` 的 SHA-256；该哈希与归档源码一致。
 - 题面：`problem/B/2026_“ShuWei Cup”B_Problem.pdf`，第 1–3 页。SHA-256 `9585081e724cef939d4e5713ea72f9eddefd4469a3b519a8ce184677d407692a`。
 
 ## 环境
