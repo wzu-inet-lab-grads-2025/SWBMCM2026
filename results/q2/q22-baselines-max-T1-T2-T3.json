@@ -1,0 +1,1135 @@
+{
+  "schema": "b.nominal-replay.v1",
+  "config": {
+    "scene": "../../experiments/b/scene.json",
+    "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "order": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "stations": [
+      [
+        14,
+        86
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        15.042068482523437,
+        87.07839997436871
+      ],
+      [
+        15.042402841710667,
+        87.07805683386269
+      ],
+      [
+        16.765599428764858,
+        88.65893236587225
+      ],
+      [
+        16.76560517629299,
+        88.65894225954514
+      ],
+      [
+        50,
+        93
+      ],
+      [
+        72.70860061292497,
+        1.5000000000000155
+      ],
+      [
+        88,
+        10
+      ],
+      [
+        88,
+        68
+      ],
+      [
+        88,
+        71
+      ],
+      [
+        88.0617924528964,
+        70.80002275602222
+      ]
+    ],
+    "snapshot_s": 5,
+    "record_until_s": 60
+  },
+  "plan": {
+    "schema": "b.plan.v1",
+    "method": "max",
+    "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "jobs": [
+      {
+        "target": "T1",
+        "legs": [
+          {
+            "vehicle": "V2",
+            "station": [
+              88,
+              10
+            ],
+            "path": [
+              [
+                88,
+                10
+              ],
+              [
+                88,
+                10
+              ]
+            ]
+          },
+          {
+            "vehicle": "V3",
+            "station": [
+              14,
+              86
+            ],
+            "path": [
+              [
+                14,
+                86
+              ],
+              [
+                14,
+                86
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "target": "T2",
+        "legs": [
+          {
+            "vehicle": "V1",
+            "station": [
+              15,
+              14
+            ],
+            "path": [
+              [
+                15,
+                14
+              ],
+              [
+                15,
+                14
+              ]
+            ]
+          },
+          {
+            "vehicle": "V3",
+            "station": [
+              14,
+              86
+            ],
+            "path": [
+              [
+                14,
+                86
+              ],
+              [
+                14,
+                86
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "target": "T3",
+        "legs": [
+          {
+            "vehicle": "V1",
+            "station": [
+              15,
+              14
+            ],
+            "path": [
+              [
+                15,
+                14
+              ],
+              [
+                15,
+                14
+              ]
+            ]
+          },
+          {
+            "vehicle": "V2",
+            "station": [
+              88,
+              10
+            ],
+            "path": [
+              [
+                88,
+                10
+              ],
+              [
+                88,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "git_head": "0188fda1f926f248b8a7ed113376b654f613f0af",
+    "src_sha256": "f555578cf6732d6a2bd783b39cdde463183c76a9fec94efe0d5733f434ea176a",
+    "config_sha256": "067d40adf2174d23ddb19f80c2dd3b5d206a8ded3bbb54c64f78196f37b45233",
+    "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568"
+  },
+  "rotation_model": "independent_rate_limited_axes",
+  "events": [
+    {
+      "vehicle": "V1",
+      "target": "T2",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 0.0,
+      "t1": 0.0,
+      "path": [
+        [
+          15,
+          14
+        ],
+        [
+          15,
+          14
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T2",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 0.0,
+      "t1": 3.129447985978156,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ],
+      "gimbal_goal_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T1",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 0.0,
+      "t1": 0.0,
+      "path": [
+        [
+          88,
+          10
+        ],
+        [
+          88,
+          10
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T1",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 0.0,
+      "t1": 3.1068082870175076,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        93.20424861052523,
+        35.585472716113074
+      ],
+      "gimbal_goal_deg": [
+        93.20424861052523,
+        35.585472716113074
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T1",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 0.0,
+      "t1": 0.0,
+      "path": [
+        [
+          14,
+          86
+        ],
+        [
+          14,
+          86
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T1",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 0.0,
+      "t1": 1.0232166558356495,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ],
+      "gimbal_goal_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ]
+    },
+    {
+      "vehicle": "V4",
+      "kind": "idle",
+      "target": null,
+      "t0": 0.0,
+      "t1": 60,
+      "station": [
+        88,
+        68
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V5",
+      "kind": "idle",
+      "target": null,
+      "t0": 0.0,
+      "t1": 60,
+      "station": [
+        50,
+        93
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T1",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "wait",
+      "t0": 1.0232166558356495,
+      "t1": 3.1068082870175076,
+      "gimbal0_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ],
+      "gimbal1_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T1",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 3.1068082870175076,
+      "t1": 8.106808287017508,
+      "gimbal0_deg": [
+        93.20424861052523,
+        35.585472716113074
+      ],
+      "gimbal1_deg": [
+        93.20424861052523,
+        35.585472716113074
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T1",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 3.1068082870175076,
+      "t1": 8.106808287017508,
+      "gimbal0_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ],
+      "gimbal1_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T2",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "wait",
+      "t0": 3.129447985978156,
+      "t1": 12.543759817053367,
+      "gimbal0_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ],
+      "gimbal1_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T1",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 8.106808287017508,
+      "t1": 11.213616574035015,
+      "gimbal0_deg": [
+        93.20424861052523,
+        35.585472716113074
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T1",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 8.106808287017508,
+      "t1": 9.130024942853158,
+      "gimbal0_deg": [
+        -12.762012880472385,
+        30.696499675069486
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T2",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 9.130024942853158,
+      "t1": 9.130024942853158,
+      "path": [
+        [
+          14,
+          86
+        ],
+        [
+          14,
+          86
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T2",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 9.130024942853158,
+      "t1": 12.543759817053367,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        -102.41204622600624,
+        67.27209777583307
+      ],
+      "gimbal_goal_deg": [
+        -102.41204622600624,
+        67.27209777583307
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T3",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 11.213616574035015,
+      "t1": 11.213616574035015,
+      "path": [
+        [
+          88,
+          10
+        ],
+        [
+          88,
+          10
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T3",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 11.213616574035015,
+      "t1": 16.991205928019976,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ],
+      "gimbal_goal_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T2",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 12.543759817053367,
+      "t1": 17.543759817053367,
+      "gimbal0_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ],
+      "gimbal1_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T2",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 12.543759817053367,
+      "t1": 17.543759817053367,
+      "gimbal0_deg": [
+        -102.41204622600624,
+        67.27209777583307
+      ],
+      "gimbal1_deg": [
+        -102.41204622600624,
+        67.27209777583307
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T3",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "wait",
+      "t0": 16.991205928019976,
+      "t1": 22.332111045014816,
+      "gimbal0_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ],
+      "gimbal1_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T2",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 17.543759817053367,
+      "t1": 20.673207803031524,
+      "gimbal0_deg": [
+        93.88343957934468,
+        29.371127957936388
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "target": "T2",
+      "station": [
+        14,
+        86
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 17.543759817053367,
+      "t1": 20.957494691253576,
+      "gimbal0_deg": [
+        -102.41204622600624,
+        67.27209777583307
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T3",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "drive",
+      "t0": 20.673207803031524,
+      "t1": 20.673207803031524,
+      "path": [
+        [
+          15,
+          14
+        ],
+        [
+          15,
+          14
+        ]
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T3",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "slew",
+      "t0": 20.673207803031524,
+      "t1": 22.332111045014816,
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ],
+      "gimbal_goal_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ]
+    },
+    {
+      "vehicle": "V3",
+      "kind": "idle",
+      "target": null,
+      "t0": 20.957494691253576,
+      "t1": 60,
+      "station": [
+        14,
+        86
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T3",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 22.332111045014816,
+      "t1": 27.332111045014816,
+      "gimbal0_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ],
+      "gimbal1_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T3",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "observe",
+      "t0": 22.332111045014816,
+      "t1": 27.332111045014816,
+      "gimbal0_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ],
+      "gimbal1_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "target": "T3",
+      "station": [
+        15,
+        14
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 27.332111045014816,
+      "t1": 28.99101428699811,
+      "gimbal0_deg": [
+        -0.9010923443705342,
+        49.76709725949876
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "target": "T3",
+      "station": [
+        88,
+        10
+      ],
+      "command_issued_s": 0.0,
+      "command_effective_s": 0.0,
+      "kind": "reset",
+      "t0": 27.332111045014816,
+      "t1": 33.10970039899978,
+      "gimbal0_deg": [
+        173.3276806195488,
+        61.85158768261381
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal_goal_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V1",
+      "kind": "idle",
+      "target": null,
+      "t0": 28.99101428699811,
+      "t1": 60,
+      "station": [
+        15,
+        14
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "vehicle": "V2",
+      "kind": "idle",
+      "target": null,
+      "t0": 33.10970039899978,
+      "t1": 60,
+      "station": [
+        88,
+        10
+      ],
+      "gimbal0_deg": [
+        0.0,
+        0.0
+      ],
+      "gimbal1_deg": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "trace_complete_until_s": 60,
+  "score": {
+    "start_s": {
+      "T1": 3.1068082870175076,
+      "T2": 12.543759817053367,
+      "T3": 22.332111045014816
+    },
+    "latest_start_s": 22.332111045014816
+  },
+  "snapshot": {
+    "t_s": 5,
+    "vehicles": {
+      "V1": {
+        "phase": "wait",
+        "target": "T2",
+        "position_xy_m": [
+          15,
+          14
+        ],
+        "gimbal_deg": [
+          93.88343957934468,
+          29.371127957936388
+        ]
+      },
+      "V2": {
+        "phase": "observe",
+        "target": "T1",
+        "position_xy_m": [
+          88,
+          10
+        ],
+        "gimbal_deg": [
+          93.20424861052523,
+          35.585472716113074
+        ]
+      },
+      "V3": {
+        "phase": "observe",
+        "target": "T1",
+        "position_xy_m": [
+          14,
+          86
+        ],
+        "gimbal_deg": [
+          -12.762012880472385,
+          30.696499675069486
+        ]
+      },
+      "V4": {
+        "phase": "idle",
+        "target": null,
+        "position_xy_m": [
+          88,
+          68
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ]
+      },
+      "V5": {
+        "phase": "idle",
+        "target": null,
+        "position_xy_m": [
+          50,
+          93
+        ],
+        "gimbal_deg": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "allocation": {
+    "rule": "max",
+    "order": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "latest_s": 22.332111045014816,
+    "total_drive_m": 0.0,
+    "total_wait_s": 16.838808579251907,
+    "jobs": [
+      {
+        "target": "T1",
+        "start_s": 3.1068082870175076,
+        "primary_ties": 3,
+        "legs": [
+          {
+            "vehicle": "V2",
+            "station": [
+              88,
+              10
+            ],
+            "wait_s": 0.0,
+            "drive_m": 0.0,
+            "ready_s": 3.1068082870175076
+          },
+          {
+            "vehicle": "V3",
+            "station": [
+              14,
+              86
+            ],
+            "wait_s": 2.083591631181858,
+            "drive_m": 0.0,
+            "ready_s": 1.0232166558356495
+          }
+        ]
+      },
+      {
+        "target": "T2",
+        "start_s": 12.543759817053367,
+        "primary_ties": 3,
+        "legs": [
+          {
+            "vehicle": "V1",
+            "station": [
+              15,
+              14
+            ],
+            "wait_s": 9.41431183107521,
+            "drive_m": 0.0,
+            "ready_s": 3.129447985978156
+          },
+          {
+            "vehicle": "V3",
+            "station": [
+              14,
+              86
+            ],
+            "wait_s": 0.0,
+            "drive_m": 0.0,
+            "ready_s": 12.543759817053367
+          }
+        ]
+      },
+      {
+        "target": "T3",
+        "start_s": 22.332111045014816,
+        "primary_ties": 6,
+        "legs": [
+          {
+            "vehicle": "V1",
+            "station": [
+              15,
+              14
+            ],
+            "wait_s": 0.0,
+            "drive_m": 0.0,
+            "ready_s": 22.332111045014816
+          },
+          {
+            "vehicle": "V2",
+            "station": [
+              88,
+              10
+            ],
+            "wait_s": 5.34090511699484,
+            "drive_m": 0.0,
+            "ready_s": 16.991205928019976
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "travel_m": 0.0,
+    "reading": "actual",
+    "cone_probability": 0.9999956470390372,
+    "angular_probability": 0.9999956470390369,
+    "absolute_difference": 3.3306690738754696e-16,
+    "angular_quad_error_estimate": 1.2332638488317372e-14
+  },
+  {
+    "travel_m": 0.0,
+    "reading": "command",
+    "cone_probability": 1.0,
+    "angular_probability": 1.0,
+    "absolute_difference": 0.0,
+    "angular_quad_error_estimate": 1.2333874203921888e-14
+  },
+  {
+    "travel_m": 10.0,
+    "reading": "actual",
+    "cone_probability": 0.9999519091108,
+    "angular_probability": 0.9999519091108003,
+    "absolute_difference": 3.3306690738754696e-16,
+    "angular_quad_error_estimate": 1.3630393810121842e-14
+  },
+  {
+    "travel_m": 10.0,
+    "reading": "command",
+    "cone_probability": 0.9999999999968855,
+    "angular_probability": 0.9999999999968858,
+    "absolute_difference": 3.3306690738754696e-16,
+    "angular_quad_error_estimate": 1.111071036512449e-14
+  },
+  {
+    "travel_m": 20.0,
+    "reading": "actual",
+    "cone_probability": 0.999584605990462,
+    "angular_probability": 0.9995846059904616,
+    "absolute_difference": 3.3306690738754696e-16,
+    "angular_quad_error_estimate": 1.170538127319066e-14
+  },
+  {
+    "travel_m": 20.0,
+    "reading": "command",
+    "cone_probability": 0.9999993652345474,
+    "angular_probability": 0.9999993652345475,
+    "absolute_difference": 1.1102230246251565e-16,
+    "angular_quad_error_estimate": 1.110222319893936e-14
+  },
+  {
+    "travel_m": 40.0,
+    "reading": "actual",
+    "cone_probability": 0.9925899363139282,
+    "angular_probability": 0.9925899363139284,
+    "absolute_difference": 2.220446049250313e-16,
+    "angular_quad_error_estimate": 3.1021138990938784e-14
+  },
+  {
+    "travel_m": 40.0,
+    "reading": "command",
+    "cone_probability": 0.9984719327835908,
+    "angular_probability": 0.9984719327835909,
+    "absolute_difference": 1.1102230246251565e-16,
+    "angular_quad_error_estimate": 1.1085265292183244e-14
+  },
+  {
+    "travel_m": 60.0,
+    "reading": "actual",
+    "cone_probability": 0.9649762769992829,
+    "angular_probability": 0.964976276999283,
+    "absolute_difference": 1.1102230246251565e-16,
+    "angular_quad_error_estimate": 4.1914433471696446e-13
+  },
+  {
+    "travel_m": 60.0,
+    "reading": "command",
+    "cone_probability": 0.979882712198948,
+    "angular_probability": 0.9798827121989482,
+    "absolute_difference": 2.220446049250313e-16,
+    "angular_quad_error_estimate": 1.087888348515418e-14
+  },
+  {
+    "travel_m": 66.83725842794442,
+    "reading": "actual",
+    "cone_probability": 0.9500000000000001,
+    "angular_probability": 0.9500000000000001,
+    "absolute_difference": 0.0,
+    "angular_quad_error_estimate": 4.25770702534634e-13
+  },
+  {
+    "travel_m": 66.83725842794442,
+    "reading": "command",
+    "cone_probability": 0.9668264950933683,
+    "angular_probability": 0.966826495093368,
+    "absolute_difference": 2.220446049250313e-16,
+    "angular_quad_error_estimate": 1.0733930356702982e-14
+  },
+  {
+    "travel_m": 73.93606559623701,
+    "reading": "actual",
+    "cone_probability": 0.9320089068649148,
+    "angular_probability": 0.9320089068649146,
+    "absolute_difference": 2.220446049250313e-16,
+    "angular_quad_error_estimate": 1.0646821160637496e-14
+  },
+  {
+    "travel_m": 73.93606559623701,
+    "reading": "command",
+    "cone_probability": 0.95,
+    "angular_probability": 0.95,
+    "absolute_difference": 0.0,
+    "angular_quad_error_estimate": 1.0547118733938987e-14
+  },
+  {
+    "travel_m": 80.0,
+    "reading": "actual",
+    "cone_probability": 0.9150682311608251,
+    "angular_probability": 0.915068231160825,
+    "absolute_difference": 1.1102230246251565e-16,
+    "angular_quad_error_estimate": 1.0161271464047197e-14
+  },
+  {
+    "travel_m": 80.0,
+    "reading": "command",
+    "cone_probability": 0.9334732296185209,
+    "angular_probability": 0.933473229618521,
+    "absolute_difference": 1.1102230246251565e-16,
+    "angular_quad_error_estimate": 1.0363634723936876e-14
+  }
+]

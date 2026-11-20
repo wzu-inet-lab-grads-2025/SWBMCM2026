@@ -1,0 +1,2892 @@
+{
+  "schema": "b.baseline-comparison.v1",
+  "provenance": {
+    "git_head": "0188fda1f926f248b8a7ed113376b654f613f0af",
+    "src_sha256": "f555578cf6732d6a2bd783b39cdde463183c76a9fec94efe0d5733f434ea176a",
+    "config_sha256": "067d40adf2174d23ddb19f80c2dd3b5d206a8ded3bbb54c64f78196f37b45233",
+    "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568"
+  },
+  "config": {
+    "scene": "../../experiments/b/scene.json",
+    "scene_sha256": "5bbd194eddc92a9870339d7b3079ba9265fad5a88615a9621e4aee778d2e6568",
+    "order": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "stations": [
+      [
+        14,
+        86
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        15.042068482523437,
+        87.07839997436871
+      ],
+      [
+        15.042402841710667,
+        87.07805683386269
+      ],
+      [
+        16.765599428764858,
+        88.65893236587225
+      ],
+      [
+        16.76560517629299,
+        88.65894225954514
+      ],
+      [
+        50,
+        93
+      ],
+      [
+        72.70860061292497,
+        1.5000000000000155
+      ],
+      [
+        88,
+        10
+      ],
+      [
+        88,
+        68
+      ],
+      [
+        88,
+        71
+      ],
+      [
+        88.0617924528964,
+        70.80002275602222
+      ]
+    ],
+    "snapshot_s": 5,
+    "record_until_s": 60
+  },
+  "rows": [
+    {
+      "rule": "sum",
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "latest_s": 22.332111045014816,
+      "total_drive_m": 0.0,
+      "total_wait_s": 16.838808579251907,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 9.41431183107521,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 22.332111045014816,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 22.332111045014816
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 5.34090511699484,
+              "drive_m": 0.0,
+              "ready_s": 16.991205928019976
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "latest_s": 22.332111045014816,
+      "total_drive_m": 0.0,
+      "total_wait_s": 16.838808579251907,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 9.41431183107521,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 22.332111045014816,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 22.332111045014816
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 5.34090511699484,
+              "drive_m": 0.0,
+              "ready_s": 16.991205928019976
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "latest_s": 10.968984244492779,
+      "total_drive_m": 0.0,
+      "total_wait_s": 10.217888245828798,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 7.839536258514623,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 10.968984244492779
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 1.8695359286929025,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "latest_s": 10.968984244492779,
+      "total_drive_m": 0.0,
+      "total_wait_s": 10.217888245828798,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 7.839536258514623,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 10.968984244492779
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 1.8695359286929025,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "latest_s": 10.829585935957326,
+      "total_drive_m": 20.29575795796687,
+      "total_wait_s": 4.685239096310309,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 6.89142787637113,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 3.7619798903929738,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88.0617924528964,
+                70.80002275602222
+              ],
+              "wait_s": 0.0,
+              "drive_m": 2.8007045080617123,
+              "ready_s": 6.89142787637113
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 10.829585935957326,
+          "primary_ties": 2,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                72.70860061292497,
+                1.5000000000000155
+              ],
+              "wait_s": 0.4144431472960637,
+              "drive_m": 17.495053449905157,
+              "ready_s": 10.415142788661262
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 10.829585935957326
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum",
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "latest_s": 26.779557155981426,
+      "total_drive_m": 0.0,
+      "total_wait_s": 31.6516916561466,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 16.991205928019976,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 15.332302686036684,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 16.991205928019976
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 26.779557155981426,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 26.779557155981426
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 14.235797338928059,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "latest_s": 26.779557155981426,
+      "total_drive_m": 0.0,
+      "total_wait_s": 31.6516916561466,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 16.991205928019976,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 15.332302686036684,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 16.991205928019976
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 26.779557155981426,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 26.779557155981426
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 14.235797338928059,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "latest_s": 13.13920784472012,
+      "total_drive_m": 0.0,
+      "total_wait_s": 4.928189842157379,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 2.2491501833087657,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 13.13920784472012,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.1702236002273416,
+              "drive_m": 0.0,
+              "ready_s": 10.968984244492779
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 13.13920784472012
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "latest_s": 13.13920784472012,
+      "total_drive_m": 0.0,
+      "total_wait_s": 4.928189842157379,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 2.2491501833087657,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 13.13920784472012,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.1702236002273416,
+              "drive_m": 0.0,
+              "ready_s": 10.968984244492779
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 13.13920784472012
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T1",
+        "T3",
+        "T2"
+      ],
+      "latest_s": 10.968984244492779,
+      "total_drive_m": 17.495053449905157,
+      "total_wait_s": 3.529206461332781,
+      "jobs": [
+        {
+          "target": "T1",
+          "start_s": 1.5320327144569215,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.508816058621272,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 2.2491501833087657,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 10.968984244492779,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                72.70860061292497,
+                1.5000000000000155
+              ],
+              "wait_s": 0.7712402194027437,
+              "drive_m": 17.495053449905157,
+              "ready_s": 10.197744025090035
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 10.968984244492779
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum",
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "latest_s": 26.735084045238537,
+      "total_drive_m": 0.0,
+      "total_wait_s": 23.56116294851749,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 9.74387811721856,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 26.735084045238537,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 13.532997943076879,
+              "drive_m": 0.0,
+              "ready_s": 13.202086102161658
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 26.735084045238537
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "latest_s": 26.735084045238537,
+      "total_drive_m": 0.0,
+      "total_wait_s": 23.56116294851749,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 9.74387811721856,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 26.735084045238537,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 13.532997943076879,
+              "drive_m": 0.0,
+              "ready_s": 13.202086102161658
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 26.735084045238537
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "latest_s": 12.404361508517912,
+      "total_drive_m": 0.0,
+      "total_wait_s": 10.355370544008492,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.574775572560586,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 8.496308083225854,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.404361508517912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "latest_s": 12.404361508517912,
+      "total_drive_m": 0.0,
+      "total_wait_s": 10.355370544008492,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.574775572560586,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 8.496308083225854,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.404361508517912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T2",
+        "T1",
+        "T3"
+      ],
+      "latest_s": 12.404361508517912,
+      "total_drive_m": 0.0,
+      "total_wait_s": 10.355370544008492,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.574775572560586,
+              "drive_m": 0.0,
+              "ready_s": 1.5320327144569215
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 12.404361508517912,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 8.496308083225854,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.404361508517912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum",
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "latest_s": 27.086483743164127,
+      "total_drive_m": 0.0,
+      "total_wait_s": 21.944580975326808,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 13.202086102161658,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 13.202086102161658
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 7.424496748176698,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 27.086483743164127,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 27.086483743164127
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 14.235797338928059,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "latest_s": 27.086483743164127,
+      "total_drive_m": 0.0,
+      "total_wait_s": 21.944580975326808,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 13.202086102161658,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 13.202086102161658
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 7.424496748176698,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 27.086483743164127,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 27.086483743164127
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 14.235797338928059,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "latest_s": 12.850686404236068,
+      "total_drive_m": 0.0,
+      "total_wait_s": 11.170697923689188,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.142532918248575,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 9.74387811721856,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "latest_s": 12.850686404236068,
+      "total_drive_m": 0.0,
+      "total_wait_s": 11.170697923689188,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.142532918248575,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 9.74387811721856,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T2",
+        "T3",
+        "T1"
+      ],
+      "latest_s": 12.850686404236068,
+      "total_drive_m": 0.0,
+      "total_wait_s": 11.170697923689188,
+      "jobs": [
+        {
+          "target": "T2",
+          "start_s": 3.413734874200208,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.28428688822205217,
+              "drive_m": 0.0,
+              "ready_s": 3.129447985978156
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T3",
+          "start_s": 3.908053425292058,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                68
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.908053425292058
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 1.142532918248575,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.850686404236068,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 9.74387811721856,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.850686404236068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum",
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "latest_s": 29.09893852502329,
+      "total_drive_m": 0.0,
+      "total_wait_s": 36.29045439423032,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 4.118686112001669,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 19.66198699498743,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 19.66198699498743
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 18.63877033915178,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 29.09893852502329,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 13.532997943076879,
+              "drive_m": 0.0,
+              "ready_s": 15.56594058194641
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 29.09893852502329
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "latest_s": 29.09893852502329,
+      "total_drive_m": 0.0,
+      "total_wait_s": 36.29045439423032,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 4.118686112001669,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 19.66198699498743,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 19.66198699498743
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 18.63877033915178,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 29.09893852502329,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 13.532997943076879,
+              "drive_m": 0.0,
+              "ready_s": 15.56594058194641
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 29.09893852502329
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "latest_s": 12.553871735004932,
+      "total_drive_m": 0.0,
+      "total_wait_s": 3.2003208141936144,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.553871735004932
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.01011191795156563,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "latest_s": 12.553871735004932,
+      "total_drive_m": 0.0,
+      "total_wait_s": 3.2003208141936144,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.553871735004932
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.01011191795156563,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T3",
+        "T1",
+        "T2"
+      ],
+      "latest_s": 12.543759817053367,
+      "total_drive_m": 3.0,
+      "total_wait_s": 8.771183002724545,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 3.1068082870175076,
+          "primary_ties": 5,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 2.083591631181858,
+              "drive_m": 0.0,
+              "ready_s": 1.0232166558356495
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.543759817053367,
+          "primary_ties": 2,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.543759817053367
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88,
+                71
+              ],
+              "wait_s": 5.580974106482497,
+              "drive_m": 3.0,
+              "ready_s": 6.96278571057087
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum",
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "latest_s": 25.00289211198227,
+      "total_drive_m": 0.0,
+      "total_wait_s": 21.61179693674271,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 4.118686112001669,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 15.56594058194641,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 15.56594058194641
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 12.152205707746202,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 25.00289211198227,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 5.34090511699484,
+              "drive_m": 0.0,
+              "ready_s": 19.66198699498743
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 25.00289211198227
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max",
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "latest_s": 25.00289211198227,
+      "total_drive_m": 0.0,
+      "total_wait_s": 21.61179693674271,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 5.77758935398496,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 4.118686112001669,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 5.77758935398496
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 15.56594058194641,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 15.56594058194641
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 12.152205707746202,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 25.00289211198227,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 5.34090511699484,
+              "drive_m": 0.0,
+              "ready_s": 19.66198699498743
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 25.00289211198227
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "sum_time",
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "latest_s": 12.553871735004932,
+      "total_drive_m": 0.0,
+      "total_wait_s": 19.203019567391294,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.553871735004932
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 9.140136860804724,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 8.95626544152638,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.063073728543888
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "max_time",
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "latest_s": 12.553871735004932,
+      "total_drive_m": 0.0,
+      "total_wait_s": 19.203019567391294,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 6,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 12.553871735004932,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.553871735004932
+            },
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 9.140136860804724,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "primary_ties": 3,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 8.95626544152638,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.063073728543888
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": "ready",
+      "order": [
+        "T3",
+        "T2",
+        "T1"
+      ],
+      "latest_s": 12.063073728543888,
+      "total_drive_m": 2.8007045080617123,
+      "total_wait_s": 13.540575708757492,
+      "jobs": [
+        {
+          "target": "T3",
+          "start_s": 2.7655205070434827,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V1",
+              "station": [
+                15,
+                14
+              ],
+              "wait_s": 1.1066172650601906,
+              "drive_m": 0.0,
+              "ready_s": 1.658903241983292
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 2.7655205070434827
+            }
+          ]
+        },
+        {
+          "target": "T2",
+          "start_s": 6.89142787637113,
+          "primary_ties": 5,
+          "legs": [
+            {
+              "vehicle": "V3",
+              "station": [
+                14,
+                86
+              ],
+              "wait_s": 3.4776930021709216,
+              "drive_m": 0.0,
+              "ready_s": 3.413734874200208
+            },
+            {
+              "vehicle": "V4",
+              "station": [
+                88.0617924528964,
+                70.80002275602222
+              ],
+              "wait_s": 0.0,
+              "drive_m": 2.8007045080617123,
+              "ready_s": 6.89142787637113
+            }
+          ]
+        },
+        {
+          "target": "T1",
+          "start_s": 12.063073728543888,
+          "primary_ties": 1,
+          "legs": [
+            {
+              "vehicle": "V2",
+              "station": [
+                88,
+                10
+              ],
+              "wait_s": 8.95626544152638,
+              "drive_m": 0.0,
+              "ready_s": 3.1068082870175076
+            },
+            {
+              "vehicle": "V5",
+              "station": [
+                50,
+                93
+              ],
+              "wait_s": 0.0,
+              "drive_m": 0.0,
+              "ready_s": 12.063073728543888
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
