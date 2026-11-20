@@ -5,6 +5,7 @@ OpenAI GPT family, 2026-11-20. Exact release date unavailable.
 """
 
 import argparse
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -27,8 +28,25 @@ else:
 METHODS = [('no_request', 0, 0), ('request_first', 500, 0), ('request_at_1s', 500, SECOND)]
 
 
-def training(root):
-    totals = []
+@dataclass
+class PairedWindow:
+    record: str
+    environment: str
+    clock: np.ndarray
+    mask_end_ns: int
+    anchor_ns: int
+    initial: np.ndarray
+    truth: np.ndarray
+    scale: np.ndarray
+
+    def receive(self, source_ns):
+        i = self.clock.searchsorted(source_ns)
+        if i >= len(self.clock) or self.clock[i] != source_ns:
+            raise ValueError('Returned packet must refer to an actual requested sample')
+        return self.truth[i].copy()
+
+
+def paired_windows(root):
     for record, folder, meta in split_records(root, 'train'):
         if folder.parent.name == 'EgoDemo':
             continue
@@ -43,24 +61,22 @@ def training(root):
                 scale = [history_scale(size[s][start:first]) for s in SIDES]
                 if any(value is None for value in scale):
                     raise ValueError('Changed paired denominator relative to the audited scale pool')
-                clock = times[first:end]
-                anchor = times[first-1]
+                yield PairedWindow(record, meta['environment_id'], times[first:end], int(times[start])+3*SECOND,
+                                   int(times[first-1]), pairs[first-1], pairs[first:end], np.asarray(scale))
 
-                def receive(source_ns):
-                    i = clock.searchsorted(source_ns)
-                    if i >= len(clock) or clock[i] != source_ns:
-                        raise ValueError('Returned packet must refer to an actual requested sample')
-                    return pairs[first+i].copy()
 
-                for method, delay, wait_ns in METHODS:
-                    prediction, (requests, receipts, cost, pending) = replay(clock, pairs[first-1], delay, receive,
-                                                                             request_not_before_ns=anchor+wait_ns)
-                    errors = np.linalg.norm(prediction - pairs[first:end], axis=2)
-                    totals.append(dict(method=method, environment=meta['environment_id'], record=record,
-                                       windows=1, points=len(clock), requests=requests, receipts=receipts,
-                                       cost=cost, pending_s=pending, left_cm=100*errors[:, 0].sum(),
-                                       right_cm=100*errors[:, 1].sum(), left_relative=errors[:, 0].sum()/scale[0],
-                                       right_relative=errors[:, 1].sum()/scale[1]))
+def training(root):
+    totals = []
+    for w in paired_windows(root):
+        for method, delay, wait_ns in METHODS:
+            prediction, (requests, receipts, cost, pending) = replay(w.clock, w.initial, delay, w.receive,
+                                                                     request_not_before_ns=w.anchor_ns+wait_ns)
+            errors = np.linalg.norm(prediction - w.truth, axis=2)
+            totals.append(dict(method=method, environment=w.environment, record=w.record,
+                               windows=1, points=len(w.clock), requests=requests, receipts=receipts,
+                               cost=cost, pending_s=pending, left_cm=100*errors[:, 0].sum(),
+                               right_cm=100*errors[:, 1].sum(), left_relative=errors[:, 0].sum()/w.scale[0],
+                               right_relative=errors[:, 1].sum()/w.scale[1]))
     return pd.DataFrame(totals)
 
 

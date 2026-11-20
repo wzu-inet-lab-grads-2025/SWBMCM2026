@@ -17,16 +17,19 @@ else:
     from c_records import ROOT, rows, split_records
 
 
-def events(samples):
+def events(samples, *, continuous_occlusion=False):
     clocks, flags, occ = [], [], []
     for r in samples:
         clocks.append(int(r['header.ts']))
         flag = r['is_bad'].strip().lower()
         if flag not in ('true', 'false', '0', '1'):
             raise ValueError('Unexpected explicit flag')
-        flags.append(flag in ('true', '1'))
         occ.append(any(r[f'problem_type[{i}]'].strip() in ('left:occlusion', 'right:occlusion')
                        for i in range(int(r['problem_type.length']))))
+        bad = flag in ('true', '1')
+        if occ[-1] and not bad:
+            raise ValueError('Occlusion reason conflicts with explicit normal flag')
+        flags.append(occ[-1] if continuous_occlusion else bad)
     dt = np.diff(np.asarray(clocks, dtype=np.int64))
     if (dt <= 0).any():
         raise ValueError('Non-increasing clock')
@@ -35,9 +38,12 @@ def events(samples):
             if bad:
                 sequence = list(indices)
                 first, last = sequence[0], sequence[-1]
-                both = first > segment[0] and last < segment[-1]
-                yield dict(both_ends=both, onset_occlusion=occ[first], contains_occlusion=any(occ[i] for i in sequence),
-                           until_normal_ns=clocks[last+1]-clocks[first] if both else None)
+                start_seen, end_seen = first > segment[0], last < segment[-1]
+                both = start_seen and end_seen
+                yield dict(both_ends=both, start_seen=start_seen, end_seen=end_seen, onset_occlusion=occ[first],
+                           contains_occlusion=any(occ[i] for i in sequence),
+                           duration_ns=clocks[last+1]-clocks[first] if both else None,
+                           until_normal_ns=clocks[last+1]-clocks[first] if both and not continuous_occlusion else None)
 
 
 def main(root):
