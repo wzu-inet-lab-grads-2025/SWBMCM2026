@@ -1,0 +1,5 @@
+source,records,train,validation,test,pages,cameras,images,head_pairs,wrist_pairs,both_hands_confirmed,held_object_confirmed,partial_hand_confirmed,wrist_detail_confirmed
+EgoDemo,31,27,2,2,20,80,240,31,9,31,27,22,9
+EgoPro,14,8,4,2,14,56,168,14,14,14,14,13,14
+EgoStandard,24,20,1,3,12,48,144,24,0,24,18,16,0
+ALL,69,55,7,7,46,184,552,69,23,69,59,51,23

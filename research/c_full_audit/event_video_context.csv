@@ -1,0 +1,10 @@
+dataset,split,records,ticks,marked,spells,records_with_marks,displayed_panels,distinct_displayed_frames
+EgoDemo,test,2,648,0,0,0,0,0
+EgoDemo,train,27,14369,108,17,5,15,15
+EgoDemo,validation,2,1397,0,0,0,0,0
+EgoPro,test,2,3137,168,14,2,6,6
+EgoPro,train,8,9652,151,36,3,9,9
+EgoPro,validation,4,4853,91,20,2,6,6
+EgoStandard,test,3,8456,63,13,2,6,6
+EgoStandard,train,20,23025,211,30,7,21,21
+EgoStandard,validation,1,533,36,6,1,3,3

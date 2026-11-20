@@ -1,0 +1,7 @@
+axis,group_a,group_b,shared_episode_uuid_count,shared_environment_id_count,shared_scene_id_count,shared_operator_id_count
+split,train,validation,0,0,0,0
+split,train,test,0,0,0,3
+split,validation,test,0,0,0,0
+dataset,EgoDemo,EgoPro,0,1,1,0
+dataset,EgoDemo,EgoStandard,0,4,5,5
+dataset,EgoPro,EgoStandard,0,1,0,0

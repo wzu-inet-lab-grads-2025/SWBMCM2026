@@ -1,0 +1,10 @@
+dataset,split,records,files,head_left,head_right,left_wrist,right_wrist
+EgoDemo,test,2,4,2,2,0,0
+EgoDemo,train,27,72,27,27,9,9
+EgoDemo,validation,2,4,2,2,0,0
+EgoPro,test,2,8,2,2,2,2
+EgoPro,train,8,32,8,8,8,8
+EgoPro,validation,4,16,4,4,4,4
+EgoStandard,test,3,6,3,3,0,0
+EgoStandard,train,20,40,20,20,0,0
+EgoStandard,validation,1,2,1,1,0,0

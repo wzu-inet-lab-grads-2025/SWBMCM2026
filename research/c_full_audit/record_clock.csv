@@ -1,0 +1,6 @@
+dataset,alternative_clock,records,ticks,segments,changed_segments,any_membership_changed,union_membership_changed,alternative_half_unique,alternative_half_segment_sum,alternative_half_multiply_covered
+EgoDemo,frame_over_fps,31,16414,118,26,18,9,16281,16281,0
+EgoPro,metadata_header,14,17642,71,25,29,12,17566,17566,0
+EgoPro,per_segment_header,14,17642,71,0,0,0,17570,17570,0
+EgoStandard,metadata_header,24,32014,160,49,54,13,31904,31904,0
+EgoStandard,per_segment_header,24,32014,160,1,1,0,31905,31906,1

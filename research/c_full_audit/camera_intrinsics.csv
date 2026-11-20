@@ -1,0 +1,11 @@
+dataset,view,clips,finite_positive_focal,image_size_agrees,center_inside,intrinsics_change,distortion_nonzero,world_pose_file_or_field
+EgoDemo,head_left,31,31,31,31,0,0,31
+EgoDemo,head_right,31,31,31,31,0,0,31
+EgoDemo,left_wrist,9,9,9,9,0,0,0
+EgoDemo,right_wrist,9,9,9,9,0,0,0
+EgoPro,head_left,14,14,14,14,0,0,14
+EgoPro,head_right,14,14,14,14,0,0,14
+EgoPro,left_wrist,14,14,14,14,0,0,0
+EgoPro,right_wrist,14,14,14,14,0,0,0
+EgoStandard,head_left,24,24,24,24,0,0,24
+EgoStandard,head_right,24,24,24,24,0,0,24
