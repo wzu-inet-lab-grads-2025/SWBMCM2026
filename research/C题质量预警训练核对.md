@@ -13,6 +13,9 @@
 
 [按环境和来源汇总](q1_quality_transitions.csv) · [计数脚本](../experiments/c_q1_quality_transitions.py)。AI 辅助本次只读训练标记、统计和复核。
 
+补充按连续坏段处理。`--events` 将相邻坏标记合并，在记录边缘与超过 50 毫秒的间隔处断开。对每段分别标记是否看到了从正常到坏的起点、从坏到正常的恢复点。28 条训练 CSV 中共有 66 段，65 段看到了起点，66 段看到了恢复，1 段在记录开始时已经标坏。预警起点使用 65 作分母，分析恢复可以使用全部 66 段。Demo 的稀疏未列时刻保持未知。[按来源与环境的事件计数](q1_quality_events.csv)
+
 ```bash
 /mnt/disk/zhoutianyu/miniconda3/bin/python -B experiments/c_q1_quality_transitions.py --root ../SWBMCM2026/data/raw/C
+/mnt/disk/zhoutianyu/miniconda3/bin/python -B experiments/c_q1_quality_transitions.py --events
 ```

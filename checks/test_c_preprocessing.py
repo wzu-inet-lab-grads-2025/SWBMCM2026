@@ -15,6 +15,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'experiments'))
 from c_q1_quality_transitions import transitions
 from c_q2_windows import qualified_runs, wrist_inputs
+from c_records import official_records
 
 
 def write_table(path, header, data):
@@ -25,6 +26,28 @@ def write_table(path, header, data):
 
 
 class PreprocessingChecks(unittest.TestCase):
+    def test_bad_run_boundaries_with_a_gap_and_record_end(self):
+        samples = [{'header.ts': time, 'is_bad': flag} for time, flag in
+                   [(1, '1'), (2, '0'), (3, '1'), (60_000_004, '1'), (60_000_005, '0'), (60_000_006, '1')]]
+        c = transitions(samples)
+        self.assertEqual((c['bad_runs'], c['good_bad'], c['bad_good']), (4, 2, 2))
+        self.assertEqual((c['unknown_start'], c['unknown_end'], c['both_ends_seen']), (2, 2, 0))
+
+    def test_record_index_rejects_shared_environment_and_duplicate_episode(self):
+        header = ['episode_uuid', 'environment_id', 'split']
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            rules = root/'Restocking_Tasks_and_Constraints'
+            rules.mkdir()
+            path = rules/'record_split.csv'
+            first = ['A', 'shop', 'train']
+            write_table(path, header, [first, ['B', 'shop', 'train']])
+            self.assertEqual(len(official_records(root)), 2)
+            for second in (['B', 'shop', 'validation'], ['A', 'restaurant', 'train']):
+                write_table(path, header, [first, second])
+                with self.assertRaises(ValueError):
+                    official_records(root)
+
     def test_quality_boundaries(self):
         origin = 1_700_000_000_000_000_000
         rows = [{'header.ts': origin + delta, 'is_bad': flag}

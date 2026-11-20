@@ -15,8 +15,10 @@ import pandas as pd
 
 if __package__:
     from .c_audit_quality import ROOT, SIDES, raw_metadata, rows
+    from .c_records import split_records
 else:
     from c_audit_quality import ROOT, SIDES, raw_metadata, rows
+    from c_records import split_records
 
 
 def qualified_runs(times, usable):
@@ -65,26 +67,6 @@ def wrist_inputs(folder):
         masks[side] = normal & np.isfinite(xyz).all(axis=1) & (xyz != 0).any(axis=1)
     masks['both'] = masks['left'] & masks['right']
     return times, normal, points, masks
-
-
-def split_records(root, split):
-    if split not in ('train', 'validation'):
-        raise ValueError('The diagnostic supports train and validation')
-    rules = root / 'Restocking_Tasks_and_Constraints'
-    records = [r for r in rows(rules / 'record_split.csv') if r['split'] == split]
-    folders = {}
-    for r in rows(rules / 'source_segment_index.csv'):
-        if r['split'] == split:
-            folder = root / 'Raw_Data' / r['dataset'] / r['sample']
-            if folders.setdefault(r['episode_uuid'], folder) != folder:
-                raise ValueError('Conflicting folders for one episode')
-    for ordinal, record in enumerate(records, 1):
-        folder = folders[record['episode_uuid']]
-        meta = raw_metadata(folder)
-        if any(meta[key] != record[key] for key in ('episode_uuid', 'environment_id')):
-            raise ValueError('Raw metadata and split index disagree')
-        prefix = 'V' if split == 'validation' else 'T'
-        yield f'{prefix}{ordinal:02}', folder, meta
 
 
 def validation_records(root):
