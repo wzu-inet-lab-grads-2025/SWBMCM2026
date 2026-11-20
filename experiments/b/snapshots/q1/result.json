@@ -1,0 +1,947 @@
+{
+  "certificate": {
+    "target_xyz_m": [
+      84.64101615137756,
+      70.0,
+      45.0
+    ],
+    "r_lower_bound_m": 7.582060170463998,
+    "quality_upper_bound_per_m": 0.13189027487483038,
+    "selected_xy_m": [
+      91.15571085275944,
+      66.12103243422642
+    ],
+    "selected_vehicle": "V4",
+    "r_recomputed_m": 7.582060170464001,
+    "Q_recomputed_per_m": 0.13189027487483032,
+    "elevation_deg": 80.0,
+    "field_margins_m_order_xmin_ymin_xmax_ymax": [
+      89.65571085275944,
+      64.62103243422642,
+      7.344289147240559,
+      32.37896756577358
+    ],
+    "minimum_field_margin_m": 7.344289147240559,
+    "travel_tiebreak_m": 3.672741496410114,
+    "travel_lower_bound_by_vehicle_m": [
+      81.78164124457604,
+      52.51188937934764,
+      64.84827299803098,
+      3.6727414964101106,
+      33.999185602119596
+    ],
+    "all_three_constraints_pass": true,
+    "buildings": [
+      {
+        "building": "B1",
+        "center_to_footprint_m": 69.83174440519507,
+        "vehicle_clearance_m": 68.33174440519507,
+        "xy_separating_axis_gap_m": 50.641016151377556,
+        "occluded_by_3d_slab": false,
+        "occluded_by_shadow": false,
+        "shadow_scale": 1.72,
+        "shadow_vertices_xy_m": [
+          [
+            34.0,
+            16.0
+          ],
+          [
+            34.0,
+            26.0
+          ],
+          [
+            22.0,
+            26.0
+          ],
+          [
+            -23.101531628991836,
+            -5.679999999999993
+          ],
+          [
+            -23.101531628991836,
+            -22.879999999999995
+          ],
+          [
+            -2.4615316289918354,
+            -22.879999999999995
+          ]
+        ]
+      },
+      {
+        "building": "B2",
+        "center_to_footprint_m": 12.15571085275944,
+        "vehicle_clearance_m": 10.65571085275944,
+        "xy_separating_axis_gap_m": 5.641016151377556,
+        "occluded_by_3d_slab": false,
+        "occluded_by_shadow": false,
+        "shadow_scale": 2.5294117647058822,
+        "shadow_vertices_xy_m": [
+          [
+            29.901975297893152,
+            72.52941176470588
+          ],
+          [
+            29.901975297893152,
+            42.1764705882353
+          ],
+          [
+            70.37256353318728,
+            42.1764705882353
+          ],
+          [
+            79.0,
+            59.0
+          ],
+          [
+            79.0,
+            71.0
+          ],
+          [
+            70.37256353318728,
+            72.52941176470588
+          ]
+        ]
+      },
+      {
+        "building": "B3",
+        "center_to_footprint_m": 67.15571085275944,
+        "vehicle_clearance_m": 65.65571085275944,
+        "xy_separating_axis_gap_m": 60.641016151377556,
+        "occluded_by_3d_slab": false,
+        "occluded_by_shadow": false,
+        "shadow_scale": 1.303030303030303,
+        "shadow_vertices_xy_m": [
+          [
+            -12.618489742841675,
+            77.81818181818181
+          ],
+          [
+            -12.618489742841675,
+            63.484848484848484
+          ],
+          [
+            5.62393449958256,
+            63.484848484848484
+          ],
+          [
+            24.0,
+            65.0
+          ],
+          [
+            24.0,
+            76.0
+          ],
+          [
+            5.62393449958256,
+            77.81818181818181
+          ]
+        ]
+      },
+      {
+        "building": "B4",
+        "center_to_footprint_m": 32.53216990976605,
+        "vehicle_clearance_m": 31.032169909766047,
+        "xy_separating_axis_gap_m": 32.12103243422642,
+        "occluded_by_3d_slab": false,
+        "occluded_by_shadow": false,
+        "shadow_scale": 2.0476190476190474,
+        "shadow_vertices_xy_m": [
+          [
+            58.75703069855685,
+            -28.285714285714278
+          ],
+          [
+            87.42369736522352,
+            -28.285714285714278
+          ],
+          [
+            87.42369736522352,
+            -3.714285714285708
+          ],
+          [
+            86.0,
+            34.0
+          ],
+          [
+            72.0,
+            34.0
+          ],
+          [
+            58.75703069855685,
+            -3.714285714285708
+          ]
+        ]
+      },
+      {
+        "building": "B5",
+        "center_to_footprint_m": 44.914775523313196,
+        "vehicle_clearance_m": 43.414775523313196,
+        "xy_separating_axis_gap_m": 33.641016151377556,
+        "occluded_by_3d_slab": false,
+        "occluded_by_shadow": false,
+        "shadow_scale": 3.3076923076923075,
+        "shadow_vertices_xy_m": [
+          [
+            51.0,
+            38.0
+          ],
+          [
+            51.0,
+            46.0
+          ],
+          [
+            41.0,
+            46.0
+          ],
+          [
+            -59.71003727240975,
+            -9.384615384615387
+          ],
+          [
+            -59.71003727240975,
+            -35.84615384615384
+          ],
+          [
+            -26.633114195486655,
+            -35.84615384615384
+          ]
+        ]
+      }
+    ],
+    "optimal_arc_parameterization": "T_xy + r_min * (cos(phi),sin(phi))",
+    "optimal_arc_deg": [
+      [
+        0,
+        160.74787332832267
+      ],
+      [
+        236.8960468538305,
+        360
+      ]
+    ],
+    "optimal_arc_endpoints_closed": true,
+    "optimal_arc_endpoint_xy_m": [
+      [
+        77.4829691811114,
+        72.5
+      ],
+      [
+        80.5,
+        63.64865198067633
+      ]
+    ],
+    "alternative_eastmost_tiebreak_xy_m": [
+      92.22307632184156,
+      70.0
+    ],
+    "six_decimal_safe_nonoptimal_representative": {
+      "xy_m": [
+        91.155797,
+        66.120981
+      ],
+      "radial_increment_before_rounding_m": 0.0001,
+      "r_m": 7.582160503968434,
+      "Q_per_m": 0.13188852959214054,
+      "elevation_deg": 79.99987034092977,
+      "feasible_with_zero_tolerance": true
+    }
+  },
+  "cross_validation": {
+    "seed": 20261120,
+    "random_points": 250000,
+    "sampling_domain_m2": 10000,
+    "per_building_slab_vs_shadow_mismatches": {
+      "B1": 0,
+      "B2": 0,
+      "B3": 0,
+      "B4": 0,
+      "B5": 0
+    },
+    "LP_vs_slab_checks": 500,
+    "LP_vs_slab_mismatches": 0,
+    "circle_samples": 36000,
+    "circle_arc_membership_mismatches": 0,
+    "arc_endpoints_pass": true,
+    "angular_tiebreak_xy_m": [
+      91.15571090707407,
+      66.1210325254474
+    ],
+    "angular_tiebreak_distance_from_exact_m": 1.0616659672641726e-07,
+    "angular_tiebreak_travel_m": 3.672741496410112,
+    "winning_straight_path_geometry_samples": 1001,
+    "winning_straight_path_pass": true,
+    "area_monte_carlo_m2": 5605.280000000001,
+    "area_monte_carlo_standard_error_m2": 9.926456794163768,
+    "area_monte_carlo_normal_95_percent_interval_m2": [
+      5585.82414468344,
+      5624.735855316561
+    ],
+    "area_CI_note": "Sampling uncertainty only; boundary tests and exact formulas define the region."
+  },
+  "grid_convergence": [
+    {
+      "step_m": 0.2,
+      "points": 250000,
+      "observable_midpoints": 141236,
+      "area_midpoint_m2": 5649.440000000001,
+      "best_grid_xy_m": [
+        86.7,
+        62.7
+      ],
+      "best_grid_r_m": 7.584814730030527,
+      "best_grid_r_gap_m": 0.0027545595665294798
+    },
+    {
+      "step_m": 0.1,
+      "points": 1000000,
+      "observable_midpoints": 561040,
+      "area_midpoint_m2": 5610.4000000000015,
+      "best_grid_xy_m": [
+        86.05000000000001,
+        62.550000000000004
+      ],
+      "best_grid_r_m": 7.582066702798049,
+      "best_grid_r_gap_m": 6.532334051456701e-06
+    },
+    {
+      "step_m": 0.05,
+      "points": 4000000,
+      "observable_midpoints": 2243411,
+      "area_midpoint_m2": 5608.527500000001,
+      "best_grid_xy_m": [
+        77.625,
+        72.875
+      ],
+      "best_grid_r_m": 7.582223132854291,
+      "best_grid_r_gap_m": 0.0001629623902932309
+    }
+  ],
+  "continuous_solver_runs": [
+    {
+      "start_xy": [
+        91.15571085275944,
+        66.12103243422642
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        91.15571085275944,
+        66.12103243422642
+      ],
+      "r_m": 7.582060170464001,
+      "r_minus_bound_m": 3.552713678800501e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        87.12190737144981,
+        58.45601404212755
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        86.23408617115298,
+        62.58718917409659
+      ],
+      "r_m": 7.582060170464095,
+      "r_minus_bound_m": 9.681144774731365e-14,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        77.42623461735413,
+        76.57907901659594
+      ],
+      "success": false,
+      "message": "Positive directional derivative for linesearch",
+      "xy": [
+        79.03855477728433,
+        75.10882206975832
+      ],
+      "r_m": 7.582060167834083,
+      "r_minus_bound_m": -2.6299149524788845e-09,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        3.291470505417146,
+        88.42558484701344
+      ],
+      "success": false,
+      "message": "Positive directional derivative for linesearch",
+      "xy": [
+        77.69496806066955,
+        73.03974539542527
+      ],
+      "r_m": 7.582060151926879,
+      "r_minus_bound_m": -1.8537118506856132e-08,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        60.43362638330251,
+        87.026962091478
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        78.43941183484863,
+        74.36207981698483
+      ],
+      "r_m": 7.582060170464006,
+      "r_minus_bound_m": 7.993605777301127e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        90.15716133401585,
+        37.97542359313326
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        86.05028485374059,
+        62.55006052689953
+      ],
+      "r_m": 7.5820601704497514,
+      "r_minus_bound_m": -1.4246381851990009e-11,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        90.2506144462796,
+        15.692112032499804
+      ],
+      "success": false,
+      "message": "Positive directional derivative for linesearch",
+      "xy": [
+        87.66677595623281,
+        63.04784824879042
+      ],
+      "r_m": 7.582060166506468,
+      "r_minus_bound_m": -3.957529415288263e-09,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        21.40266347371971,
+        62.5088286637234
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        29.901975287893016,
+        70.00000047394978
+      ],
+      "r_m": 54.73904086348454,
+      "r_minus_bound_m": 47.15698069302054,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": false
+    },
+    {
+      "start_xy": [
+        48.269652878587124,
+        19.138973661464586
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        92.22287631662809,
+        69.94492856345086
+      ],
+      "r_m": 7.582060170463989,
+      "r_minus_bound_m": -8.881784197001252e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        18.785061281869268,
+        37.808307240583744
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        29.901975287894007,
+        70.00000838627338
+      ],
+      "r_m": 54.73904086348419,
+      "r_minus_bound_m": 47.156980693020195,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": false
+    },
+    {
+      "start_xy": [
+        20.163044333478364,
+        95.3374359691107
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        77.75255308367848,
+        73.16807717606159
+      ],
+      "r_m": 7.582060170463998,
+      "r_minus_bound_m": 0.0,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        9.89912240951915,
+        82.00708876551026
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        78.9411494034783,
+        74.99991554775951
+      ],
+      "r_m": 7.582060170463889,
+      "r_minus_bound_m": -1.092459456231154e-13,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        30.42835141096403,
+        7.090975750912277
+      ],
+      "success": false,
+      "message": "Positive directional derivative for linesearch",
+      "xy": [
+        91.79042022654261,
+        72.52461042290899
+      ],
+      "r_m": 7.582060169732721,
+      "r_minus_bound_m": -7.312772609679996e-10,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        15.821431252358641,
+        32.686576291173495
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        34.04738709381019,
+        42.176470578235296
+      ],
+      "r_m": 57.7396232296205,
+      "r_minus_bound_m": 50.1575630591565,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        73.94624695771645,
+        39.25041638478091
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        84.51164239264075,
+        62.41904367120566
+      ],
+      "r_m": 7.582060170464008,
+      "r_minus_bound_m": 9.769962616701378e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        65.82829558986761,
+        77.77369024746649
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        77.63363315953644,
+        72.89555176679549
+      ],
+      "r_m": 7.5820601704640005,
+      "r_minus_bound_m": 2.6645352591003757e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        53.06971727253955,
+        25.892254330016673
+      ],
+      "success": false,
+      "message": "Positive directional derivative for linesearch",
+      "xy": [
+        91.87844797995888,
+        67.74008481587457
+      ],
+      "r_m": 7.582060149642883,
+      "r_minus_bound_m": -2.082111461021441e-08,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        84.93550450324896,
+        53.60820742260698
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        84.7772104670019,
+        62.41916313742815
+      ],
+      "r_m": 7.5820601704640005,
+      "r_minus_bound_m": 2.6645352591003757e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        31.576420108985857,
+        84.92786305475707
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        78.17394090930799,
+        73.95784969926189
+      ],
+      "r_m": 7.582060170464,
+      "r_minus_bound_m": 1.7763568394002505e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        60.24223608382639,
+        9.659772213786656
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        86.04778050676839,
+        62.54958722783721
+      ],
+      "r_m": 7.582060170376166,
+      "r_minus_bound_m": -8.783196392414538e-11,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        11.279778536871573,
+        31.041666205851207
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        34.04738709381079,
+        42.17647057823523
+      ],
+      "r_m": 57.73962322962,
+      "r_minus_bound_m": 50.157563059156004,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        53.04607905224929,
+        18.446899254724908
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        83.68270497135119,
+        62.47874504415832
+      ],
+      "r_m": 7.582060170463996,
+      "r_minus_bound_m": -1.7763568394002505e-15,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": true
+    },
+    {
+      "start_xy": [
+        24.86897799198947,
+        50.68232621808602
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        29.901975287893286,
+        69.999995260281
+      ],
+      "r_m": 54.73904086348447,
+      "r_minus_bound_m": 47.15698069302047,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": false
+    },
+    {
+      "start_xy": [
+        13.881238867153797,
+        45.809692921121986
+      ],
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "xy": [
+        29.901975287895834,
+        69.99998956870442
+      ],
+      "r_m": 54.739040863482714,
+      "r_minus_bound_m": 47.15698069301872,
+      "feasible_geometry_and_radius_1e_7_m_los_contact_1e_10_t": false
+    }
+  ],
+  "boundary_checks": [
+    {
+      "case": "field tangency allowed",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "field penetration rejected",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "building side disk tangency allowed",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "building side disk penetration rejected",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "round NE corner tangency allowed",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "round-corner outward point allowed (square inflation would reject)",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "80 degree endpoint included",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "smaller radius excluded",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "larger radius included",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "r=0 excluded",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex contact / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex contact / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex contact / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex clear-side perturbation / slab",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex clear-side perturbation / shadow",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex clear-side perturbation / LP",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex blocked-side perturbation / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex blocked-side perturbation / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof NE vertex blocked-side perturbation / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof west-edge contact / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof west-edge contact / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 roof west-edge contact / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 vertical NE edge contact / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 vertical NE edge contact / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "B2 vertical NE edge contact / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "parallel x, clear / slab",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "parallel x, clear / shadow",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "parallel x, clear / LP",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "parallel y, blocked / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "parallel y, blocked / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "parallel y, blocked / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "parallel y, clears above roof despite footprint crossing / slab",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "parallel y, clears above roof despite footprint crossing / shadow",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "parallel y, clears above roof despite footprint crossing / LP",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "case": "camera inside prism / slab",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "camera inside prism / shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "case": "camera inside prism / LP",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    }
+  ],
+  "area_section_integration": {
+    "method": "Vertical exact interval union + adaptive scalar quadrature",
+    "is_exact_area": false,
+    "estimates": [
+      {
+        "requested_absolute_tolerance_m2": 1e-05,
+        "area_m2": 5608.770609285411,
+        "summed_quadrature_error_estimate_m2": 1.2096090320184617e-06
+      },
+      {
+        "requested_absolute_tolerance_m2": 1e-08,
+        "area_m2": 5608.770609290176,
+        "summed_quadrature_error_estimate_m2": 6.868153434578832e-09
+      }
+    ],
+    "agreement_m2": 4.764842742588371e-09
+  },
+  "provenance": {
+    "command": "python3 experiments/b/q1_independent/solve.py",
+    "python": "3.10.12",
+    "numpy": "2.2.4",
+    "scipy": "1.15.2",
+    "matplotlib": "3.10.8",
+    "arguments": {
+      "seed": 20261120,
+      "samples": 250000,
+      "plot_step": 0.1,
+      "grid_steps": [
+        0.2,
+        0.1,
+        0.05
+      ],
+      "no_plot": false
+    },
+    "git_head": "e87e58220516e236267d42a89a1eb72031bc996f",
+    "sha256": {
+      "experiments/b/q1_independent/scene.json": "71c754e5eb7e5937f1625a8e185a86cd5ed752170c7e4b80a84b6871a37dca16",
+      "experiments/b/q1_independent/solve.py": "dde66cbe822a4db3d34312184242bac992dcc372287b12e828f98d94dd0a2024",
+      "problem/B/2026_“ShuWei Cup”B_Problem.pdf": "9585081e724cef939d4e5713ea72f9eddefd4469a3b519a8ce184677d407692a"
+    },
+    "scope": "Only experiments/b/q1_independent and runs/b/q1_independent are written; no parent implementation imported."
+  }
+}

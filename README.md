@@ -9,6 +9,7 @@
 ```text
 SWBMCM2026/
 ├── research/              # 专题调研，每篇笔记附参考文献
+├── experiments/           # 可复跑的数据探索、候选方法和验证原型
 ├── docs/
 │   ├── modeling-notes.md  # 题意拆解、初步思路、假设和验证计划
 │   └── decisions.md       # 关键决定、依据和受影响的结果
@@ -40,5 +41,6 @@ SWBMCM2026/
 
 - 队员和 agent 开工前先查看本说明，优先沿用已有目录和文件。按任务范围创建文件，各问的代码、配置、结果和论文段落使用同一编号。
 - 跨问共用的假设、数据口径或指标发生变化时，在 `docs/decisions.md` 记录依据和需要重跑的结果。待验证的思路先记在 `docs/modeling-notes.md`。
+- 当前 B 题 worktree 的讨论入口为 [建模笔记](docs/modeling-notes.md)、[逐问验收清单](docs/b-acceptance.md) 和 [探索实验](experiments/README.md)。团队确认方法并用独立算例复核后，将采用的实现整理到 `src/`。
 - 原始附件保持原样，实验产物先写入当前检出的 `runs/`。经队员复核并用于论文的产物放入 `results/qN/`，附上配置、运行命令和代码版本。
 - `data/raw/C/`、`runs/`、`scratch/` 和 `submission/` 由 `.gitignore` 管理，保留在本地。手工创建的 worktree 默认放在同级的 `../SWBMCM2026-worktrees/`，由工具创建的 worktree 沿用工具自己的位置。
