@@ -8,11 +8,28 @@ import numpy as np
 import pandas as pd
 
 from experiments.c_exceed_duration import survival_cells, window_comparison
+from experiments.c_empirical_mask_lengths import compare
 from experiments.c_occlusion_return_clock import events
 from experiments.c_packet_value import PairedWindow
 
 
 class DurationChecks(unittest.TestCase):
+    def test_nested_recoveries_before_at_and_after_receipt(self):
+        ms = 10**6
+        clock = np.array([100, 300, 500, 700])*ms
+        truth = np.zeros((4, 2, 3))
+        truth[:, 0, 0] = [0, 2, 2, 2]
+        w = PairedWindow('R', 'E', clock, 900*ms, 0, np.zeros((2, 3)), truth, np.ones(2))
+        ends = np.array([300, 350, 450, 650])*ms
+        left, right = compare(w, ends, 1, 150)
+        self.assertEqual((left['requested'], left['timely'], left['at_end'], left['late']), (3, 1, 1, 1))
+        self.assertEqual(left['cost'], 6)
+        self.assertAlmostEqual(left['pending_in_mask_s'], (.05+.15+.15)/4)
+        self.assertAlmostEqual(left['pending_to_receipt_s'], .15*3/4)
+        self.assertAlmostEqual(left['saved_s'], .2/4)
+        self.assertAlmostEqual(left['baseline_s'], (.05+.15+.35)/4)
+        self.assertEqual(right['timely_tied'], 1)
+
     def test_receipt_between_ticks_and_strict_error_boundary(self):
         clock = np.array([100, 400, 800, 1000, 1200], dtype=np.int64)*10**6
         truth = np.zeros((5, 2, 3))
