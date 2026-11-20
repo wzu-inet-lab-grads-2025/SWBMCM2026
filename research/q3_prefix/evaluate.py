@@ -6,7 +6,7 @@ import importlib
 import json
 import math
 from collections import defaultdict
-from statistics import mean
+from statistics import mean, median
 
 from .data import DEFAULT_DB, TIERS, open_db, write_csv
 
@@ -22,6 +22,18 @@ def training_labels(db):
         db.execute("""SELECT pair_key, duration_s FROM labels JOIN pairing USING(pair_key)
                               WHERE split='train' """)
     )
+
+
+def family_median_predictions(db):
+    labels = training_labels(db)
+    durations = defaultdict(list)
+    for key, example in inputs(db, "train", "family"):
+        durations[example["family_id"]].append(labels[key])
+    medians = {family: median(values) for family, values in durations.items()}
+    return [
+        dict(pair_key=key, tier="family", pred_s=medians[example["family_id"]])
+        for key, example in inputs(db, "validation", "family")
+    ]
 
 
 def model_predictions(db, factory):
@@ -52,11 +64,11 @@ def finite(value):
     return number
 
 
-def indexed_predictions(rows, keys):
+def indexed_predictions(rows, keys, tiers=TIERS):
     result = {}
     for row in rows:
         pair = row["pair_key"], row["tier"]
-        if pair in result or pair[0] not in keys or pair[1] not in TIERS:
+        if pair in result or pair[0] not in keys or pair[1] not in tiers:
             raise ValueError("duplicate, unknown or non-validation prediction key/tier")
         pred = finite(row["pred_s"])
         lo, hi = row.get("lower_s"), row.get("upper_s")
@@ -68,7 +80,7 @@ def indexed_predictions(rows, keys):
             if interval[0] > interval[1]:
                 raise ValueError("reversed interval")
         result[pair] = pred, interval
-    for tier in TIERS:
+    for tier in tiers:
         missing = sum((key, tier) not in result for key in keys)
         if missing:
             raise ValueError(
@@ -77,7 +89,7 @@ def indexed_predictions(rows, keys):
     return result
 
 
-def summarize(db, prediction_rows=None):
+def summarize(db, prediction_rows=None, tiers=TIERS):
     meta = {
         key: (env, record, family)
         for key, env, record, family in db.execute(
@@ -90,14 +102,14 @@ def summarize(db, prediction_rows=None):
             groups[group].append(key)
     preds = None
     if prediction_rows is not None:
-        preds = indexed_predictions(prediction_rows, meta)
+        preds = indexed_predictions(prediction_rows, meta, tiers)
         truth = dict(
             db.execute("""SELECT pair_key,duration_s FROM labels JOIN pairing USING(pair_key)
                                    WHERE split='validation' """)
         )
     for (by, name), keys in sorted(groups.items()):
         previous = None
-        for tier in TIERS:
+        for tier in tiers:
             row = dict(
                 group=by,
                 value=name,
@@ -140,6 +152,11 @@ def main():
     parser.add_argument("--db", default=DEFAULT_DB)
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--template", action="store_true")
+    source.add_argument(
+        "--family-median",
+        action="store_true",
+        help="Score only the training-set median per family",
+    )
     source.add_argument("--model", metavar="module:factory")
     source.add_argument("--predictions", metavar="CSV")
     parser.add_argument("--summary", required=True, help="Aggregate output CSV")
@@ -147,6 +164,10 @@ def main():
     db = open_db(args.db)
     try:
         predictions = None
+        tiers = TIERS
+        if args.family_median:
+            tiers = ("family",)
+            predictions = family_median_predictions(db)
         if args.model:
             module, attr = args.model.split(":")
             predictions = model_predictions(
@@ -155,7 +176,7 @@ def main():
         if args.predictions:
             with open(args.predictions, encoding="utf-8-sig", newline="") as f:
                 predictions = list(csv.DictReader(f))
-        write_csv(args.summary, summarize(db, predictions))
+        write_csv(args.summary, summarize(db, predictions, tiers))
     finally:
         db.close()
 

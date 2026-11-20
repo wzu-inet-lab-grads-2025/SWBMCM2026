@@ -8,7 +8,7 @@ from copy import deepcopy
 from unittest.mock import patch
 
 from .data import TIERS, coverage_rows, create_tables, model_input, prepare
-from .evaluate import model_predictions, summarize
+from .evaluate import family_median_predictions, model_predictions, summarize
 
 
 def sample(t):
@@ -109,6 +109,25 @@ class PrefixTests(unittest.TestCase):
                     "INSERT INTO inputs VALUES (?,?,?)",
                     (key, tier, json.dumps(payload)),
                 )
+
+    def test_family_baseline_uses_only_training_medians(self):
+        for key, family, y in [("p1", "P", 1), ("p2", "P", 5), ("l", "L", 9)]:
+            self.db.execute(
+                "INSERT INTO pairing VALUES (?,?,?,?,?)",
+                (key, "train", "env", "rec", family),
+            )
+            self.db.execute("INSERT INTO labels VALUES (?,?)", (key, y))
+            self.db.execute(
+                "INSERT INTO inputs VALUES (?,?,?)",
+                (key, "family", json.dumps({"family_id": family})),
+            )
+        predictions = family_median_predictions(self.db)
+        self.assertEqual([row["pred_s"] for row in predictions], [3, 9])
+        result = list(summarize(self.db, predictions, ("family",)))
+        self.assertEqual({r["tier"] for r in result}, {"family"})
+        self.assertEqual(next(r["mae_s"] for r in result if r["group"] == "all"), 1)
+        self.db.execute("UPDATE labels SET duration_s=100 WHERE pair_key='v1'")
+        self.assertEqual(family_median_predictions(self.db), predictions)
 
     def test_fit_and_predict_only_receive_allowed_arguments(self):
         calls = []

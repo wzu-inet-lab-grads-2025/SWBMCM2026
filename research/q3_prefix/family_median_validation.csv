@@ -1,0 +1,9 @@
+group,value,tier,compared_with,n,records,environments,mae_s,paired_gain_s,interval_n,coverage,mean_width_s
+all,all,family,,35,7,4,3.4771428571428573,,0,,
+environment,hospitality_x_restaurant_0004,family,,3,1,1,8.766666666666666,,0,,
+environment,logistics_x_courier_station_0022,family,,14,3,1,5.5,,0,,
+environment,retail_x_supermarket_0074,family,,12,2,1,1.2,,0,,
+environment,retail_x_supermarket_0147,family,,6,1,1,0.6666666666666666,,0,,
+family,A,family,,13,2,2,2.9307692307692306,,0,,
+family,L,family,,7,2,1,6.128571428571429,,0,,
+family,P,family,,15,3,2,2.7133333333333334,,0,,
