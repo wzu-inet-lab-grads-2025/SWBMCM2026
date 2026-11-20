@@ -61,12 +61,14 @@ def wrist_inputs(folder):
     return times, normal, points, masks
 
 
-def validation_records(root):
+def split_records(root, split):
+    if split not in ('train', 'validation'):
+        raise ValueError('The diagnostic supports train and validation')
     rules = root / 'Restocking_Tasks_and_Constraints'
-    records = [r for r in rows(rules / 'record_split.csv') if r['split'] == 'validation']
+    records = [r for r in rows(rules / 'record_split.csv') if r['split'] == split]
     folders = {}
     for r in rows(rules / 'source_segment_index.csv'):
-        if r['split'] == 'validation':
+        if r['split'] == split:
             folder = root / 'Raw_Data' / r['dataset'] / r['sample']
             if folders.setdefault(r['episode_uuid'], folder) != folder:
                 raise ValueError('Conflicting folders for one episode')
@@ -74,8 +76,13 @@ def validation_records(root):
         folder = folders[record['episode_uuid']]
         meta = raw_metadata(folder)
         if any(meta[key] != record[key] for key in ('episode_uuid', 'environment_id')):
-            raise ValueError('Raw metadata and validation index disagree')
-        yield f'V{ordinal:02}', folder, meta
+            raise ValueError('Raw metadata and split index disagree')
+        prefix = 'V' if split == 'validation' else 'T'
+        yield f'{prefix}{ordinal:02}', folder, meta
+
+
+def validation_records(root):
+    yield from split_records(root, 'validation')
 
 
 def inventory(root, history_ms, mask_ms):

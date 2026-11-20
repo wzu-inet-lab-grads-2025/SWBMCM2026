@@ -1,0 +1,15 @@
+method,record,dataset,environment,delay_ms,windows,timestamps_per_hand,requests,receipts,cost,pending_s
+no_request,V01,EgoDemo,retail_x_supermarket_0147,0,0,0,0,0,0,0.0
+one_packet,V01,EgoDemo,retail_x_supermarket_0147,500,0,0,0,0,0,0.0
+no_request,V02,EgoDemo,retail_x_supermarket_0074,0,0,0,0,0,0,0.0
+one_packet,V02,EgoDemo,retail_x_supermarket_0074,500,0,0,0,0,0,0.0
+no_request,V03,EgoPro,logistics_x_courier_station_0022,0,11,660,0,0,0,0.0
+one_packet,V03,EgoPro,logistics_x_courier_station_0022,500,11,660,11,11,22,5.5
+no_request,V04,EgoPro,logistics_x_courier_station_0022,0,11,649,0,0,0,0.0
+one_packet,V04,EgoPro,logistics_x_courier_station_0022,500,11,649,11,11,22,5.5
+no_request,V05,EgoPro,hospitality_x_restaurant_0004,0,9,540,0,0,0,0.0
+one_packet,V05,EgoPro,hospitality_x_restaurant_0004,500,9,540,9,9,18,4.5
+no_request,V06,EgoPro,logistics_x_courier_station_0022,0,16,960,0,0,0,0.0
+one_packet,V06,EgoPro,logistics_x_courier_station_0022,500,16,960,16,16,32,8.0
+no_request,V07,EgoStandard,retail_x_supermarket_0074,0,3,180,0,0,0,0.0
+one_packet,V07,EgoStandard,retail_x_supermarket_0074,500,3,180,3,3,6,1.5
