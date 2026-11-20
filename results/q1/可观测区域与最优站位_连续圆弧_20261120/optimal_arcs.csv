@@ -1,0 +1,3 @@
+segment,left_deg,right_deg,left_closed,right_closed
+1,0.000000000000,160.747873328323,True,True
+2,236.896046853831,360.000000000000,True,False

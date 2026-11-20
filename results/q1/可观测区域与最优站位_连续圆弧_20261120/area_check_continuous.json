@@ -1,0 +1,52 @@
+{
+  "question": "q1",
+  "source_run": "/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T090547Z_7c_ooqwf",
+  "config_sha256": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+  "command": "nohup /mnt/disk/yuanyilun/miniconda3/bin/python3 -B -m checks.q1_area --run runs/q1/20261120T090547Z_7c_ooqwf --baseline runs/q1/20261120T084150Z___g5qsax",
+  "area_bounds": {
+    "lower_m2": 5608.767083274546,
+    "upper_m2": 5608.774145643707,
+    "strip_count": 1940008,
+    "max_strip_width_m": 5e-05,
+    "endpoint_padding_m": 1e-09
+  },
+  "midpoint_m2": 5608.770614459127,
+  "grid_comparison": [
+    {
+      "resolution_m": 0.5,
+      "estimated_area_m2": 5608.0,
+      "estimate_minus_reference_midpoint_m2": -0.7706144591265911
+    },
+    {
+      "resolution_m": 0.25,
+      "estimated_area_m2": 5614.9375,
+      "estimate_minus_reference_midpoint_m2": 6.166885540873409
+    },
+    {
+      "resolution_m": 0.125,
+      "estimated_area_m2": 5607.9375,
+      "estimate_minus_reference_midpoint_m2": -0.8331144591265911
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_run": "/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T084150Z___g5qsax",
+    "metrics": {
+      "primary_quality_per_m": {
+        "baseline": 0.13189027487483038,
+        "revised": 0.13189027487483038,
+        "difference": 0.0
+      },
+      "minimum_clearance_m": {
+        "baseline": 9.67458988722989,
+        "revised": 9.674589892910001,
+        "difference": 5.68011060408935e-09
+      },
+      "optimality_gap_m": {
+        "baseline": 9.906491627020841e-09,
+        "revised": 9.14823772291129e-13,
+        "difference": -9.90557680324855e-09
+      }
+    }
+  },
+  "audit_source_sha256": "b525f4140301ccda6aab490f43bb54945a23ec5045e851b7c27f0af3f153edc8"
+}

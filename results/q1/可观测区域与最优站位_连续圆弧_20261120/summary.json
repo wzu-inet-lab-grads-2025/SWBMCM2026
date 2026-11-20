@@ -1,0 +1,503 @@
+{
+  "problem": "B",
+  "question": "q1",
+  "input": {
+    "field_size_m": [
+      100.0,
+      100.0
+    ],
+    "dispatch_center_xy_m": [
+      50.0,
+      50.0
+    ],
+    "buildings": [
+      {
+        "id": "B1",
+        "x_min": 22,
+        "x_max": 34,
+        "y_min": 16,
+        "y_max": 26,
+        "height": 20
+      },
+      {
+        "id": "B2",
+        "x_min": 63,
+        "x_max": 79,
+        "y_min": 59,
+        "y_max": 71,
+        "height": 28
+      },
+      {
+        "id": "B3",
+        "x_min": 10,
+        "x_max": 24,
+        "y_min": 65,
+        "y_max": 76,
+        "height": 12
+      },
+      {
+        "id": "B4",
+        "x_min": 72,
+        "x_max": 86,
+        "y_min": 22,
+        "y_max": 34,
+        "height": 24
+      },
+      {
+        "id": "B5",
+        "x_min": 41,
+        "x_max": 51,
+        "y_min": 38,
+        "y_max": 46,
+        "height": 32
+      }
+    ],
+    "alert": {
+      "azimuth_deg": 30.0,
+      "range_m": 40.0,
+      "height_m": 45.0
+    },
+    "vehicle_radius_m": 1.5,
+    "camera_height_m": 2.0,
+    "elevation_bounds_deg": [
+      -10.0,
+      80.0
+    ],
+    "numerics": {
+      "position_review_m": 1e-09,
+      "parameter_review": 1e-12,
+      "distance_check_m": 1e-09,
+      "angle_check_deg": 1e-08,
+      "clearance_gap_m": 1e-08,
+      "arc_scan_deg": 0.01,
+      "los_chunk_size": 32768
+    },
+    "grid": {
+      "debug_m": 1.0,
+      "plot_m": 0.25,
+      "study_m": [
+        0.5,
+        0.25,
+        0.125
+      ]
+    },
+    "target_xyz": [
+      84.64101615137756,
+      70.0,
+      45.0
+    ],
+    "config_sha256": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4"
+  },
+  "region": {
+    "plot_resolution_m": 0.25,
+    "feasible_grid_count": 89839,
+    "estimated_area_m2": 5614.9375,
+    "resolution_studies": [
+      {
+        "resolution_m": 0.5,
+        "total_cells": 40000,
+        "independent_pass": {
+          "vehicle": 33192,
+          "gimbal": 39280,
+          "los": 25484
+        },
+        "sequential_remaining": {
+          "after_vehicle": 33192,
+          "after_gimbal": 32566,
+          "after_los": 22432
+        },
+        "feasible_cells": 22432,
+        "estimated_area_m2": 5608.0,
+        "relative_area_change": null,
+        "seconds": 0.016740062012104318,
+        "mask_file": "region_0.5m.npz"
+      },
+      {
+        "resolution_m": 0.25,
+        "total_cells": 160000,
+        "independent_pass": {
+          "vehicle": 132848,
+          "gimbal": 157108,
+          "los": 102038
+        },
+        "sequential_remaining": {
+          "after_vehicle": 132848,
+          "after_gimbal": 130329,
+          "after_los": 89839
+        },
+        "feasible_cells": 89839,
+        "estimated_area_m2": 5614.9375,
+        "relative_area_change": 0.0012370720399429386,
+        "seconds": 0.06706743000540882,
+        "mask_file": "region_0.25m.npz"
+      },
+      {
+        "resolution_m": 0.125,
+        "total_cells": 640000,
+        "independent_pass": {
+          "vehicle": 531392,
+          "gimbal": 628444,
+          "los": 407681
+        },
+        "sequential_remaining": {
+          "after_vehicle": 531392,
+          "after_gimbal": 521316,
+          "after_los": 358908
+        },
+        "feasible_cells": 358908,
+        "estimated_area_m2": 5607.9375,
+        "relative_area_change": -0.001246674606796603,
+        "seconds": 0.26451199999428354,
+        "mask_file": "region_0.125m.npz"
+      }
+    ]
+  },
+  "primary_optimum": {
+    "r_lower_bound_m": 7.582060170463998,
+    "r_opt_m": 7.582060170463998,
+    "q_opt_per_m": 0.13189027487483038,
+    "witness_point_xy": [
+      92.22307632184156,
+      70.0
+    ],
+    "witness_valid": true,
+    "witness_validation": {
+      "vehicle_ok": true,
+      "field_ok": true,
+      "gimbal_ok": true,
+      "los_clear": true,
+      "building_vehicle_ok": {
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true,
+        "B5": true
+      },
+      "building_los_clear": {
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true,
+        "B5": true
+      },
+      "horizontal_distance_m": 7.582060170464004,
+      "elevation_deg": 79.99999999999999
+    }
+  },
+  "optimal_circle": {
+    "center_xy_m": [
+      84.64101615137756,
+      70.0
+    ],
+    "radius_m": 7.582060170463998,
+    "is_continuum": true,
+    "angle_reference": "counterclockwise_from_east_at_target",
+    "angle_domain_deg": {
+      "left": 0,
+      "right": 360,
+      "closed": [
+        true,
+        false
+      ]
+    },
+    "feasible_intervals_deg": [
+      {
+        "left": 0.0,
+        "right": 160.74787332832267,
+        "closed": [
+          true,
+          true
+        ]
+      },
+      {
+        "left": 236.8960468538305,
+        "right": 360.0,
+        "closed": [
+          true,
+          false
+        ]
+      }
+    ],
+    "representative_stations": [
+      {
+        "role": "east_witness",
+        "angle_deg": 0.0,
+        "station_xy_m": [
+          92.22307632184156,
+          70.0
+        ],
+        "horizontal_distance_m": 7.582060170464004,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.13189027487483027,
+        "minimum_clearance_m": 6.27692367815844
+      },
+      {
+        "role": "north",
+        "angle_deg": 90.0,
+        "station_xy_m": [
+          84.64101615137756,
+          77.582060170464
+        ],
+        "horizontal_distance_m": 7.582060170464004,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.13189027487483027,
+        "minimum_clearance_m": 7.168597309121649
+      },
+      {
+        "role": "north_tangent",
+        "angle_deg": 160.74787332832267,
+        "station_xy_m": [
+          77.48296918111139,
+          72.5
+        ],
+        "horizontal_distance_m": 7.582060170464008,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.1318902748748302,
+        "minimum_clearance_m": 0.0
+      },
+      {
+        "role": "east_tangent",
+        "angle_deg": 236.8960468538305,
+        "station_xy_m": [
+          80.5,
+          63.64865198067632
+        ],
+        "horizontal_distance_m": 7.582060170464003,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.1318902748748303,
+        "minimum_clearance_m": 0.0
+      },
+      {
+        "role": "southern_local_peak",
+        "angle_deg": 309.8554337650818,
+        "station_xy_m": [
+          89.5,
+          64.17952644646822
+        ],
+        "horizontal_distance_m": 7.582060170464007,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.13189027487483024,
+        "minimum_clearance_m": 9.0
+      },
+      {
+        "role": "selected",
+        "angle_deg": 56.503855631019974,
+        "station_xy_m": [
+          88.82541010709,
+          76.32285407485685
+        ],
+        "horizontal_distance_m": 7.582060170464004,
+        "elevation_deg": 79.99999999999999,
+        "quality_per_m": 0.13189027487483027,
+        "minimum_clearance_m": 9.674589892910001
+      }
+    ],
+    "vehicle_excluded_interval_deg": {
+      "interval": [
+        160.74787332832267,
+        236.8960468538305
+      ],
+      "closed": [
+        false,
+        false
+      ]
+    },
+    "los_blocked_interval_deg": {
+      "interval": [
+        169.94743860685716,
+        221.92713583792067
+      ],
+      "closed": [
+        true,
+        true
+      ]
+    },
+    "coverage": {
+      "only_relevant_building": "B2",
+      "circle_bounds_xy_m": [
+        [
+          77.05895598091355,
+          92.22307632184156
+        ],
+        [
+          62.417939829536,
+          77.582060170464
+        ]
+      ],
+      "north_tangent_xy_m": [
+        77.48296918111139,
+        72.5
+      ],
+      "east_tangent_xy_m": [
+        80.5,
+        63.64865198067632
+      ],
+      "los_roof_radius_m": 2.9975586720439065,
+      "los_minimum_horizontal_crossing_radius_m": 5.641016151377556,
+      "los_within_vehicle_exclusion": true,
+      "los_contacts_xyz_m": [
+        [
+          79,
+          71,
+          12.509413442880039
+        ],
+        [
+          79,
+          64.93378117246856,
+          2.0
+        ]
+      ]
+    },
+    "scan_checks": [
+      {
+        "step_deg": 0.01,
+        "endpoints_deg": [
+          160.74787332832813,
+          236.89604685366155
+        ],
+        "max_endpoint_difference_deg": 1.6896706256375182e-10,
+        "los_switches_deg": [
+          169.9474386066198,
+          221.92713583767417
+        ],
+        "max_los_difference_deg": 2.4650148588989396e-10
+      },
+      {
+        "step_deg": 0.005,
+        "endpoints_deg": [
+          160.74787332832813,
+          236.89604685366155
+        ],
+        "max_endpoint_difference_deg": 1.6896706256375182e-10,
+        "los_switches_deg": [
+          169.9474386066198,
+          221.92713583767417
+        ],
+        "max_los_difference_deg": 2.4650148588989396e-10
+      }
+    ]
+  },
+  "tie_break": {
+    "criterion": "maximize_minimum_vehicle_clearance",
+    "selected_angle_deg": 56.503855631019974,
+    "selected_station_xy": [
+      88.82541010709,
+      76.32285407485685
+    ],
+    "horizontal_distance_m": 7.582060170464004,
+    "elevation_deg": 79.99999999999999,
+    "quality_per_m": 0.13189027487483027,
+    "minimum_clearance_m": 9.674589892910001,
+    "clearance_components_m": {
+      "field_west": 87.32541010709,
+      "field_east": 9.674589892910006,
+      "field_south": 74.82285407485685,
+      "field_north": 22.17714592514315,
+      "B1": 72.91918593783421,
+      "B2": 9.674589892910001,
+      "B3": 63.326214067351316,
+      "B4": 40.91705929593509,
+      "B5": 46.97924431150519
+    },
+    "active_constraints": [
+      "field_east",
+      "B2"
+    ],
+    "active_constraint_tolerance_m": 2e-08,
+    "global_upper_bound_m": 9.674589892910461,
+    "optimality_gap_m": 9.14823772291129e-13,
+    "branch_bound_upper_bound_m": 9.674589897135927,
+    "analytic_clearance": {
+      "angle_rad": 0.9861783208328367,
+      "split_x_m": 88.82541010709,
+      "west_corner_upper_m": 0.6834953363887157,
+      "upper_semicircle_at_split_upper_m": 9.674589892910001,
+      "lower_semicircle_left_upper_m": 8.325410107089994,
+      "right_field_upper_m": 9.674589892910006,
+      "whole_circle_upper_m": 9.674589892910461,
+      "clearance_at_candidate_m": 9.674589892910001
+    },
+    "numerical_rounding_margin_m": 4.547473508864641e-13,
+    "branches": 51,
+    "bound_evaluations": 104,
+    "tied_candidates": 1,
+    "coordinate_tie_break": "x_ascending_then_y_ascending",
+    "local_peaks": [
+      {
+        "angle_deg": 56.5038556309964,
+        "clearance_m": 9.674589892907406
+      },
+      {
+        "angle_deg": 309.8554337650818,
+        "clearance_m": 9.0
+      }
+    ]
+  },
+  "validation": {
+    "vehicle_ok": true,
+    "field_ok": true,
+    "gimbal_ok": true,
+    "los_clear": true,
+    "building_vehicle_ok": {
+      "B1": true,
+      "B2": true,
+      "B3": true,
+      "B4": true,
+      "B5": true
+    },
+    "building_los_clear": {
+      "B1": true,
+      "B2": true,
+      "B3": true,
+      "B4": true,
+      "B5": true
+    },
+    "horizontal_distance_m": 7.582060170464004,
+    "elevation_deg": 79.99999999999999,
+    "blocked_by": [],
+    "independent_geometry_passed": true
+  },
+  "run": {
+    "command": "python3 -B -m src.run q1 --profile full",
+    "replay_command": "nohup /mnt/disk/yuanyilun/miniconda3/bin/python3 -B -m src.run q1 --profile full --config /mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T105624Z_byf9quhb/config.yaml",
+    "profile": "full",
+    "optimization_seconds": 0.10642674699192867,
+    "plot_seconds": 1.4013926220068242,
+    "source_sha256": {
+      "src/run.py": "0f7f802fcbb63baeae9e793ffa16e8af87c1368a8dbb3933921af341eb335264",
+      "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+      "src/q1/experiment.py": "68f2492fedab77db2ff560712ff7209f70ef5aaa54df267ab2a8f48bb528fcdf",
+      "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+      "src/q1/model_comparison.py": "96c0d1d6f03d2accee860b385b95b84790a0b1c27eacf5bd2ab65d9598cc184f",
+      "src/q1/optimize.py": "ce7c1fc2164ff7c996f337ac1b516dbe612bed2c8474e48a891d43645b232829",
+      "src/q1/plots.py": "b851b909b4889f96e3bb0672901bc44e8d060edb4d69555d8185be2fd9a079d3",
+      "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688"
+    },
+    "python": "3.13.9",
+    "dependencies": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "matplotlib": "3.10.8",
+      "PyYAML": "6.0.3"
+    },
+    "git_head": "4f5334ee22b0af3517601d5357d121795e685243",
+    "git_worktree_status": [
+      "?? checks/q1_area.py",
+      "?? checks/test_q1_cli.py",
+      "?? checks/test_q1_geometry.py",
+      "?? checks/test_q1_optimize.py",
+      "?? checks/test_q1_region.py",
+      "?? configs/q1.yaml",
+      "?? configs/q1_model_comparison.yaml",
+      "?? src/q1/config.py",
+      "?? src/q1/experiment.py",
+      "?? src/q1/geometry.py",
+      "?? src/q1/model_comparison.py",
+      "?? src/q1/optimize.py",
+      "?? src/q1/plots.py",
+      "?? src/q1/region.py",
+      "?? src/run.py"
+    ],
+    "total_seconds": 1.9569216759991832
+  }
+}

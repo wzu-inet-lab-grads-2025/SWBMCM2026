@@ -1,0 +1,177 @@
+{
+  "question": "q1",
+  "baseline_run": "/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T084150Z___g5qsax",
+  "baseline_summary_sha256": "27b8e90f3a1fb43c6f05765ec90bcb2500e6b79f5517eeeeb5b395973eb5dfa7",
+  "baseline": {
+    "selected_station_xy": [
+      88.82541009701941,
+      76.32285408152144
+    ],
+    "distance_m": 7.5820601704640005,
+    "quality_per_m": 0.13189027487483035,
+    "clearance_m": 9.67458988722989,
+    "archived_optimization_seconds": 0.10174715399625711
+  },
+  "geometry_rerun": {
+    "selected": {
+      "x": 88.82541010709,
+      "y": 76.32285407485685,
+      "horizontal_distance": 7.582060170464004,
+      "elevation_deg": 79.99999999999999,
+      "vehicle_ok": true,
+      "gimbal_ok": true,
+      "los_clear": true,
+      "blocked_by": [],
+      "clearance_min": 9.674589892910001
+    },
+    "clearance_gap_m": 9.14823772291129e-13
+  },
+  "projected_nlp": {
+    "primary": {
+      "x": 81.3424041529711,
+      "y": 76.82691696979724,
+      "horizontal_distance": 7.582060170463998,
+      "elevation_deg": 80.0,
+      "vehicle_ok": true,
+      "gimbal_ok": true,
+      "los_clear": true,
+      "blocked_by": [],
+      "clearance_min": 4.780112943949916
+    },
+    "selected": {
+      "x": 88.82541010709,
+      "y": 76.32285407485685,
+      "horizontal_distance": 7.582060170464004,
+      "elevation_deg": 79.99999999999999,
+      "vehicle_ok": true,
+      "gimbal_ok": true,
+      "los_clear": true,
+      "blocked_by": [],
+      "clearance_min": 9.674589892910001
+    },
+    "quality_per_m": 0.13189027487483027,
+    "validation": {
+      "vehicle_ok": true,
+      "field_ok": true,
+      "gimbal_ok": true,
+      "los_clear": true,
+      "building_vehicle_ok": {
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true,
+        "B5": true
+      },
+      "building_los_clear": {
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true,
+        "B5": true
+      },
+      "horizontal_distance_m": 7.582060170464004,
+      "elevation_deg": 79.99999999999999
+    },
+    "primary_attempts": 49,
+    "primary_solver_success": 37,
+    "primary_verified_feasible": 36,
+    "secondary_attempts": 35,
+    "secondary_solver_success": 35,
+    "secondary_verified_feasible": 35,
+    "secondary_minimum_clearance_range_m": [
+      8.999999999999801,
+      9.674589892910001
+    ]
+  },
+  "primary_quality_upper_bound_per_m": 0.13189027487483038,
+  "projected_quality_gap_to_upper_per_m": 1.1102230246251565e-16,
+  "projected_clearance_minus_archived_m": 5.68011060408935e-09,
+  "projected_clearance_minus_current_geometry_m": 0.0,
+  "mask_comparison": [
+    {
+      "resolution_m": 0.5,
+      "total_cells": 40000,
+      "los_disagreements": 0,
+      "observable_disagreements": 0,
+      "projected_observable_count": 22432
+    },
+    {
+      "resolution_m": 0.25,
+      "total_cells": 160000,
+      "los_disagreements": 0,
+      "observable_disagreements": 0,
+      "projected_observable_count": 89839
+    },
+    {
+      "resolution_m": 0.125,
+      "total_cells": 640000,
+      "los_disagreements": 0,
+      "observable_disagreements": 0,
+      "projected_observable_count": 358908
+    }
+  ],
+  "timing": {
+    "geometry_seconds": [
+      0.11616382698412053,
+      0.10689980100141838,
+      0.10558012701221742,
+      0.10443472099723294,
+      0.10578171900124289
+    ],
+    "projected_nlp_seconds": [
+      0.1973180650093127,
+      0.1747088530100882,
+      0.1776768770068884,
+      0.17363808400114067,
+      0.17752466700039804
+    ],
+    "geometry_median_seconds": 0.10578171900124289,
+    "projected_nlp_median_seconds": 0.17752466700039804
+  },
+  "settings": {
+    "starts_per_axis": 7,
+    "max_iterations": 150,
+    "solver_ftol": 1e-12,
+    "radius_check_m": 1e-08,
+    "timing_repeats": 5
+  },
+  "command": "python3 -B -m src.run q1 --compare-baseline runs/q1/20261120T084150Z___g5qsax --config configs/q1.yaml --comparison-config configs/q1_model_comparison.yaml",
+  "replay_command": "nohup /mnt/disk/yuanyilun/miniconda3/bin/python3 -B -m src.run q1 --compare-baseline /mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T084150Z___g5qsax --config '/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T092108Z_模型对照__2q73m0w/config.yaml' --comparison-config '/mnt/disk/yuanyilun/projects/SWBMCM2026/runs/q1/20261120T092108Z_模型对照__2q73m0w/comparison_config.yaml'",
+  "provenance": {
+    "source_sha256": {
+      "src/run.py": "0f7f802fcbb63baeae9e793ffa16e8af87c1368a8dbb3933921af341eb335264",
+      "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+      "src/q1/experiment.py": "ecd82cc4afb06ce43a0e30e95616b2db354c1c071396d87973eada0dab5d4def",
+      "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+      "src/q1/model_comparison.py": "96c0d1d6f03d2accee860b385b95b84790a0b1c27eacf5bd2ab65d9598cc184f",
+      "src/q1/optimize.py": "11ce94e9791f0b7a48ae4d9be9729162bcbe9af5c965f2bdf2e2dfd7d8cc5b10",
+      "src/q1/plots.py": "b851b909b4889f96e3bb0672901bc44e8d060edb4d69555d8185be2fd9a079d3",
+      "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688"
+    },
+    "python": "3.13.9",
+    "dependencies": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "matplotlib": "3.10.8",
+      "PyYAML": "6.0.3"
+    },
+    "git_head": "4f5334ee22b0af3517601d5357d121795e685243",
+    "git_worktree_status": [
+      "?? checks/q1_area.py",
+      "?? checks/test_q1_cli.py",
+      "?? checks/test_q1_geometry.py",
+      "?? checks/test_q1_optimize.py",
+      "?? checks/test_q1_region.py",
+      "?? configs/q1.yaml",
+      "?? configs/q1_model_comparison.yaml",
+      "?? src/q1/config.py",
+      "?? src/q1/experiment.py",
+      "?? src/q1/geometry.py",
+      "?? src/q1/model_comparison.py",
+      "?? src/q1/optimize.py",
+      "?? src/q1/plots.py",
+      "?? src/q1/region.py",
+      "?? src/run.py"
+    ]
+  }
+}

@@ -3,4 +3,8 @@
 /runs/
 /scratch/
 /submission/
+# C 题原始数据约 5.5 GB，只留在本机，禁止提交/推送
 /data/raw/C/
+/data/raw/C_Problem_Data/
+# 本机 agent 约定，不随仓库同步
+/AGENTS.md
