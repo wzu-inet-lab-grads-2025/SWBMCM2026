@@ -1,0 +1,91 @@
+split,group,value,environment,records,paired_records,environments,paired_environments,indexed,eligible,family,free,review1,review2,paired,reasons
+train,all,all,,55,55,16,16,252,246,246,246,246,246,246,"{""excluded:shorter_than_1p2_seconds"": 6}"
+train,environment,home_x_apartment_0342,,7,7,1,1,21,21,21,21,21,21,21,{}
+train,environment,home_x_apartment_0701,,2,2,1,1,12,12,12,12,12,12,12,{}
+train,environment,logistics_x_courier_station_0021,,3,3,1,1,21,21,21,21,21,21,21,{}
+train,environment,office_x_corporate_office_0086,,5,5,1,1,22,18,18,18,18,18,18,"{""excluded:shorter_than_1p2_seconds"": 4}"
+train,environment,retail_x_convenience_0014,,1,1,1,1,3,3,3,3,3,3,3,{}
+train,environment,retail_x_supermarket_0037,,4,4,1,1,13,13,13,13,13,13,13,{}
+train,environment,retail_x_supermarket_0049,,1,1,1,1,3,3,3,3,3,3,3,{}
+train,environment,retail_x_supermarket_0054,,18,18,1,1,65,65,65,65,65,65,65,{}
+train,environment,retail_x_supermarket_0058,,7,7,1,1,30,28,28,28,28,28,28,"{""excluded:shorter_than_1p2_seconds"": 2}"
+train,environment,retail_x_supermarket_0059,,1,1,1,1,5,5,5,5,5,5,5,{}
+train,environment,retail_x_supermarket_0066,,1,1,1,1,3,3,3,3,3,3,3,{}
+train,environment,retail_x_supermarket_0071,,1,1,1,1,23,23,23,23,23,23,23,{}
+train,environment,retail_x_supermarket_0087,,1,1,1,1,17,17,17,17,17,17,17,{}
+train,environment,retail_x_supermarket_0121,,1,1,1,1,4,4,4,4,4,4,4,{}
+train,environment,retail_x_supermarket_0124,,1,1,1,1,5,5,5,5,5,5,5,{}
+train,environment,retail_x_supermarket_0125,,1,1,1,1,5,5,5,5,5,5,5,{}
+train,family,A,,29,29,9,9,114,112,112,112,112,112,112,"{""excluded:shorter_than_1p2_seconds"": 2}"
+train,family,L,,3,3,2,2,11,10,10,10,10,10,10,"{""excluded:shorter_than_1p2_seconds"": 1}"
+train,family,P,,23,23,9,9,127,124,124,124,124,124,124,"{""excluded:shorter_than_1p2_seconds"": 3}"
+train,record,R001,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R003,retail_x_supermarket_0058,1,1,1,1,6,5,5,5,5,5,5,"{""excluded:shorter_than_1p2_seconds"": 1}"
+train,record,R004,home_x_apartment_0342,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R005,retail_x_supermarket_0058,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R006,retail_x_supermarket_0037,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R007,office_x_corporate_office_0086,1,1,1,1,4,2,2,2,2,2,2,"{""excluded:shorter_than_1p2_seconds"": 2}"
+train,record,R008,logistics_x_courier_station_0021,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R009,retail_x_supermarket_0054,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R010,retail_x_supermarket_0125,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R011,retail_x_supermarket_0058,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R012,retail_x_supermarket_0049,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R013,retail_x_convenience_0014,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R014,logistics_x_courier_station_0021,1,1,1,1,8,8,8,8,8,8,8,{}
+train,record,R015,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R016,retail_x_supermarket_0058,1,1,1,1,5,4,4,4,4,4,4,"{""excluded:shorter_than_1p2_seconds"": 1}"
+train,record,R017,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R020,retail_x_supermarket_0054,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R021,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R022,retail_x_supermarket_0058,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R023,home_x_apartment_0342,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R024,retail_x_supermarket_0054,1,1,1,1,6,6,6,6,6,6,6,{}
+train,record,R025,home_x_apartment_0342,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R026,retail_x_supermarket_0037,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R027,retail_x_supermarket_0059,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R029,logistics_x_courier_station_0021,1,1,1,1,9,9,9,9,9,9,9,{}
+train,record,R031,home_x_apartment_0701,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R032,office_x_corporate_office_0086,1,1,1,1,4,3,3,3,3,3,3,"{""excluded:shorter_than_1p2_seconds"": 1}"
+train,record,R033,home_x_apartment_0342,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R034,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R035,retail_x_supermarket_0037,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R036,retail_x_supermarket_0054,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R037,retail_x_supermarket_0054,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R038,retail_x_supermarket_0124,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R039,office_x_corporate_office_0086,1,1,1,1,3,2,2,2,2,2,2,"{""excluded:shorter_than_1p2_seconds"": 1}"
+train,record,R040,retail_x_supermarket_0054,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R041,retail_x_supermarket_0121,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R042,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R043,retail_x_supermarket_0054,1,1,1,1,2,2,2,2,2,2,2,{}
+train,record,R044,retail_x_supermarket_0037,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R045,retail_x_supermarket_0054,1,1,1,1,5,5,5,5,5,5,5,{}
+train,record,R047,home_x_apartment_0342,1,1,1,1,2,2,2,2,2,2,2,{}
+train,record,R048,home_x_apartment_0342,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R049,retail_x_supermarket_0054,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R050,retail_x_supermarket_0054,1,1,1,1,2,2,2,2,2,2,2,{}
+train,record,R051,retail_x_supermarket_0066,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R052,retail_x_supermarket_0071,1,1,1,1,23,23,23,23,23,23,23,{}
+train,record,R053,office_x_corporate_office_0086,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R054,retail_x_supermarket_0054,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R055,home_x_apartment_0342,1,1,1,1,3,3,3,3,3,3,3,{}
+train,record,R056,home_x_apartment_0701,1,1,1,1,7,7,7,7,7,7,7,{}
+train,record,R057,retail_x_supermarket_0054,1,1,1,1,2,2,2,2,2,2,2,{}
+train,record,R058,retail_x_supermarket_0087,1,1,1,1,17,17,17,17,17,17,17,{}
+train,record,R059,retail_x_supermarket_0058,1,1,1,1,4,4,4,4,4,4,4,{}
+train,record,R060,office_x_corporate_office_0086,1,1,1,1,8,8,8,8,8,8,8,{}
+train,record,R061,retail_x_supermarket_0058,1,1,1,1,4,4,4,4,4,4,4,{}
+validation,all,all,,7,7,4,4,35,35,35,35,35,35,35,{}
+validation,environment,hospitality_x_restaurant_0004,,1,1,1,1,3,3,3,3,3,3,3,{}
+validation,environment,logistics_x_courier_station_0022,,3,3,1,1,14,14,14,14,14,14,14,{}
+validation,environment,retail_x_supermarket_0074,,2,2,1,1,12,12,12,12,12,12,12,{}
+validation,environment,retail_x_supermarket_0147,,1,1,1,1,6,6,6,6,6,6,6,{}
+validation,family,A,,2,2,2,2,13,13,13,13,13,13,13,{}
+validation,family,L,,2,2,1,1,7,7,7,7,7,7,7,{}
+validation,family,P,,3,3,2,2,15,15,15,15,15,15,15,{}
+validation,record,R002,retail_x_supermarket_0074,1,1,1,1,6,6,6,6,6,6,6,{}
+validation,record,R018,hospitality_x_restaurant_0004,1,1,1,1,3,3,3,3,3,3,3,{}
+validation,record,R019,logistics_x_courier_station_0022,1,1,1,1,7,7,7,7,7,7,7,{}
+validation,record,R028,logistics_x_courier_station_0022,1,1,1,1,3,3,3,3,3,3,3,{}
+validation,record,R030,retail_x_supermarket_0074,1,1,1,1,6,6,6,6,6,6,6,{}
+validation,record,R046,logistics_x_courier_station_0022,1,1,1,1,4,4,4,4,4,4,4,{}
+validation,record,R062,retail_x_supermarket_0147,1,1,1,1,6,6,6,6,6,6,6,{}
