@@ -1,0 +1,7 @@
+tier,split,segments,samples,missing_left_displacement,missing_fraction_left_displacement,missing_left_speed,missing_fraction_left_speed,missing_right_displacement,missing_fraction_right_displacement,missing_right_speed,missing_fraction_right_speed,demo_segments,demo_samples,segments_with_demo_unlisted,demo_unlisted_samples,left_bad,left_normal,left_unknown,left_demo_unlisted,left_usable_demo_unlisted,right_bad,right_normal,right_unknown,right_demo_unlisted,right_usable_demo_unlisted
+free,train,246,1633,1,0.0040650406504065045,1,0.0040650406504065045,2,0.008130081300813009,2,0.008130081300813009,97,601,97,597,13,1010,13,597,597,26,1010,0,597,597
+free,validation,35,224,1,0.02857142857142857,1,0.02857142857142857,1,0.02857142857142857,2,0.05714285714285714,12,78,12,78,9,134,3,78,78,12,134,0,78,78
+review1,train,246,4566,0,0.0,0,0.0,0,0.0,0,0.0,97,1754,97,1745,19,2767,35,1745,1745,51,2767,3,1745,1745
+review1,validation,35,641,0,0.0,0,0.0,0,0.0,0,0.0,12,220,12,220,14,393,14,220,220,23,393,5,220,220
+review2,train,246,7512,0,0.0,0,0.0,0,0.0,0,0.0,97,2920,97,2908,20,4544,40,2908,2908,56,4544,4,2908,2908
+review2,validation,35,1069,0,0.0,0,0.0,0,0.0,0,0.0,12,372,12,372,14,657,26,372,372,35,657,5,372,372
