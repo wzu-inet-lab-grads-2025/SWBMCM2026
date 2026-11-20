@@ -22,7 +22,7 @@ VALIDATION_WINDOWS = {'V01': 0, 'V02': 0, 'V03': 11, 'V04': 11, 'V05': 9, 'V06':
 FEE = 2
 
 
-def replay(times, initial_pair, delay_ms, receive):
+def replay(times, initial_pair, delay_ms, receive, *, request_not_before_ns=None):
     """Hold each wrist separately. The one allowed packet contains two XYZ rows."""
     visible = initial_pair
     predictions = []
@@ -33,8 +33,8 @@ def replay(times, initial_pair, delay_ms, receive):
             visible = receive(request_ns)
             returned = True
         predictions.append(visible.copy())
-        if delay_ms and request_ns is None:
-            request_ns = int(now)  # After submitting the first masked prediction.
+        if delay_ms and request_ns is None and (request_not_before_ns is None or now >= request_not_before_ns):
+            request_ns = int(now)  # A permitted request follows this tick's submitted prediction.
             receipt_ns = request_ns + delay_ms * 10**6
     if returned != bool(delay_ms):
         raise ValueError('Fixed packet did not arrive inside the scoring window')
