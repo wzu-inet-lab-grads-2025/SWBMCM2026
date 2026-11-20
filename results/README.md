@@ -2,6 +2,8 @@
 
 本目录保存经队内复核、用于论文或作为结论依据的结果。原始实验输出在本地 `runs/`（不入库）；每个结果子目录附参数快照、运行命令、代码版本信息和中文结论。
 
+以下命令均从仓库根目录运行。统一入口是 `python3 -B -m src.run qN`，环境见 [B 题依赖](../configs/requirements-b.txt)。复跑请明确指定各节的归档配置；新产物写入 `runs/`，不会覆盖本目录。运行记录中的编号与源码哈希是**当时**的记录；后续入口、验收或出图更新不回写原始运行元数据。
+
 ## q1｜B 题第一问
 
 ### [可观测区域与最优站位_连续圆弧_20261120](q1/可观测区域与最优站位_连续圆弧_20261120/conclusions.md)
@@ -15,7 +17,7 @@ nohup python3 -B -m src.run q1 --profile full \
   --config results/q1/可观测区域与最优站位_连续圆弧_20261120/config.yaml
 ```
 
-- **验收：** 37 项测试通过；`summary.json` 的见证点复核、五栋建筑独立复核和净空全域误差界均通过。
+- **验收：** `summary.json` 的见证点、五栋建筑和净空全域误差界均通过；可运行 `nohup python3 -B -m checks.q1_area --run <本次 Q1 运行目录>` 独立复算连续面积。[复跑与方法对照](q1/可观测区域与最优站位_连续圆弧_20261120/run_record.md)
 - **目录内容：** 结果摘要与机器可读结果、代表站点与最优弧底表、六张论文图、参数快照、运行记录、连续面积复核、二维投影模型对照、中文结论。
 
 复跑后新输出写入 `runs/q1/` 的新目录，不覆盖本目录。需要更新正式结果时，按约定新建带日期的结果子目录，并保留本目录作对照。
@@ -33,7 +35,7 @@ nohup env OPENBLAS_NUM_THREADS=1 python3 -B -m src.run q2 --profile full \
   --config results/q2/双站定位与并发调度_连续站位_20261120/config.yaml
 ```
 
-上述命令复跑含三个细化候选站的两小问，结果写入新的 `runs/q2/` 目录。逐段几何、同步计时、全程车距和连续场地下界的独立复核命令见运行记录。
+上述命令复跑正式的三个细化候选站；省略 `--config` 会用 `configs/q2.yaml`，其原 1.25 m 网格最优开测为 **10.731534 s**，并非 Q4 继承的正式计划。逐段几何、同步计时、全程车距和连续场地下界的独立核查见[运行记录](q2/双站定位与并发调度_连续站位_20261120/run_record.md)。
 
 ## q3｜B 题第三问
 
@@ -47,4 +49,21 @@ nohup python3 -B -m src.run q3 --profile full \
   --config results/q3/测向可靠性与80米定位约束_五方法对照_20261120/config.yaml
 ```
 
-复跑输出到新的 `runs/q3/` 目录。独立半平面核查可直接读取归档或复跑结果，命令见运行记录。
+独立半平面核查可直接读取归档或复跑结果：`nohup python3 -B -m checks.q3_reference <Q3 归档或运行目录>`。
+
+## q4｜B 题第四问
+
+### [扰动重调度_四模型择优_20261120](q4/扰动重调度_四模型择优_20261120/conclusions.md)
+
+- 主结果在 [逐情景指标](q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv) 中筛选 `sample=main, variant=main, model=recommended`：**1,751** 个主情景全部按期启动，平均最晚开测 **34.482 s**。`source` 标记逐场优胜的来源。保留并追加 `original_append` 的平均启动比例为 **83.248%**、平均最晚开测 **48.084 s**；严格冻结 `strict_frozen` 仅 7 个情景全启。
+- [模型对照底表](q4/扰动重调度_四模型择优_20261120/algorithm_summary.csv)中 CP-SAT 为最佳单模型（匹配 1,749 / 1,751 个逐场最佳分数），与 MILP、ALNS、双车增量插入均单独保留。额外 144 个加密情景、52 个灵敏度变体、34 个定向复算不混入主统计。
+- [逐车时序](q4/扰动重调度_四模型择优_20261120/policy_vehicle_timelines.csv.gz)与[分相位路线](q4/扰动重调度_四模型择优_20261120/policy_plans_and_tracks.jsonl.gz)包含推荐和两条基线的 1,895 个主/加密情景。Git 内可验收这些轨迹及各模型的逐情景分数和推荐来源；全部模型轨迹、求解器日志和压力回放用完整运行目录。[题意与实现口径](../docs/B题第四问_方案审核与实现说明.md) · [运行记录](q4/扰动重调度_四模型择优_20261120/run_record.md)
+
+```bash
+q4_archive=results/q4/扰动重调度_四模型择优_20261120
+nohup python3 -B -m checks.q4_validate_run "$q4_archive" --archive
+nohup env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLBACKEND=Agg python3 -B -m src.run q4 --profile full \
+  --config "$q4_archive/config.yaml"
+```
+
+完整回放时去掉 `--archive`，把参数改成复跑打印的 `runs/q4/<运行编号>`。验收不调用求解器，也不重新证明离散最优性。[原全量验收记录](q4/扰动重调度_四模型择优_20261120/archive_validation.json) · [Git 归档验收记录](q4/扰动重调度_四模型择优_20261120/git_archive_validation.json)

@@ -36,6 +36,26 @@ SWBMCM2026/
 └── submission/            # 本地组装的最终提交材料
 ```
 
+## B 题运行与正式结果入口
+
+在仓库根目录运行，复现环境为 Linux、Python 3.13。已验收的依赖版本见 [configs/requirements-b.txt](configs/requirements-b.txt)。
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+nohup python3 -m pip install -r configs/requirements-b.txt
+nohup env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLBACKEND=Agg python3 -B -m pytest -q -p no:cacheprovider checks
+```
+
+四问均通过 `python3 -B -m src.run qN --profile full --config <归档配置>` 复跑。命令打印新建的本地 `runs/qN/` 路径，不覆盖 `results/`。下表区分正式采用的结果与保留的对照；各问的确切命令和验收入口见[正式结果索引](results/README.md)。
+
+| 小问 | 正式配置 | 正式采用与对照 |
+| --- | --- | --- |
+| Q1 | [归档配置](results/q1/可观测区域与最优站位_连续圆弧_20261120/config.yaml) | [连续弧与净空择优](results/q1/可观测区域与最优站位_连续圆弧_20261120/summary.json)；网格用于区域离散展示，投影约束优化另作对照。 |
+| Q2 | [归档配置](results/q2/双站定位与并发调度_连续站位_20261120/config.yaml) | [双站解析方案](results/q2/双站定位与并发调度_连续站位_20261120/q21_result.json)与[细化站位调度 `optimized`](results/q2/双站定位与并发调度_连续站位_20261120/q22_comparison.json)。就近 `greedy` 和 `fixed_vehicles` 为对照；不指定 `--config` 会跑不含细化站的原网格实验。 |
+| Q3 | [归档配置](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/config.yaml) | [一维投影正态自适应积分](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/limits.csv)给出两种指向口径的正式阈值；其余四种方法用于对照。 |
+| Q4 | [归档配置](results/q4/扰动重调度_四模型择优_20261120/config.yaml) | [逐情景指标](results/q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv)中，主结果筛选 `sample=main, variant=main, model=recommended`；最佳单模型 `cp_sat` 与其他模型和两种基线分行保留。 |
+
 ## 第一问结果（B 题，2026-11-20）
 
 **状态：** 已完成并复核。代码在 `src/q1/`，正式结果在 [`results/q1/可观测区域与最优站位_连续圆弧_20261120/`](results/q1/可观测区域与最优站位_连续圆弧_20261120/conclusions.md)，原始运行目录为 `runs/q1/20261120T105624Z_byf9quhb/`（`runs/` 按约定只留本地，不入库）。
@@ -158,7 +178,7 @@ $$
 
 ### 五方法择优与结果验证
 
-一阶泰勒用于量级和方差贡献解释，实际指向里程比精确几何结果偏高 **0.0850 m**；高阶 Gauss–Hermite 用于确定性复核，与主积分最大概率差为 $1.67\times10^{-15}$。独立高斯半平面法再核对两条临界根。直接 Monte Carlo 每工况抽样 500 万次，逐点 Wilson 区间覆盖 7/10 个主积分值，多工况同时区间覆盖 10/10；两条临界点前后 0.50 m 的四个抽样工况均正确判别。八组独立扰动的 Sobol 估计通过收敛核验。按归档配置重跑后，**七张关键数值底表逐字节一致**，第三问 **19 项测试通过**。[五方法对照](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/method_comparison.csv) · [收敛与抽样图](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/method_validation.pdf) · [独立核查](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/reference_check.json)
+一阶泰勒用于量级和方差贡献解释，实际指向里程比精确几何结果偏高 **0.0850 m**；高阶 Gauss–Hermite 用于确定性复核，与主积分最大概率差为 $1.67\times10^{-15}$。独立高斯半平面法再核对两条临界根。直接 Monte Carlo 每工况抽样 500 万次，逐点 Wilson 区间覆盖 7/10 个主积分值，多工况同时区间覆盖 10/10；两条临界点前后 0.50 m 的四个抽样工况均正确判别。八组独立扰动的 Sobol 估计通过收敛核验。按归档配置重跑后，**七张关键底表的数值结果一致**（方法表的耗时和进程号随运行变化）；第三问 **19 项测试通过**。[五方法对照](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/method_comparison.csv) · [收敛与抽样图](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/method_validation.pdf) · [独立核查](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/reference_check.json)
 
 ### 三类误差贡献与部署启示
 
@@ -182,6 +202,31 @@ nohup python3 -B -m checks.q3_reference \
 ```
 
 复跑写入独立的本地 `runs/q3/` 目录。归档包含四张英文图的 PNG/PDF、数值底表、配置快照及复核记录。参赛正文由队员独立核验与定稿，并按[本届 AI 工具使用规定](https://www.nmmcm.org.cn/News/220.html)记录辅助环节。
+
+## 第四问结果（B 题，2026-11-20）
+
+**正式结果是逐情景择优的组合策略 `recommended`，不是单一求解器。** 四种候选方法（CP-SAT、SCIP MILP、ALNS、双车增量插入）与两种基线共享 Q2(2) 的 `optimized` 初始调度；在扰动实际发生或通信恢复后，根据当时状态决定是否重排。结果先最大化成功启动比例 $\eta=k/N$，再最小化最晚开测 $t_{\rm last}$。主口径只计 $S<60$ s 的启动；未全启则记 $t_{\rm last}=60$ s。
+
+主样本覆盖新告警、单车故障、断联、新告警＋故障、新告警＋断联、故障＋断联、三种同时七类，分别为 **72 / 5 / 3 / 360 / 216 / 15 / 1,080** 场。第 5 秒发生扰动；按命题人答疑，$t_{\rm rec}\in(5,30]$ s 是恢复时刻，主样本取 10、20、30 s，对应停联 5、15、25 s。新告警取 24 个方位和 30、40、50 m 三个距离，高度固定为 50 m。下列均值是样本统计，不是未采样扰动的成功概率。
+
+| 策略 | 全部告警按期启动的情景数 | 平均 $\eta$ | 平均 $t_{\rm last}$ (s) |
+| --- | ---: | ---: | ---: |
+| 逐情景择优 `recommended` | **1,751 / 1,751** | **100%** | **34.482** |
+| 保留并追加 `original_append` | 583 / 1,751 | 83.248% | 48.084 |
+| 严格冻结 `strict_frozen` | 7 / 1,751 | 58.576% | 59.802 |
+
+CP-SAT 是本实验**最佳单一算法**，匹配 1,749 / 1,751 个逐场最佳分数；推荐解的实际来源为 CP-SAT 1,629 场、ALNS 118 场、MILP 4 场。额外 144 个临界加密情景也都全启，52 个灵敏度变体不计入主汇总。纯断联不影响已下发任务的启动；有车辆故障时，收益主要来自为未开测任务安排替补。最迟的三扰动代表例在 **57.990 s** 全启，瓶颈是 30 s 恢复后替补车绕行至 T2 固定站。CP-SAT 在 1,747 个非空后缀上证明了有限模型最优；证书只覆盖有限站对、固定路径、最早发车规则与离散规划时钟，不证明连续空间全局最优。
+
+全量独立回放覆盖 **13,629** 套轨迹和 **68,145** 条逐车时间轴，最小连续车心距 **4.992934 m**（要求至少 3 m）。[原题与实现口径](docs/B题第四问_方案审核与实现说明.md) · [代表情景](results/q4/扰动重调度_四模型择优_20261120/conclusions.md) · [策略对比底表](results/q4/扰动重调度_四模型择优_20261120/algorithm_summary.csv) · [全量验收](results/q4/扰动重调度_四模型择优_20261120/archive_validation.json) · [Git 归档验收](results/q4/扰动重调度_四模型择优_20261120/git_archive_validation.json)
+
+```bash
+q4_archive=results/q4/扰动重调度_四模型择优_20261120
+nohup env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLBACKEND=Agg python3 -B -m src.run q4 --profile full \
+  --config "$q4_archive/config.yaml"
+nohup python3 -B -m checks.q4_validate_run "$q4_archive" --archive
+```
+
+第二条命令只用 Git 归档复核逐情景择优、推荐与两条基线的主/加密场轨迹，不调用求解器。完整复跑及压力验收见[运行记录](results/q4/扰动重调度_四模型择优_20261120/run_record.md)。
 
 ## 协作约定
 

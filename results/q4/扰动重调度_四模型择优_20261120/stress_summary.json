@@ -1,0 +1,85 @@
+{
+  "reference_run": "20261120T142102Z_by9oaz91",
+  "reference_main_cases": 1751,
+  "guard_deg": 5,
+  "guard_cases": 30,
+  "guard_all_started": 30,
+  "guard_delta_t_last_s": {
+    "min": 0.0,
+    "mean": 0.22592166694769145,
+    "median": 0.0,
+    "max": 0.6167093355178181
+  },
+  "guard_equal_official": 16,
+  "guard_main_rmse_m": {
+    "min": 10.431114535612775,
+    "mean": 38.63034552405841,
+    "median": 40.92907669818439,
+    "max": 72.3953959420025
+  },
+  "guard_revised_rmse_m": {
+    "min": 0.8585647998322918,
+    "mean": 6.308160847330384,
+    "median": 6.221336378674026,
+    "max": 12.682792099113156
+  },
+  "additional_cases": [
+    {
+      "scenario_id": "E7_A210_R40_V2_C10",
+      "variant": "fine_tick",
+      "source": "alns",
+      "main_eta": "1.0",
+      "stress_eta": 1.0,
+      "main_t_last_s": 41.89812276356795,
+      "stress_t_last_s": 41.89812276356795,
+      "delta_t_last_s": 0.0,
+      "main_angle_margin_deg": 13.901449710017289,
+      "stress_angle_margin_deg": 13.901449710017289,
+      "main_rmse_m": 5.335442481383216,
+      "stress_rmse_m": 5.335442481383216
+    },
+    {
+      "scenario_id": "E7_A210_R50_V2_C10",
+      "variant": "fine_tick",
+      "source": "alns",
+      "main_eta": "1.0",
+      "stress_eta": 1.0,
+      "main_t_last_s": 41.89812276356795,
+      "stress_t_last_s": 41.89812276356795,
+      "delta_t_last_s": 0.0,
+      "main_angle_margin_deg": 69.28365917322718,
+      "stress_angle_margin_deg": 69.28365917322718,
+      "main_rmse_m": 1.5275262503057385,
+      "stress_rmse_m": 1.5275262503057385
+    },
+    {
+      "scenario_id": "E7_A90_R50_V2_C30",
+      "variant": "fine_tick",
+      "source": "cp_sat",
+      "main_eta": "1.0",
+      "stress_eta": 1.0,
+      "main_t_last_s": 57.99006933827589,
+      "stress_t_last_s": 57.99006933827589,
+      "delta_t_last_s": 0.0,
+      "main_angle_margin_deg": 48.65935236172384,
+      "stress_angle_margin_deg": 48.65935236172384,
+      "main_rmse_m": 2.312767887910656,
+      "stress_rmse_m": 2.312767887910656
+    },
+    {
+      "scenario_id": "E7_A90_R50_V2_C30",
+      "variant": "flexible_original_stations",
+      "source": "cp_sat",
+      "main_eta": "1.0",
+      "stress_eta": 1.0,
+      "main_t_last_s": 57.99006933827589,
+      "stress_t_last_s": 36.37258869389276,
+      "delta_t_last_s": -21.61748064438313,
+      "main_angle_margin_deg": 48.65935236172384,
+      "stress_angle_margin_deg": 74.18694489695785,
+      "main_rmse_m": 2.312767887910656,
+      "stress_rmse_m": 1.8662823064326635
+    }
+  ],
+  "selection_basis": "all primary T4 angle margins below guard, two continuous best-model differences, latest start case"
+}
