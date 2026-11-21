@@ -39,7 +39,15 @@ def events_for_hand(record, env, side, time, usable, xyz, middle, quat, bend, *,
                              wrist_turn=rotation_error(quat[source], quat[anchor]) >= 30,
                              finger=angles.max() >= 30, final_move=offset[1], final_bend=bent[1])
                 if include_finger_angles:
-                    event.update(zip(('index_deg', 'middle_deg', 'ring_deg', 'little_deg'), angles))
+                    names = ('index_deg', 'middle_deg', 'ring_deg', 'little_deg')
+                    event.update(zip(names, angles))
+                    for prefix, idx in [('history', start), ('terminal', last)]:
+                        delta = np.abs(bend[idx] - bend[anchor])
+                        event.update({f'{prefix}_{name}': value for name, value in zip(names, delta)})
+                    event.update(history_wrist_L=np.linalg.norm(xyz[start] - xyz[anchor]) / scale,
+                                 history_wrist_deg=rotation_error(quat[start], quat[anchor]),
+                                 packet_wrist_L=np.linalg.norm(xyz[source] - xyz[anchor]) / scale,
+                                 packet_wrist_deg=rotation_error(quat[source], quat[anchor]))
                 yield event
 
 
