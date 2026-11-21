@@ -1,0 +1,11 @@
+check,passed,value
+synthetic_suite,1,1
+fixed_pool_and_common_denominators,1,328
+all_pre_receipt_predictions_equal,1,328
+quaternion_sign_equivalence_all_eligible_history_and_mask,1,328
+raw_geometry_matches_existing_read_states,1,28
+old_training_position_rows_checked,1,44
+old_training_max_abs_difference_cm,1,4.805933429e-11
+python_open_guard_raw_unique_paths,1,114
+old_training_aggregate_files_read,1,2
+writes_only_aggregate_csv,1,3
