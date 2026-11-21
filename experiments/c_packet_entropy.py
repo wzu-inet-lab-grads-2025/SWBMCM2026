@@ -50,7 +50,7 @@ def get_windows(root):
                             raise ValueError('Expected actual packet return before the target tick')
                         y = np.linalg.norm(xyz[index]-xyz[anchor]) > L
                         updated = np.linalg.norm(xyz[last]-xyz[index]) > L
-                        observations.append(dict(record=record, env=meta['environment_id'], side=side,
+                        observations.append(dict(record=record, env=meta['environment_id'], window_start=int(times[start]), side=side,
                                                  timing=timing, f=int(f), y=int(y), z=int(z), updated=int(updated)))
     return pd.DataFrame(observations)
 
