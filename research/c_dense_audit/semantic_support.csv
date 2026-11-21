@@ -1,0 +1,9 @@
+view,protocol,internal_boundaries,distinct_centers,matched_boundaries,matched_distinct_centers,excluded_window_crosses_endpoint,records,matched_records,environments,matched_environments,crossing_bracket_ms_median,crossing_bracket_ms_max,first_right_delay_ms_median,first_right_delay_ms_max
+head_left,placebo,280,208,274,202,6,69,69,24,24,,,,
+head_left,true,280,280,279,279,1,69,69,24,24,33.333,40.0000811,0,40.0000572
+head_right,placebo,280,208,274,202,6,69,69,24,24,,,,
+head_right,true,280,280,279,279,1,69,69,24,24,33.333,40.0000811,0,40.0000572
+left_wrist,placebo,82,63,80,61,2,23,23,7,7,,,,
+left_wrist,true,82,82,82,82,0,23,23,7,7,33.333,33.723,0.0307202339,33.3333969
+right_wrist,placebo,82,63,80,61,2,23,23,7,7,,,,
+right_wrist,true,82,82,82,82,0,23,23,7,7,33.333,33.723,0.0307202339,33.3333969

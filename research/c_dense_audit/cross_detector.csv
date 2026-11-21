@@ -1,0 +1,16 @@
+quality,stable_eyes,hand_ticks,hand_ticks_with_common,common_points,both_controls_beaten
+near edge,0,58,14,41,25
+near edge,1,4,3,9,6
+near edge,2,1,1,2,1
+normal,0,31439,30327,288549,169849
+normal,1,17306,16884,146087,92901
+normal,2,49127,48501,448941,298855
+occlusion,0,830,688,6345,2453
+occlusion,1,80,75,638,230
+occlusion,2,27,21,176,63
+other_hand_only,0,356,299,2251,1380
+other_hand_only,1,131,130,997,619
+other_hand_only,2,169,151,1050,714
+unlisted,0,10244,9955,100809,62829
+unlisted,1,7750,7656,76998,50163
+unlisted,2,14618,14536,157441,113933

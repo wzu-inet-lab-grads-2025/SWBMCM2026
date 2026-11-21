@@ -1,0 +1,7 @@
+scope,quality,records,record_hand_view_strata,marked_hand_views,marked_matched,normal_comparison_samples,marked_rate,normal_rate_at_marked_weights,difference_pp,dataset
+quality,near edge,3,12,126,6,20868,0.0476190476,0.460767315,-41.3148267,
+quality,occlusion,17,58,1556,120,119352,0.0771208226,0.492144929,-41.5024106,
+dataset_quality,near edge,2,8,112,6,8328,0.0535714286,0.450571591,-39.7000162,EgoPro
+dataset_quality,occlusion,7,24,768,38,32170,0.0494791667,0.368857023,-31.9377856,EgoPro
+dataset_quality,near edge,1,4,14,0,12540,0,0.542333105,-54.2333105,EgoStandard
+dataset_quality,occlusion,10,34,788,82,87182,0.104060914,0.612303699,-50.8242786,EgoStandard

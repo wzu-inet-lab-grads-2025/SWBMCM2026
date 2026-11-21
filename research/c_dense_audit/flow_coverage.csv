@@ -1,0 +1,7 @@
+scope,value,records,streams,frames,first_no_previous,pairs,pairs_with_grid_attempt,pairs_with_grid_track,pairs_with_background,pairs_with_hand_comparison,pairs_with_both_hands,hand_pairs_any_comparable
+all,all,69,138,132140,138,132002,132002,131999,121951,131899,131559,263458
+dataset,EgoDemo,31,62,32828,62,32766,32766,32766,30775,32766,32758,65524
+dataset,EgoPro,14,28,35284,28,35256,35256,35254,31251,35188,34910,70098
+dataset,EgoStandard,24,48,64028,48,63980,63980,63979,59925,63945,63891,127836
+view,head_left,69,69,66070,69,66001,66001,65999,60855,65948,65775,131723
+view,head_right,69,69,66070,69,66001,66001,66000,61096,65951,65784,131735

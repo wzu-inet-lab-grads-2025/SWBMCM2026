@@ -1,0 +1,5 @@
+visual_grade,all_intervals,has_alternative,first_place_credit,beats_next_alternative,original_pair_beats_swap
+contradiction,1,1,0,1,1
+insufficient,2,2,0,1,0
+partial,137,136,31,71,90
+visible,209,196,66,122,152

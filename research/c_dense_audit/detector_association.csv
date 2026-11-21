@@ -1,0 +1,129 @@
+scope,records,hand_view_samples,any_prediction,all21_inside,matched,ambiguous,lost_competition,outside_gate,limited_common_palm,zero_detections,limited_projection,outside_image,raw_handedness_same,mirror_control_matched,matched_in_both_geometries,points,mean_px,p50_px,p90_px,eligible,dataset,split,view,hand,quality
+overall,69,264280,196218,263454,153155,11,6,42829,1,67809,99,370,20449,53635,40904,2756654,29.2249919,21.8912659,60.7559063,263811,,,,,
+dataset,31,65656,48892,65642,37043,6,0,11843,0,16764,0,0,5868,13206,9624,666766,28.4815693,21.2459068,59.9163342,65656,EgoDemo,,,,
+dataset,14,70568,49352,69962,37316,1,1,11836,0,21028,78,308,4909,9139,6151,671610,34.5455125,27.9672575,67.625074,70182,EgoPro,,,,
+dataset,24,128056,97974,127850,78796,4,5,19150,1,30017,21,62,9672,31290,25129,1418278,27.0550183,19.5573463,57.1691708,127973,EgoStandard,,,,
+split,7,48964,28220,48896,20521,2,0,7697,0,20744,0,0,3125,8210,5621,369350,29.407649,20.8286028,62.8848911,48964,,test,,,
+split,55,188184,145288,187948,114770,7,5,30443,0,42762,57,140,14739,40278,31092,2065844,28.7778007,21.7661695,59.6945881,187987,,train,,,
+split,7,27132,22710,26610,17864,2,1,4689,1,4303,42,230,2585,5147,4191,321460,31.8889718,24.0355883,65.4571449,26860,,validation,,,
+view,69,132140,97148,131765,75302,6,3,21736,1,34868,38,186,9550,27982,20939,1355369,29.3366638,22.0368366,60.7760384,131916,,,head_left,,
+view,69,132140,99070,131689,77853,5,3,21093,0,32941,61,184,10899,25653,19965,1401285,29.1169792,21.7507362,60.7321526,131895,,,head_right,,
+hand,69,132140,98109,131637,76398,6,3,21549,0,33916,49,219,11828,26250,19797,1375063,28.5821385,21.3749046,59.6380257,131872,,,,left,
+hand,69,132140,98109,131817,76757,5,3,21280,1,33893,50,151,8621,27385,21107,1381591,29.8648078,22.394207,61.8412361,131939,,,,right,
+quality,38,195744,146212,195143,115560,3,1,30472,0,49365,16,327,14513,40227,31194,2079971,29.4393399,22.0775814,60.9664993,195401,,,,,explicit_normal
+quality,5,114,50,114,43,0,0,7,0,64,0,0,1,3,3,774,47.1510426,38.7519798,93.664753,114,,,,,listed_without_own_reason
+quality,3,126,52,22,6,0,0,25,0,28,63,4,1,2,0,100,51.6285449,44.7285271,94.8096825,59,,,,,near edge
+quality,22,1874,623,1816,134,1,3,473,1,1245,17,0,37,155,32,2406,57.8056055,41.5915508,126.517708,1857,,,,,occlusion
+quality,16,1198,499,1149,426,1,2,62,0,665,3,39,38,65,54,7663,27.5028405,21.690239,56.0290359,1156,,,,,other_hand_only
+quality,31,65224,48782,65210,36986,6,0,11790,0,16442,0,0,5859,13183,9621,665740,28.4476302,21.2237206,59.8267128,65224,,,,,unlisted_unknown
+dataset_quality,5,114,50,114,43,0,0,7,0,64,0,0,1,3,3,774,47.1510426,38.7519798,93.664753,114,EgoDemo,,,,listed_without_own_reason
+dataset_quality,5,318,60,318,14,0,0,46,0,258,0,0,8,20,0,252,60.8007439,56.8069935,104.462602,318,EgoDemo,,,,occlusion
+dataset_quality,31,65224,48782,65210,36986,6,0,11790,0,16442,0,0,5859,13183,9621,665740,28.4476302,21.2237206,59.8267128,65224,EgoDemo,,,,unlisted_unknown
+dataset_quality,14,68928,48836,68457,37073,1,1,11590,0,19977,11,275,4880,9071,6113,667247,34.5539836,27.9762077,67.6431305,68642,EgoPro,,,,explicit_normal
+dataset_quality,2,112,52,14,6,0,0,25,0,14,63,4,1,2,0,100,51.6285449,44.7285271,94.8096825,45,EgoPro,,,,near edge
+dataset_quality,7,768,219,766,38,0,0,181,0,548,1,0,11,25,2,684,58.0436183,52.2460499,108.996903,767,EgoPro,,,,occlusion
+dataset_quality,7,760,245,725,199,0,0,40,0,489,3,29,17,41,36,3579,27.9980558,23.6093884,53.4460091,728,EgoPro,,,,other_hand_only
+dataset_quality,24,126816,97376,126686,78487,2,0,18882,0,29388,5,52,9633,31156,25081,1412724,27.0236304,19.5489502,57.1076202,126759,EgoStandard,,,,explicit_normal
+dataset_quality,1,14,0,8,0,0,0,0,0,14,0,0,0,0,0,0,,,,14,EgoStandard,,,,near edge
+dataset_quality,10,788,344,732,82,1,3,246,1,439,16,0,18,110,30,1470,57.1814044,34.5502186,152.94957,772,EgoStandard,,,,occlusion
+dataset_quality,9,438,254,424,227,1,2,22,0,176,0,10,21,24,18,4084,27.0688603,19.5377407,59.056934,428,EgoStandard,,,,other_hand_only
+dataset_split_view_hand_quality,2,648,380,648,138,1,0,241,0,268,0,0,41,193,95,2484,21.060494,17.4926243,41.4807598,648,EgoDemo,test,head_left,left,unlisted_unknown
+dataset_split_view_hand_quality,2,648,380,648,301,1,0,78,0,268,0,0,30,49,34,5418,20.820861,16.8134813,40.981255,648,EgoDemo,test,head_left,right,unlisted_unknown
+dataset_split_view_hand_quality,2,648,347,648,249,0,0,98,0,301,0,0,75,97,68,4482,21.8731212,18.7549419,41.2253086,648,EgoDemo,test,head_right,left,unlisted_unknown
+dataset_split_view_hand_quality,2,648,347,648,237,0,0,110,0,301,0,0,11,191,145,4266,20.7083005,15.4549565,43.3662109,648,EgoDemo,test,head_right,right,unlisted_unknown
+dataset_split_view_hand_quality,3,12,1,12,0,0,0,1,0,11,0,0,0,0,0,0,,,,12,EgoDemo,train,head_left,left,listed_without_own_reason
+dataset_split_view_hand_quality,4,96,26,96,0,0,0,26,0,70,0,0,0,20,0,0,,,,96,EgoDemo,train,head_left,left,occlusion
+dataset_split_view_hand_quality,27,14261,10493,14253,6983,0,0,3510,0,3768,0,0,1092,3670,2558,125689,28.8750034,21.7162857,60.3824333,14261,EgoDemo,train,head_left,left,unlisted_unknown
+dataset_split_view_hand_quality,3,45,21,45,21,0,0,0,0,24,0,0,0,0,0,378,47.4015559,36.8332863,98.5601334,45,EgoDemo,train,head_left,right,listed_without_own_reason
+dataset_split_view_hand_quality,4,63,6,63,6,0,0,0,0,57,0,0,0,0,0,108,55.146149,45.1318855,100.322215,63,EgoDemo,train,head_left,right,occlusion
+dataset_split_view_hand_quality,27,14261,10493,14261,8805,0,0,1688,0,3768,0,0,1350,2066,1588,158490,28.9886237,22.4178171,59.018557,14261,EgoDemo,train,head_left,right,unlisted_unknown
+dataset_split_view_hand_quality,3,12,0,12,0,0,0,0,0,12,0,0,0,0,0,0,,,,12,EgoDemo,train,head_right,left,listed_without_own_reason
+dataset_split_view_hand_quality,4,96,28,96,8,0,0,20,0,68,0,0,8,0,0,144,65.0416901,64.0483532,105.170065,96,EgoDemo,train,head_right,left,occlusion
+dataset_split_view_hand_quality,27,14261,10813,14255,9212,1,0,1600,0,3448,0,0,1875,1921,1544,165813,29.3278921,21.8411312,61.8293434,14261,EgoDemo,train,head_right,left,unlisted_unknown
+dataset_split_view_hand_quality,3,45,28,45,22,0,0,6,0,17,0,0,1,3,3,396,46.9119162,40.4128323,81.519825,45,EgoDemo,train,head_right,right,listed_without_own_reason
+dataset_split_view_hand_quality,4,63,0,63,0,0,0,0,0,63,0,0,0,0,0,0,,,,63,EgoDemo,train,head_right,right,occlusion
+dataset_split_view_hand_quality,27,14261,10813,14261,7277,1,0,3535,0,3448,0,0,665,3955,2745,130986,27.8304685,20.678731,58.1763458,14261,EgoDemo,train,head_right,right,unlisted_unknown
+dataset_split_view_hand_quality,2,1397,1186,1397,1004,0,0,182,0,211,0,0,168,217,181,18072,20.4979412,10.4944267,55.2982105,1397,EgoDemo,validation,head_left,left,unlisted_unknown
+dataset_split_view_hand_quality,2,1397,1186,1397,910,0,0,276,0,211,0,0,161,178,133,16380,33.8329541,27.3973169,68.7649384,1397,EgoDemo,validation,head_left,right,unlisted_unknown
+dataset_split_view_hand_quality,2,1397,1172,1397,1061,1,0,110,0,225,0,0,282,232,213,19098,21.70853,11.6794653,55.3187401,1397,EgoDemo,validation,head_right,left,unlisted_unknown
+dataset_split_view_hand_quality,2,1397,1172,1397,809,1,0,362,0,225,0,0,109,414,317,14562,35.4339937,28.4829721,73.4131569,1397,EgoDemo,validation,head_right,right,unlisted_unknown
+dataset_split_view_hand_quality,2,2969,1308,2969,537,0,0,771,0,1661,0,0,19,398,323,9666,31.2846722,24.944767,62.7677727,2969,EgoPro,test,head_left,left,explicit_normal
+dataset_split_view_hand_quality,2,168,23,168,23,0,0,0,0,145,0,0,1,0,0,414,23.5014871,19.5586939,47.1070782,168,EgoPro,test,head_left,left,other_hand_only
+dataset_split_view_hand_quality,2,2969,1308,2964,1072,0,0,236,0,1661,0,0,179,44,40,19296,27.297507,21.1945934,55.640419,2969,EgoPro,test,head_left,right,explicit_normal
+dataset_split_view_hand_quality,2,168,23,168,0,0,0,23,0,145,0,0,0,0,0,0,,,,168,EgoPro,test,head_left,right,occlusion
+dataset_split_view_hand_quality,2,2969,1441,2969,756,0,0,685,0,1528,0,0,59,625,235,13608,28.6906121,23.4696159,55.9643089,2969,EgoPro,test,head_right,left,explicit_normal
+dataset_split_view_hand_quality,2,168,79,168,75,0,0,4,0,89,0,0,1,34,32,1350,28.158562,25.3248968,51.7771702,168,EgoPro,test,head_right,left,other_hand_only
+dataset_split_view_hand_quality,2,2969,1441,2964,1021,0,0,420,0,1528,0,0,145,311,215,18378,24.3675598,18.4633589,50.6814007,2969,EgoPro,test,head_right,right,explicit_normal
+dataset_split_view_hand_quality,2,168,79,168,6,0,0,73,0,89,0,0,2,0,0,108,90.1040964,84.6618385,152.409998,168,EgoPro,test,head_right,right,occlusion
+dataset_split_view_hand_quality,8,9501,6817,9485,5134,0,0,1683,0,2668,0,16,335,1205,679,92412,35.7640374,31.2222376,64.7452904,9485,EgoPro,train,head_left,left,explicit_normal
+dataset_split_view_hand_quality,1,9,1,0,1,0,0,0,0,1,7,0,0,0,0,13,52.4630993,48.0530777,86.5718109,2,EgoPro,train,head_left,left,near edge
+dataset_split_view_hand_quality,3,66,6,66,3,0,0,3,0,60,0,0,0,2,0,54,47.9195026,47.1438942,79.9320244,66,EgoPro,train,head_left,left,occlusion
+dataset_split_view_hand_quality,3,76,34,72,16,0,0,18,0,38,0,4,3,1,1,288,47.8074229,42.1701031,96.9408836,72,EgoPro,train,head_left,left,other_hand_only
+dataset_split_view_hand_quality,8,9501,6817,9457,5534,0,0,1267,0,2656,3,41,797,715,448,99612,37.5834443,30.7966805,73.709774,9457,EgoPro,train,head_left,right,explicit_normal
+dataset_split_view_hand_quality,1,23,11,6,0,0,0,7,0,4,12,0,0,1,0,0,,,,11,EgoPro,train,head_left,right,near edge
+dataset_split_view_hand_quality,3,66,26,66,7,0,0,19,0,40,0,0,2,0,0,126,58.9589897,55.8818073,100.935383,66,EgoPro,train,head_left,right,occlusion
+dataset_split_view_hand_quality,3,62,4,54,2,0,0,0,0,52,0,8,1,0,0,36,52.6100321,43.414753,98.5148621,54,EgoPro,train,head_left,right,other_hand_only
+dataset_split_view_hand_quality,8,9501,6938,9484,6164,1,0,773,0,2547,0,16,844,822,647,110952,33.0237812,26.98876,65.4968155,9485,EgoPro,train,head_right,left,explicit_normal
+dataset_split_view_hand_quality,1,9,0,0,0,0,0,0,0,0,8,1,0,0,0,0,,,,0,EgoPro,train,head_right,left,near edge
+dataset_split_view_hand_quality,3,66,7,66,3,0,0,4,0,59,0,0,0,0,0,54,50.9631923,48.2914143,79.5971718,66,EgoPro,train,head_right,left,occlusion
+dataset_split_view_hand_quality,3,76,29,71,20,0,0,9,0,43,0,4,7,2,0,358,24.3069168,20.8692389,44.3120518,72,EgoPro,train,head_right,left,other_hand_only
+dataset_split_view_hand_quality,8,9501,6938,9448,4773,0,0,2143,0,2541,3,41,662,1603,909,85913,37.5428167,32.0499496,72.0416565,9457,EgoPro,train,head_right,right,explicit_normal
+dataset_split_view_hand_quality,1,23,14,2,0,0,0,6,0,2,14,1,0,1,0,0,,,,8,EgoPro,train,head_right,right,near edge
+dataset_split_view_hand_quality,3,66,19,66,9,0,0,10,0,47,0,0,3,2,0,162,65.929418,65.3933411,110.989232,66,EgoPro,train,head_right,right,occlusion
+dataset_split_view_hand_quality,3,62,3,54,2,0,0,0,0,52,0,8,0,0,0,36,20.3754503,21.6454639,35.8975658,54,EgoPro,train,head_right,right,other_hand_only
+dataset_split_view_hand_quality,4,4762,3897,4639,2886,0,1,944,0,858,0,73,257,1109,869,51917,33.7648798,26.4811382,66.1878784,4689,EgoPro,validation,head_left,left,explicit_normal
+dataset_split_view_hand_quality,1,13,8,1,2,0,0,3,0,2,6,0,0,0,0,34,38.0654783,41.4702072,52.4067677,7,EgoPro,validation,head_left,left,near edge
+dataset_split_view_hand_quality,2,38,15,38,0,0,0,15,0,23,0,0,0,1,0,0,,,,38,EgoPro,validation,head_left,left,occlusion
+dataset_split_view_hand_quality,2,40,17,38,11,0,0,6,0,22,0,1,0,2,1,197,25.4961395,20.0544109,52.4897682,39,EgoPro,validation,head_left,left,other_hand_only
+dataset_split_view_hand_quality,4,4762,3897,4735,2956,0,0,940,0,857,0,9,558,792,579,53204,33.3089257,25.0475178,66.2742836,4753,EgoPro,validation,head_left,right,explicit_normal
+dataset_split_view_hand_quality,1,11,6,0,0,0,0,3,0,1,7,0,0,0,0,0,,,,4,EgoPro,validation,head_left,right,near edge
+dataset_split_view_hand_quality,2,46,14,46,8,0,0,6,0,32,0,0,3,0,0,144,35.8954263,32.3497305,66.2964821,46,EgoPro,validation,head_left,right,occlusion
+dataset_split_view_hand_quality,2,34,20,31,16,0,0,1,0,14,0,3,0,0,0,288,27.9860287,26.4308729,48.388879,31,EgoPro,validation,head_left,right,other_hand_only
+dataset_split_view_hand_quality,4,4762,4017,4590,3155,0,0,797,0,735,2,73,463,407,343,56760,35.2806452,27.0446796,70.6555794,4687,EgoPro,validation,head_right,left,explicit_normal
+dataset_split_view_hand_quality,1,13,7,1,1,0,0,3,0,1,6,2,0,0,0,17,65.0656293,69.1192398,102.34427,5,EgoPro,validation,head_right,left,near edge
+dataset_split_view_hand_quality,2,38,14,36,0,0,0,14,0,23,1,0,0,5,0,0,,,,37,EgoPro,validation,head_right,left,occlusion
+dataset_split_view_hand_quality,2,40,18,38,16,0,0,2,0,21,0,1,4,2,2,288,21.6645688,17.1420746,41.9700176,39,EgoPro,validation,head_right,left,other_hand_only
+dataset_split_view_hand_quality,4,4762,4017,4753,3085,0,0,931,0,737,3,6,562,1040,826,55529,34.6257827,26.0949326,69.6151047,4753,EgoPro,validation,head_right,right,explicit_normal
+dataset_split_view_hand_quality,1,11,5,4,2,0,0,3,0,3,3,0,1,0,0,36,57.7914511,47.8395004,110.381935,8,EgoPro,validation,head_right,right,near edge
+dataset_split_view_hand_quality,2,46,16,46,2,0,0,14,0,30,0,0,1,15,2,36,37.5718661,37.1655769,60.3694649,46,EgoPro,validation,head_right,right,occlusion
+dataset_split_view_hand_quality,2,34,18,31,18,0,0,0,0,13,3,0,0,0,0,324,24.8190257,22.9046307,43.3639633,31,EgoPro,validation,head_right,right,other_hand_only
+dataset_split_view_hand_quality,3,8393,5168,8389,3743,0,0,1425,0,3225,0,0,696,2122,1304,67374,27.3681023,19.0091133,58.4169636,8393,EgoStandard,test,head_left,left,explicit_normal
+dataset_split_view_hand_quality,1,5,0,3,0,0,0,0,0,5,0,0,0,0,0,0,,,,5,EgoStandard,test,head_left,left,near edge
+dataset_split_view_hand_quality,2,32,14,32,1,0,0,13,0,18,0,0,0,3,0,18,37.0311229,38.1480942,58.9735996,32,EgoStandard,test,head_left,left,occlusion
+dataset_split_view_hand_quality,2,26,12,26,9,0,0,3,0,14,0,0,1,2,1,162,16.9219432,15.7281117,29.6621479,26,EgoStandard,test,head_left,left,other_hand_only
+dataset_split_view_hand_quality,3,8393,5168,8379,4202,0,0,966,0,3225,0,0,572,1693,1204,75626,32.9984768,22.7942619,71.8109283,8393,EgoStandard,test,head_left,right,explicit_normal
+dataset_split_view_hand_quality,1,2,0,2,0,0,0,0,0,2,0,0,0,0,0,0,,,,2,EgoStandard,test,head_left,right,near edge
+dataset_split_view_hand_quality,2,43,17,43,8,0,0,9,0,26,0,0,1,6,0,144,22.60185,18.0703468,42.5577957,43,EgoStandard,test,head_left,right,occlusion
+dataset_split_view_hand_quality,1,18,9,18,8,0,0,1,0,9,0,0,1,0,0,144,34.2620411,28.2375107,67.3534279,18,EgoStandard,test,head_left,right,other_hand_only
+dataset_split_view_hand_quality,3,8393,5304,8389,4090,0,0,1214,0,3089,0,0,816,995,757,73618,27.6851404,19.7153187,59.2676777,8393,EgoStandard,test,head_right,left,explicit_normal
+dataset_split_view_hand_quality,1,5,0,2,0,0,0,0,0,5,0,0,0,0,0,0,,,,5,EgoStandard,test,head_right,left,near edge
+dataset_split_view_hand_quality,2,32,19,32,4,0,0,15,0,13,0,0,1,7,0,72,27.6756425,20.7735081,58.0381763,32,EgoStandard,test,head_right,left,occlusion
+dataset_split_view_hand_quality,2,26,15,26,10,0,0,5,0,11,0,0,0,0,0,180,29.8148846,22.0352812,67.3468323,26,EgoStandard,test,head_right,left,other_hand_only
+dataset_split_view_hand_quality,3,8393,5304,8365,4011,0,0,1293,0,3089,0,0,471,1439,1168,72182,32.7494517,22.398386,72.7451546,8393,EgoStandard,test,head_right,right,explicit_normal
+dataset_split_view_hand_quality,1,2,0,1,0,0,0,0,0,2,0,0,0,0,0,0,,,,2,EgoStandard,test,head_right,right,near edge
+dataset_split_view_hand_quality,2,43,25,43,12,0,0,13,0,18,0,0,3,1,0,216,97.4250008,74.8895378,211.785919,43,EgoStandard,test,head_right,right,occlusion
+dataset_split_view_hand_quality,1,18,9,16,8,0,0,1,0,9,0,0,0,0,0,144,26.9169977,20.1214485,57.2059429,18,EgoStandard,test,head_right,right,other_hand_only
+dataset_split_view_hand_quality,20,22814,18573,22814,14514,1,0,4058,0,4241,0,0,1897,7248,5868,261252,25.1482082,17.9954739,53.6347576,22814,EgoStandard,train,head_left,left,explicit_normal
+dataset_split_view_hand_quality,4,105,20,105,3,0,0,17,0,85,0,0,2,10,2,54,33.1538251,31.6100454,54.0115673,105,EgoStandard,train,head_left,left,occlusion
+dataset_split_view_hand_quality,6,106,76,106,74,1,1,0,0,30,0,0,3,13,11,1332,24.9247444,17.3445177,55.301844,106,EgoStandard,train,head_left,left,other_hand_only
+dataset_split_view_hand_quality,20,22814,18573,22814,15381,1,0,3191,0,4241,0,0,1360,5742,4586,276858,27.2031826,20.2541361,56.6620338,22814,EgoStandard,train,head_left,right,explicit_normal
+dataset_split_view_hand_quality,7,163,85,163,13,1,1,70,0,78,0,0,4,45,5,234,65.5718325,38.5026531,178.705692,163,EgoStandard,train,head_left,right,occlusion
+dataset_split_view_hand_quality,1,48,11,48,10,0,0,1,0,37,0,0,1,1,0,180,36.2843676,26.8545427,82.0789833,48,EgoStandard,train,head_left,right,other_hand_only
+dataset_split_view_hand_quality,20,22814,18682,22811,15461,0,0,3219,0,4132,2,0,2861,4499,3682,278298,26.6465007,19.2827101,56.9847897,22812,EgoStandard,train,head_right,left,explicit_normal
+dataset_split_view_hand_quality,4,105,20,97,4,0,0,8,0,85,8,0,4,0,0,72,74.5332857,66.9411011,178.142812,97,EgoStandard,train,head_right,left,occlusion
+dataset_split_view_hand_quality,6,106,80,106,70,0,1,9,0,26,0,0,13,3,3,1260,22.2457441,15.4654813,47.259428,106,EgoStandard,train,head_right,left,other_hand_only
+dataset_split_view_hand_quality,20,22814,18682,22814,15202,0,0,3480,0,4132,0,0,946,6692,5790,273636,25.7389205,19.1936054,52.8855724,22814,EgoStandard,train,head_right,right,explicit_normal
+dataset_split_view_hand_quality,7,163,92,163,28,0,2,62,0,71,0,0,3,36,23,504,48.5910365,31.1604939,112.367558,163,EgoStandard,train,head_right,right,occlusion
+dataset_split_view_hand_quality,1,48,8,48,8,0,0,0,0,40,0,0,0,0,0,144,28.9238065,23.0106573,60.5133053,48,EgoStandard,train,head_right,right,other_hand_only
+dataset_split_view_hand_quality,1,497,479,478,478,0,0,1,0,5,0,13,0,242,241,8596,23.1905654,18.886035,45.0242901,484,EgoStandard,validation,head_left,left,explicit_normal
+dataset_split_view_hand_quality,1,30,15,14,3,0,0,11,0,14,2,0,0,1,0,54,80.132729,73.2342072,145.718822,28,EgoStandard,validation,head_left,left,occlusion
+dataset_split_view_hand_quality,1,6,5,5,5,0,0,0,0,0,0,1,0,3,3,90,41.546117,38.1454639,79.6562965,5,EgoStandard,validation,head_left,left,other_hand_only
+dataset_split_view_hand_quality,1,497,479,478,463,0,0,16,0,5,0,13,14,186,185,8334,28.8068215,22.406044,57.4376873,484,EgoStandard,validation,head_left,right,explicit_normal
+dataset_split_view_hand_quality,1,21,8,15,2,0,0,5,1,12,1,0,0,0,0,36,61.0832083,55.1284657,105.473354,20,EgoStandard,validation,head_left,right,occlusion
+dataset_split_view_hand_quality,1,15,12,10,9,0,0,2,0,0,0,4,1,2,0,161,43.394528,37.226078,87.6719971,11,EgoStandard,validation,head_left,right,other_hand_only
+dataset_split_view_hand_quality,1,497,482,474,464,0,0,15,0,2,3,13,0,136,134,8347,23.7885802,19.280941,45.6875931,481,EgoStandard,validation,head_right,left,explicit_normal
+dataset_split_view_hand_quality,1,30,18,10,2,0,0,14,0,10,4,0,0,1,0,30,52.2595782,45.12043,96.7299034,26,EgoStandard,validation,head_right,left,occlusion
+dataset_split_view_hand_quality,1,6,5,5,5,0,0,0,0,0,0,1,0,0,0,90,39.7152532,35.1597767,72.1999168,5,EgoStandard,validation,head_right,left,other_hand_only
+dataset_split_view_hand_quality,1,497,482,481,478,0,0,4,0,2,0,13,0,162,162,8603,27.5784566,21.2494907,56.159066,484,EgoStandard,validation,head_right,right,explicit_normal
+dataset_split_view_hand_quality,1,21,11,15,2,0,0,9,0,9,1,0,0,0,0,36,55.9624145,41.3399658,115.480026,20,EgoStandard,validation,head_right,right,occlusion
+dataset_split_view_hand_quality,1,15,12,10,11,0,0,0,0,0,0,4,1,0,0,197,37.5926709,33.7138405,64.9484619,11,EgoStandard,validation,head_right,right,other_hand_only

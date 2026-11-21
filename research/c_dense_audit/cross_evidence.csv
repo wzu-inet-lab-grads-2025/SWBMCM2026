@@ -1,0 +1,32 @@
+quality,candidates,joint_support,agree_both,only_temporal,only_stereo,neither,scope,dataset,split
+near edge,1323,52,32,12,4,4,all,,
+normal,2055312,883577,561605,101933,175911,44128,all,,
+occlusion,19677,7159,2746,1193,2023,1197,all,,
+other_hand_only,13776,4298,2713,733,664,188,all,,
+unlisted,684852,335248,226925,35881,59414,13028,all,,
+near edge,1176,21,14,4,0,3,source,EgoPro,
+near edge,147,31,18,8,4,1,source,EgoStandard,
+normal,723744,284609,178655,35287,55506,15161,source,EgoPro,
+normal,1331568,598968,382950,66646,120405,28967,source,EgoStandard,
+occlusion,3339,1348,573,324,266,185,source,EgoDemo,
+occlusion,8064,2762,971,412,846,533,source,EgoPro,
+occlusion,8274,3049,1202,457,911,479,source,EgoStandard,
+other_hand_only,1197,357,200,74,61,22,source,EgoDemo,
+other_hand_only,7980,2454,1602,492,270,90,source,EgoPro,
+other_hand_only,4599,1487,911,167,333,76,source,EgoStandard,
+unlisted,684852,335248,226925,35881,59414,13028,source,EgoDemo,
+near edge,147,31,18,8,4,1,split,,test
+near edge,672,5,2,2,0,1,split,,train
+near edge,504,16,12,2,0,2,split,,validation
+normal,477204,202735,121548,30149,39364,11674,split,,test
+normal,1357230,614332,395922,65093,123982,29335,split,,train
+normal,220878,66510,44135,6691,12565,3119,split,,validation
+occlusion,5103,2391,776,434,673,508,split,,test
+occlusion,11739,4494,1867,738,1252,637,split,,train
+occlusion,2835,274,103,21,98,52,split,,validation
+other_hand_only,4452,1675,1132,393,106,44,split,,test
+other_hand_only,7329,2311,1404,291,499,117,split,,train
+other_hand_only,1995,312,177,49,59,27,split,,validation
+unlisted,27216,18519,10227,2464,4460,1368,split,,test
+unlisted,598962,291022,197733,31272,50960,11057,split,,train
+unlisted,58674,25707,18965,2145,3994,603,split,,validation

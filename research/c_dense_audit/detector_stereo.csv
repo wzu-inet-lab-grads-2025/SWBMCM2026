@@ -1,0 +1,66 @@
+scope,records,hand_times,both,head_left_only,head_right_only,neither,dataset,split,hand,quality
+overall,69,132140,63942,11360,13911,42927,,,,
+dataset,31,32828,14637,3531,4238,10422,EgoDemo,,,
+dataset,14,35284,15338,2870,3770,13306,EgoPro,,,
+dataset,24,64028,33967,4959,5903,19199,EgoStandard,,,
+split,7,24482,8102,1940,2377,12063,,test,,
+split,55,94092,48205,8302,10058,27527,,train,,
+split,7,13566,7635,1118,1476,3337,,validation,,
+hand,69,66070,31615,3953,9215,21287,,,left,
+hand,69,66070,32327,7407,4696,21640,,,right,
+quality,38,97872,49127,7773,9533,31439,,,,explicit_normal
+quality,5,57,19,2,3,33,,,,listed_without_own_reason
+quality,3,63,1,2,2,58,,,,near edge
+quality,22,937,27,27,53,830,,,,occlusion
+quality,16,599,150,33,93,323,,,,other_hand_only
+quality,31,32612,14618,3523,4227,10244,,,,unlisted_unknown
+dataset_split_hand_quality,2,648,78,60,171,339,EgoDemo,test,left,unlisted_unknown
+dataset_split_hand_quality,2,648,176,125,61,286,EgoDemo,test,right,unlisted_unknown
+dataset_split_hand_quality,3,12,0,0,0,12,EgoDemo,train,left,listed_without_own_reason
+dataset_split_hand_quality,4,96,0,0,8,88,EgoDemo,train,left,occlusion
+dataset_split_hand_quality,27,14261,6318,665,2894,4384,EgoDemo,train,left,unlisted_unknown
+dataset_split_hand_quality,3,45,19,2,3,21,EgoDemo,train,right,listed_without_own_reason
+dataset_split_hand_quality,4,63,0,6,0,57,EgoDemo,train,right,occlusion
+dataset_split_hand_quality,27,14261,6383,2422,894,4562,EgoDemo,train,right,unlisted_unknown
+dataset_split_hand_quality,2,1397,943,61,118,275,EgoDemo,validation,left,unlisted_unknown
+dataset_split_hand_quality,2,1397,720,190,89,398,EgoDemo,validation,right,unlisted_unknown
+dataset_split_hand_quality,2,2969,391,146,365,2067,EgoPro,test,left,explicit_normal
+dataset_split_hand_quality,2,168,14,9,61,84,EgoPro,test,left,other_hand_only
+dataset_split_hand_quality,2,2969,819,253,202,1695,EgoPro,test,right,explicit_normal
+dataset_split_hand_quality,2,168,0,0,6,162,EgoPro,test,right,occlusion
+dataset_split_hand_quality,8,9501,4786,348,1378,2989,EgoPro,train,left,explicit_normal
+dataset_split_hand_quality,1,9,0,1,0,8,EgoPro,train,left,near edge
+dataset_split_hand_quality,3,66,2,1,1,62,EgoPro,train,left,occlusion
+dataset_split_hand_quality,3,76,10,6,10,50,EgoPro,train,left,other_hand_only
+dataset_split_hand_quality,8,9501,4283,1251,490,3477,EgoPro,train,right,explicit_normal
+dataset_split_hand_quality,1,23,0,0,0,23,EgoPro,train,right,near edge
+dataset_split_hand_quality,3,66,3,4,6,53,EgoPro,train,right,occlusion
+dataset_split_hand_quality,3,62,1,1,1,59,EgoPro,train,right,other_hand_only
+dataset_split_hand_quality,4,4762,2437,449,718,1158,EgoPro,validation,left,explicit_normal
+dataset_split_hand_quality,1,13,1,1,0,11,EgoPro,validation,left,near edge
+dataset_split_hand_quality,2,38,0,0,0,38,EgoPro,validation,left,occlusion
+dataset_split_hand_quality,2,40,6,5,10,19,EgoPro,validation,left,other_hand_only
+dataset_split_hand_quality,4,4762,2568,388,517,1289,EgoPro,validation,right,explicit_normal
+dataset_split_hand_quality,1,11,0,0,2,9,EgoPro,validation,right,near edge
+dataset_split_hand_quality,2,46,1,7,1,37,EgoPro,validation,right,occlusion
+dataset_split_hand_quality,2,34,16,0,2,16,EgoPro,validation,right,other_hand_only
+dataset_split_hand_quality,3,8393,3233,510,857,3793,EgoStandard,test,left,explicit_normal
+dataset_split_hand_quality,1,5,0,0,0,5,EgoStandard,test,left,near edge
+dataset_split_hand_quality,2,32,1,0,3,28,EgoStandard,test,left,occlusion
+dataset_split_hand_quality,2,26,8,1,2,15,EgoStandard,test,left,other_hand_only
+dataset_split_hand_quality,3,8393,3371,831,640,3551,EgoStandard,test,right,explicit_normal
+dataset_split_hand_quality,1,2,0,0,0,2,EgoStandard,test,right,near edge
+dataset_split_hand_quality,2,43,4,4,8,27,EgoStandard,test,right,occlusion
+dataset_split_hand_quality,1,18,7,1,1,9,EgoStandard,test,right,other_hand_only
+dataset_split_hand_quality,20,22814,12848,1666,2613,5687,EgoStandard,train,left,explicit_normal
+dataset_split_hand_quality,4,105,2,1,2,100,EgoStandard,train,left,occlusion
+dataset_split_hand_quality,6,106,66,8,4,28,EgoStandard,train,left,other_hand_only
+dataset_split_hand_quality,20,22814,13465,1916,1737,5696,EgoStandard,train,right,explicit_normal
+dataset_split_hand_quality,7,163,11,2,17,133,EgoStandard,train,right,occlusion
+dataset_split_hand_quality,1,48,8,2,0,38,EgoStandard,train,right,other_hand_only
+dataset_split_hand_quality,1,497,464,14,0,19,EgoStandard,validation,left,explicit_normal
+dataset_split_hand_quality,1,30,2,1,0,27,EgoStandard,validation,left,occlusion
+dataset_split_hand_quality,1,6,5,0,0,1,EgoStandard,validation,left,other_hand_only
+dataset_split_hand_quality,1,497,462,1,16,18,EgoStandard,validation,right,explicit_normal
+dataset_split_hand_quality,1,21,1,1,1,18,EgoStandard,validation,right,occlusion
+dataset_split_hand_quality,1,15,9,0,2,4,EgoStandard,validation,right,other_hand_only

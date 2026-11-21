@@ -1,0 +1,7 @@
+quality,records,hand_view_frames,first_no_previous,hand_view_pairs,no_comparable,any_comparable,all21_comparable,comparable_joints,median_of_hand_medians_px
+all,69,264280,276,264004,546,263458,26015,4222956,0.55815598
+normal,38,195744,148,195596,403,195193,16876,3077969,0.59265321
+occlusion,22,1874,4,1870,37,1833,343,26775,1.1088514
+near edge,3,126,0,126,54,72,0,544,4.5236988
+unlisted,31,65224,124,65100,8,65092,8718,1099270,0.45366095
+other_hand_only,21,1312,0,1312,44,1268,78,18398,0.60056967
