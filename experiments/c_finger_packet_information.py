@@ -19,7 +19,7 @@ from .c_quality_information import log_loss
 from .c_records import ROOT, split_records
 
 
-def events_for_hand(record, env, side, time, usable, xyz, middle, quat, bend):
+def events_for_hand(record, env, side, time, usable, xyz, middle, quat, bend, *, include_finger_angles=False):
     palm_length = lengths(xyz, middle)
     for run in qualified_runs(time, usable):
         for start, first, end in windows(time, run, SECOND, 2*SECOND):
@@ -32,15 +32,18 @@ def events_for_hand(record, env, side, time, usable, xyz, middle, quat, bend):
             for timing, source in [('first', first), ('at_1s', time.searchsorted(time[anchor] + SECOND))]:
                 if not first <= source < end or time[source] + SECOND//2 >= time[last]:
                     raise ValueError('Expected receipt to precede terminal event')
-                yield dict(record=record, env=env, side=side, timing=timing,
-                           history_move=offset[0], history_bend=bent[0],
-                           wrist_move=np.linalg.norm(xyz[source] - xyz[anchor]) > scale,
-                           wrist_turn=rotation_error(quat[source], quat[anchor]) >= 30,
-                           finger=np.abs(bend[source] - bend[anchor]).max() >= 30,
-                           final_move=offset[1], final_bend=bent[1])
+                angles = np.abs(bend[source] - bend[anchor])
+                event = dict(record=record, env=env, side=side, timing=timing,
+                             history_move=offset[0], history_bend=bent[0],
+                             wrist_move=np.linalg.norm(xyz[source] - xyz[anchor]) > scale,
+                             wrist_turn=rotation_error(quat[source], quat[anchor]) >= 30,
+                             finger=angles.max() >= 30, final_move=offset[1], final_bend=bent[1])
+                if include_finger_angles:
+                    event.update(zip(('index_deg', 'middle_deg', 'ring_deg', 'little_deg'), angles))
+                yield event
 
 
-def window_events(root, split='train'):
+def window_events(root, split='train', *, include_finger_angles=False):
     rows = []
     for record, folder, meta in split_records(root, split):
         if folder.parent.name == 'EgoDemo':
@@ -50,7 +53,7 @@ def window_events(root, split='train'):
             xyz = wrist[side]
             middle, quat, bend = read_states(folder, side, time)
             rows.extend(events_for_hand(record, meta['environment_id'], side, time, masks['both'],
-                                        xyz, middle, quat, bend))
+                                        xyz, middle, quat, bend, include_finger_angles=include_finger_angles))
     return pd.DataFrame(rows)
 
 

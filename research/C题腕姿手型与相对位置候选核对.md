@@ -85,3 +85,24 @@ I(Z;Y\mid C=c)=H(Z\mid C=c)-\sum_y P(y\mid c)H(Z\mid C=c,Y=y).
 /mnt/disk/zhoutianyu/miniconda3/bin/python -B -m experiments.c_finger_information_transfer
 cmp runs/c_finger_information/aggregate_transfer.csv research/feas_hand_channels/finger_transfer.csv
 ```
+
+## 条件互信息的出处，以及用 PCA 或聚类编码同一包的对照
+
+Cover 与 Thomas 的教材 *Elements of Information Theory* 第 2 章 §2.5 式 (2.60) 定义条件互信息为 \(I(X;Y\mid Z)=H(X\mid Z)-H(X\mid Y,Z)\)。哥伦比亚大学托管的 1991 年版章节 PDF 第 11 页可查到定义。前文“指弯的条件信息增益”用这一定义解释本题字段；具体选了什么历史摘要、回执编码、事件阈值和目标，以及用哪些记录估计，是本次实验设计。[教材 §2.5，式 (2.60)–(2.61)](https://www.cs.columbia.edu/~vh/courses/LexicalSemantics/Association/Cover&Thomas-Ch2.pdf#page=11)
+
+对这份数据，特征工程决定怎样把回执时刻的四指角度变化压缩成 `Y`。PCA 以给定维数保留方差最多的线性方向，K-means 按欧氏距离使簇内平方距离小，两者都能产生候选 `Y`。条件互信息指定评价目标 `Z` 和已知条件 `C`，衡量候选编码相对于已有历史与腕部回执额外提供多少目标信息。若问题是无标签探索手型模式，可直接考察聚类稳定性或 PCA 重建误差。若要预测未来指形，仍需在留出环境评分。若要决定是否付费，还要计入返回延迟、实际费用以及可改变的行动。
+
+**同输入与同编码容量比较。** 沿用 328 个显式正常双腕训练长窗、28 条记录、10 个环境，固定满 1 秒请求、0.5 秒返回。分别对每只手输入本手四指的回执源时刻相对历史末点的绝对角度差（均为度，保留原尺度）。比较三种两值编码：原规则取最大绝对变化是否达到 30°；PCA 在拟合环境中心化后取第一主成分，以拟合窗得分的中位数切两档；K-means 用两个簇的编号（K-means++ 初始化、10 次起点、固定随机种子）。训练内留一环境时，PCA 方向、切点、聚类中心及各条件格的概率都只从其余 9 个环境取得。PCA 与 K-means 拟合编码时只用收到的四个角度变化，不使用窗末目标。三种编码共享两项历史、两项腕部回执、既有概率平滑和回退。二值容量是为了对照原规则，实际传输成本并未定价。
+
+| 一位指形编码 | 窗末指弯：左 / 右 | 窗末腕位移：左 / 右 |
+|---|---:|---:|
+| 任一手指变化 ≥30° | −0.0081 / +0.0557 | −0.0055 / −0.0121 |
+| 第一主成分按中位数分两档 | +0.0061 / −0.0253 | −0.0318 / −0.0612 |
+| K-means 两簇 | −0.0433 / −0.0064 | −0.0094 / −0.0210 |
+
+表内是环境等权的折外对数损失改善（bit/窗，正值较好），比较对象都是只读已有历史与腕部信息的同一模型。真实条件互信息是对真实条件分布的期望，非负；估计模型在新环境的得分差可以为负。针对“任一指相对锚点变化达到 30°”这个目标，原编码在回执时刻就测量同一种变化，而第一主成分和簇编号会保留不同的差异。结果仅覆盖一维两档和两簇。评价完整手形重建、多维连续主成分或具名抓握类别时，任务和参照均需另定。已复核旧规则全部 44 条汇总及环境行；增添极端留出样本不影响拟合样本与原留出样本的编码。[逐环境汇总](feas_hand_channels/one_bit_encoders.csv) · [训练复算程序](../experiments/c_finger_one_bit_encoders.py)
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /mnt/disk/zhoutianyu/miniconda3/bin/python -B -m experiments.c_finger_one_bit_encoders
+cmp runs/c_finger_information/one_bit_encoders.csv research/feas_hand_channels/one_bit_encoders.csv
+```
