@@ -1,0 +1,6 @@
+# 第二问留量工况，除车身到楼墙和场界的净空外，沿用连续细化设置。
+search_radius_m: 1.0  # 在已验收关键链的站位附近求解，搜索半宽 m。
+nominal_visibility_gap_m: 1.0e-8  # 视线接触楼体即遮挡，半平面留正侧距离 m。
+practical_station_gap_m: 0.10  # 毫米示例的停车、仰角径向及三维视线余量 m。
+practical_decimals: 3  # 实用版站位以毫米下发，并重算全精度路线和时序。
+wall_clearance_m: 0.10  # 用户要求检查撞墙，附加 10 cm 全程车体净空作灵敏度实验。

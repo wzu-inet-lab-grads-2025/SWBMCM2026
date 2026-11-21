@@ -111,9 +111,12 @@ class Catalog:
 class Geometry:
     """复用 q2 保守可见图，缓存 q4 的真实折线路点与米制距离。"""
 
-    def __init__(self, archive: Archive):
-        """构建楼体外扩图；最大额外外扩由 router.max_excess_m 给出。"""
-        self.router = build_router(archive.scene, archive.scene.path_polygon_sides)
+    def __init__(self, archive: Archive, *, wall_clearance_m: float = 0.0):
+        """构建楼体外扩图；附加墙距单位 m，实车车径仍用于车间距离核查。"""
+        self.wall_clearance_m = wall_clearance_m
+        self.field = archive.scene.field
+        self.router = build_router(archive.scene, archive.scene.path_polygon_sides,
+                                   wall_clearance_m=wall_clearance_m)
 
     @lru_cache(maxsize=8192)
     def route(self, a: Point, b: Point) -> Route:
@@ -126,9 +129,12 @@ class Geometry:
 
 
 def _grid(geometry: Geometry, step: float) -> np.ndarray:
-    """在内缩场界中生成规则网格，单独补足右、上边界。"""
-    axes = [np.unique(np.r_[np.arange(lo, hi, step), hi]) for lo, hi in zip(geometry.router.lower,
-                                                                           geometry.router.upper)]
+    """保留标称网格内点，边缘候选向内折到可停车的场界。"""
+    field = geometry.field
+    lo = field.vehicle_radius
+    axes = [np.unique(np.clip(np.r_[np.arange(lo, hi, step), hi], safe_lo, safe_hi))
+            for hi, safe_lo, safe_hi in zip((field.field_width - lo, field.field_height - lo),
+                                           geometry.router.lower, geometry.router.upper)]
     grid = np.array(list(product(*axes)))
     return grid[geometry.router.admits(grid)]
 
@@ -231,6 +237,13 @@ def prefix_hash(prefix: Prefix) -> str:
     """为四个求解器共享的车位、姿态和锁定起测时刻生成标识。"""
     return digest({"dispatch": prefix.dispatch, "locked": prefix.locked, "failed": prefix.failed,
                    "states": [asdict(s) for s in prefix.states]})
+
+
+def initial_schedule_hash(archive: Archive) -> str:
+    """同一份文件含多份方案时区分所选行，保留历史默认方案的指纹。"""
+    if archive.plan == "optimized":
+        return digest(archive.hashes)
+    return digest({"files": archive.hashes, "plan": archive.plan})
 
 
 def route_time(points: tuple[Point, ...], archive: Archive) -> float:

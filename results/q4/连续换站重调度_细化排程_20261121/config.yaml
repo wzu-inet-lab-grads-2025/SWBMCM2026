@@ -1,0 +1,77 @@
+q2_archive: ../../../results/q2/等精度快速部署与并发排程_20261121
+azimuth_step_deg: 15
+ranges_m:
+- 30
+- 40
+- 50
+alert_height_m: 50
+recovery_s:
+- 10
+- 20
+- 30
+grid_m: 1.0
+local_grid_m: 0.25
+pair_limit: 40
+near_sites_per_anchor: 7
+quality_slack_s: 1.0
+min_sine: 1.0e-12
+critical_points: 6
+tick_s: 0.1
+fine_tick_s: 0.05
+fine_grid_m: 0.5
+fine_pair_limit: 60
+angle_sensitivity_deg: 5
+sensitivity_cases: 12
+exact_budget_s: 1.5
+workers: 12
+beam_width: 2
+alns_seeds:
+- 2026
+- 2027
+- 2028
+- 2029
+- 2030
+- 2031
+- 2032
+- 2033
+- 2034
+- 2035
+alns_iterations: 12
+recourse:
+  workers: 12
+  beam_width: 36
+  stations_per_vehicle: 8
+  alternatives_per_pair:
+  - 2
+  - 8
+  replay_candidates: 8
+  grid_points_per_axis: 4
+  vehicle_areas_xyxy_m:
+    V1:
+    - 2
+    - 2
+    - 32
+    - 32
+    V2:
+    - 66
+    - 1.5
+    - 98
+    - 20
+    V3:
+    - 2
+    - 77.6
+    - 30
+    - 98
+    V4:
+    - 81
+    - 48
+    - 98
+    - 85
+    V5:
+    - 36
+    - 80
+    - 67
+    - 98
+recourse_models:
+- recourse
+- fixed_stations

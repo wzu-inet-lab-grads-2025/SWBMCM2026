@@ -115,7 +115,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
         writer.writerows(rows)
 
 
-def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict]) -> None:
+def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict], *, formats=("png",)) -> None:
     """输出 T2 双站几何、优化与基线的五车甘特图和实走折线。"""
     import matplotlib
 
@@ -125,6 +125,12 @@ def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict]) -> 
 
     f = scene.field
     colors = dict(zip(scene.vehicles, plt.get_cmap("tab10").colors))
+
+    def save(figure, stem):
+        """保存同一画布的位图或矢量稿，图中时序始终从全精度底表读取。"""
+        for suffix in formats:
+            figure.savefig(directory / f"{stem}.{suffix}", dpi=190, bbox_inches="tight", pad_inches=0.12)
+        plt.close(figure)
 
     def field_axes(ax) -> None:
         """绘制米制场地底图；点线留给调用处添加车辆和目标。"""
@@ -161,10 +167,10 @@ def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict]) -> 
                   textcoords="offset points", ha="right", color="#414e5a")
     zoom.annotate(f"{q21['angle_deg']:.0f}°", (x_t, y_t), xytext=(-11, 7),
                   textcoords="offset points", ha="right", color="#a73335")
-    fig.savefig(directory / "q21_stations.png", dpi=190, bbox_inches="tight", pad_inches=0.12)
-    plt.close(fig)
+    save(fig, "q21_stations")
 
-    titles = {"optimized": "Optimized schedule", "greedy": "Nearest-assignment baseline"}
+    titles = {"optimized": "Optimized schedule", "practical": "Millimetre-coordinate schedule",
+              "greedy": "Nearest-assignment baseline"}
     fig, axes = plt.subplots(1, 2, figsize=(12, 5.4), layout="constrained")
     for ax, plan in zip(axes, plans):
         field_axes(ax)
@@ -194,8 +200,7 @@ def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict]) -> 
             ax.annotate(f"{v}/{' → '.join(targets)}", site, xytext=(-5 if align_right else 5, -8 if below else 6),
                         textcoords="offset points", ha="right" if align_right else "left",
                         va="top" if below else "bottom", color=colors[v], fontsize=8)
-    fig.savefig(directory / "q22_routes.png", dpi=190, bbox_inches="tight", pad_inches=0.12)
-    plt.close(fig)
+    save(fig, "q22_routes")
 
     phases = [("Travel", "depart_s", "arrive_s", "#2c69a0"), ("Slew", "turn_begin_s", "turn_end_s", "#dd9037"),
               ("Wait", "turn_end_s", "observation_start_s", "#bbc6d1"),
@@ -220,5 +225,4 @@ def write_plots(directory: Path, scene: Scene, q21: dict, plans: list[dict]) -> 
     axes[0].legend(handles=[Patch(color=color, label=label) for label, _, _, color in phases],
                    loc="lower right", ncol=5, frameon=False, fontsize=8)
     axes[-1].set_xlabel("Time after release (s)")
-    fig.savefig(directory / "q22_timeline.png", dpi=190, bbox_inches="tight", pad_inches=0.12)
-    plt.close(fig)
+    save(fig, "q22_timeline")

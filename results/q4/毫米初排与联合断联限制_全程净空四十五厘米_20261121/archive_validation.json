@@ -1,0 +1,46 @@
+{
+  "scope": "git_archive",
+  "all_valid": true,
+  "errors": [],
+  "required_wall_clearance_m": 0.45,
+  "wall_safety": {
+    "scope": "conditional_on_a_certified_execution_error_bound",
+    "planned_wall_clearance_m": 0.45,
+    "execution_error_bound_m": 0.4,
+    "actual_clearance_lower_bound_m": 0.04999999999999998
+  },
+  "minimum_intersection_gap_deg": 5.0,
+  "scenarios": 5693,
+  "scenarios_with_tracks": 5693,
+  "scenario_scores_checked": 28465,
+  "plan_tracks_checked": 28465,
+  "alert_results_checked": 113475,
+  "vehicle_timelines": 142325,
+  "event_table_checked": false,
+  "timeline_events": 0,
+  "event_types": {},
+  "seed_runs": null,
+  "solver_logs": null,
+  "min_vehicle_center_distance_m": 3.2416933846371117,
+  "q2_plan": "practical",
+  "initial_schedule_hash": "8a99235ce667519019b22755408eb671114eb18051efccaf040b80c65861e622",
+  "q2_initial_latest_start_s": 10.391509639548051,
+  "q2_archive_inputs_sha256": {
+    "config.yaml": "a2b0477f48ed920ce8999705e911555a5f68934f81fbb042fa1baaf1aa1e3ed9",
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f"
+  },
+  "auditor_sha256": "10876924fee5ce5efa875d66efe6029d55edad7e3a626bb773fbda17d8b08aee",
+  "input_sha256": {
+    "config.yaml": "c6d5bfef0f78631534ae198c864485f31d492d507c970779ae48b6d3778f4cd6",
+    "scenario_manifest.csv": "8dedd3eaffc7b412995229ad35afb294446e3ebae84dda14fbebe35837fc1e3f",
+    "scenario_inputs.jsonl.gz": "230d9a60a4126f52f012346e3ad91d673289940a77d362bfa5785bc1307cd838",
+    "algorithm_summary.csv": "d52c1f986dd7f5174ce6dc3380dab710ff5fafd31e8f144525e759f660bc4226",
+    "model_comparison.csv.gz": "d37f086f938ccf4072b33e766447304f3310c1ef9ceb28f457832c92f028e622",
+    "plans_and_tracks.jsonl.gz": "624ae56ea4462a15d5cedde69628a59313ed909e0eb62d3a5430c9de859644f8",
+    "alert_results.csv.gz": "6d9301c5c67c6b6533e56aa5af97c560c684a297e1209579b48012edf321028e",
+    "protocol_summary.csv": "65d50c5a51e9285599ef41d5ba51deb11765fe00e923d816cf6b7d176440e858"
+  },
+  "duration_s": 39.014303771953564
+}

@@ -1,0 +1,24 @@
+{
+  "vehicle": "V2",
+  "waypoints_m": [
+    [
+      88.0,
+      10.0
+    ],
+    [
+      8.0,
+      10.0
+    ]
+  ],
+  "length_m": 80.0,
+  "building_gap_m": 4.5,
+  "building_id": "B1",
+  "field_gap_m": 6.5,
+  "field_edge": "west",
+  "wall_safety": {
+    "scope": "conditional_on_a_certified_execution_error_bound",
+    "planned_wall_clearance_m": 0.45,
+    "execution_error_bound_m": 0.4,
+    "actual_clearance_lower_bound_m": 0.04999999999999998
+  }
+}

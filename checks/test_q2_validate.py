@@ -52,6 +52,30 @@ def test_vehicle_route_checks_interior_of_segment_and_allows_tangency():
         check_route(scene, [(2, 2.51), (10, 2.51)], (2, 2.51))
 
 
+def test_wall_clearance_applies_at_midsegment_and_when_parked():
+    """车身可通过原路径，但经过楼墙中段或停在距场界 5 cm 处时余量不足。"""
+    scene = replace(load_scene(), buildings=(Building("wall", 4, 8, 4, 8, 8),))
+    crossing = [(2., 2.45), (10., 2.45)]
+    parked = [(2., 1.55)]
+    for route in (crossing, parked):
+        check_route(scene, route, route[0])
+        with pytest.raises(CheckError, match="净空"):
+            check_route(scene, route, route[0], wall_clearance_m=0.10)
+    safe = [(2., 2.39), (10., 2.39)]
+    assert check_route(scene, safe, safe[0], wall_clearance_m=0.10)["length_m"] == 8.
+
+
+def test_wall_clearance_rejects_corner_tangency_between_safe_endpoints():
+    """3x+4y=62.5 是楼角的 1.5 m 切线，只有线段内部会贴墙。"""
+    scene = replace(load_scene(), buildings=(Building("corner", 10, 16, 10, 16, 8),))
+    route = ((3.5, 13), (15.5, 4))
+    for point in route:
+        check_route(scene, (point,), point, wall_clearance_m=0.45)
+    assert check_route(scene, route, route[0])["min_distance_to_buildings_m"]["corner"] == 1.5
+    with pytest.raises(CheckError, match="建筑 corner.*净空"):
+        check_route(scene, route, route[0], wall_clearance_m=0.45)
+
+
 @pytest.fixture
 def manual_schedule():
     """无楼手算场景：向东为零转向，向北为 3 秒；不是竞赛场景。"""
@@ -135,3 +159,14 @@ def test_schedule_flags_collision_during_travel_even_when_station_disks_do_not_o
     assert check["overlapping_pairs"] == [{"vehicles": ["V2", "V5"], "distance_m": 0.0, "time_s": 14.0}]
     with pytest.raises(CheckError, match="车间圆盘重叠"):
         verify_q22(scene, routes, timeline, require_vehicle_separation=True)
+
+
+def test_execution_wall_budget_requires_positive_actual_gap():
+    """全程偏差达到净空可贴墙，越过上界或缺失上界均不能验收。"""
+    from src.shared.wall_safety import execution_wall_budget
+
+    budget = execution_wall_budget({"wall_clearance_m": 0.45, "execution_error_bound_m": 0.40})
+    assert budget["actual_clearance_lower_bound_m"] == pytest.approx(0.05)
+    for error in (0.45, 0.5, None, float("inf")):
+        with pytest.raises(ValueError, match="误差"):
+            execution_wall_budget({"wall_clearance_m": 0.45, "execution_error_bound_m": error})

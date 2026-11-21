@@ -1,0 +1,20 @@
+# 第四问沿用 Q2（2）毫米初排，在同一场景网格上复核四种执行规则。
+q2_plan: practical  # 第二问归档中已按毫米实际坐标重算的方案名。
+q2_waypoint_decimals: 3  # 初排全部路点都必须落在 1 mm 网格；恢复后的候选站仍用连续坐标。
+outage_rules: [current_trip_only, confirm_after_recovery, strict_outage]  # 两项单独收紧及同时收紧。
+minimum_intersection_gap_deg: 5.0  # 站对距共线的额外筛选余量，度，延用交会角对照的 5°。
+workers: 12  # 同目标位置分组并行数。
+beam_width: 36  # 各层保留的车辆后续状态数。
+stations_per_vehicle: 8  # 每车用于先筛合法站对的就绪名单长度。
+alternatives_per_pair: [2, 8]  # 保留窄束和宽束的站对候选后缀。
+replay_candidates: 8  # 每层用于连续轨迹验收的候选数。
+grid_points_per_axis: 4  # 近站矩形采样的每轴点数，含端点。
+# 近站矩形的西、南、东、北端点，m。场界候选按净空要求内移。
+vehicle_areas_xyxy_m:
+  V1: [2, 2, 32, 32]
+  V2: [66, 1.5, 98, 20]
+  V3: [2, 77.6, 30, 98]
+  V4: [81, 48, 98, 85]
+  V5: [36, 80, 67, 98]
+wall_clearance_m: 0.45  # 车身到楼体和场界全程最小标称净空，m。
+execution_error_bound_m: 0.40  # 实车合成误差硬上界的试算值，m，需独立证实。

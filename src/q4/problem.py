@@ -36,7 +36,8 @@ class Instance:
     """求解器共享实例；几何为 m/度，预计算持续时间、下界和时限是整数 tick。"""
 
     def __init__(self, archive: Archive, geometry: Geometry, scenario: Scenario, prefix: Prefix, clock: Clock,
-                 catalog: Catalog | None, *, extra_pairs: dict[int, tuple[StationPair, ...]] | None = None):
+                 catalog: Catalog | None, *, extra_pairs: dict[int, tuple[StationPair, ...]] | None = None,
+                 planning_tables: bool = True):
         """将初始状态及多路径准备时间变成只读数组；未修改原归档。"""
         self.archive, self.geometry, self.scenario, self.prefix, self.clock = archive, geometry, scenario, prefix, clock
         self.catalog = catalog
@@ -61,7 +62,17 @@ class Instance:
         self.sites = {a: tuple((ids[p], ids[q]) for p, q in self.pairs[a]) for a in self.pairs}
         self.by_alert = {a: sorted({p for pair in self.sites[a] for p in pair}) for a in self.pairs}
         self.picks = {a: tuple(Pick(a, i, v, w) for i in range(len(self.pairs[a]))
-                               for v, w in permutations(self.alive, 2)) for a in self.pending}
+                                for v, w in permutations(self.alive, 2)) for a in self.pending}
+        self.pose = {(a, p): station_pose(self.points[p], self.targets[a], self.archive.scene.field.camera_height)
+                     for a in self.pending for p in self.by_alert[a]}
+        if not planning_tables:
+            # 连续搜索只借用本类的站车目录进行回放，省建整数规划时间张量。
+            path_inputs = {"geometry": self.archive.hashes, "routing": "q2_visibility_graph",
+                           "points_m": self.points, "continued": [s.remaining_route for s in prefix.states]}
+            if geometry.wall_clearance_m:
+                path_inputs["wall_clearance_m"] = geometry.wall_clearance_m
+            self.path_hash = digest(path_inputs)
+            return
         self.vector_picks = {a: np.array([(p.first, p.second, *self.sites[a][p.pair], self.change(p))
                                          for p in picks], dtype=np.int32).reshape(-1, 5).T
                              for a, picks in self.picks.items()}
@@ -71,8 +82,6 @@ class Instance:
         """生成首次就绪与两任务接续；同站改派直接从当前指向转到新目标。"""
         scene, horizon = self.archive.scene, self.impossible
         dims = (len(self.names), len(self.points))
-        self.pose = {(a, p): station_pose(self.points[p], self.targets[a], scene.field.camera_height)
-                     for a in self.pending for p in self.by_alert[a]}
         self.reset = np.full(dims, horizon, dtype=np.int32)
         self.first = np.full((len(scene.vehicles), *dims), horizon, dtype=np.int32)
         self.transfer = np.full((*dims, *dims), horizon, dtype=np.int32)

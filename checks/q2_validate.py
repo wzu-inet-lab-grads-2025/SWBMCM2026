@@ -24,8 +24,19 @@ TIME_FIELDS = (
 )
 
 
-def verify_q21(scene: Scene, result: dict) -> dict:
-    """给定 T2 两辆车与路线；重算站点、行车时限和精度，不证明站位最优。"""
+def require_waypoint_decimals(waypoints, decimals: int | None) -> None:
+    """检查实际下发的所有米制路点是否落在所选十进制网格，None 允许全精度。"""
+    if decimals is None:
+        return
+    if type(decimals) is not int or not 0 <= decimals <= 9:
+        raise CheckError("路点精度须为 0 到 9 位小数")
+    if any(c != round(c, decimals) for point in waypoints for c in point):
+        raise CheckError(f"路点坐标超出 {decimals} 位小数的下发精度")
+
+
+def verify_q21(scene: Scene, result: dict, *, require_vehicle_separation: bool = False,
+               wall_clearance_m: float = 0.0, waypoint_decimals: int | None = None) -> dict:
+    """重算 T2 车次与精度，可附加全程墙距（m）及连续车距约束。"""
     if result["target"] != "T2" or len(result["routes"]) != 2:
         raise CheckError("2（1）需要恰好两辆车观测 T2")
     target = scene.targets["T2"]
@@ -36,13 +47,27 @@ def verify_q21(scene: Scene, result: dict) -> dict:
         if vehicle not in scene.vehicles or vehicle in seen:
             raise CheckError(f"选车无效或重复：{vehicle!r}")
         seen.add(vehicle)
-        route = check_route(scene, row["waypoints"], scene.vehicles[vehicle])
+        route = check_route(scene, row["waypoints"], scene.vehicles[vehicle], wall_clearance_m=wall_clearance_m)
+        require_waypoint_decimals(route["waypoints"], waypoint_decimals)
         if route["travel_s"] > 30:
             raise CheckError(f"{vehicle} 行驶时间超过 30 s")
         site = route["waypoints"][-1]
         routes.append({"vehicle": vehicle, "site": site, **route, **station_pointing(scene, site, target)})
     metrics = pair_metrics(scene, routes[0]["site"], routes[1]["site"], target)
-    return {"target": "T2", "target_xyz_m": target, "routes": routes, **metrics}
+    report = {"target": "T2", "target_xyz_m": target, "routes": routes, **metrics}
+    if wall_clearance_m:
+        for name in scene.vehicles.keys() - seen:
+            site = scene.vehicles[name]
+            check_route(scene, (site,), site, wall_clearance_m=wall_clearance_m)
+    if require_vehicle_separation:
+        motions = {v: [] for v in scene.vehicles}
+        for leg in routes:
+            motions[leg["vehicle"]].append({**leg, "depart_s": 0.0, "arrive_s": leg["travel_s"]})
+        separation = check_vehicle_separation(scene, motions, max(route["travel_s"] for route in routes))
+        if separation["overlapping_pairs"]:
+            raise CheckError(f"T2 同时出发存在车身交叠：{separation['overlapping_pairs']}")
+        report["inter_vehicle_separation"] = separation
+    return report
 
 
 def _expect_number(row: dict, key: str, expected: float | None, tolerance: float) -> None:
@@ -61,8 +86,9 @@ def _expect_number(row: dict, key: str, expected: float | None, tolerance: float
 
 
 def verify_q22(scene: Scene, routes: list[dict], timeline: list[dict], *, time_tol_s: float = 1e-6,
-               require_vehicle_separation: bool = False) -> dict:
-    """回放固定车次、区分最晚启动和最后复位（s），互撞默认为诊断而非拒绝条件。"""
+               require_vehicle_separation: bool = False, wall_clearance_m: float = 0.0,
+               waypoint_decimals: int | None = None) -> dict:
+    """回放固定车次、区分最晚启动和最后复位（s），可附加墙距（m）与车距约束。"""
     if not math.isfinite(time_tol_s) or time_tol_s < 0:
         raise CheckError("时间表的比较容差必须为有限非负秒数")
     by_leg, successors = {}, {}
@@ -109,6 +135,10 @@ def verify_q22(scene: Scene, routes: list[dict], timeline: list[dict], *, time_t
             observed[key] = row
     if observed.keys() != by_leg.keys() or active | idle != set(scene.vehicles):
         raise CheckError("时间轴缺失已分配车次或未标明待命车")
+    if wall_clearance_m:
+        for name in idle:
+            site = scene.vehicles[name]
+            check_route(scene, (site,), site, wall_clearance_m=wall_clearance_m)
 
     replay, start_times, metrics = {}, {}, {}
     for target in order:
@@ -120,7 +150,8 @@ def verify_q22(scene: Scene, routes: list[dict], timeline: list[dict], *, time_t
             origin = scene.vehicles[vehicle] if prior is None else prior["site"]
             departure = 0.0 if prior is None else prior["reset_end_s"]
             try:
-                route = check_route(scene, row["waypoints"], origin)
+                route = check_route(scene, row["waypoints"], origin, wall_clearance_m=wall_clearance_m)
+                require_waypoint_decimals(route["waypoints"], waypoint_decimals)
                 site = route["waypoints"][-1]
                 for field, expected in (("origin", origin), ("destination", site)):
                     if field in row and xy(row[field]) != expected:
@@ -211,22 +242,34 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--q21", metavar="JSON", type=Path, help="2（1）固定方案：target 与 routes")
     parser.add_argument("--q22-routes", metavar="JSON", type=Path, help="2（2）固定路线列表（或含 routes 的对象）")
     parser.add_argument("--q22-timeline", metavar="CSV", type=Path, help="2（2）对应的完整五车辆时间轴")
+    parser.add_argument("--practical-decimals", type=int, help="2（2）practical 方案全部下发路点的十进制位数")
     parser.add_argument("--time-tol-s", metavar="SECONDS", type=float, default=1e-6, help="时间表比较的绝对容差")
     parser.add_argument("--require-vehicle-separation", action="store_true", help="任何车辆圆盘在同一时刻重叠均判为不合格")
+    parser.add_argument("--wall-clearance-m", type=float, default=0.0, help="车体到场界和楼体的最小净空（m）")
+    parser.add_argument("--execution-error-bound-m", type=float, help="墙距验收采用的合成执行误差硬上界（m）")
     parser.add_argument("--compare", nargs=2, metavar=("BASELINE", "CANDIDATE"), help="比较两份输入方案，参数为 plan 名")
     parser.add_argument("--output", type=Path, help="保存 JSON 验收报告（默认打印到终端）")
     args = parser.parse_args(argv)
     if bool(args.q22_routes) != bool(args.q22_timeline):
         parser.error("--q22-routes 和 --q22-timeline 必须一起提供")
-    if (args.require_vehicle_separation or args.compare) and not args.q22_routes:
-        parser.error("--require-vehicle-separation 和 --compare 仅用于 2（2）")
+    if (args.compare or args.practical_decimals is not None) and not args.q22_routes:
+        parser.error("--compare 和 --practical-decimals 仅用于 2（2）")
     if not (args.q21 or args.q22_routes):
         parser.error("请提供 --q21 或一对 --q22-routes / --q22-timeline")
     try:
+        from src.shared.wall_safety import execution_wall_budget
+
         scene = load_scene()
         report = {"scope": "given-plan verification only; no optimization or optimality certificate"}
+        if args.wall_clearance_m:
+            report["required_wall_clearance_m"] = args.wall_clearance_m
+        if args.execution_error_bound_m is not None:
+            report["wall_safety"] = execution_wall_budget(vars(args))
         if args.q21:
-            report["q21"] = verify_q21(scene, json.loads(args.q21.read_text(encoding="utf-8")))
+            q21 = json.loads(args.q21.read_text(encoding="utf-8"))
+            report["q21"] = verify_q21(scene, q21, waypoint_decimals=q21.get("coordinate_decimals"),
+                                       require_vehicle_separation=args.require_vehicle_separation,
+                                       wall_clearance_m=args.wall_clearance_m)
         if args.q22_routes:
             payload = json.loads(args.q22_routes.read_text(encoding="utf-8"))
             route_sets = _group_plans(payload["routes"] if isinstance(payload, dict) else payload)
@@ -234,9 +277,13 @@ def main(argv: list[str] | None = None) -> int:
                 time_sets = _group_plans(list(csv.DictReader(source)))
             if not route_sets or route_sets.keys() != time_sets.keys():
                 raise CheckError("路线与时间轴中的 plan 方案名不一致，或没有方案")
+            if args.practical_decimals is not None and "practical" not in route_sets:
+                raise CheckError("缺少需检查下发路点精度的 practical 方案")
             report["q22"] = {
                 name: verify_q22(scene, routes, time_sets[name], time_tol_s=args.time_tol_s,
-                                 require_vehicle_separation=args.require_vehicle_separation)
+                                  require_vehicle_separation=args.require_vehicle_separation,
+                                  wall_clearance_m=args.wall_clearance_m,
+                                  waypoint_decimals=args.practical_decimals if name == "practical" else None)
                 for name, routes in route_sets.items()
             }
             if args.compare:

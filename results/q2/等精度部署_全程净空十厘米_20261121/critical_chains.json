@@ -1,0 +1,68 @@
+{
+  "optimized": [
+    {
+      "target": "T1",
+      "limiting_vehicle": "V3",
+      "previous_target": null,
+      "prior_observation_s": 0.0,
+      "prior_reset_s": 0.0,
+      "travel_s": 0.49986777169557445,
+      "slew_s": 1.0321649427613477,
+      "start_s": 1.5320327144569221
+    },
+    {
+      "target": "T3",
+      "limiting_vehicle": "V3",
+      "previous_target": "T1",
+      "prior_observation_s": 5.0,
+      "prior_reset_s": 1.032164942761348,
+      "travel_s": 0.7794993595976303,
+      "slew_s": 2.0084214968380394,
+      "start_s": 10.35211851365394
+    }
+  ],
+  "practical": [
+    {
+      "target": "T1",
+      "limiting_vehicle": "V3",
+      "previous_target": null,
+      "prior_observation_s": 0.0,
+      "prior_reset_s": 0.0,
+      "travel_s": 0.5000925469906085,
+      "slew_s": 1.032029708596704,
+      "start_s": 1.5321222555873124
+    },
+    {
+      "target": "T3",
+      "limiting_vehicle": "V3",
+      "previous_target": "T1",
+      "prior_observation_s": 5.0,
+      "prior_reset_s": 1.0320297085967036,
+      "travel_s": 0.8167187058249921,
+      "slew_s": 2.010638969539043,
+      "start_s": 10.391509639548051
+    }
+  ],
+  "greedy": [
+    {
+      "target": "T1",
+      "limiting_vehicle": "V5",
+      "previous_target": null,
+      "prior_observation_s": 0.0,
+      "prior_reset_s": 0.0,
+      "travel_s": 0.0,
+      "slew_s": 1.5320327144569215,
+      "start_s": 1.5320327144569215
+    },
+    {
+      "target": "T2",
+      "limiting_vehicle": "V3",
+      "previous_target": "T1",
+      "prior_observation_s": 5.0,
+      "prior_reset_s": 1.0232166558356495,
+      "travel_s": 0.0,
+      "slew_s": 3.413734874200208,
+      "start_s": 10.968984244492779
+    }
+  ]
+}

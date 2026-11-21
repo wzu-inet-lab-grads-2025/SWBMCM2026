@@ -112,13 +112,15 @@ def separation(tracks: tuple[tuple[Phase, ...], ...], speed: float) -> tuple[flo
 class Validator:
     """从快照和实际折线路点重建最早启动轨迹；几何/时序不引用求解器的表值。"""
 
-    def __init__(self, instance: Instance):
-        """为一个共享情景保存题面常量，合并重复的原始路线和姿态检查。"""
+    def __init__(self, instance: Instance, *, enforce_tick_window: bool = True):
+        """缓存物理常量和重复的几何检查；整数求解器同时核验离散评价窗。"""
         self.ins = instance
         self.archive = instance.archive
         self.prefix = instance.prefix
         self.scene = self.archive.scene
         self.clock = instance.clock
+        self.enforce_tick_window = enforce_tick_window
+        self.wall_clearance_m = instance.geometry.wall_clearance_m
         self._cached_route = lru_cache(maxsize=4096)(self._route_check)
         self._cached_station = lru_cache(maxsize=1024)(self._station)
         self._cached_pair = lru_cache(maxsize=128)(self._pair)
@@ -144,7 +146,7 @@ class Validator:
     def _route_check(self, origin: Point, station: Point, path: tuple[Point, ...] | None):
         """独立检查折线路点与每段楼距；未提供折线时恢复公共路由。"""
         route = path if path is not None else self.ins.geometry.route(origin, station).waypoints
-        check = check_route(self.archive.check, route, origin)
+        check = check_route(self.archive.check, route, origin, wall_clearance_m=self.wall_clearance_m)
         if route[-1] != station:
             raise CheckError("路径终点与给定驻站不一致")
         return route, check["travel_s"]
@@ -177,6 +179,8 @@ class Validator:
             tick += self.clock.ceil(duration)
             pose = EAST
         else:
+            if self.wall_clearance_m:
+                self._cached_route(point, station, (point,))
             track.append(Phase("TRAVELING", now, now, a, (point,), pose, pose))
         goal = self._cached_station(a, station)
         duration = self._turn(pose, goal)
@@ -198,6 +202,14 @@ class Validator:
     def _finish(self, plan, picks, starts, ticks, tracks, available, violations, changes, strategy):
         """统一添加车距检查和机读验证信息；回放结果对未成功告警不虚构时刻。"""
         tracks = self._complete_tracks(tracks, available)
+        if self.wall_clearance_m:
+            # 指令生效前的截断折线、原地等待和复位也必须在同一安全域内。
+            for vehicle, track in zip(self.scene.vehicles, tracks, strict=True):
+                for phase in track:
+                    try:
+                        self._cached_route(phase.points[0], phase.points[-1], phase.points)
+                    except CheckError as error:
+                        violations = (*violations, f"{vehicle} {phase.kind} {phase.start:g} s：{error}")
         d, closest = separation(tracks, self.scene.speed_m_s)
         if d < 2 * self.archive.check.radius_m - 1e-8:
             violations = (*violations, f"车身交叠：{d:.8f} m，车号与时刻 {closest}")
@@ -224,7 +236,7 @@ class Validator:
             prep = [self._prepare(v, a, p, states[v], release_ticks[v], tracks[v])
                     for v, p in zip(pick.vehicles, stations)]
             start, ticks[a] = max(r[0] for r in prep), max(r[1] for r in prep)
-            if not self.clock.success(start) or ticks[a] > self.ins.horizon:
+            if not self.clock.success(start) or (self.enforce_tick_window and ticks[a] > self.ins.horizon):
                 raise CheckError(f"{self.ins.names[a]} 超过启动窗口")
             end = start + self.scene.observation_s
             starts[a] = start
@@ -297,10 +309,12 @@ class Validator:
         return self._finish((added,) if added else (), picks, starts, {}, tracks, available, (), 0,
                             "baseline_append" if added else "baseline_frozen")
 
-    def append(self) -> Replay:
-        """枚举共同站对与车辆，按精确连续就绪下界验证最早的无干扰可行追加。"""
+    def append(self, *, pair_count: int | None = None) -> Replay:
+        """按连续就绪下界验证无干扰追加，可限定为原实验目录前 pair_count 对。"""
         baseline = self.original()
         choices = self.ins.picks.get(3, ())
+        if pair_count is not None:
+            choices = [pick for pick in choices if pick.pair < pair_count]
         if not choices:
             return baseline
         states = self._append_states()

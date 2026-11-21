@@ -1,0 +1,33 @@
+# B 题第一问。场地、调度中心和建筑来自官方英文题面第 1 页，长度单位为 m。
+field_size_m: [100.0, 100.0]
+dispatch_center_xy_m: [50.0, 50.0]
+buildings:
+  - {id: B1, x_min: 22, x_max: 34, y_min: 16, y_max: 26, height: 20}
+  - {id: B2, x_min: 63, x_max: 79, y_min: 59, y_max: 71, height: 28}
+  - {id: B3, x_min: 10, x_max: 24, y_min: 65, y_max: 76, height: 12}
+  - {id: B4, x_min: 72, x_max: 86, y_min: 22, y_max: 34, height: 24}
+  - {id: B5, x_min: 41, x_max: 51, y_min: 38, y_max: 46, height: 32}
+
+# 第 2 页的 T1 和圆盘半径。告警方位以正东为零，逆时针为正。
+alert: {azimuth_deg: 30.0, range_m: 40.0, height_m: 45.0}
+vehicle_radius_m: 1.5
+
+# 第 3 页的相机高度和云台仰角闭区间，单位分别为 m 和度。
+camera_height_m: 2.0
+elevation_bounds_deg: [-10.0, 80.0]
+
+# V2.0 §2.5、§9。临界复核阈值用于提高计算精度，物理边界采用题面。
+numerics:
+  position_review_m: 1.0e-9       # 点距圆角临界或线段方向分量很小，单位 m
+  parameter_review: 1.0e-12      # 线段入段与出段的参数差，无量纲
+  distance_check_m: 1.0e-9       # 最优圆坐标复算的一致性阈值，单位 m
+  angle_check_deg: 1.0e-8        # 扫描与解析端点对照精度，单位度
+  clearance_gap_m: 1.0e-8        # 并列择优的全域上界差，单位 m
+  arc_scan_deg: 0.01             # 扫描复核同时使用此步长及其一半，单位度
+  los_chunk_size: 32768          # 使每根 float64 坐标或参数数组不超过 256 KiB
+
+# V2.0 §7。单元中心采样，间距均可整除场地边长，单位 m。
+grid:
+  debug_m: 1.0                   # 全场 1 万格，用于快速冒烟检查
+  plot_m: 0.25                   # 全场 16 万格，兼顾边界可辨性和文件大小
+  study_m: [0.5, 0.25, 0.125]     # 每轮将单元减半，比较面积与边界变化

@@ -1,0 +1,73 @@
+{
+  "command": "python3 -B -m src.run q2 --refine-schedule 'results/q2/双站定位与并发调度_连续站位_20261120' --config configs/q2_wall_clearance.yaml",
+  "profile": "refinement",
+  "elapsed_s": 29.443992173997685,
+  "python": "3.13.9",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.10.8"
+  },
+  "source_sha256": {
+    "src/q1/archive_plots.py": "e26a9fcb94ae6dc4a690f7d4d4aa66b225516f185256164df1bbe1babf51900c",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/experiment.py": "68f2492fedab77db2ff560712ff7209f70ef5aaa54df267ab2a8f48bb528fcdf",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/model_comparison.py": "96c0d1d6f03d2accee860b385b95b84790a0b1c27eacf5bd2ab65d9598cc184f",
+    "src/q1/optimize.py": "ce7c1fc2164ff7c996f337ac1b516dbe612bed2c8474e48a891d43645b232829",
+    "src/q1/plots.py": "b851b909b4889f96e3bb0672901bc44e8d060edb4d69555d8185be2fd9a079d3",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688",
+    "src/q2/archive_plots.py": "568c6c3634244eb65497bee1eb352ef856a5a82e17156324f0b5aafa6b9ba36e",
+    "src/q2/experiment.py": "094bcf7e3c54470be006fade9c84d76577f002aa3452b0f2f27e817376b10ac3",
+    "src/q2/paths.py": "a17cf6d6d85eeef9f5b28a9d4fd18a0cee6a6b0b1ba5ee3f0edb2ec7d3d6475f",
+    "src/q2/precision.py": "9ca51bfec297c535ec7896b441d0b8384dac1588dd06d28bf39822ba88ee6934",
+    "src/q2/refinement.py": "5bbca8d5fec036524858a37023b4df749c9111e9eac6c04dc424d9017e37fc61",
+    "src/q2/report.py": "f06a7c6721dc6f7ec54332672824957e4ff2f3685eb4ce4d06ab399d670e8d79",
+    "src/q2/scene.py": "80e2b87066afd2c0cb17c93fccf8ea403c8042891d8b98ef3167c200c15a1418",
+    "src/q2/schedule.py": "b59fc167323c64ed3dee3bee05a131b40722f269c87661f584c9b0c54ed9de0d",
+    "src/run.py": "331444ef98de61e8e121884bb5391e053a01b13253db63a45d7cdf72991997bd"
+  },
+  "git_head": "23158125c5fdecb80e9882e32a135c79a765ec02",
+  "git_worktree_status": [
+    " M checks/q2_continuous_bound.py",
+    " M checks/q2_geometry.py",
+    " M checks/q2_validate.py",
+    " M checks/q4_replay.py",
+    " M checks/q4_validate_run.py",
+    " M checks/test_q2_cli.py",
+    " M checks/test_q2_validate.py",
+    " M checks/test_q4.py",
+    " M src/q2/precision.py",
+    " M src/q2/report.py",
+    " M src/q2/scene.py",
+    " M src/q4/candidates.py",
+    " M src/q4/physics.py",
+    " M src/q4/problem.py",
+    " M src/q4/report.py",
+    " M src/run.py",
+    "?? configs/q2_refinement.yaml",
+    "?? configs/q2_wall_clearance.yaml",
+    "?? configs/q4_recourse.yaml",
+    "?? configs/q4_wall_clearance.yaml",
+    "?? src/q2/refinement.py",
+    "?? src/q4/recourse.py",
+    "?? src/q4/recourse_experiment.py"
+  ],
+  "ai_assistance": "OpenCode / Magpie group/gpt-6.2-sol, 2026-11-20. 供队内独立核对。",
+  "input_sha256": {
+    "config.yaml": "ffe1fd6837fd29d2a028b1563547cd8bd4e774ac3fe0373f948aa08123e30fba",
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q2_wall_clearance.yaml": "a47d0fdbfd99e09ad578e2642ff3e39aecb4760214e2a963405e48eb083edaa1",
+    "q22_routes.json": "f040aaeed4124a00df4db3455a9bd29c04aa12b01eb487a0c81a783761266da5",
+    "q22_timeline.csv": "703c4c43e5c67c191d47a35b8279344876b4c9aea0ea9dfe72b885f5f00305d0",
+    "q21_result.json": "1ca1df90df942594c5be8787a2dcd9a9198a46b09f3abcc8847276411f8a9b8e"
+  },
+  "plot_input_sha256": {
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q21_result.json": "38d07f38ac4c9699128b02a864bbb570673a73c0c1239a266c1575f5b5fb4856",
+    "q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "q22_assignments.csv": "f1d4387fa0cdd3ea442131da1e99733a4c9f3a12c1c3be1d5147ae7a08e1dde9",
+    "q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f"
+  }
+}

@@ -1,0 +1,7 @@
+# B 题第二问。按题面精度和时序要求求解，另把全程墙距设为硬约束。
+search_radius_m: 1.0  # 关键复用链的局部搜索半宽，m。
+nominal_visibility_gap_m: 1.0e-8  # 视线接触闭楼体即遮挡，半平面余量，m。
+practical_station_gap_m: 0.10  # 毫米下发版的光学及仰角径向余量，m。
+practical_decimals: 3  # 毫米下发版坐标小数位。
+wall_clearance_m: 0.45  # 行驶和停车的最小标称车体净空，m。
+execution_error_bound_m: 0.40  # 合成执行误差硬上界的试算值，m，需独立证实。

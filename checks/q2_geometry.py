@@ -102,22 +102,34 @@ def _check_field(scene: Scene, site: Point) -> None:
         raise CheckError(f"车辆圆盘越出场界：{site}")
 
 
-def check_route(scene: Scene, waypoints, origin: Point) -> dict:
-    """复核从指定起点出发的折线各段，返回全精度路长、行驶时间和逐楼最小间距。"""
+def check_route(scene: Scene, waypoints, origin: Point, *, wall_clearance_m: float = 0.0) -> dict:
+    """复核闭场地及各段楼距，按 m 要求车体净空，返回路长、时间和逐楼最小间距。"""
+    if not math.isfinite(wall_clearance_m) or wall_clearance_m < 0:
+        raise CheckError("车体净空须为有限非负米数")
     if not isinstance(waypoints, (list, tuple)) or not waypoints:
         raise CheckError("路线至少需要一个路点，原地停车可只写起点")
     points = tuple(map(xy, waypoints))
     if points[0] != origin:
         raise CheckError(f"路线起点 {points[0]} 与既定位置 {origin} 不一致")
     # 内缩场地凸，路点都在闭场界内即可保证折线各段不越界。
-    for point in points:
-        _check_field(scene, point)
+    required_radius = Fraction(scene.radius_m) + Fraction(wall_clearance_m)
+    if wall_clearance_m:
+        east = Fraction(scene.width_m) - required_radius
+        north = Fraction(scene.height_m) - required_radius
+        for x, y in points:
+            if not (required_radius <= x <= east and required_radius <= y <= north):
+                raise CheckError(f"车体到场界的净空不足 {wall_clearance_m:g} m：{(x, y)}")
+    else:
+        for point in points:
+            _check_field(scene, point)
     segments = tuple(pairwise(points)) or ((points[0], points[0]),)
     clearances = {}
-    radius_sq = Fraction(scene.radius_m)**2
+    radius_sq = required_radius**2
     for building in scene.buildings:
         dist_sq = min(_rectangle_distance_sq(a, b, building) for a, b in segments)
         if dist_sq < radius_sq:
+            if wall_clearance_m:
+                raise CheckError(f"车体到建筑 {building.id} 的净空不足 {wall_clearance_m:g} m")
             raise CheckError(f"车辆圆盘侵入建筑 {building.id}，不是允许的相切")
         clearances[building.id] = math.sqrt(dist_sq)
     length_m = math.fsum(math.dist(a, b) for a, b in segments)

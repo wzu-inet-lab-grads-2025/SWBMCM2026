@@ -148,9 +148,10 @@ def write_vehicle_timelines(output: Path, archive, inputs_path: Path, tracks_pat
 class Output:
     """保存真实、完整的实验证据；大表流式压缩，小表用普通 CSV。"""
 
-    def __init__(self, path, archive):
+    def __init__(self, path, archive, *, algorithms=None):
         """只缓存轻量对比分数，逐车时间轴与折线即时写入 gzip。"""
         self.path, self.archive = path, archive
+        self.algorithms = algorithms
         self.rows = []
         self.manifest = []
         self.streams = []
@@ -172,7 +173,8 @@ class Output:
         self.alerts = _writer(self._open("alert_results.csv.gz"),
                               "scenario_id variant model alert status vehicle_1 vehicle_2 station_1_x station_1_y "
                               "station_2_x station_2_y baseline_m intersection_deg rmse_m observation_start_s "
-                              "observation_end_s success_started locked_before_disturbance locked_at_dispatch end_note failure_reason")
+                              "observation_end_s success_started locked_before_disturbance locked_at_dispatch end_note failure_reason "
+                              "joint_observation_end_s joint_observation_in_window_s complete_5s_by_60")
         self.timeline = _writer(self._open("vehicle_timelines.csv.gz"), TIMELINE_FIELDS)
         self.trials = _writer(self._open("alns_seed_results.csv.gz"),
                               "scenario_id variant seed k eta t_last_s sum_successful_start_times_s changes solve_time_seconds "
@@ -196,8 +198,12 @@ class Output:
         return "not selected in the validated schedule within the horizon"
 
     def _alert_rows(self, common, info, assets, replay):
-        """输出全部告警的站车、交会质量与启动状态，包括未选的告警。"""
+        """写逐告警站车、开测和联合采集区间，返回在评价窗内采满的告警数。"""
         vnames = self.archive.scene.vehicles
+        observation_s = self.archive.scene.observation_s
+        observing = {(v, phase.alert): phase for v, track in enumerate(replay.tracks) for phase in track
+                     if phase.kind == "OBSERVING"}
+        completed = 0
         for a, alert in enumerate(assets["names"]):
             at = replay.starts.get(a)
             assigned = replay.picks.get(a)
@@ -218,18 +224,30 @@ class Output:
             success = at is not None and (at < HORIZON_S or (info["inclusive_60"] and at == HORIZON_S))
             status = ("LOCKED_BEFORE_DISTURBANCE" if before else "LOCKED_DURING_OUTAGE" if a in assets["locked"] else
                       "STARTED" if success else "UNSTARTED_AT_HORIZON")
-            interrupted = before and info["failed_vehicle"] in geometry[:2] and at + self.archive.scene.observation_s > DISTURBANCE_S
-            end_note = "partner withdraws at fault; surviving vehicle completes the reserved interval" if interrupted else None
-            end = None if at is None else at + self.archive.scene.observation_s
+            end = None if at is None else at + observation_s
+            joint_end, duration, complete = None, 0.0, False
+            if at is not None and assigned and (v1, a) in observing and (v2, a) in observing:
+                first, second = observing[v1, a], observing[v2, a]
+                joint_begin = max(first.start, second.start)
+                joint_end = min(first.end, second.end)
+                window_end = min(HORIZON_S, joint_end)
+                duration = max(0.0, window_end - joint_begin)
+                # 用终点判断采满，避免用两个浮点时间相减后误判恰满 5 s 的情形。
+                complete = joint_begin + observation_s <= window_end
+            completed += complete
+            interrupted = end is not None and joint_end is not None and joint_end < end and info["failed_vehicle"] in geometry[:2]
+            end_note = "partner withdraws at fault, survivor completes the reserved interval" if interrupted else None
             issue = None if success else self._issues(replay, a, info)
             self.alerts.writerow((*common, alert, status, *geometry, at, end, int(success), int(before),
-                                  int(a in assets["locked"]), end_note, issue))
+                                   int(a in assets["locked"]), end_note, issue, joint_end, duration, int(complete)))
+        return completed
 
     def _record(self, name, solution, info, assets, source):
         """归档逐策略结果、解状态与界、独立回放的机器可读证据。"""
         replay, log = solution.replay, solution.log
         common = info["scenario_id"], info["variant"], name
         k, eta, last, total = _metric(replay, info["N"], info["inclusive_60"])
+        completed = self._alert_rows(common, info, assets, replay)
         latest_tick = max(replay.starts_tick.values(), default=None)
         upper_s = latest_tick * info["tick_s"] if latest_tick is not None else None
         lower_s = log.get("latest_tick_lower_s")
@@ -238,7 +256,7 @@ class Output:
         k_bound = log.get("k_bound")
         source_type = replay.strategy if source == "original_append" else source
         row = {**info, "model": name, "source": source_type, "strategy": replay.strategy, "valid": replay.valid,
-               "k": k, "eta": eta, "t_last_s": last, "sum_successful_start_times_s": total,
+               "k": k, "eta": eta, "t_last_s": last, "sum_successful_start_times_s": total, "k_full_observation": completed,
                "schedule_change_cost": replay.changes, "solver_status": log["status"], "k_bound": k_bound,
                "k_gap": k_bound - k if k_bound is not None else None, "continuous_min_vehicle_distance_m": replay.min_distance,
                "plan_latest_tick_s": upper_s, "latest_tick_lower_s": lower_s, "optimal_latest_tick_s": log.get("optimal_latest_tick_s"),
@@ -255,7 +273,6 @@ class Output:
         self.plans.write(_json({**key, "source": source_type, "strategy": replay.strategy, "starts_s": replay.starts,
                                 "selected": [asdict(pick) for pick in replay.plan], "picks": {a: asdict(p) for a, p in replay.picks.items()},
                                 "tracks": [[asdict(phase) for phase in track] for track in replay.tracks]}) + "\n")
-        self._alert_rows(common, info, assets, replay)
         self.timeline.writerows(_event_rows(self.archive.scene, common, info, assets, replay.strategy, replay.plan, replay.tracks))
 
     def write(self, task, record):
@@ -264,13 +281,14 @@ class Output:
         info, assets = record.info, record.assets
         self.manifest.append(info)
         self.inputs.write(_json({**info, **assets}) + "\n")
-        pool = (*ALGORITHMS, "original_append", "strict_frozen")
+        algorithms = ALGORITHMS if self.algorithms is None else self.algorithms
+        pool = (*algorithms, "original_append", "strict_frozen")
         pick = min(pool, key=lambda name: (_summary_key(record.solutions[name].replay, info["N"], info["inclusive_60"]),
                                           pool.index(name)))
         chosen = record.solutions[pick]
         portfolio_log = {**chosen.log, "source_strategy": pick, "per_algorithm_solve_s":
-                         {m: record.solutions[m].log.get("solve_s", 0.0) for m in ALGORITHMS}}
-        for name in ("original_append", "strict_frozen", *ALGORITHMS, "recommended"):
+                          {m: record.solutions[m].log.get("solve_s", 0.0) for m in algorithms}}
+        for name in ("original_append", "strict_frozen", *algorithms, "recommended"):
             solution = record.solutions[name] if name != "recommended" else type(chosen)(chosen.replay, portfolio_log)
             self._record(name, solution, info, assets, name if name != "recommended" else pick)
         for trial in record.trials:
@@ -295,7 +313,7 @@ def _group(entries, fields):
 
 
 def _rows_for(entries, fields):
-    """同时报告平均启动比例、全完成数、删失 60 s 后的均值和可行时间分布。"""
+    """报告启动比例、全启数、完整采集场数和评价窗下的开测时刻分布。"""
     result = []
     for keys, rows in _group(entries, fields).items():
         valid = [r for r in rows if r["valid"]]
@@ -309,7 +327,8 @@ def _rows_for(entries, fields):
                        "finite_model_optimal_count": sum(r["solver_status"] == "OPTIMAL" for r in valid),
                        "no_op": sum(r["solver_status"] == "NO_OP" for r in valid),
                        "median_solver_s": median(r["solve_time_seconds"] for r in valid) if valid else None,
-                       "collision_cuts": sum(r["collision_cuts"] or 0 for r in valid)})
+                        "collision_cuts": sum(r["collision_cuts"] or 0 for r in valid),
+                        "all_alerts_fully_observed": sum(r.get("k_full_observation") == r["N"] for r in valid)})
     return result
 
 
@@ -553,7 +572,9 @@ def joint_observation_intervals(tracks: tuple[tuple[Phase, ...], ...]) -> dict[i
     return result
 
 
-def write_representative_timeline(path: Path, archive, inputs_path: Path, tracks_path: Path, example: str) -> None:
+def write_representative_timeline(path: Path, archive, inputs_path: Path, tracks_path: Path, example: str,
+                                  *, labels: dict[str, str] | None = None, variant: str = "main",
+                                  stem: str = "representative_timeline") -> None:
     """从已验收轨迹生成代表图 PNG/PDF，不读取求解器时钟或名义观测结束列。"""
     import matplotlib
     matplotlib.use("Agg")
@@ -562,11 +583,11 @@ def write_representative_timeline(path: Path, archive, inputs_path: Path, tracks
     import numpy as np
 
     with gzip.open(inputs_path, "rt", encoding="utf-8") as stream:
-        input_row = next(r for r in map(json.loads, stream) if r["scenario_id"] == example and r["variant"] == "main")
-    labels = {"original_append": "Retain + append", "recommended": "Validated portfolio"}
+        input_row = next(r for r in map(json.loads, stream) if r["scenario_id"] == example and r["variant"] == variant)
+    labels = labels or {"original_append": "Retain + append", "recommended": "Validated portfolio"}
     with gzip.open(tracks_path, "rt", encoding="utf-8") as stream:
         data = {r["model"]: r for r in map(json.loads, stream)
-                if r["scenario_id"] == example and r["variant"] == "main" and r["model"] in labels}
+                if r["scenario_id"] == example and r["variant"] == variant and r["model"] in labels}
     fig, ax = plt.subplots(2, 3, figsize=(14.4, 8.1), gridspec_kw={"width_ratios": [1, 1.6, 1]}, layout="constrained")
     phase_colors = dict(zip(EVENTS, ("#427bb6", "#e6ae56", "#c9cbd0", "#4b9e76", "#ab72a6", "#c57766", "#eef1f6", "#41464d")))
     carcolors = ["#4477aa", "#b27828", "#228855", "#a25391", "#646a77"]
@@ -611,5 +632,5 @@ def write_representative_timeline(path: Path, archive, inputs_path: Path, tracks
     ax[-1, 1].legend([Patch(color=phase_colors[p]) for p in ("TRAVELING", "SLEWING", "READY_WAITING", "OBSERVING", "RESETTING", "FAILED")],
                      ["Travel", "Slew", "Wait", "Observe", "Reset", "Failed"], ncol=3, frameon=False, fontsize=8)
     for suffix in ("png", "pdf"):
-        fig.savefig(path / f"representative_timeline.{suffix}", dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(path / f"{stem}.{suffix}", dpi=180, bbox_inches="tight", facecolor="white")
     plt.close(fig)

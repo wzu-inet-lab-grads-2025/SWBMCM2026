@@ -16,7 +16,7 @@ import yaml
 from src.q1.config import Config, compute_target_xyz, load_config
 from src.q1.region import station_masks
 
-from .paths import Point, VisibilityRouter
+from .paths import PADDING_M, Point, VisibilityRouter
 from .schedule import Candidates, Problem
 
 
@@ -80,10 +80,14 @@ def read_scene(path: Path) -> Scene:
                  tuple(targets), tuple(camera_to_goal), **data)
 
 
-def build_router(scene: Scene, sides: int) -> VisibilityRouter:
-    """构造题场统一路径口径，供两问与就近对照使用。"""
+def build_router(scene: Scene, sides: int, *, wall_clearance_m: float = 0.0) -> VisibilityRouter:
+    """以实际车体半径加可选墙距（m）规划折线，供第二、第四问使用。"""
+    if not math.isfinite(wall_clearance_m) or wall_clearance_m < 0:
+        raise ValueError("车体净空须为有限非负米数")
     f = scene.field
-    return VisibilityRouter(f.field_width, f.field_height, f.vehicle_radius, f.buildings, sides=sides)
+    # 东、北界内缩后的浮点坐标可能向外舍入，为独立验收预留数值余量。
+    radius = f.vehicle_radius + (wall_clearance_m + PADDING_M if wall_clearance_m else 0.0)
+    return VisibilityRouter(f.field_width, f.field_height, radius, f.buildings, sides=sides)
 
 
 def pointing(scene: Scene, target: int, sites: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -100,8 +104,12 @@ def build_problem(scene: Scene, router: VisibilityRouter, steps: tuple[float, ..
                   relax_travel: bool = False) -> Problem:
     """合并场界网格、初始点和附加站；松弛模式使用真站点域和欧氏路长下界。"""
     points = [scene.origins, np.array(added, dtype=float).reshape(-1, 2)]
+    # 留量工况保留标称网格的内点，筛去太靠墙的端点，便于逐场比对。
+    f = scene.field
+    bounds = ((f.vehicle_radius, f.field_width - f.vehicle_radius),
+              (f.vehicle_radius, f.field_height - f.vehicle_radius))
     for h in steps:
-        axes = [np.append(np.arange(lo, hi, h), hi) for lo, hi in zip(router.lower, router.upper)]
+        axes = [np.append(np.arange(lo, hi, h), hi) for lo, hi in bounds]
         points.append(np.array(list(product(*axes))))
     unique = np.unique(np.concatenate(points), axis=0)
     usable = unique if relax_travel else unique[router.admits(unique)]

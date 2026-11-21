@@ -64,7 +64,7 @@ def _pointing_floor(boxes: np.ndarray, target: tuple, camera_m: float, speed_deg
     return np.degrees(np.maximum(pan, tilt)) / speed_deg_s
 
 
-def continuous_bound() -> dict:
+def continuous_bound(trial_s: float = LOWER_BOUND_S, t1_partner_s: float = READY_TRIALS_S["T1"][2]) -> dict:
     """覆盖全场连续站位。无法排除任一候选区间时以异常报告未通过。"""
     scene = load_scene()
     field = load_config(Path(__file__).resolve().parents[1] / "configs" / "q1.yaml")
@@ -84,7 +84,8 @@ def continuous_bound() -> dict:
         return _pointing_floor(boxes, scene.targets[target], scene.camera_height_m, scene.gimbal_speed_deg_s)
 
     ready = {}
-    for target, (fastest, fast_s, other_s) in READY_TRIALS_S.items():
+    ready_trials = {**READY_TRIALS_S, "T1": (*READY_TRIALS_S["T1"][:2], t1_partner_s)}
+    for target, (fastest, fast_s, other_s) in ready_trials.items():
         ready[target] = {}
         for vehicle, origin in origins.items():
             trial = fast_s if vehicle == fastest else other_s
@@ -109,14 +110,14 @@ def continuous_bound() -> dict:
             # 初筛可省去转场。未能排除的矩形对随后使用真实欧氏距离的下界。
             from_first = np.maximum(_box_distance(origin, a) / scene.speed_m_s + turn, partner)
             prefix = from_first + scene.observation_s + turn
-            i, j = np.nonzero(prefix[:, None] + slew(second, b) <= LOWER_BOUND_S + TIME_PAD_S)
+            i, j = np.nonzero(prefix[:, None] + slew(second, b) <= trial_s + TIME_PAD_S)
             a, b = a[i], b[j]
             checked = 0
             for level in range(38):
                 turn = slew(first, a)
                 from_first = np.maximum(_box_distance(origin, a) / scene.speed_m_s + turn, partner)
                 floor = from_first + scene.observation_s + turn + _box_distance(a, b) / scene.speed_m_s + slew(second, b)
-                keep = floor <= LOWER_BOUND_S + TIME_PAD_S
+                keep = floor <= trial_s + TIME_PAD_S
                 checked += len(floor)
                 if not keep.any():
                     chains.append({"vehicle": vehicle, "first": first, "second": second,
@@ -134,7 +135,7 @@ def continuous_bound() -> dict:
                 a, b = a[visible], b[visible]
             else:
                 raise RuntimeError(f"未能排除复用链：{vehicle}/{first}→{second}")
-    return {"latest_start_lower_bound_s": LOWER_BOUND_S, "ready_lower_bound_s": ready,
+    return {"latest_start_lower_bound_s": trial_s, "ready_lower_bound_s": ready,
             "shadow_padding_m": SHADOW_PAD_M, "time_padding_s": TIME_PAD_S, "excluded_chains": chains}
 
 
@@ -142,8 +143,13 @@ def main() -> None:
     """校验所有复用链，打印或写入 JSON 记录。"""
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--output", type=Path, help="写入报告的 JSON 路径，默认打印")
+    parser.add_argument("--trial-s", type=float, default=LOWER_BOUND_S, help="待独立验证的连续下界（s）")
+    parser.add_argument("--t1-partner-s", type=float, default=READY_TRIALS_S["T1"][2],
+                        help="T1 非 V3 伙伴的就绪时间下界试探值（s）")
     args = parser.parse_args()
-    report = json.dumps(continuous_bound(), ensure_ascii=False, indent=2) + "\n"
+    if not np.isfinite((args.trial_s, args.t1_partner_s)).all() or min(args.trial_s, args.t1_partner_s) <= 0:
+        parser.error("下界试探值必须为有限正数")
+    report = json.dumps(continuous_bound(args.trial_s, args.t1_partner_s), ensure_ascii=False, indent=2) + "\n"
     if args.output is None:
         print(report, end="")
     else:

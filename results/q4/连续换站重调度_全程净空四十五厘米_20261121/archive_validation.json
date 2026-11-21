@@ -1,0 +1,40 @@
+{
+  "scope": "git_archive",
+  "all_valid": true,
+  "errors": [],
+  "required_wall_clearance_m": 0.45,
+  "wall_safety": {
+    "scope": "conditional_on_a_certified_execution_error_bound",
+    "planned_wall_clearance_m": 0.45,
+    "execution_error_bound_m": 0.4,
+    "actual_clearance_lower_bound_m": 0.04999999999999998
+  },
+  "scenarios": 4379,
+  "scenarios_with_tracks": 4379,
+  "scenario_scores_checked": 21895,
+  "plan_tracks_checked": 21895,
+  "vehicle_timelines": 109475,
+  "event_table_checked": false,
+  "timeline_events": 0,
+  "event_types": {},
+  "seed_runs": null,
+  "solver_logs": null,
+  "min_vehicle_center_distance_m": 3.129525377965425,
+  "q2_initial_latest_start_s": 10.35211851365394,
+  "q2_archive_inputs_sha256": {
+    "config.yaml": "a2b0477f48ed920ce8999705e911555a5f68934f81fbb042fa1baaf1aa1e3ed9",
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f"
+  },
+  "auditor_sha256": "efd20d464405808f465ccc7bbbd54e8c1fe54fe47867932dc824588fd5fa9ec9",
+  "input_sha256": {
+    "config.yaml": "778edeecd629fa0910d8c8e9d3da7417cc151d43e7472c6106bb88dd3717efbf",
+    "scenario_manifest.csv": "598fb2c72ca4bc899f2877cb94f9af22561ec446dd3955dc5bdbdea6047e514d",
+    "scenario_inputs.jsonl.gz": "b5a3dc3f874fd2bda604552c138174925a869e6338f144bc0faf8d8ba971fce6",
+    "algorithm_summary.csv": "a393c997d7117b2c50a9073f48feba3575cd04836c196b3c33e1203ec8dbbc56",
+    "model_comparison.csv.gz": "c5d47fcca05fc40c484b57f37b14c2def92f2d227b84f4aa935f0dd828f1487e",
+    "plans_and_tracks.jsonl.gz": "e89e2559277bd9f062221978db26f4bcf55257d2e44a461c9743b03347a481ba"
+  },
+  "duration_s": 28.70262277702568
+}

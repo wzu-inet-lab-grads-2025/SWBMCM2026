@@ -1,0 +1,7 @@
+# 2（2）：在已验收的复用车链附近做连续站位细化。单位 m。
+search_radius_m: 1.0
+# 楼体视线边界是开边界，2（1）的北侧切界和 2（2）的遮挡半平面均留正侧距离，单位 m。
+nominal_visibility_gap_m: 1.0e-8
+# 毫米坐标下发的示例，要求舍入之后仍有 0.10 m 停车和光学余量。
+practical_station_gap_m: 0.10
+practical_decimals: 3

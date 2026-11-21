@@ -10,7 +10,7 @@ import numpy as np
 
 from src.q1.geometry import evaluate_station
 
-from .paths import Point, VisibilityRouter
+from .paths import PADDING_M, Point, VisibilityRouter
 from .scene import Scene
 
 
@@ -73,6 +73,76 @@ def solve_t2(scene: Scene, router: VisibilityRouter) -> tuple[dict, list[dict]]:
     return {"target": "T2", "target_xyz_m": (x, y, height), "radius_lower_bound_m": r0,
             "min_rmse_m": lower_bound, "minimum_attained": True,
             "bearing_sigma_deg": scene.bearing_sigma_deg, **witness}, experiments
+
+
+def solve_fast_t2(scene: Scene, router: VisibilityRouter, visibility_gap_m: float, *,
+                  wall_clearance_m: float = 0.0) -> dict:
+    """在 2（1）等距正交圆上缩短最长行驶，并满足光学和车体净空（m）。"""
+    cfg = scene.target_cfg[scene.targets.index("T2")]
+    x, y, z = cfg.target_xyz
+    radius = cfg.distance_lower_bound
+    building, = [b for b in cfg.buildings if b.id == "B3"]
+    origin = dict(zip(scene.vehicles, map(tuple, scene.origins.tolist())))
+    # T2 位于 B3 投影上方。把相机到 T2 的射线截到 B3 屋顶，得到北沿的遮挡切点。
+    roof_fraction = (building.height - cfg.camera_height) / (z - cfg.camera_height)
+    north_offset = (building.y_max - y) / (1 - roof_fraction)
+    if not 0 < roof_fraction < 1 or not 0 < north_offset < radius:
+        raise ValueError("T2 圆周与 B3 北侧遮挡边界的相对位置已变")
+    wall_offset = building.y_max - y + cfg.vehicle_radius + wall_clearance_m
+    limit = max(north_offset, wall_offset)
+    if limit >= radius:
+        raise ValueError("B3 北侧的车体净空要求超出该等精度构型")
+    boundary = math.asin(limit / radius)
+    dx, dy = np.asarray(origin["V5"]) - (x, y)
+    heading = math.atan2(dy, dx)
+    first_blocked_angle = 2 * heading - boundary
+    edge = (x + radius * math.cos(boundary), y + limit)
+    if not (0 < heading < boundary < math.pi / 2 and building.x_min <= x
+            and x + radius <= building.x_max and y <= building.y_max
+            and building.y_min <= y + (1 - roof_fraction) * radius * math.sin(first_blocked_angle)):
+        raise ValueError("无法证明比 B3 北沿更接近 V5 的圆弧都被楼顶遮挡")
+    # 更近的圆弧横坐标都在 B3 楼底范围内。北侧阈值取视线切界与车身净空的较严者。
+    if wall_offset > north_offset and y + radius * math.sin(first_blocked_angle) < building.y_min:
+        raise ValueError("车体净空下界所需的 B3 北侧圆弧条件未通过")
+    travel_floor = math.dist(origin["V5"], edge) / scene.speed_m_s
+    other_floors = {v: (math.dist(p, (x, y)) - radius) / scene.speed_m_s for v, p in origin.items() if v != "V5"}
+    north = north_offset + visibility_gap_m
+    if wall_clearance_m:
+        north = max(north, building.y_max - y + float(router.lower[1]) + PADDING_M)
+    if not north_offset < north < radius:
+        raise ValueError("T2 北向余量须为正且站点仍在等精度圆的东北弧")
+    # 解析半径取等。保存绝对坐标时留两个坐标 ULP，避免相减还原半径恰好落在闭仰角的外侧。
+    coordinate_padding = 2 * max(math.ulp(x), math.ulp(y), math.ulp(radius))
+    stored_radius = radius + coordinate_padding
+    east = math.sqrt((stored_radius - north) * (stored_radius + north))
+    sites = ((x - north, y + east), (x + east, y + north))  # 两站相对 T2 向量相差 90°。
+    routes = []
+    for vehicle, site in zip(("V3", "V5"), sites):
+        station = evaluate_station(*site, cfg)
+        route = router.route(origin[vehicle], site)
+        travel = route.length_m / scene.speed_m_s
+        if not station.feasible or route.waypoints != (origin[vehicle], site) or travel > scene.q21_travel_limit_s:
+            raise ValueError(f"T2 等精度快速部署见证不合格：{vehicle}")
+        routes.append({"vehicle": vehicle, "site_xy_m": site, "waypoints": route.waypoints,
+                       "length_m": route.length_m, "travel_s": travel, "pitch_deg": station.elevation_deg,
+                       "station_clearance_m": station.clearance_min})
+    latest = max(row["travel_s"] for row in routes)
+    if not travel_floor < latest < min(t for v, t in other_floors.items() if v != "V3"):
+        raise ValueError("T2 快速部署的双车下界或选车排除条件未通过")
+    sigma = math.radians(scene.bearing_sigma_deg)
+    shadow_contact = (x + radius * math.cos(math.asin(north_offset / radius)), y + north_offset)
+    deployment = {"max_travel_s": latest, "infimum_s": travel_floor, "gap_s": latest - travel_floor,
+                  "v5_blocked_angle_deg": tuple(map(math.degrees, (first_blocked_angle, boundary))),
+                  "v5_b3_shadow_contact_xy_m": shadow_contact, "northward_buffer_m": visibility_gap_m,
+                  "coordinate_radial_padding_m": coordinate_padding,
+                  "other_vehicle_travel_lower_bounds_s": other_floors}
+    if wall_clearance_m:
+        deployment.update({"required_wall_clearance_m": wall_clearance_m,
+                           "v5_limiting_edge_xy_m": edge, "northward_buffer_m": north - north_offset})
+    return {"target": "T2", "target_xyz_m": cfg.target_xyz, "radius_lower_bound_m": radius,
+            "min_rmse_m": math.sqrt(2) * sigma * radius, "minimum_attained": True,
+            "bearing_sigma_deg": scene.bearing_sigma_deg, **pair_metrics(*sites, (x, y), sigma), "routes": routes,
+            "equal_accuracy_travel": deployment}
 
 
 def simulate_intersections(r_m: float, sigma_deg: float, *, samples: int, seed: int) -> list[dict]:

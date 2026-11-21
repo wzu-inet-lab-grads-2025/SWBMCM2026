@@ -1,0 +1,240 @@
+{
+  "latest_start_lower_bound_s": 10.3521,
+  "ready_lower_bound_s": {
+    "T1": {
+      "V1": 1.53203,
+      "V2": 1.53203,
+      "V3": 1.023,
+      "V4": 1.53203,
+      "V5": 1.53203
+    },
+    "T2": {
+      "V1": 3.129,
+      "V2": 3.413,
+      "V3": 3.413,
+      "V4": 3.413,
+      "V5": 3.413
+    },
+    "T3": {
+      "V1": 1.658,
+      "V2": 2.765,
+      "V3": 2.765,
+      "V4": 2.765,
+      "V5": 2.765
+    }
+  },
+  "shadow_padding_m": 1e-08,
+  "time_padding_s": 1e-08,
+  "excluded_chains": [
+    {
+      "vehicle": "V1",
+      "first": "T1",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V1",
+      "first": "T1",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V1",
+      "first": "T2",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V1",
+      "first": "T2",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V1",
+      "first": "T3",
+      "second": "T1",
+      "refinements": 1,
+      "box_pairs_checked": 135
+    },
+    {
+      "vehicle": "V1",
+      "first": "T3",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T1",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T1",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T2",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T2",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T3",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V2",
+      "first": "T3",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V3",
+      "first": "T1",
+      "second": "T2",
+      "refinements": 5,
+      "box_pairs_checked": 352
+    },
+    {
+      "vehicle": "V3",
+      "first": "T1",
+      "second": "T3",
+      "refinements": 36,
+      "box_pairs_checked": 2230398
+    },
+    {
+      "vehicle": "V3",
+      "first": "T2",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V3",
+      "first": "T2",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V3",
+      "first": "T3",
+      "second": "T1",
+      "refinements": 3,
+      "box_pairs_checked": 329
+    },
+    {
+      "vehicle": "V3",
+      "first": "T3",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T1",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T1",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T2",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T2",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T3",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V4",
+      "first": "T3",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V5",
+      "first": "T1",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 43
+    },
+    {
+      "vehicle": "V5",
+      "first": "T1",
+      "second": "T3",
+      "refinements": 1,
+      "box_pairs_checked": 385
+    },
+    {
+      "vehicle": "V5",
+      "first": "T2",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V5",
+      "first": "T2",
+      "second": "T3",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V5",
+      "first": "T3",
+      "second": "T1",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    },
+    {
+      "vehicle": "V5",
+      "first": "T3",
+      "second": "T2",
+      "refinements": 0,
+      "box_pairs_checked": 0
+    }
+  ]
+}

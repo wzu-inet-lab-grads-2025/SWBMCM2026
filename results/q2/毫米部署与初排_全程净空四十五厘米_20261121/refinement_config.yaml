@@ -1,0 +1,8 @@
+# 第二问站位细化。沿用 45 cm 工况，另提交经过验收的毫米坐标。
+search_radius_m: 1.0  # 复用关键链局部搜索半宽，m。
+nominal_visibility_gap_m: 1.0e-8  # 视线接触闭楼体即遮挡，标称解留正光学余量，m。
+practical_station_gap_m: 0.10  # 毫米站位的最小光学、仰角径向及停车余量，m。
+practical_decimals: 3  # 坐标精度，m 保留三位小数。
+practical_q21: true  # 保留解析取等解，并输出另外验收的 T2 双站部署。
+wall_clearance_m: 0.45  # 行驶和停车的最小标称车体净空，m。
+execution_error_bound_m: 0.40  # 实车合成误差硬上界的试算值，m，需独立证实。

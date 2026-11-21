@@ -1,0 +1,34 @@
+{
+  "scope": "git_archive",
+  "all_valid": true,
+  "errors": [],
+  "required_wall_clearance_m": 0.1,
+  "scenarios": 4379,
+  "scenarios_with_tracks": 4379,
+  "scenario_scores_checked": 21895,
+  "plan_tracks_checked": 21895,
+  "vehicle_timelines": 109475,
+  "event_table_checked": false,
+  "timeline_events": 0,
+  "event_types": {},
+  "seed_runs": null,
+  "solver_logs": null,
+  "min_vehicle_center_distance_m": 3.129525377965425,
+  "q2_initial_latest_start_s": 10.35211851365394,
+  "q2_archive_inputs_sha256": {
+    "config.yaml": "a2b0477f48ed920ce8999705e911555a5f68934f81fbb042fa1baaf1aa1e3ed9",
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f"
+  },
+  "auditor_sha256": "1f4003dc44864397df1b020ad3fcb0fce4a38bc5ee2800377dcf7445e4100502",
+  "input_sha256": {
+    "config.yaml": "b770f9e18336386ca37d8756bb6a9ab042227b2b4d5d26be87d65e6124a1f889",
+    "scenario_manifest.csv": "3d2c13b1d16a9fde7a8c2445c7926326f859a10cbb67a88db19eae5108f60316",
+    "scenario_inputs.jsonl.gz": "09e5f21b067f8fc99af05f2125cae93ddb39dfedaea12bd0d9438686a9ae4f9e",
+    "algorithm_summary.csv": "54b1a869a21e50cb3c6d5844f50de0b455d040a3e7b70e9791368fd298e85610",
+    "model_comparison.csv.gz": "3f2b2039859599241738353db5240410facdf692ded978861e000fae4a0fcb60",
+    "plans_and_tracks.jsonl.gz": "c3984a944e9df69d4e6ccb64f3c6e28a68eb4df894491ed11fefea8a2e554393"
+  },
+  "duration_s": 32.47538471996086
+}

@@ -98,3 +98,19 @@ def test_q3_cli_writes_all_methods_and_independently_verifiable_limits(tmp_path)
     assert {path.stem for path in directory.glob("*.pdf")} == {
         "reliability", "method_validation", "ab_feasible_region", "error_contributions",
     }
+
+
+def test_q3_wall_witness_rejects_a_path_through_a_building_with_safe_endpoints():
+    """V2 到西侧是安全见证；直达西北端会穿过楼体，即使两端都安全。"""
+    from checks.b_wall_clearance import verify_q3_route
+    from checks.q2_geometry import CheckError, load_scene
+
+    scene = load_scene()
+    budget = {"wall_clearance_m": 0.45, "execution_error_bound_m": 0.40}
+    route = {"vehicle": "V2", "waypoints": [(88, 10), (8, 10)]}
+    result = verify_q3_route(scene, route, **budget)
+    assert result["length_m"] == 80.0
+    assert (result["building_gap_m"], result["field_gap_m"]) == (4.5, 6.5)
+    unsafe = {**route, "waypoints": [(88, 10), (8, 79)]}
+    with pytest.raises(CheckError, match="净空"):
+        verify_q3_route(scene, unsafe, **budget)

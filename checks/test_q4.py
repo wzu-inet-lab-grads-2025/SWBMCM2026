@@ -4,6 +4,8 @@
 AI 辅助：OpenCode / Magpie group/gpt-6.2-sol，2026-11-20（版本发布日期未提供）。
 """
 
+import csv
+import gzip
 from itertools import permutations, product
 import math
 from pathlib import Path
@@ -92,6 +94,59 @@ def test_full_queue_without_car_to_car_confirmation_holds_both_starts(archive):
     assert 2 not in failed.original_starts
 
 
+def test_both_outage_limits_hold_v3_and_defer_t2_confirmation(archive):
+    """纯断联到 30 s 时，既不启用 V3 的第二车次，也不提前启动已就绪的 T2。"""
+    prefix = build_prefix(archive, failed=None, dispatch_s=30, outage_rule="strict_outage")
+    assert prefix.locked == {0: pytest.approx(1.5320327144569215)}
+    assert prefix.states[2].kind == "IDLE" and prefix.states[2].point == (15.042, 87.078)
+    assert prefix.states[0].kind == prefix.states[1].kind == "READY_WAITING"
+    assert prefix.original_starts[1] == 30
+    assert prefix.original_starts[2] == pytest.approx(32.78865568215158)
+    assert not any(p.alert == 2 for p in prefix.fixed[2])
+
+
+def test_strict_outage_reports_lost_joint_collection_without_removing_the_start(config, tmp_path):
+    """用正式输出和验收入口核对第 5 秒退出及同刻恢复的两场轨迹。"""
+    from checks.q4_validate_run import verify
+    from src.q4.experiment import Task
+    from src.q4.recourse_experiment import RECOURSE_MODELS, RecourseWorker
+    from src.q4.report import Output
+
+    settings = yaml.safe_load((ROOT / "configs/q4_recourse.yaml").read_text())
+    settings["outage_rules"] = ["strict_outage"]
+    settings["q2_plan"] = "optimized"
+    settings = {**config, "recourse": settings, "recourse_models": list(RECOURSE_MODELS), "q2_archive": str(ARCHIVE)}
+    (tmp_path / "config.yaml").write_text(yaml.safe_dump(settings), encoding="utf-8")
+    worker = RecourseWorker(ARCHIVE, settings)
+    cases = (Scenario("E3", recovery=30), Scenario("E6", failed=2, recovery=30))
+    tasks = [Task(case, rule) for case in cases for rule in ("main", "strict_outage")]
+    with Output(tmp_path, worker.archive, algorithms=RECOURSE_MODELS) as out:
+        for task, record in zip(tasks, worker.run(tasks), strict=True):
+            out.write(task, record)
+    alert_file = tmp_path / "alert_results.csv.gz"
+    with gzip.open(alert_file, "rt", encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    fault = next(r for r in rows if (r["scenario_id"], r["variant"], r["model"], r["alert"]) ==
+                 ("E6_V3_C30", "strict_outage", "recommended", "T1"))
+    assert fault["success_started"] == "1"
+    assert float(fault["observation_end_s"]) == pytest.approx(6.5320327144569215)
+    assert float(fault["joint_observation_end_s"]) == 5
+    assert float(fault["joint_observation_in_window_s"]) == pytest.approx(3.4679672855430785)
+    assert fault["complete_5s_by_60"] == "0"
+    healthy = next(r for r in rows if (r["scenario_id"], r["variant"], r["model"], r["alert"]) ==
+                   ("E3_C30", "strict_outage", "strict_frozen", "T2"))
+    assert float(healthy["observation_start_s"]) == 30
+    assert float(healthy["joint_observation_end_s"]) == 35
+    assert healthy["complete_5s_by_60"] == "1"
+    assert verify(tmp_path)["all_valid"]
+    fault["complete_5s_by_60"] = "1"
+    with gzip.open(alert_file, "wt", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+    assert not verify(tmp_path)["all_valid"]
+
+
 def test_fault_withdrawal_does_not_release_a_previously_observing_partner(archive):
     """T1 继续计成功；故障 V3 退出，V5 到 8.064065 s 前不得复用。"""
     at_five = build_prefix(archive, failed=2, dispatch_s=5)
@@ -178,6 +233,44 @@ def test_scenario_design_uses_all_failures_and_official_closed_range():
     assert len(rows) == len({s.key for s in rows}) == 1751
     assert [sum(row.category == f"E{i}" for row in rows) for i in range(1, 8)] == [72, 5, 3, 360, 216, 15, 1080]
     assert {r.failed for r in rows if r.category == "E2"} == set(range(5))
+
+
+def test_recourse_recovers_a_blocked_station_with_the_same_outage_snapshot(config):
+    """同一恢复快照和 T4 候选下，只有允许换站的方法能在 35 s 前补齐旧 T2。"""
+    from src.q4.experiment import Task
+    from src.q4.recourse_experiment import RecourseWorker
+
+    settings = yaml.safe_load((ROOT / "configs/q4_recourse.yaml").read_text())
+    worker = RecourseWorker(ARCHIVE, {**config, "recourse": settings})
+    case = Scenario("E7", 90.0, 50.0, 50.0, 1, 30.0)
+    record, = worker.run([Task(case)])
+    moved = record.solutions["recourse"].replay
+    fixed = record.solutions["fixed_stations"].replay
+    assert moved.valid and fixed.valid
+    assert moved.starts[1] < moved.starts[3] < 35
+    assert fixed.starts[1] > 55
+    assert record.info["locked_at_dispatch"] == ("T1", "T3")
+    assert moved.starts[0] == fixed.starts[0] and moved.starts[2] == fixed.starts[2]
+    assert all(fixed.picks[alert].pair == 0 for alert in range(3))
+    assert moved.picks[1].pair != 0 and min(moved.min_distance, fixed.min_distance) >= 3
+
+
+def test_recourse_keeps_wall_clearance_in_every_phase(config):
+    """复现原推荐版北界相切的主情景，验收改派、固定站和仅追加的全程墙距。"""
+    from checks.q2_geometry import check_route
+    from src.q4.experiment import Task
+    from src.q4.recourse_experiment import RecourseWorker
+
+    initial = ROOT / "results/q2/等精度快速部署与并发排程_20261121"
+    settings = yaml.safe_load((ROOT / "configs/q4_recourse.yaml").read_text(encoding="utf-8"))
+    worker = RecourseWorker(initial, {**config, "recourse": {**settings, "wall_clearance_m": 0.10}})
+    record, = worker.run([Task(Scenario("E1", 345., 50., 50., None, None))])
+    assert len(record.solutions["recourse"].replay.starts) == 4
+    for result in record.solutions.values():
+        assert result.replay.valid
+        for track in result.replay.tracks:
+            for phase in track:
+                check_route(worker.archive.check, phase.points, phase.points[0], wall_clearance_m=0.10)
 
 
 def test_four_algorithms_use_the_same_discrete_alphabet_and_match_small_enumeration(archive, geometry):

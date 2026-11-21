@@ -31,9 +31,21 @@ class OutageRule(StrEnum):
     FULL_QUEUE = "full_queue"
     CURRENT_TRIP_ONLY = "current_trip_only"
     CONFIRM_AFTER_RECOVERY = "confirm_after_recovery"
+    STRICT_OUTAGE = "strict_outage"
+
+    @property
+    def current_trip_only(self) -> bool:
+        """断联期间不启动 5 s 前尚未发出的旧车次。"""
+        return self in (OutageRule.CURRENT_TRIP_ONLY, OutageRule.STRICT_OUTAGE)
+
+    @property
+    def confirm_after_recovery(self) -> bool:
+        """断联期间不新开联合观测，已开测的任务继续占用。"""
+        return self in (OutageRule.CONFIRM_AFTER_RECOVERY, OutageRule.STRICT_OUTAGE)
 
 
 OUTAGE_COMPARISONS = (OutageRule.CURRENT_TRIP_ONLY, OutageRule.CONFIRM_AFTER_RECOVERY)
+OUTAGE_VARIANTS = (*OUTAGE_COMPARISONS, OutageRule.STRICT_OUTAGE)
 
 
 def wrap(angle: float) -> float:
@@ -128,10 +140,12 @@ class Archive:
     assignment: tuple[tuple[int, int], ...]
     starts: tuple[float, ...]
     hashes: dict[str, str]
+    plan: str = "optimized"
 
 
-def load_archive(directory: Path) -> Archive:
-    """用 q2 独立几何与时序验收重放归档优化方案，有差异时中止。"""
+def load_archive(directory: Path, *, wall_clearance_m: float = 0.0, plan: str = "optimized",
+                 waypoint_decimals: int | None = None) -> Archive:
+    """按方案名重放归档 Q2（2），核查全程墙距（m）和可选的下发路点精度。"""
     scene = read_scene(directory / "config.yaml")
     field = scene.field
     origins = dict(zip(scene.vehicles, (tuple(map(float, xy)) for xy in scene.origins)))
@@ -141,10 +155,13 @@ def load_archive(directory: Path) -> Archive:
                        scene.gimbal_deg_s, scene.observation_s, scene.bearing_sigma_deg)
     routes_file = directory / "q22_routes.json"
     timing_file = directory / "q22_timeline.csv"
-    routes = [row for row in json.loads(routes_file.read_text()) if row["plan"] == "optimized"]
+    routes = [row for row in json.loads(routes_file.read_text()) if row["plan"] == plan]
     with timing_file.open(newline="", encoding="utf-8") as stream:
-        timeline = [row for row in csv.DictReader(stream) if row["plan"] == "optimized"]
-    replay = verify_q22(check, routes, timeline, require_vehicle_separation=True)
+        timeline = [row for row in csv.DictReader(stream) if row["plan"] == plan]
+    if not routes or not timeline:
+        raise ValueError(f"第二问归档缺少 {plan!r} 的路线或时间轴")
+    replay = verify_q22(check, routes, timeline, require_vehicle_separation=True, wall_clearance_m=wall_clearance_m,
+                        waypoint_decimals=waypoint_decimals)
     legs = tuple(tuple(row for row in replay["legs"] if row["vehicle"] == v) for v in scene.vehicles)
     by_target = tuple(tuple(row for row in replay["legs"] if row["target"] == a) for a in scene.targets)
     pairs = tuple(tuple(row["site"] for row in group) for group in by_target)
@@ -152,7 +169,7 @@ def load_archive(directory: Path) -> Archive:
     starts = tuple(replay["observation_start_s"][a] for a in scene.targets)
     hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in
               (directory / "config.yaml", scene.field_file, routes_file, timing_file)}
-    return Archive(scene, check, legs, pairs, assignment, starts, hashes)
+    return Archive(scene, check, legs, pairs, assignment, starts, hashes, plan)
 
 
 def parking(kind: str, start: float, end: float, alert: int | None, point: Point,
@@ -178,7 +195,7 @@ def _original_tracks(archive: Archive, failed: int | None, dispatch: float, rule
                 continue
             row = legs[v][scene.targets[a]]
             depart = max(row["depart_s"], releases[v])
-            if rule == OutageRule.CURRENT_TRIP_ONLY and row["depart_s"] >= DISTURBANCE_S:
+            if rule.current_trip_only and row["depart_s"] >= DISTURBANCE_S:
                 # 第 5 秒前已经出发或在站准备的车次可继续，后续车次要等新授权。
                 depart = max(depart, dispatch)
             shift = depart - row["depart_s"]
@@ -190,8 +207,8 @@ def _original_tracks(archive: Archive, failed: int | None, dispatch: float, rule
             effective_ready[v] = ready
         nominal_start = archive.starts[a]
         earliest_start = nominal_start
-        if rule == OutageRule.CONFIRM_AFTER_RECOVERY and nominal_start >= DISTURBANCE_S:
-            # 只推迟尚未开始的联合观测，两车仍可按已授权路线行驶、指向。
+        if rule.confirm_after_recovery and nominal_start >= DISTURBANCE_S:
+            # 未确认的联合观测不得开始；允许已授权车次行驶、指向。
             earliest_start = max(earliest_start, dispatch)
         can_start = len(effective_ready) == 2 and (nominal_start < DISTURBANCE_S or failed not in effective_ready)
         start = max(earliest_start, *effective_ready.values()) if can_start else math.inf
@@ -251,7 +268,7 @@ def build_prefix(archive: Archive, failed: int | None, dispatch_s: float, *,
         phase = next(p for p in phases if p.start <= dispatch_s < p.end)
         if phase.kind == "OBSERVING" and phase.alert not in locked:
             phase = parking("READY_WAITING", dispatch_s, math.inf, phase.alert, phase.points[0], phase.pose0)
-        if (rule == OutageRule.CURRENT_TRIP_ONLY and phase.start == dispatch_s and phase.kind in {"TRAVELING", "SLEWING"}
+        if (rule.current_trip_only and phase.start == dispatch_s and phase.kind in {"TRAVELING", "SLEWING"}
                 and any(row["target"] == archive.scene.targets[phase.alert] and row["depart_s"] >= DISTURBANCE_S
                         for row in archive.legs[v])):
             # 恢复事件先处理，保留计划将要启动的车次还没有出发。
