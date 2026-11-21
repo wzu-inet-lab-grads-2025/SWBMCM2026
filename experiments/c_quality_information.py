@@ -1,7 +1,8 @@
 """Describe quality-label information and score a fixed past-speed onset probe.
 
 AI-assisted training diagnostics in OpenCode, 2026-11-20, OpenAI GPT family,
-GPT-6.2 Astra routing group. Exact release date unavailable.
+GPT-6.2 Astra routing group. Held-environment transition scores added with
+the same tool on 2026-11-21. Exact model release date unavailable.
 """
 
 import argparse
@@ -33,6 +34,28 @@ def information(counts):
     h = entropy(gb+bb, total)
     cond = sum(n*entropy(k, n) for k, n in [(gb, gg+gb), (bb, bg+bb)] if n) / total
     return dict(pairs=total, next_bad=gb+bb, starts=gb, h_bit=h, conditional_h_bit=cond, mi_bit=h-cond)
+
+
+def quality_history_folds(counts):
+    """Out-of-environment log scores for the archived training transition counts."""
+    columns = ['good_good','good_bad','bad_good','bad_bad']
+    envs = counts.loc[counts.scope == 'environment'].set_index('name')[columns]
+    if len(envs) < 2 or not envs.index.is_unique:
+        raise ValueError('Expected disjoint environment counts')
+    total = envs.sum()
+    result = []
+    for env, held in envs.iterrows():
+        gg, gb, bg, bb = total - held
+        all_prob = (gb + bb + .5) / (gg + gb + bg + bb + 1)
+        prob = np.array([(gb + .5) / (gg + gb + 1), (bb + .5) / (bg + bb + 1)])
+        observed = held.to_numpy().reshape(2, 2)
+        def bits(p):
+            return float(-(observed[:, 0] @ np.log2(1-p) + observed[:, 1] @ np.log2(p)) / observed.sum())
+        before, after = bits(np.full(2, all_prob)), bits(prob)
+        result.append(dict(environment=env, pairs=int(observed.sum()), starts=int(observed[0, 1]),
+                           previous_bad=int(observed[1].sum()), constant_bits=before,
+                           previous_mark_bits=after, gain_bits=before-after))
+    return pd.DataFrame(result)
 
 
 def onset_inputs(root):
@@ -90,11 +113,12 @@ if __name__ == '__main__':
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--out', type=Path, default=Path('runs/c_quality_information'))
     args = parser.parse_args()
-    transitions = pd.DataFrame([dict(scope=r['scope'], name=r['name'], **information(r))
-                                for r in transition_counts(args.root)])
+    counts = list(transition_counts(args.root))
+    transitions = pd.DataFrame([dict(scope=r['scope'], name=r['name'], **information(r)) for r in counts])
     folds = score_folds(onset_inputs(args.root))
     args.out.mkdir(parents=True, exist_ok=True)
     transitions.to_csv(args.out/'persistence.csv', index=False, float_format='%.12g')
+    quality_history_folds(pd.DataFrame(counts)).to_csv(args.out/'persistence_held_env.csv', index=False, float_format='%.12g')
     folds.to_csv(args.out/'onset.csv', index=False, float_format='%.12g')
     print(transitions.query("scope == 'all'").to_string(index=False))
     print(folds.to_string(index=False))

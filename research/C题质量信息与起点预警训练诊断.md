@@ -6,6 +6,10 @@
 
 令 `B=1` 表示显式联合手部标坏。沿用训练记录内不超过 50 毫秒的相邻采样。Pro/Standard 共 32,649 对，正常→正常、正常→坏、坏→正常、坏→坏依次为 32,222、65、66、296。下一点有 361 个坏标记。以 2 为底，从经验频率计算 `H(B下一点)=0.087722`，`H(B下一点 | B当前)=0.028297`，两者之差为 0.059425 bit，约占边际熵的 67.7%。边际熵较小与下一点标坏的低比例有关。若按上一标记直接预报，296 个持续坏点命中，65 个正常→坏起点全漏。依此可同时解释互信息和起点召回。[总体、来源及环境熵](q1_information/persistence.csv)
 
+### 质量历史在新环境下的概率评分
+
+对全部显式相邻对另做一项概率核验。每次留出一个训练环境，仅以其余九环境估计两种概率，一种使用总体坏率，另一种按上一标记分组。各概率用 `(坏点数+0.5)/(该组数+1)`，留出环境按真实两类标签计对数损失。环境内相邻对等权，最后十个环境等权。常数概率和转移概率的损失分别为 **0.08146、0.02718 bit/相邻对**，十个环境均降低。三个轮出环境没有正常→坏事件，能评总体概率损失，在这些环境无法评起点召回。两模型的折外损失差 0.05428 bit/相邻对与上文样本内互信息采用不同权重和估计量。下面只在正常历史上检验的预警问题仍需另评。[逐环境留出评分](q1_information/persistence_held_env.csv)
+
 ### 当前正常时，历史腕速能提供多少预警信息
 
 在读出特征对照结果之前固定如下训练诊断。预测时刻 `i` 要求 `i−1,i` 均显式正常、两手腕点合格，前后时间间隔均为正且不超过 50 毫秒。对左右手分别计算 `i−1` 到 `i` 的位移除以实际时差，取较大的速度。目标是 `i+1` 是否显式标坏。Demo 的稀疏未列质量不进入这个正常→坏分母。下一点的手部坐标不进入特征。
@@ -31,5 +35,6 @@
 PY=/mnt/disk/zhoutianyu/miniconda3/bin/python
 "$PY" -B -m experiments.c_quality_information
 cmp runs/c_quality_information/persistence.csv research/q1_information/persistence.csv
+cmp runs/c_quality_information/persistence_held_env.csv research/q1_information/persistence_held_env.csv
 cmp runs/c_quality_information/onset.csv research/q1_information/onset.csv
 ```
