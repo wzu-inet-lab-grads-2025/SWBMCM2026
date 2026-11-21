@@ -1,0 +1,11 @@
+split,environment,fit_environments,fit_records,fit_windows,fit_positive_wrists,fit_wrists,held_records,held_windows,constant_risk,tree_depth,tree_leaves,smallest_leaf,largest_leaf,held_all_one_class
+train,home_x_apartment_0701,9,26,303,497,606,2,25,0.81960461285,2,4,23,188,0
+train,logistics_x_courier_station_0021,9,27,301,514,602,1,27,0.853233830846,2,3,20,181,0
+train,office_x_corporate_office_0086,9,23,288,487,576,5,40,0.844887348354,2,4,22,137,0
+train,retail_x_supermarket_0037,9,26,322,531,644,2,6,0.824031007752,2,4,22,179,1
+train,retail_x_supermarket_0054,9,18,292,479,584,10,36,0.819658119658,2,4,22,182,0
+train,retail_x_supermarket_0058,9,24,319,530,638,4,9,0.830203442879,2,4,25,151,0
+train,retail_x_supermarket_0059,9,27,277,458,554,1,51,0.826126126126,2,4,21,156,0
+train,retail_x_supermarket_0071,9,27,285,469,570,1,43,0.822241681261,2,4,22,169,0
+train,retail_x_supermarket_0087,9,27,280,449,560,1,48,0.801247771836,2,4,22,152,0
+train,retail_x_supermarket_0124,9,27,285,473,570,1,43,0.829246935201,2,4,27,124,0
