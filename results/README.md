@@ -10,6 +10,8 @@
 | 三 | [两种误差定义与交叉验证](../docs/q3-independent.md) | 95% 限程分别为指令偏差 73.936066 m、含三项误差的实际指向偏差 66.837258 m | [80 m 参数域与阈值](q3/compact.json) · [积分及精度](../experiments/b/q3_quadrature/results.json) · [仿真计数与区间](../experiments/b/q3_simulation/results.json) |
 | 四 | [保持与在线重调度的配对分析](../docs/q4-comparison.md) | 126 个主情景中，120 个提高完成率、6 个持平；35 个情景有原告警推迟 | [逐情景得分 CSV](../experiments/b/snapshots/q4_comparison/main.csv) · [扩展得分 CSV](../experiments/b/snapshots/q4_comparison/sensitivity.csv) · [完整逐车日志](q4/) |
 
+二（2）的站位坐标精度、实车净空、断联执行协议及第四问双车采集时长见[约束复核报告](../docs/b-constraint-review.md)。两份独立解在同一份初始排程上的 1,751 个扰动情景逐项回放见[交叉验证记录](../docs/b-peer-crosscheck.md)。
+
 ## 第四问日志
 
 每份 `.jsonl.gz` 解压后有 126 行，每行对应一个情景，含原始命令、逐车事件、完成数及最晚观测开始时刻。主比较从二（2）的数值计划开始，采用 0 s 完整下发的协议。扩展中 35 s 恢复属于域外压力测试。替换初始计划的实验单独归档。主面板 CSV 中的计数对应给定设计的情景。[主情景清单](../experiments/b/q4_scenarios/manifest.json) · [扩展清单](../experiments/b/q4_scenarios/sensitivity.json)

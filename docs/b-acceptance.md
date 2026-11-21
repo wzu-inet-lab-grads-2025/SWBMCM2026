@@ -4,6 +4,8 @@
 
 ## 公共输入与时间规则（第 1–3 页）
 
+[执行余量复核](b-constraint-review.md)给出坐标舍入导致遮挡的反例、毫米精度可回放站位、双车共同采满 5 s 的统计及断联协议的影响。
+
 - [x] 表 1 五栋建筑的范围与高度、五个初始车位、三个静止告警、坐标方向和相机高度已对照原文转录。已复跑投影、初始净距和仰角核查。[转录](../experiments/b/scene.json) · [复跑入口](../experiments/README.md)
 - [x] 车辆按半径 1.5 m 的圆盘复核整段路线，允许贴边，要求不侵入建筑或越出场界。楼角用欧氏距离检查。[第二问路线回放](../experiments/b/check_q2_solutions.py) · [第四问车辆与路段核验](../experiments/b/q4_audit/README.md)
 - [x] 相机高 2 m，按相机至目标的有限三维线段检查五栋楼，接触即遮挡。仰角上下界可取。[第一问边界算例](../experiments/b/snapshots/q1/boundary_checks.csv)
