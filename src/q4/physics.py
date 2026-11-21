@@ -1,4 +1,4 @@
-"""B 题第四问：复现第二问计划，推进断联与故障并提供实时车辆快照。
+"""B 题第四问：按断联规则推进第二问计划与故障，提供实时车辆快照。
 输入 q2 的配置、路点和时间表；返回连续时间轨迹、已启动告警和可改派状态。
 由 src.q4.experiment 调用；独立验收用 nohup python3 -B -m pytest -q checks/test_q4.py。
 AI 辅助：OpenCode / Magpie group/gpt-6.2-sol，2026-11-20（版本发布日期未提供）。
@@ -6,6 +6,7 @@ AI 辅助：OpenCode / Magpie group/gpt-6.2-sol，2026-11-20（版本发布日�
 
 import csv
 from dataclasses import dataclass, replace
+from enum import StrEnum
 from itertools import pairwise
 import hashlib
 import json
@@ -22,6 +23,17 @@ EPS = 1e-9
 DISTURBANCE_S = 5.0
 HORIZON_S = 60.0
 Pose = tuple[float, float]
+
+
+class OutageRule(StrEnum):
+    """断联前授权范围及双车就绪信息的可用性。"""
+
+    FULL_QUEUE = "full_queue"
+    CURRENT_TRIP_ONLY = "current_trip_only"
+    CONFIRM_AFTER_RECOVERY = "confirm_after_recovery"
+
+
+OUTAGE_COMPARISONS = (OutageRule.CURRENT_TRIP_ONLY, OutageRule.CONFIRM_AFTER_RECOVERY)
 
 
 def wrap(angle: float) -> float:
@@ -149,38 +161,62 @@ def parking(kind: str, start: float, end: float, alert: int | None, point: Point
     return Phase(kind, start, end, alert, (point,), pose, pose if target_pose is None else target_pose)
 
 
-def _original_tracks(archive: Archive, failed: int | None) -> tuple[tuple[Phase, ...], ...]:
-    """执行 t=0 已下发的队列。失去双车同步的正常搭档按旧命令准备并一直等待。"""
-    tracks = []
-    for v, legs in enumerate(archive.legs):
-        phases = []
-        origin = archive.check.vehicles[archive.scene.vehicles[v]]
-        hold = 0.0
-        for row in legs:
-            a = archive.scene.targets.index(row["target"])
-            depart, arrive, ready = (row[k] for k in ("depart_s", "arrive_s", "turn_end_s"))
-            start, end, release = (row[k] for k in ("observation_start_s", "observation_end_s", "reset_end_s"))
-            site = row["site"]
-            pose = (row["yaw_deg"], row["pitch_deg"])
-            if depart > hold:
-                phases.append(parking("IDLE", hold, depart, None, origin))
-            phases.append(Phase("TRAVELING", depart, arrive, a, row["waypoints"]))
-            phases.append(parking("SLEWING", arrive, ready, a, site, EAST, pose))
-            if start >= DISTURBANCE_S and failed in archive.assignment[a]:
-                phases.append(parking("READY_WAITING", ready, math.inf, a, site, pose))
-                break
-            phases.append(parking("READY_WAITING", ready, start, a, site, pose))
-            phases.append(parking("OBSERVING", start, end, a, site, pose))
-            phases.append(parking("RESETTING", end, release, a, site, pose, EAST))
-            origin, hold = site, release
-        else:
-            phases.append(parking("IDLE", hold, math.inf, None, origin))
+def _original_tracks(archive: Archive, failed: int | None, dispatch: float, rule: OutageRule
+                     ) -> tuple[tuple[tuple[Phase, ...], ...], dict[int, float]]:
+    """重放原分车、原站和原路，返回车辆轨迹与实际联合开测时刻（s）。"""
+    scene = archive.scene
+    legs = [{row["target"]: row for row in rows} for rows in archive.legs]
+    tracks: list[list[Phase]] = [[] for _ in legs]
+    origins = [archive.check.vehicles[v] for v in scene.vehicles]
+    releases = [0.0 for _ in legs]
+    starts = {}
+    # 共享车辆完成观测、复位后才有下一车次，归档开测次序是其依赖的拓扑序。
+    for a in sorted(range(len(archive.starts)), key=archive.starts.__getitem__):
+        effective_ready = {}
+        for v in archive.assignment[a]:
+            if not math.isfinite(releases[v]):
+                continue
+            row = legs[v][scene.targets[a]]
+            depart = max(row["depart_s"], releases[v])
+            if rule == OutageRule.CURRENT_TRIP_ONLY and row["depart_s"] >= DISTURBANCE_S:
+                # 第 5 秒前已经出发或在站准备的车次可继续，后续车次要等新授权。
+                depart = max(depart, dispatch)
+            shift = depart - row["depart_s"]
+            arrive, ready = row["arrive_s"] + shift, row["turn_end_s"] + shift
+            if depart > releases[v]:
+                tracks[v].append(parking("IDLE", releases[v], depart, None, origins[v]))
+            tracks[v].append(Phase("TRAVELING", depart, arrive, a, row["waypoints"]))
+            tracks[v].append(parking("SLEWING", arrive, ready, a, row["site"], EAST, (row["yaw_deg"], row["pitch_deg"])))
+            effective_ready[v] = ready
+        nominal_start = archive.starts[a]
+        earliest_start = nominal_start
+        if rule == OutageRule.CONFIRM_AFTER_RECOVERY and nominal_start >= DISTURBANCE_S:
+            # 只推迟尚未开始的联合观测，两车仍可按已授权路线行驶、指向。
+            earliest_start = max(earliest_start, dispatch)
+        can_start = len(effective_ready) == 2 and (nominal_start < DISTURBANCE_S or failed not in effective_ready)
+        start = max(earliest_start, *effective_ready.values()) if can_start else math.inf
+        if can_start:
+            starts[a] = start
+        for v, ready in effective_ready.items():
+            row = legs[v][scene.targets[a]]
+            site, pose = row["site"], (row["yaw_deg"], row["pitch_deg"])
+            tracks[v].append(parking("READY_WAITING", ready, start, a, site, pose))
+            if can_start:
+                end = start + scene.observation_s
+                release = end + row["slew_s"]
+                tracks[v].extend((parking("OBSERVING", start, end, a, site, pose),
+                                  parking("RESETTING", end, release, a, site, pose, EAST)))
+                origins[v], releases[v] = site, release
+            else:
+                releases[v] = math.inf
+    for v, phases in enumerate(tracks):
+        if math.isfinite(releases[v]):
+            phases.append(parking("IDLE", releases[v], math.inf, None, origins[v]))
         if v == failed:
-            clipped = _until(tuple(phases), DISTURBANCE_S, archive.scene)
+            clipped = _until(tuple(phases), DISTURBANCE_S, scene)
             last = clipped[-1]
-            phases = [*clipped, parking("FAILED", DISTURBANCE_S, math.inf, last.alert, last.points[-1], last.pose1)]
-        tracks.append(tuple(phases))
-    return tuple(tracks)
+            tracks[v] = [*clipped, parking("FAILED", DISTURBANCE_S, math.inf, last.alert, last.points[-1], last.pose1)]
+    return tuple(map(tuple, tracks)), starts
 
 
 def _until(phases: tuple[Phase, ...], at: float, scene: Scene) -> tuple[Phase, ...]:
@@ -201,19 +237,25 @@ class Prefix:
     original_starts: dict[int, float]
 
 
-def build_prefix(archive: Archive, failed: int | None, dispatch_s: float) -> Prefix:
-    """先按旧命令推进到真实指令生效时刻，再读取位置、姿态和锁定剩余过程。"""
+def build_prefix(archive: Archive, failed: int | None, dispatch_s: float, *,
+                 outage_rule: OutageRule | str = OutageRule.FULL_QUEUE) -> Prefix:
+    """在 dispatch_s 秒读取位置、姿态和锁定过程；无断联时直接用 5 s。"""
     if not DISTURBANCE_S <= dispatch_s <= 30 or (failed is not None and not 0 <= failed < len(archive.legs)):
         raise ValueError("指令生效时刻或故障车编号超出题面范围")
-    original = _original_tracks(archive, failed)
-    starts = {a: at for a, at in enumerate(archive.starts)
-              if at < DISTURBANCE_S or failed not in archive.assignment[a]}
+    rule = OutageRule(outage_rule)
+    original, starts = _original_tracks(archive, failed, dispatch_s, rule)
+    starts = dict(sorted(starts.items()))
     locked = {a: at for a, at in starts.items() if at < dispatch_s}
     states, fixed = [], []
-    for phases in original:
+    for v, phases in enumerate(original):
         phase = next(p for p in phases if p.start <= dispatch_s < p.end)
         if phase.kind == "OBSERVING" and phase.alert not in locked:
             phase = parking("READY_WAITING", dispatch_s, math.inf, phase.alert, phase.points[0], phase.pose0)
+        if (rule == OutageRule.CURRENT_TRIP_ONLY and phase.start == dispatch_s and phase.kind in {"TRAVELING", "SLEWING"}
+                and any(row["target"] == archive.scene.targets[phase.alert] and row["depart_s"] >= DISTURBANCE_S
+                        for row in archive.legs[v])):
+            # 恢复事件先处理，保留计划将要启动的车次还没有出发。
+            phase = parking("IDLE", dispatch_s, math.inf, None, phase.points[0])
         _, remaining = split_route(phase.points, (dispatch_s - phase.start) * archive.scene.speed_m_s)
         release = dispatch_s
         if phase.alert in locked and phase.kind in {"OBSERVING", "RESETTING"}:

@@ -1,0 +1,44 @@
+{
+  "question": "q2",
+  "source_archive": "results/q2/双站定位与并发调度_连续站位_20261120",
+  "replay_command": "nohup python3 -B -m src.shared.b_figures q2",
+  "git_head": "38bb3c7a899ab8b5d0bc7d66eb8f4724afa4129b",
+  "generator_files": {
+    "src/shared/b_figures/__main__.py": "e76a81de198b236d4cd92aa3afa9f915588d33973a8df467886c8337274e4380",
+    "src/q2/archive_plots.py": "deffddcc72ef0594369ccb0cf50cb88b5b290003860ffde15ef31c4c82b8b037",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q2/scene.py": "a7aebc83febb5fa95f5239fceb7b3d849447b0b6c3b3db2558b66e61be4702a9",
+    "src/shared/b_figures/common.py": "95da528ae1bc4a4b5be17620a4da8b7724a8dfd84e5348dfe99e2b61c2530ca8"
+  },
+  "python": "3.13.9",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "figures": {
+    "q22_routes": {
+      "inputs": {
+        "results/q2/双站定位与并发调度_连续站位_20261120/config.yaml": "ffe1fd6837fd29d2a028b1563547cd8bd4e774ac3fe0373f948aa08123e30fba",
+        "results/q2/双站定位与并发调度_连续站位_20261120/scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+        "results/q2/双站定位与并发调度_连续站位_20261120/q22_routes.json": "f040aaeed4124a00df4db3455a9bd29c04aa12b01eb487a0c81a783761266da5",
+        "results/q2/双站定位与并发调度_连续站位_20261120/q22_assignments.csv": "ee5e475d785cb6dec995307909816de31e6c37ff2e381024e3ec13f460f4976d"
+      },
+      "visual_transform": "同尺度显示 optimized、greedy；箭头沿归档折线，V3 接续用独立坐标放大；零行程仅标原位站。",
+      "outputs": {
+        "q22_routes.pdf": "6d5007199e8939532981d0f98c10503820d87979dea3d09f7cc1de65471e73a6",
+        "q22_routes.png": "e4cb8722eae4c8a3a85981eba4e6725caa2aabcee9805654705d4a328b68cfe8"
+      }
+    },
+    "q22_timeline": {
+      "inputs": {
+        "results/q2/双站定位与并发调度_连续站位_20261120/config.yaml": "ffe1fd6837fd29d2a028b1563547cd8bd4e774ac3fe0373f948aa08123e30fba",
+        "results/q2/双站定位与并发调度_连续站位_20261120/scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+        "results/q2/双站定位与并发调度_连续站位_20261120/q22_timeline.csv": "703c4c43e5c67c191d47a35b8279344876b4c9aea0ea9dfe72b885f5f00305d0",
+        "results/q2/双站定位与并发调度_连续站位_20261120/q22_comparison.json": "71d689ca1ae15eb68ab7d4921a5c9e1ff57f50ad689f414da5492b4f191ed4be"
+      },
+      "visual_transform": "只读 optimized 和 greedy 相位；圆点标出零行程的同刻出发/到站；最晚开测与关键链从对照 JSON 核对。",
+      "outputs": {
+        "q22_timeline.pdf": "3e2f9184fbabdcf59819c0936c3db2072b78eda25eb916f3d1d1d369b7d938e6",
+        "q22_timeline.png": "6fb915df87e1cd530828c97ea333276a9f641ea2dc1a0bc884f78dd74842afd4"
+      }
+    }
+  }
+}

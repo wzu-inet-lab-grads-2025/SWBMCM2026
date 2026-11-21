@@ -1,0 +1,103 @@
+{
+  "question": "q4",
+  "visual_style": "paper-blue-orange",
+  "source_archive": "results/q4/扰动重调度_四模型择优_20261120",
+  "replay_command": "nohup python3 -B -m src.shared.b_figures q4",
+  "git_head": "38bb3c7a899ab8b5d0bc7d66eb8f4724afa4129b",
+  "generator_files": {
+    "src/shared/b_figures/__main__.py": "e76a81de198b236d4cd92aa3afa9f915588d33973a8df467886c8337274e4380",
+    "src/q4/archive_plots.py": "67b7a63824a2bfd42a859e9b9dd85a83adcdb0fff9b953ba431a0ee3ec76ee72",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688",
+    "src/q4/physics.py": "6a784211d1bc4f2d2eddee34f6409386934743eca21f8794b5dcaec4b80dcf10",
+    "src/shared/b_figures/common.py": "0d171b6211ef304463893d08a15eb1270b014fab326aa4f6d1a34e0736844db0"
+  },
+  "python": "3.13.9",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "figures": {
+    "q4_policy": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/category_summary.csv": "4d77d8773892553780e741fc68b3b32379d9d03c15500c2716aaed40add7f3ee"
+      },
+      "visual_transform": "仅主样本，保留并追加与逐场推荐；相同值用外环加实点；t_last 均值包含 60 s 罚值。",
+      "outputs": {
+        "q4_policy.pdf": "9bac52daa5e7a91cf1aab18306de56c8be0ffe4f76590908e19f4a93dfb4ddc7",
+        "q4_policy.png": "f81c4c4825afe39e323f2b2cbc30f0f31d232ef8111ee2b2e620d8cfe52cecc0"
+      }
+    },
+    "q4_recovery": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/recovery_summary.csv": "aa8bd19b60483aa8b0cf9f39e4478e287ce90fb6af9d7bf033ea0234640bf1e0"
+      },
+      "visual_transform": "E3/E5/E6/E7 共用横纵轴但分别绘制；重合的基线与推荐用同心标注，横轴为恢复时刻。",
+      "outputs": {
+        "q4_recovery.pdf": "b130a63f3e63513c8855a37964c97d5069dcb2a47c592382aebe022116842e17",
+        "q4_recovery.png": "54a61c30929da10d61074a78ebb2e153c1930cf3367e93fa582a691459e41aa6"
+      }
+    },
+    "q4_e7_factors": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/failure_summary.csv": "67266724e3a037be8b4a4742f7f5e81be387228db04486af03f144d11864e345",
+        "results/q4/扰动重调度_四模型择优_20261120/spatial_summary.csv": "00199362ae7c024d323996e34e3aae72bf4ec195a1b93ce2f3da9a7b37d391d8"
+      },
+      "visual_transform": "只取 E7。左为按故障车分层的两策略计分时间；右为推荐策略每个方位与距离的 15 场均值。",
+      "outputs": {
+        "q4_e7_factors.pdf": "c694d50ef6d11e0dad8f12dd0bcf4c017dcc71780e7b4316cb798a25822999b8",
+        "q4_e7_factors.png": "ecc8df5f9d1f6cb68617b37ba09bbcdfdc83a56a22296ab5100eeda6428819df"
+      }
+    },
+    "q4_candidate_regions": {
+      "inputs": {
+        "results/q2/双站定位与并发调度_连续站位_20261120/scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486",
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_inputs.jsonl.gz": "f7bdfaa229c17596d9b8605a0f9ca1da9ed7582ef08d58133b38bf38b3f42851"
+      },
+      "visual_transform": "按归档 1 m 节点数选 E1 几何最少和最多的位置；0.5 m 显示掩码独立重建，站对端点直接取冻结目录。",
+      "outputs": {
+        "q4_candidate_regions.pdf": "7bb8c2beb5ad1af540b5bdc9b74d681a0b0cfa9368e1261375d8ebfadc45a24b",
+        "q4_candidate_regions.png": "4cbb57f50b8135dc84e98d594c4026f14d3dd91796f6bfa208aece7511d78af9"
+      }
+    },
+    "q4_timeline_e2": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486",
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_inputs.jsonl.gz": "f7bdfaa229c17596d9b8605a0f9ca1da9ed7582ef08d58133b38bf38b3f42851",
+        "results/q4/扰动重调度_四模型择优_20261120/policy_plans_and_tracks.jsonl.gz": "b5bc8a9a766401cebfadbcdfd4fa5133b70261b7b810c2b7636dc97d68e11410",
+        "results/q4/扰动重调度_四模型择优_20261120/summary.json": "33a8e6a89b4457129b1ea1d6079d6712f18d9b1cb106d06d7338acf10154353e"
+      },
+      "visual_transform": "E2_V3 主情景的 original_append 与 recommended；五车相位连续回放，核对计分并保留 E7 的窗外观测/复位。",
+      "outputs": {
+        "q4_timeline_e2.pdf": "03bc5179cde78cc2559c6e894c70c89388d594d9ecbac04406b60a00cbbe4d49",
+        "q4_timeline_e2.png": "ed49e4e1ddc953667904936531bc840e6d0180df91a91648c890150aa688f39d"
+      }
+    },
+    "q4_timeline_e7": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486",
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_inputs.jsonl.gz": "f7bdfaa229c17596d9b8605a0f9ca1da9ed7582ef08d58133b38bf38b3f42851",
+        "results/q4/扰动重调度_四模型择优_20261120/policy_plans_and_tracks.jsonl.gz": "b5bc8a9a766401cebfadbcdfd4fa5133b70261b7b810c2b7636dc97d68e11410",
+        "results/q4/扰动重调度_四模型择优_20261120/summary.json": "33a8e6a89b4457129b1ea1d6079d6712f18d9b1cb106d06d7338acf10154353e"
+      },
+      "visual_transform": "E7_A90_R50_V2_C30 主情景的 original_append 与 recommended；五车相位连续回放，核对计分并保留 E7 的窗外观测/复位。",
+      "outputs": {
+        "q4_timeline_e7.pdf": "e055ce816a461390973aacde19124db3bce8402d1505525ba6cdcce7f5b9d661",
+        "q4_timeline_e7.png": "6fa6123f035f336cd3d1895be62d0f6ce7cfeff74ed425136fcb2d2579056ab3"
+      }
+    },
+    "q4_timeline_e1": {
+      "inputs": {
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_metrics.csv": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486",
+        "results/q4/扰动重调度_四模型择优_20261120/scenario_inputs.jsonl.gz": "f7bdfaa229c17596d9b8605a0f9ca1da9ed7582ef08d58133b38bf38b3f42851",
+        "results/q4/扰动重调度_四模型择优_20261120/policy_plans_and_tracks.jsonl.gz": "b5bc8a9a766401cebfadbcdfd4fa5133b70261b7b810c2b7636dc97d68e11410",
+        "results/q4/扰动重调度_四模型择优_20261120/summary.json": "33a8e6a89b4457129b1ea1d6079d6712f18d9b1cb106d06d7338acf10154353e"
+      },
+      "visual_transform": "E1_A255_R50 主情景的 original_append 与 recommended；五车相位连续回放，核对计分并保留 E7 的窗外观测/复位。",
+      "outputs": {
+        "q4_timeline_e1.pdf": "fe27217739029a9d7a4c8512145c5913460706cba6588d57f9c947644bdc109e",
+        "q4_timeline_e1.png": "3d772549c0fc1ba16a70cdd0459006773526e5850452aaec3109b92061d5971e"
+      }
+    }
+  }
+}

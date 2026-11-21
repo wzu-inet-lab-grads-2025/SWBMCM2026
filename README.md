@@ -38,6 +38,8 @@ SWBMCM2026/
 
 ## B 题运行与正式结果入口
 
+图集收录 12 张论文用图的 PDF、PNG 和逐图底表，Q1 另附全矢量 SVG。按原题逐问核验及只读重绘命令见以下索引。[中文审核报告](docs/B题四问_图表与作答证据审核报告.md) · [图集索引](docs/B题四问_图集索引.md) · [正式结果索引](results/README.md#审阅图集与只读重绘)
+
 在仓库根目录运行，复现环境为 Linux、Python 3.13。已验收的依赖版本见 [configs/requirements-b.txt](configs/requirements-b.txt)。
 
 ```bash
@@ -77,10 +79,9 @@ nohup env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLBACKEND=Agg python3 -B -m 
 
 **图与底表**
 
-![T1 可观测区域（0.25 m 网格）](<results/q1/可观测区域与最优站位_连续圆弧_20261120/observable_region.png>)
+![T1 可观测区域（0.25 m 显示网格）和连续最优弧局部](results/q1/可观测域与最优弧_青绿矢量图集_20261121/q1_observability.png)
 
-![最优圆、可行弧与代表站点](<results/q1/可观测区域与最优站位_连续圆弧_20261120/optimal_arcs.png>)
-
+- [矢量 PDF](results/q1/可观测域与最优弧_青绿矢量图集_20261121/q1_observability.pdf) · [SVG](results/q1/可观测域与最优弧_青绿矢量图集_20261121/q1_observability.svg) · [上一版配色](results/q1/可观测域与最优弧_论文配色图集_20261121/q1_observability.pdf) · [首版审阅图](results/q1/可观测域与最优弧_审阅图集_20261121/q1_observability.pdf) · [历史全场图](results/q1/可观测区域与最优站位_连续圆弧_20261120/observable_region.png) · [历史圆弧图](results/q1/可观测区域与最优站位_连续圆弧_20261120/optimal_arcs.png)
 - 其他图：[三约束独立掩码](<results/q1/可观测区域与最优站位_连续圆弧_20261120/constraint_masks.png>)、[净空曲线](<results/q1/可观测区域与最优站位_连续圆弧_20261120/clearance_profile.png>)、[分辨率对照](<results/q1/可观测区域与最优站位_连续圆弧_20261120/resolution_comparison.png>)、[场地布局](<results/q1/可观测区域与最优站位_连续圆弧_20261120/field_layout.png>)
 - 底表：[代表站点](<results/q1/可观测区域与最优站位_连续圆弧_20261120/station_table.csv>)、[最优弧端点](<results/q1/可观测区域与最优站位_连续圆弧_20261120/optimal_arcs.csv>)、[网格统计](<results/q1/可观测区域与最优站位_连续圆弧_20261120/region_counts.csv>)
 - 结果说明：[中文结论](<results/q1/可观测区域与最优站位_连续圆弧_20261120/conclusions.md>)、[运行记录](<results/q1/可观测区域与最优站位_连续圆弧_20261120/run_record.md>)、[完整结果 JSON](<results/q1/可观测区域与最优站位_连续圆弧_20261120/summary.json>)
@@ -114,7 +115,7 @@ nohup python3 -B -m src.run q1 --profile full \
 
 ![T2 station geometry and vehicle approaches](results/q2/双站定位与并发调度_连续站位_20261120/q21_stations.png)
 
-*Figure 1. Vehicle approaches and horizontal bearing geometry of the optimal T2 station pair. The two sightlines clear the roof of B3.*
+*Figure 1. Vehicle approaches and horizontal bearing geometry of the optimal T2 station pair. The projected sightlines cross B3; the 3D sightlines clear its roof.*
 
 ### 2（2）三告警分配、路线与五车时间轴
 
@@ -130,14 +131,15 @@ nohup python3 -B -m src.run q1 --profile full \
 
 就近法按两车避障路长之和贪心选择，路长并列时比较同步开测时间，并从六种处理顺序中取最好结果。优化由 V1、V2 并行准备 T2，让 V3 从 T1 接续 T3，缩短决定最晚开测的云台转向链。最晚开测提前 **0.616135 s（5.617%）**。连续场地的数值下界为 **10.352000 s**，与可行方案相差约 **0.849 ms**。原 1.25 m 档有限候选集的最优值为 10.731534 s。V3 的 T3 站靠近 B5 遮挡边界，复跑使用表中的毫米级坐标。
 
-![Vehicle routes and observation stations for the two schedules](results/q2/双站定位与并发调度_连续站位_20261120/q22_routes.png)
+![Vehicle routes and observation stations for the two schedules, with a detail of the V3 legs](results/q2/并发路线与五车时序_论文配色图集_20261121/q22_routes.png)
 
-*Figure 2. Vehicle routes for the optimized schedule and nearest-assignment baseline. Open circles mark stations. Stars mark alert projections.*
+*Figure 2. Routes on the same field scale; the inset shows both V3 legs. A square inside a ring marks a station at the vehicle's initial position.*
 
-![Complete five-vehicle observation timelines](results/q2/双站定位与并发调度_连续站位_20261120/q22_timeline.png)
+![Complete five-vehicle observation timelines](results/q2/并发路线与五车时序_论文配色图集_20261121/q22_timeline.png)
 
-*Figure 3. Five-vehicle timelines. Dashed lines mark the latest synchronized observation start in each schedule.*
+*Figure 3. Five-vehicle timelines. Open circles mark zero-duration travel legs; dashed lines mark the latest synchronized start, not the end of observation.*
 
+- [配色版 PDF、首版与来源](docs/B题四问_图集索引.md#q2)
 - 时间轴记录两套方案中每辆车的出发、到站、指向、等待、观测起止、复位及后续出发。 [完整五车时间轴](results/q2/双站定位与并发调度_连续站位_20261120/q22_timeline.csv)
 - [分配底表](results/q2/双站定位与并发调度_连续站位_20261120/q22_assignments.csv) · [路线全路点](results/q2/双站定位与并发调度_连续站位_20261120/q22_routes.json) · [六序基线及关键链](results/q2/双站定位与并发调度_连续站位_20261120/q22_comparison.json)
 - [独立验收](results/q2/双站定位与并发调度_连续站位_20261120/validation.json) · [连续域下界](results/q2/双站定位与并发调度_连续站位_20261120/continuous_bound.json) · [按原题逐项审核](docs/B_Question_2_Result_Audit.md)
@@ -174,7 +176,7 @@ $$
 | 软件指令角（原题字面） | 1.778721312 | **73.936066** | 73.93 | 93.347323% |
 | 实际指向（计入三类误差） | 1.636745169 | **66.837258** | 66.83 | 91.506823% |
 
-对 $\sigma(s)=a+bs$，在 **80 m** 仍达标的完整可行域是 **$a,b\geq 0$ 且 $a+80b\leq\sigma_*$**。$a$ 以 m 计，$b$ 以 m/m 计，边界截距分别为 $a=\sigma_*$ 和 $b=\sigma_*/80$。保留 $a=0.30$ m 时，软件指令角与实际指向的 $b$ 上限分别约为 **0.0184840** 和 **0.0167093 m/m**。例如 $a=0.30$ m、$b=0.0167$ m/m，在 80 m 的实际指向达标率为 **95.008829%**；该例接近模型边界。[可行域图](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/ab_feasible_region.pdf) · [边界点回代](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/ab_boundary_checks.csv)
+对 $\sigma(s)=a+bs$，在 **80 m** 仍达标的完整可行域是 **$a,b\geq 0$ 且 $a+80b\leq\sigma_*$**。$a$ 以 m 计，$b$ 以 m/m 计，边界截距分别为 $a=\sigma_*$ 和 $b=\sigma_*/80$。保留 $a=0.30$ m 时，软件指令角与实际指向的 $b$ 上限分别约为 **0.0184840** 和 **0.0167093 m/m**。例如 $a=0.30$ m、$b=0.0167$ m/m，在 80 m 的实际指向达标率为 **95.008829%**；该例接近模型边界。[80 m 参数域图](results/q3/80米参数域与误差贡献_蓝灰配色图集_20261121/q3_parameters_80m.pdf) · [边界点回代](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/ab_boundary_checks.csv)
 
 ### 五方法择优与结果验证
 
@@ -190,7 +192,7 @@ $$
 | 66.837 m（实际指向临界） | 84.61% | 9.85% | 5.54% |
 | 80 m | 88.10% | 7.61% | 4.28% |
 
-短里程优先校准零位，长里程优先抑制定位漂移或途中重定位。80 m 时单独消除定位、零位或控制误差，实际指向达标率分别提升 **8.493、1.181、0.665 个百分点**，这些增益不可相加。原定位参数下即使消除两项云台误差，80 m 的达标率也只有 **93.3473%**，所以要达 95% 必须改善定位。**66.83 m** 是题设条件下按厘米向下取整的实际指向上限，现场使用还需按实测误差留裕量。[贡献与消融底表](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/error_contributions.csv) · [误差贡献图](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/error_contributions.pdf)
+短里程优先校准零位，长里程优先抑制定位漂移或途中重定位。80 m 时单独消除定位、零位或控制误差，实际指向达标率分别提升 **8.493、1.181、0.665 个百分点**，这些增益不可相加。原定位参数下即使消除两项云台误差，80 m 的达标率也只有 **93.3473%**，所以要达 95% 必须改善定位。**66.83 m** 是题设条件下按厘米向下取整的实际指向上限，现场使用还需按实测误差留裕量。[贡献与消融底表](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/error_contributions.csv) · [误差贡献图](results/q3/80米参数域与误差贡献_蓝灰配色图集_20261121/q3_error_sources.pdf)
 
 **结果与复跑。** [归档结论](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/conclusions.md) · [达标概率曲线](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/reliability.pdf) · [完整结果 JSON](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/summary.json) · [运行记录](results/q3/测向可靠性与80米定位约束_五方法对照_20261120/run_record.md) · [源代码](src/q3/)
 
@@ -207,7 +209,7 @@ nohup python3 -B -m checks.q3_reference \
 
 **正式结果是逐情景择优的组合策略 `recommended`，不是单一求解器。** 四种候选方法（CP-SAT、SCIP MILP、ALNS、双车增量插入）与两种基线共享 Q2(2) 的 `optimized` 初始调度；在扰动实际发生或通信恢复后，根据当时状态决定是否重排。结果先最大化成功启动比例 $\eta=k/N$，再最小化最晚开测 $t_{\rm last}$。主口径只计 $S<60$ s 的启动；未全启则记 $t_{\rm last}=60$ s。
 
-主样本覆盖新告警、单车故障、断联、新告警＋故障、新告警＋断联、故障＋断联、三种同时七类，分别为 **72 / 5 / 3 / 360 / 216 / 15 / 1,080** 场。第 5 秒发生扰动；按命题人答疑，$t_{\rm rec}\in(5,30]$ s 是恢复时刻，主样本取 10、20、30 s，对应停联 5、15、25 s。新告警取 24 个方位和 30、40、50 m 三个距离，高度固定为 50 m。下列均值是样本统计，不是未采样扰动的成功概率。
+主样本覆盖新告警、单车故障、断联、新告警＋故障、新告警＋断联、故障＋断联、三种同时七类，分别为 **72 / 5 / 3 / 360 / 216 / 15 / 1,080** 场。第 5 秒发生扰动；按命题人答疑，$t_{\rm rec}\in(5,30]$ s 是恢复时刻，主样本取 10、20、30 s，对应停联 5、15、25 s。新告警取 24 个方位和 30、40、50 m 三个距离，高度固定为 50 m。主方案在第 0 秒预授权完整旧队列，并假定中心链路断开时原搭档仍可即时确认双车就绪。下表报告主网格的样本统计。[断联执行规则](docs/B题第四问_方案审核与实现说明.md#断联授权与同步确认) · [执行口径对照](results/README.md#断联授权与就绪确认对照)
 
 | 策略 | 全部告警按期启动的情景数 | 平均 $\eta$ | 平均 $t_{\rm last}$ (s) |
 | --- | ---: | ---: | ---: |
@@ -215,7 +217,11 @@ nohup python3 -B -m checks.q3_reference \
 | 保留并追加 `original_append` | 583 / 1,751 | 83.248% | 48.084 |
 | 严格冻结 `strict_frozen` | 7 / 1,751 | 58.576% | 59.802 |
 
-CP-SAT 是本实验**最佳单一算法**，匹配 1,749 / 1,751 个逐场最佳分数；推荐解的实际来源为 CP-SAT 1,629 场、ALNS 118 场、MILP 4 场。额外 144 个临界加密情景也都全启，52 个灵敏度变体不计入主汇总。纯断联不影响已下发任务的启动；有车辆故障时，收益主要来自为未开测任务安排替补。最迟的三扰动代表例在 **57.990 s** 全启，瓶颈是 30 s 恢复后替补车绕行至 T2 固定站。CP-SAT 在 1,747 个非空后缀上证明了有限模型最优；证书只覆盖有限站对、固定路径、最早发车规则与离散规划时钟，不证明连续空间全局最优。
+CP-SAT 是本实验**最佳单一算法**，匹配 1,749 / 1,751 个逐场最佳分数；推荐解的实际来源为 CP-SAT 1,629 场、ALNS 118 场、MILP 4 场。额外 144 个临界加密情景也都全启，52 个灵敏度变体不计入主汇总。主口径下纯断联不影响已下发任务的启动；有车辆故障时，收益主要来自为未开测任务安排替补。最迟的三扰动代表例在 **57.990 s** 全启，瓶颈是 30 s 恢复后替补车绕行至 T2 固定站。CP-SAT 在 1,747 个非空后缀上证明了有限模型最优；证书只覆盖有限站对、固定路径、最早发车规则与离散规划时钟，不证明连续空间全局最优。
+
+[策略总览（配色版）](results/q4/扰动评分与代表时序_论文配色图集_20261121/q4_policy.pdf) · [恢复、E7 分层、T4 站对和三个代表时序](docs/B题四问_图集索引.md#q4)
+
+**断联口径对照。** 对 **1,314** 个含断联情景逐场重跑，只续当前车次与恢复后才确认分别全启 **1,301** 和 **1,168** 场；加回 437 个无断联场景后分别为 **1,738 / 1,751**、**1,605 / 1,751**。两项各只改一条执行规则，不替换上表。[配对结果与失分原因](results/q4/断联授权与就绪确认对照_20261121/conclusions.md)
 
 全量独立回放覆盖 **13,629** 套轨迹和 **68,145** 条逐车时间轴，最小连续车心距 **4.992934 m**（要求至少 3 m）。[原题与实现口径](docs/B题第四问_方案审核与实现说明.md) · [代表情景](results/q4/扰动重调度_四模型择优_20261120/conclusions.md) · [策略对比底表](results/q4/扰动重调度_四模型择优_20261120/algorithm_summary.csv) · [全量验收](results/q4/扰动重调度_四模型择优_20261120/archive_validation.json) · [Git 归档验收](results/q4/扰动重调度_四模型择优_20261120/git_archive_validation.json)
 

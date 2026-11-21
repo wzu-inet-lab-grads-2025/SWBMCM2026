@@ -1,0 +1,80 @@
+{
+  "command": "python3 -B -m src.run q4 --profile full --outage-comparison 'results/q4/扰动重调度_四模型择优_20261120'",
+  "profile": "full",
+  "elapsed_s": 443.08400470699416,
+  "cases": {
+    "reference_main": 1751,
+    "outage": 1314,
+    "paired_runs": 2628
+  },
+  "git_head": "38bb3c7a899ab8b5d0bc7d66eb8f4724afa4129b",
+  "git_worktree_status": [
+    " M checks/q4_validate_run.py",
+    " M checks/test_q4.py",
+    " M src/q4/experiment.py",
+    " M src/q4/physics.py",
+    " M src/run.py",
+    "?? src/q4/outage_comparison.py"
+  ],
+  "python": "3.13.9",
+  "OS": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "CPU": "Intel(R) Xeon(R) w5-2455X",
+  "memory": "MemTotal:       131398128 kB",
+  "workers": 12,
+  "threads_per_solver": 1,
+  "exact_budget_s": 1.5,
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.10.8",
+    "ortools": "9.15.6755"
+  },
+  "q2_archive_inputs_sha256": {
+    "config.yaml": "ffe1fd6837fd29d2a028b1563547cd8bd4e774ac3fe0373f948aa08123e30fba",
+    "scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "q22_routes.json": "f040aaeed4124a00df4db3455a9bd29c04aa12b01eb487a0c81a783761266da5",
+    "q22_timeline.csv": "703c4c43e5c67c191d47a35b8279344876b4c9aea0ea9dfe72b885f5f00305d0"
+  },
+  "source_sha256": {
+    "src/run.py": "707e06cf32ce4af3d6ef75851815f682a9ca7c350f7025818b3622c56ec423d5",
+    "results/q4/扰动重调度_四模型择优_20261120/config.yaml": "56ea7e055fca60c166e56280355e5e20d3dcb703c64b67bc391a8e4d156d5bd8",
+    "src/q4/candidates.py": "295d888e7a3ac689cecc39453803f4171cda53408c4c6d80cf9ee0a639bace98",
+    "src/q4/exact.py": "faf7d847e4f65cf708304280f8f5d4405302436e05b0cced7579cc6dc6becdd7",
+    "src/q4/experiment.py": "6cd88e385cb22931fd0e1c9c104a031d4cbeaaaf1317ca6550382b2bb16eeaf3",
+    "src/q4/heuristics.py": "16f28a5f9d4f7f55e9bcbec707d9418f980b734494afb83c72e3e0636fe9cb50",
+    "src/q4/outage_comparison.py": "bb4babe08b2427e9d1e1c13ec0919581c2f07d97db755f298227a1ee8eac1d42",
+    "src/q4/physics.py": "6a784211d1bc4f2d2eddee34f6409386934743eca21f8794b5dcaec4b80dcf10",
+    "src/q4/problem.py": "ead8a9cb705cfbb7e266a0cde96d0ae43ec1cfeb9c594843d02357e56ef6d583",
+    "src/q4/report.py": "29ceae1e87466950cfcae628fdea9ffdf9597cfa7192b93eaf8748b0b5488ef3",
+    "src/q4/stress.py": "c0e57691de917d77f23ac5672b5c16fda895f9891b066bff5e37edc0221c0d35",
+    "checks/q4_replay.py": "9eb210c7f0a66f47c69b638e6e06ae5215948caa69fd0f5fa88a5e253b3b2beb",
+    "checks/q2_geometry.py": "2eafc5a3ad83a0dad6e62ca579354cacca3d9e577363093704e23d0041afa3c0",
+    "checks/q2_validate.py": "40983170710ab5449ab2764977cf99bf7de75c6556e453b800b3d4d89293d5ff",
+    "src/q2/experiment.py": "094bcf7e3c54470be006fade9c84d76577f002aa3452b0f2f27e817376b10ac3",
+    "src/q2/paths.py": "a17cf6d6d85eeef9f5b28a9d4fd18a0cee6a6b0b1ba5ee3f0edb2ec7d3d6475f",
+    "src/q2/precision.py": "7756808c3ad73885ca2adf8795a216da0bd21abb5686e652dc8bda3b66913635",
+    "src/q2/report.py": "6237d12043a06d8b9e575687e9e08067d37ca7cc3efc3880ed8ecd4bc962b9a7",
+    "src/q2/scene.py": "a7aebc83febb5fa95f5239fceb7b3d849447b0b6c3b3db2558b66e61be4702a9",
+    "src/q2/schedule.py": "b59fc167323c64ed3dee3bee05a131b40722f269c87661f584c9b0c54ed9de0d",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/experiment.py": "68f2492fedab77db2ff560712ff7209f70ef5aaa54df267ab2a8f48bb528fcdf",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/model_comparison.py": "96c0d1d6f03d2accee860b385b95b84790a0b1c27eacf5bd2ab65d9598cc184f",
+    "src/q1/optimize.py": "ce7c1fc2164ff7c996f337ac1b516dbe612bed2c8474e48a891d43645b232829",
+    "src/q1/plots.py": "b851b909b4889f96e3bb0672901bc44e8d060edb4d69555d8185be2fd9a079d3",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688"
+  },
+  "path_polygon_sides": 64,
+  "maximum_disk_outer_excess_m": 0.0018090948261886286,
+  "ai_assistance": "OpenCode / Magpie group/gpt-6.2-sol，2026-11-21（版本发布日期未提供）",
+  "reference_archive": "results/q4/扰动重调度_四模型择优_20261120",
+  "reference_inputs_sha256": {
+    "config.yaml": "56ea7e055fca60c166e56280355e5e20d3dcb703c64b67bc391a8e4d156d5bd8",
+    "scenario_metrics.csv": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486"
+  },
+  "outage_rules": [
+    "current_trip_only",
+    "confirm_after_recovery"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "question": "q1",
+  "visual_style": "paper-teal-vector",
+  "source_archive": "results/q1/可观测区域与最优站位_连续圆弧_20261120",
+  "replay_command": "nohup python3 -B -m src.shared.b_figures q1",
+  "git_head": "38bb3c7a899ab8b5d0bc7d66eb8f4724afa4129b",
+  "generator_files": {
+    "src/shared/b_figures/__main__.py": "ea9baae36c821192f469e9c88c984c511ac5c8427e856fed531d1dcc5c5b5cea",
+    "src/q1/archive_plots.py": "e26a9fcb94ae6dc4a690f7d4d4aa66b225516f185256164df1bbe1babf51900c",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688",
+    "src/shared/b_figures/common.py": "a4621335dd6f06b64a094a01d865d79666a1a8edaf17c36ba2c32e2fe8bb3063"
+  },
+  "python": "3.13.9",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "figures": {
+    "q1_observability": {
+      "inputs": {
+        "results/q1/可观测区域与最优站位_连续圆弧_20261120/config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+        "results/q1/可观测区域与最优站位_连续圆弧_20261120/summary.json": "e72e4f7b31fe29b2a68011865a6610738de5fe9f18db97f340509f342b38c1eb",
+        "results/q1/可观测区域与最优站位_连续圆弧_20261120/area_check_continuous.json": "84d2ecee354527b2a19a7083aa0164d7e3e502fc060ad85b4f65520a5d29bc54"
+      },
+      "visual_transform": "按归档步长重建 T1 显示掩码并核对单元数；同一行相邻单元合并为矢量矩形，保留原单元边界。弧、端点、推荐站及连续面积来自 JSON。",
+      "outputs": {
+        "q1_observability.pdf": "42b37fa283fe83a88e99196d8fbc7fd879da8fd58045c9cbb649a85e87574967",
+        "q1_observability.png": "766a15d59113c5deb17eb41b4b7252c105e81584abd8b82914b7358a82750988",
+        "q1_observability.svg": "89b4ce63a5439c171de18a20f905f1a7734856247d2f3441835c480b68fb4091"
+      }
+    }
+  }
+}

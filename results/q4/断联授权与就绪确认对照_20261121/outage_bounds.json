@@ -1,0 +1,455 @@
+{
+  "current_trip_only": {
+    "cases": 13,
+    "witness_count": 5,
+    "proven_late_count": 8,
+    "records": {
+      "E7_A150_R30_V2_C30": {
+        "earliest_relaxed_s": 60.11684543725782,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A165_R30_V2_C30": {
+        "earliest_relaxed_s": 61.00786757498814,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A165_R40_V2_C30": {
+        "earliest_relaxed_s": 60.4241334389534,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A165_R50_V2_C30": {
+        "earliest_relaxed_s": 59.927931448014284,
+        "relaxed_candidates_within_window": 3,
+        "witness": {
+          "t_last_s": 59.927931448014284,
+          "min_vehicle_distance_m": 30.456226339739217,
+          "starts_s": {
+            "T1": 1.5320327144569215,
+            "T2": 58.235624401123054,
+            "T3": 43.18018955226518,
+            "T4": 59.92793144801428
+          },
+          "plan": [
+            {
+              "alert": 1,
+              "pair": 0,
+              "first": 2,
+              "second": 0,
+              "station_pair_m": [
+                [
+                  15.0,
+                  14.0
+                ],
+                [
+                  72.68,
+                  1.51
+                ]
+              ]
+            },
+            {
+              "alert": 2,
+              "pair": 0,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  16.767,
+                  88.66
+                ],
+                [
+                  88.0,
+                  68.0
+                ]
+              ]
+            },
+            {
+              "alert": 3,
+              "pair": 12,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  10.5,
+                  87.5
+                ],
+                [
+                  87.5,
+                  74.25
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "E7_A180_R30_V2_C30": {
+        "earliest_relaxed_s": 60.33533485119223,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A180_R40_V2_C30": {
+        "earliest_relaxed_s": 60.56742120946403,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A180_R50_V2_C30": {
+        "earliest_relaxed_s": 60.628165589230115,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A195_R30_V2_C30": {
+        "earliest_relaxed_s": 59.68120647886538,
+        "relaxed_candidates_within_window": 3,
+        "witness": {
+          "t_last_s": 59.68120647886538,
+          "min_vehicle_distance_m": 30.456226339739217,
+          "starts_s": {
+            "T1": 1.5320327144569215,
+            "T2": 58.235624401123054,
+            "T3": 43.18018955226518,
+            "T4": 59.68120647886537
+          },
+          "plan": [
+            {
+              "alert": 1,
+              "pair": 0,
+              "first": 2,
+              "second": 0,
+              "station_pair_m": [
+                [
+                  15.0,
+                  14.0
+                ],
+                [
+                  72.68,
+                  1.51
+                ]
+              ]
+            },
+            {
+              "alert": 2,
+              "pair": 0,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  16.767,
+                  88.66
+                ],
+                [
+                  88.0,
+                  68.0
+                ]
+              ]
+            },
+            {
+              "alert": 3,
+              "pair": 11,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  10.5,
+                  87.5
+                ],
+                [
+                  91.25,
+                  62.5
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "E7_A195_R40_V2_C30": {
+        "earliest_relaxed_s": 59.685602001355704,
+        "relaxed_candidates_within_window": 3,
+        "witness": {
+          "t_last_s": 59.685602001355704,
+          "min_vehicle_distance_m": 30.456226339739217,
+          "starts_s": {
+            "T1": 1.5320327144569215,
+            "T2": 58.235624401123054,
+            "T3": 43.18018955226518,
+            "T4": 59.685602001355704
+          },
+          "plan": [
+            {
+              "alert": 1,
+              "pair": 0,
+              "first": 2,
+              "second": 0,
+              "station_pair_m": [
+                [
+                  15.0,
+                  14.0
+                ],
+                [
+                  72.68,
+                  1.51
+                ]
+              ]
+            },
+            {
+              "alert": 2,
+              "pair": 0,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  16.767,
+                  88.66
+                ],
+                [
+                  88.0,
+                  68.0
+                ]
+              ]
+            },
+            {
+              "alert": 3,
+              "pair": 12,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  9.5,
+                  85.5
+                ],
+                [
+                  91.25,
+                  62.5
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "E7_A195_R50_V2_C30": {
+        "earliest_relaxed_s": 59.734030172131895,
+        "relaxed_candidates_within_window": 3,
+        "witness": {
+          "t_last_s": 59.734030172131895,
+          "min_vehicle_distance_m": 30.456226339739217,
+          "starts_s": {
+            "T1": 1.5320327144569215,
+            "T2": 58.235624401123054,
+            "T3": 43.18018955226518,
+            "T4": 59.73403017213188
+          },
+          "plan": [
+            {
+              "alert": 1,
+              "pair": 0,
+              "first": 2,
+              "second": 0,
+              "station_pair_m": [
+                [
+                  15.0,
+                  14.0
+                ],
+                [
+                  72.68,
+                  1.51
+                ]
+              ]
+            },
+            {
+              "alert": 2,
+              "pair": 0,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  16.767,
+                  88.66
+                ],
+                [
+                  88.0,
+                  68.0
+                ]
+              ]
+            },
+            {
+              "alert": 3,
+              "pair": 12,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  11.5,
+                  84.5
+                ],
+                [
+                  91.5,
+                  62.5
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "E7_A210_R40_V2_C30": {
+        "earliest_relaxed_s": 61.89812276356794,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A210_R50_V2_C30": {
+        "earliest_relaxed_s": 61.89812276356794,
+        "relaxed_candidates_within_window": 0,
+        "witness": null
+      },
+      "E7_A225_R40_V2_C30": {
+        "earliest_relaxed_s": 59.87826188528307,
+        "relaxed_candidates_within_window": 3,
+        "witness": {
+          "t_last_s": 59.87826188528307,
+          "min_vehicle_distance_m": 30.456226339739217,
+          "starts_s": {
+            "T1": 1.5320327144569215,
+            "T2": 58.235624401123054,
+            "T3": 43.18018955226518,
+            "T4": 59.87826188528306
+          },
+          "plan": [
+            {
+              "alert": 1,
+              "pair": 0,
+              "first": 2,
+              "second": 0,
+              "station_pair_m": [
+                [
+                  15.0,
+                  14.0
+                ],
+                [
+                  72.68,
+                  1.51
+                ]
+              ]
+            },
+            {
+              "alert": 2,
+              "pair": 0,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  16.767,
+                  88.66
+                ],
+                [
+                  88.0,
+                  68.0
+                ]
+              ]
+            },
+            {
+              "alert": 3,
+              "pair": 12,
+              "first": 4,
+              "second": 3,
+              "station_pair_m": [
+                [
+                  8.5,
+                  90.5
+                ],
+                [
+                  91.5,
+                  60.5
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "confirm_after_recovery": {
+    "t_rec_s": 30,
+    "fixed_alert": "T2",
+    "proven_late_count": 146,
+    "covers_all_misses": true,
+    "bounds_by_failed_vehicle": {
+      "V1": {
+        "station_pair_m": [
+          [
+            15.0,
+            14.0
+          ],
+          [
+            72.68,
+            1.51
+          ]
+        ],
+        "ready_lower_s_by_vehicle": {
+          "V2": [
+            57.16746832271338,
+            30.0
+          ],
+          "V3": [
+            60.03154360328221,
+            70.88892282460799
+          ],
+          "V4": [
+            67.30482886367524,
+            61.0178483435555
+          ],
+          "V5": [
+            61.931454088948755,
+            65.78549762380693
+          ]
+        },
+        "earliest_vehicle_pair": [
+          "V3",
+          "V2"
+        ],
+        "earliest_t2_lower_s": 60.03154360328221,
+        "cases": 73
+      },
+      "V2": {
+        "station_pair_m": [
+          [
+            15.0,
+            14.0
+          ],
+          [
+            72.68,
+            1.51
+          ]
+        ],
+        "ready_lower_s_by_vehicle": {
+          "V1": [
+            30.0,
+            57.16746832271338
+          ],
+          "V3": [
+            60.03154360328221,
+            70.88892282460799
+          ],
+          "V4": [
+            67.30482886367524,
+            61.0178483435555
+          ],
+          "V5": [
+            61.931454088948755,
+            65.78549762380693
+          ]
+        },
+        "earliest_vehicle_pair": [
+          "V3",
+          "V1"
+        ],
+        "earliest_t2_lower_s": 60.03154360328221,
+        "cases": 73
+      }
+    }
+  },
+  "input_sha256": {
+    "config.yaml": "5556a98f290df85dfdd0c1a194285905e4ab132ab825b40dc1eb558f5ee5e965",
+    "paired_outage.csv": "549d76a4328bcbf4ee8e487b676dafc66bed139b7949460f0a3ddbc868019635",
+    "scenario_inputs.jsonl.gz": "edc651de7580c96d124c68de0409ada390679b2d676ea6eecdf5d0aa394e1060"
+  },
+  "auditor_sha256": "07efb6d62a73635dccc7e7a7650c6b3bb7700f3dd2b8ada59ca683695e224978"
+}

@@ -1,0 +1,35 @@
+{
+  "all_valid": true,
+  "rows_checked": 2628,
+  "summary_groups_checked": 40,
+  "no_outage_reused": 437,
+  "t2_confirmation_bottleneck_cases": 146,
+  "combined_main_grid": {
+    "full_queue": {
+      "cases": 1751,
+      "all_started": 1751,
+      "mean_eta": 1.0,
+      "mean_t_last_s": 34.48201077576001
+    },
+    "current_trip_only": {
+      "cases": 1751,
+      "all_started": 1738,
+      "mean_eta": 0.9981439177612793,
+      "mean_t_last_s": 34.74979991943335
+    },
+    "confirm_after_recovery": {
+      "cases": 1751,
+      "all_started": 1605,
+      "mean_eta": 0.9790595849990482,
+      "mean_t_last_s": 36.304155667078476
+    }
+  },
+  "reference_metrics_sha256": "53a24ed3a794a98d490e7e3fefe41f8cc1a7d6c5ff17693064b2a6618c306486",
+  "input_sha256": {
+    "paired_outage.csv": "549d76a4328bcbf4ee8e487b676dafc66bed139b7949460f0a3ddbc868019635",
+    "outage_summary.csv": "7210e402f61e52e7a609d65cdba63425fb2a04ae52fb81a4de256cc952f02117",
+    "model_comparison.csv": "7d54d15ebd012983e428d9ac9d4441a6c536013af1d0b8b52f75befa8368bcac",
+    "alert_results.csv.gz": "d9829c02ef49b11ac88615afd0d0aa5b685f622a4a465a3e100e43d8c4ad41f6",
+    "outage_bounds.json": "e62bda94a446a7474d6c7e281abfb958af65e9a24cec337d23c2b95ff03e4913"
+  }
+}

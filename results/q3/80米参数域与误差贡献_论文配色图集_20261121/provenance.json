@@ -1,0 +1,39 @@
+{
+  "question": "q3",
+  "visual_style": "paper-blue-orange",
+  "source_archive": "results/q3/测向可靠性与80米定位约束_五方法对照_20261120",
+  "replay_command": "nohup python3 -B -m src.shared.b_figures q3",
+  "git_head": "38bb3c7a899ab8b5d0bc7d66eb8f4724afa4129b",
+  "generator_files": {
+    "src/shared/b_figures/__main__.py": "e76a81de198b236d4cd92aa3afa9f915588d33973a8df467886c8337274e4380",
+    "src/q3/archive_plots.py": "9158870578da6c087424d6f1855696b76ddec7123ab1c3ee118a0179077cf583",
+    "src/shared/b_figures/common.py": "0d171b6211ef304463893d08a15eb1270b014fab326aa4f6d1a34e0736844db0"
+  },
+  "python": "3.13.9",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "figures": {
+    "q3_parameters_80m": {
+      "inputs": {
+        "results/q3/测向可靠性与80米定位约束_五方法对照_20261120/summary.json": "8ccb3b22af8ba39c5549e510c8dde8d6cab63ff9348e805a0e3816e546e1a40f",
+        "results/q3/测向可靠性与80米定位约束_五方法对照_20261120/ab_boundary.csv": "770e5592467c415fb674f36655a9d1231c3a5477860d732d456f1591cc991e21",
+        "results/q3/测向可靠性与80米定位约束_五方法对照_20261120/limits.csv": "b1b50c45f2021d4022e4d1835a6d9b293d0fb74ff71669e1ecabfe2d8ce7bd63"
+      },
+      "visual_transform": "以 ab_boundary.csv 同一边界数据分区，标出两条线之间只满足指令角的窄带；不重求根。",
+      "outputs": {
+        "q3_parameters_80m.pdf": "3613eee1e29884de6e57addba5d02c7fc5069551f279ca42caaba72e9e7198d5",
+        "q3_parameters_80m.png": "7ea62d77a48e763b2ca146b839be26c0774991d10a9d7c3313f52aadcc54128e"
+      }
+    },
+    "q3_error_sources": {
+      "inputs": {
+        "results/q3/测向可靠性与80米定位约束_五方法对照_20261120/error_contributions.csv": "841f35fc85c52a2e4a473265c25b4e05396b69877a516f72e57b6bb31f7ef315"
+      },
+      "visual_transform": "方差用 linear_share；精确概率逐项消融增益换算为百分点；0 m 的极小消融增益单列图注。",
+      "outputs": {
+        "q3_error_sources.pdf": "b038a7250443861a00cbde683c8828422178152355789813c39ec2966b5c601d",
+        "q3_error_sources.png": "897ff75054b05d1c6dc334e67e17687e560e52e8aae0ff033680c34475c45dc8"
+      }
+    }
+  }
+}

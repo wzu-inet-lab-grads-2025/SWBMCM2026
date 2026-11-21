@@ -26,7 +26,7 @@ from src.q2.report import write_csv, write_json
 from .candidates import CandidateBank, Geometry, Scenario, digest, prefix_hash, scenarios
 from .exact import exact
 from .heuristics import Solution, alns, insertion
-from .physics import Clock, build_prefix, load_archive
+from .physics import OUTAGE_COMPARISONS, Clock, OutageRule, build_prefix, load_archive
 from .problem import Instance, Plan
 
 
@@ -66,7 +66,7 @@ class Worker:
         self.profile = profile
         self._banks = {}
         self.instance = lru_cache(maxsize=3)(self._instance)
-        self.prefix = lru_cache(maxsize=64)(lambda f, t: build_prefix(self.archive, f, t))
+        self.prefix = lru_cache(maxsize=64)(lambda f, t, rule: build_prefix(self.archive, f, t, outage_rule=rule))
 
     def _bank(self, variant: str) -> CandidateBank:
         """主目录、半米网格和有条件交会角阈值分别建目录。"""
@@ -82,7 +82,10 @@ class Worker:
         """独立进程据输入事件构造实例，并为状态、站对和路径写入哈希。"""
         sc, variant = task.scenario, task.variant
         c, arc = self.config, self.archive
-        prefix = self.prefix(sc.failed, sc.dispatch)
+        rule = OutageRule(variant) if variant in OUTAGE_COMPARISONS else OutageRule.FULL_QUEUE
+        if rule in OUTAGE_COMPARISONS and sc.recovery is None:
+            raise ValueError("断联执行口径对照须指定恢复时刻")
+        prefix = self.prefix(sc.failed, sc.dispatch, rule)
         clock = Clock(c["fine_tick_s"] if variant == "fine_tick" else c["tick_s"], variant == "inclusive_window")
         bank = self._bank(variant) if sc.location or variant == "flexible_original_stations" else None
         catalog = bank.catalog(sc.location) if sc.location else None

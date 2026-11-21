@@ -21,7 +21,7 @@ import yaml
 from checks.q2_geometry import check_route, pair_metrics, station_pointing
 from checks.q4_replay import separation
 from src.q4.candidates import digest, prefix_hash, target_config
-from src.q4.physics import DISTURBANCE_S, EAST, HORIZON_S, Phase, build_prefix, load_archive, wrap
+from src.q4.physics import DISTURBANCE_S, EAST, HORIZON_S, OUTAGE_COMPARISONS, OutageRule, Phase, build_prefix, load_archive, wrap
 
 
 TIME_TOL = 2e-8  # 仅处理米/度转秒的浮点尾差，不容许 60 s 边界放宽。
@@ -84,7 +84,7 @@ class Evidence:
         self.route = lru_cache(maxsize=16384)(lambda points: check_route(archive.check, points, points[0]))
         self.station = lru_cache(maxsize=16384)(lambda point, target: station_pointing(archive.check, point, target))
         self.pair = lru_cache(maxsize=8192)(lambda first, second, target: pair_metrics(archive.check, first, second, target))
-        self.prefix = lru_cache(maxsize=40)(lambda f, t: build_prefix(archive, f, t))
+        self.prefix = lru_cache(maxsize=64)(lambda f, t, rule: build_prefix(archive, f, t, outage_rule=rule))
 
     def _audit_input(self, row: dict):
         """核查统一基准、原题时刻、候选哈希和状态快照与归档旧命令一致。"""
@@ -104,7 +104,10 @@ class Evidence:
             targets = (*targets, target_config(self.archive, loc).target_xyz)
         _require(tuple(row["names"]) == names and tuple(map(tuple, row["targets"])) == targets and row["N"] == len(names),
                  "告警清单或坐标不符合输入和 Q2 基准")
-        rederived = self.prefix(failed, dispatch)
+        variant = row["variant"]
+        rule = OutageRule(variant) if variant in OUTAGE_COMPARISONS else OutageRule.FULL_QUEUE
+        _require(rule == OutageRule.FULL_QUEUE or recovery is not None, "执行口径对照缺少断联")
+        rederived = self.prefix(failed, dispatch, rule)
         _require(row["initial_schedule_hash"] == digest(self.archive.hashes), "Q2 归档哈希变化")
         _require(row["station_candidate_set_hash"] == digest(row["pairs"]), "候选站对哈希变化")
         _require(row["vehicle_state_snapshot_hash"] == prefix_hash(rederived), "动态状态哈希变化")
@@ -152,6 +155,8 @@ class Evidence:
             old = self._clip(reference, cutoff)
             actual = self._clip(track, cutoff)
             _require(old == actual, f"{self.scene.vehicles[v]} 在既有不可改派轨迹中出现变化")
+            active_alerts = {self.scene.targets.index(row["target"]) for row in self.archive.legs[v]
+                             if row["depart_s"] < DISTURBANCE_S}
             before = None
             for p in track:
                 if before is not None:
@@ -162,6 +167,11 @@ class Evidence:
                 _require(p.kind in PHASES and math.isfinite(duration) and duration >= -TIME_TOL, "相位状态或持续时间不合法")
                 _require((p.kind == "FAILED") == (v == failed and p.start >= DISTURBANCE_S), "故障退出相位不符合实际事件")
                 _require(v != failed or p.kind == "FAILED" or p.end <= DISTURBANCE_S, "故障后仍在执行旧相位")
+                if DISTURBANCE_S <= p.start < dispatch:
+                    if info["variant"] == OutageRule.CURRENT_TRIP_ONLY and p.kind in {"TRAVELING", "SLEWING"}:
+                        _require(p.alert in active_alerts, "只续当前车次时在断联内准备了未授权车次")
+                    if info["variant"] == OutageRule.CONFIRM_AFTER_RECOVERY:
+                        _require(p.kind != "OBSERVING", "断联内未确认的任务发生联合开测")
                 if p.kind == "TRAVELING":
                     travel = self.route(p.points)["travel_s"]
                     _require(_close(duration, travel), "折线路长与 3 m/s 行驶时间不一致")

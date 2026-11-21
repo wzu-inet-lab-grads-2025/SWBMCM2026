@@ -1,7 +1,7 @@
 """数维杯 B 题统一运行入口，接入第一至第四问。
 输入为题号、YAML 和运行档，输出到 runs/<题号> 的独立运行目录。
 单独运行 nohup python3 -B -m src.run q4 --profile full。
-模型实验使用 --compare-baseline 指定归档的 q1 运行目录。
+模型实验使用 --compare-baseline 指定 q1 归档，断联对照使用 --outage-comparison 指定 q4 归档。
 AI 辅助：OpenCode / Magpie group/gpt-6.2-sol（版本发布日期未提供），2026-11-20。
 """
 
@@ -21,6 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-root", type=Path, help="独立运行目录的父目录，默认使用 runs/<题号>")
     parser.add_argument("--compare-baseline", type=Path, help="运行 q1 替代模型，与指定的归档基线比较")
     parser.add_argument("--comparison-config", type=Path, help="替代模型实验设置 YAML")
+    parser.add_argument("--outage-comparison", type=Path, help="在指定 q4 主归档的断联场景上复跑执行口径对照")
     args = parser.parse_args(argv)
     config = (args.config or root / "configs" / f"{args.question}.yaml").resolve()
     output = (args.output_root or root / "runs" / args.question).resolve()
@@ -29,6 +30,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.question != "q1" and (args.compare_baseline or args.comparison_config):
         parser.error("--compare-baseline 与 --comparison-config 仅用于第一问")
+    if args.question != "q4" and args.outage_comparison:
+        parser.error("--outage-comparison 仅用于第四问")
 
     if args.compare_baseline:
         from src.q1.model_comparison import run_model_comparison
@@ -40,6 +43,13 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.comparison_config:
         parser.error("--comparison-config 需要同时指定 --compare-baseline")
+    if args.outage_comparison:
+        from src.q4.outage_comparison import run_outage_comparison
+
+        reference = args.outage_comparison.resolve()
+        print(run_outage_comparison(reference, config if args.config else reference / "config.yaml",
+                                    output, args.profile, root, command))
+        return 0
 
     # 按需导入，第一至第三问不要求加载第四问的 OR-Tools 后端。
     if args.question == "q1":

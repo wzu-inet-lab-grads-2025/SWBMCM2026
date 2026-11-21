@@ -67,6 +67,31 @@ def test_original_plan_continues_during_outage_without_advancing_recovery_inform
     }
 
 
+def test_current_trip_authorization_parks_v3_at_t1_until_recovery(archive):
+    """V3 在 T1 复位后等待恢复，V4 仍在 T3 等搭档，已就绪的 T2 可以开测。"""
+    prefix = build_prefix(archive, failed=None, dispatch_s=30, outage_rule="current_trip_only")
+    assert prefix.locked == {0: pytest.approx(1.5320327144569215), 1: pytest.approx(10.204156744024587)}
+    assert prefix.states[2].point == (15.042, 87.078)
+    assert prefix.states[2].kind == "IDLE"
+    assert prefix.fixed[2][-1].start == pytest.approx(7.564193203201075)
+    assert prefix.fixed[2][-1].end == 30
+    assert prefix.states[3].kind == "READY_WAITING"
+    assert prefix.original_starts[2] == pytest.approx(32.78865568215158)
+
+
+def test_full_queue_without_car_to_car_confirmation_holds_both_starts(archive):
+    """完整队列可以转场，但恢复前只准备，恢复后先核验仍健康的搭档。"""
+    healthy = build_prefix(archive, failed=None, dispatch_s=30, outage_rule="confirm_after_recovery")
+    failed = build_prefix(archive, failed=2, dispatch_s=30, outage_rule="confirm_after_recovery")
+    assert healthy.locked == failed.locked == {0: pytest.approx(1.5320327144569215)}
+    assert healthy.fixed[3] == failed.fixed[3]
+    assert healthy.states[2].point == (16.767, 88.660)
+    assert healthy.states[2].pose[1] > 0
+    assert healthy.states[2].kind == healthy.states[3].kind == "READY_WAITING"
+    assert healthy.original_starts[1] == healthy.original_starts[2] == 30
+    assert 2 not in failed.original_starts
+
+
 def test_fault_withdrawal_does_not_release_a_previously_observing_partner(archive):
     """T1 继续计成功；故障 V3 退出，V5 到 8.064065 s 前不得复用。"""
     at_five = build_prefix(archive, failed=2, dispatch_s=5)
