@@ -1,0 +1,9 @@
+scope,case,mapping,pairs,on_time_improve,on_time_tie,on_time_worsen,tardiness_improve,tardiness_tie,tardiness_worsen,lexicographic_improve,lexicographic_tie,lexicographic_worsen,selection_forks,occupancy_forks
+fabricated_design_not_probability,S1,all_five,15,0,12,3,0,13,2,0,12,3,8,10
+fabricated_design_not_probability,S2,all_five,15,0,6,9,0,6,9,0,5,10,11,10
+fabricated_design_not_probability,S3,all_five,15,0,5,10,0,5,10,0,5,10,13,10
+fabricated_design_not_probability,ALL_DESIGN,all_five,45,0,23,22,0,24,21,0,22,23,32,30
+fabricated_design_not_probability,S1,nominal,3,0,3,0,0,3,0,0,3,0,1,2
+fabricated_design_not_probability,S2,nominal,3,0,1,2,0,1,2,0,1,2,2,2
+fabricated_design_not_probability,S3,nominal,3,0,1,2,0,1,2,0,1,2,2,2
+fabricated_design_not_probability,ALL_DESIGN,nominal,9,0,5,4,0,5,4,0,5,4,5,6

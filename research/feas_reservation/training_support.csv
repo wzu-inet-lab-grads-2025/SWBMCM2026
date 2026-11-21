@@ -1,0 +1,4 @@
+family,segments,records,environments,q50_d_s,q75_d_s,b50_nominal_s,b75_nominal_s,leave_env_q75_min_s,leave_env_q75_max_s,raw_annotation_endpoint_matches,quantile_algorithm
+P,124,23,9,4.0,8.0,4.5,8.5,4.9,10.0,124,type7_linear
+A,112,29,9,3.2,4.85,3.7,5.35,4.0,7.0,112,type7_linear
+L,10,3,2,3.6,10.35,4.1,10.85,3.6,35.6,10,type7_linear

@@ -1,0 +1,5 @@
+scope,case,pairs,on_time_improve,on_time_tie,on_time_worsen,tardiness_improve,tardiness_tie,tardiness_worsen,lexicographic_improve,lexicographic_tie,lexicographic_worsen
+real_validation_protocol_pair_not_historical_ledger_pair,S1,3,0,1,2,0,0,3,0,0,3
+real_validation_protocol_pair_not_historical_ledger_pair,S2,3,0,1,2,0,0,3,0,0,3
+real_validation_protocol_pair_not_historical_ledger_pair,S3,3,0,1,2,0,0,3,0,0,3
+real_validation_protocol_pair_not_historical_ledger_pair,ALL_THREE_CASES,9,0,3,6,0,0,9,0,0,9
