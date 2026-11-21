@@ -1,7 +1,8 @@
 """Value of the other wrist's binary packet feature on the official training split.
 
-AI-assisted tabulation in OpenCode, 2026-11-21. Only environment aggregates
-are exported. Window timestamps are used locally to align the two hands.
+AI-assisted tabulation in OpenCode, OpenAI GPT family, GPT-6.2 Astra routing
+group, 2026-11-21. Release date unavailable. Only environment aggregates are
+exported. Window timestamps are used locally to align the two hands.
 """
 
 import argparse

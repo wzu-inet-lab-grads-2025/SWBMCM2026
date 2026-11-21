@@ -1,7 +1,8 @@
 """Training descriptive check of motion direction consistency and extrapolation.
 
 The direction test sees only the visible history. No mode labels or official
-model are fitted. AI-assisted exploratory comparison, OpenCode, 2026-11-21.
+model are fitted. AI-assisted exploratory comparison, OpenCode, OpenAI GPT
+family, GPT-6.2 Astra routing group, 2026-11-21. Release date unavailable.
 """
 
 import argparse

@@ -1,7 +1,9 @@
 """Retrospective equal-spend ceiling for the established training window protocol.
 
 The scorer alone knows the future. The number bought in each recording is
-taken from the archived out-of-environment rule. AI-assisted, 2026-11-21.
+taken from the archived out-of-environment rule. AI-assisted in OpenCode,
+OpenAI GPT family, GPT-6.2 Astra routing group, 2026-11-21. Release date
+unavailable.
 """
 
 import argparse

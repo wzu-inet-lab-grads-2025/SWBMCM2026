@@ -6,6 +6,7 @@
 
 - `check_c_data.py`、`c_audit_*.py`：附件盘点、字段/质量/片段/前缀核查。部分默认命令会遍历全量附件或视频，迁移验收只运行质量自测，不默认执行全量核查。
 - `c_q1_quality_transitions.py` 统计训练集的坏段起点与持续，`c_q2_velocity_probe.py` 检验近期速度外推的适用时长，`c_q3_reservation_support.py` 核对分族预留估计的训练支持。三项的证据与待讨论事项见[工作树讨论记录](../docs/modeling-notes.md)。
+- `c_feas_*.py` 对质量处理、运动状态、回访通道、概率评分、同支出选窗和调度预留做固定条件比较。各模块的运行命令、聚合输出和解释范围见[实现前复盘](../docs/C题正式实现前可行性复盘.md)。
 - `c_q2_windows.py`、`c_q2_clock_check.py`、`c_q2_diagnostic.py`、`c_training_hand_check.py`、`test_c_q2_diagnostic.py`：Q2 窗口、固定动作时钟、双腕诊断及训练抽样检查。对应笔记和聚合图表见[Q2 诊断](../research/C题双腕缺测时长与回访诊断.md)。
 - [`q3_replay/`](q3_replay/)：事件回放原型、官方数据适配、独立账本复核、排序基线及测试。配套合成日志和 `order_results/` 随代码迁移；[原验收笔记](../research/C题回放入口与评估验收.md)留在 `research/`。
 - [`q3_prefix/`](q3_prefix/)：配对前缀、评分、类别中位数/腕部岭回归及测试，既有聚合 CSV 随目录迁移。真实输入数据库默认在 `runs/q3_prefix/private.sqlite`，不进 Git。
