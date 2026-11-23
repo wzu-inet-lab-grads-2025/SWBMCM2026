@@ -1,0 +1,38 @@
+case,actual,expected,pass
+field tangency allowed,True,True,True
+field penetration rejected,False,False,True
+building side disk tangency allowed,True,True,True
+building side disk penetration rejected,False,False,True
+round NE corner tangency allowed,True,True,True
+round-corner outward point allowed (square inflation would reject),True,True,True
+80 degree endpoint included,True,True,True
+smaller radius excluded,False,False,True
+larger radius included,True,True,True
+r=0 excluded,False,False,True
+B2 roof NE vertex contact / slab,True,True,True
+B2 roof NE vertex contact / shadow,True,True,True
+B2 roof NE vertex contact / LP,True,True,True
+B2 roof NE vertex clear-side perturbation / slab,False,False,True
+B2 roof NE vertex clear-side perturbation / shadow,False,False,True
+B2 roof NE vertex clear-side perturbation / LP,False,False,True
+B2 roof NE vertex blocked-side perturbation / slab,True,True,True
+B2 roof NE vertex blocked-side perturbation / shadow,True,True,True
+B2 roof NE vertex blocked-side perturbation / LP,True,True,True
+B2 roof west-edge contact / slab,True,True,True
+B2 roof west-edge contact / shadow,True,True,True
+B2 roof west-edge contact / LP,True,True,True
+B2 vertical NE edge contact / slab,True,True,True
+B2 vertical NE edge contact / shadow,True,True,True
+B2 vertical NE edge contact / LP,True,True,True
+"parallel x, clear / slab",False,False,True
+"parallel x, clear / shadow",False,False,True
+"parallel x, clear / LP",False,False,True
+"parallel y, blocked / slab",True,True,True
+"parallel y, blocked / shadow",True,True,True
+"parallel y, blocked / LP",True,True,True
+"parallel y, clears above roof despite footprint crossing / slab",False,False,True
+"parallel y, clears above roof despite footprint crossing / shadow",False,False,True
+"parallel y, clears above roof despite footprint crossing / LP",False,False,True
+camera inside prism / slab,True,True,True
+camera inside prism / shadow,True,True,True
+camera inside prism / LP,True,True,True

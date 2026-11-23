@@ -29,7 +29,8 @@
 
 ## 官方答疑核验
 
-- 在两条公开帖直接读到署名「B题命题人」的置顶回复。$t_{\rm rec}\in(5,30]$ s 为绝对恢复时刻，断联从第 5 秒开始，历时 $t_{\rm rec}-5\in(0,25]$ s。第 5 页 `meaning the outage duration falls within [5,30]` 是答疑指出的混淆处。[断联历时帖][outage] · [第二、四问截图帖][q24post]
+- 英文题面第 5 页给出断联区间 $[5,t_{\rm rec}]$，后接 “meaning the outage duration falls within [5,30] s”。2026-11-23 在浏览器加载两条公开帖的评论后，均读到署名「B题命题人」的同文置顶回复。回复确认断联从第 5 秒开始，绝对恢复时刻 $t_{\rm rec}\in(5,30]$ s，断联历时 $t_{\rm rec}-5\in(0,25]$ s。[英文题面第 5 页][p5] · [断联历时帖][outage] · [第二、四问截图帖][q24post]
+- 2026-11-19 开赛公告第六节第 4 条指定腾讯频道「2026数维杯秋季赛答疑论坛」为唯一网上答疑专区。两帖均标注 2026-11-20。评论区显示相对时间，同日提交 `d58a6f6` 已记载置顶回复。§4.5 可引作 Problem B Author, “Clarification on Communication Outage Duration in Problem B, Question 4,” 2026 ShuWei Cup Autumn Contest Q&A Forum, QQ Channels, 20 November 2026 (in Chinese)。英文题名按答复内容拟写，链接使用承载置顶回复的中文原帖「这道题不应该是（0-25】吗」。[开赛公告][launch] · [官方答疑入口][forum] · [断联历时帖][outage] · [当日队内记录](B题调研.md#第四问的情景与解释)
 - 所查页面中，圆盘相切、断联后是否接着执行已排队的下一任务两帖显示「暂无评论」。在同时询问后续任务和「保持原计划」的帖子中，频道主回复该提问涉及解题思路，不予回答。仓库采用第 0 秒下发完整队列，保留原调度同时报告严格冻结和只追加两版，均属于审计所需的方案定义。本次公开浏览范围为频道首批帖子及既有笔记所列六条题意帖，该范围内未见 q3 的新增澄清。[B 赛题专区][board] · [相切帖][tangent] · [断联后续任务帖][offline] · [基线帖][baseline] · [仓库口径][decisions]
 
 ## 题内执行口径与算法选择
@@ -97,6 +98,7 @@ Q4 的原 Git 归档验收检查了 **13,629 条情景评分、5,685 套轨迹�
 [launch]: https://www.nmmcm.org.cn/News/225.html
 [decisions]: ../docs/decisions.md
 [q3prior]: B题第三问_题面与答疑口径核查.md
+[forum]: https://pd.qq.com/s/f4pnq4egk?b=9
 [board]: https://pd.qq.com/g/pd52619943?subc=745397906
 [outage]: https://pd.qq.com/g/pd52619943/post/B_e4b7ff6a0ac20e001441152187121863520X60?subc=745397906
 [q24post]: https://pd.qq.com/g/pd52619943/post/B_bed7ff6aa0800d001441152188103493870X60?subc=745397906

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "physical_scenarios": 33,
+  "rows_checked": 66,
+  "design_classifications_confirmed": 66,
+  "maximum_root_difference_m": 2.33990604669998e-12,
+  "maximum_travel_limit_difference_m": 1.2998668807995273e-10,
+  "maximum_design_probability_difference": 3.3306690738754696e-16,
+  "maximum_omitted_mass_bound": 3.552964224155306e-33,
+  "maximum_reference_quadrature_error_estimate": 1.0894230517180315e-14
+}

@@ -1,0 +1,179 @@
+{
+  "archive_source_run": "20261122T071018Z_参数敏感性_cftd7wj2",
+  "cases": 17,
+  "fixed_station_invalid": 6,
+  "grid_change_sign_agrees_in_all_perturbations": true,
+  "max_absolute_grid_area_error_m2": 9.707802812247792,
+  "cases_checked": [
+    {
+      "factor": "nominal",
+      "perturbation": 0.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5609.5390625,
+      "grid_minus_continuous_mid_m2": 0.7684480408734089
+    },
+    {
+      "factor": "elevation_limit_deg",
+      "perturbation": -1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5578.9375,
+      "grid_minus_continuous_mid_m2": 0.7301793411043036
+    },
+    {
+      "factor": "elevation_limit_deg",
+      "perturbation": -0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5594.65234375,
+      "grid_minus_continuous_mid_m2": 0.7874970414432028
+    },
+    {
+      "factor": "elevation_limit_deg",
+      "perturbation": 0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5623.6953125,
+      "grid_minus_continuous_mid_m2": 0.7599840340062656
+    },
+    {
+      "factor": "elevation_limit_deg",
+      "perturbation": 1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5637.11328125,
+      "grid_minus_continuous_mid_m2": 0.7436226310901475
+    },
+    {
+      "factor": "target_height_m",
+      "perturbation": -2.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5424.25390625,
+      "grid_minus_continuous_mid_m2": -0.39341362742743513
+    },
+    {
+      "factor": "target_height_m",
+      "perturbation": -1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5523.4921875,
+      "grid_minus_continuous_mid_m2": -0.5627322796626686
+    },
+    {
+      "factor": "target_height_m",
+      "perturbation": 1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5681.8203125,
+      "grid_minus_continuous_mid_m2": 0.7634236768753908
+    },
+    {
+      "factor": "target_height_m",
+      "perturbation": 2.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5742.703125,
+      "grid_minus_continuous_mid_m2": -0.5763241476452095
+    },
+    {
+      "factor": "target_east_m",
+      "perturbation": -0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5635.49609375,
+      "grid_minus_continuous_mid_m2": 2.2455051480374095
+    },
+    {
+      "factor": "target_east_m",
+      "perturbation": 0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5585.6875,
+      "grid_minus_continuous_mid_m2": 1.1915123286962626
+    },
+    {
+      "factor": "target_north_m",
+      "perturbation": -0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5588.08203125,
+      "grid_minus_continuous_mid_m2": -1.6991644431327586
+    },
+    {
+      "factor": "target_north_m",
+      "perturbation": 0.5,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": false,
+      "fixed_station_failed_constraint": "gimbal_upper",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5621.21484375,
+      "grid_minus_continuous_mid_m2": 0.08250661535021209
+    },
+    {
+      "factor": "b2_height_m",
+      "perturbation": -1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5738.625,
+      "grid_minus_continuous_mid_m2": 1.0300332832212007
+    },
+    {
+      "factor": "b2_height_m",
+      "perturbation": 1.0,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5458.10546875,
+      "grid_minus_continuous_mid_m2": 0.7594900030071585
+    },
+    {
+      "factor": "added_clearance_m",
+      "perturbation": 0.1,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5556.31640625,
+      "grid_minus_continuous_mid_m2": -9.707802812247792
+    },
+    {
+      "factor": "added_clearance_m",
+      "perturbation": 0.45,
+      "reoptimized_station_valid": true,
+      "fixed_station_valid": true,
+      "fixed_station_failed_constraint": "",
+      "grid_step_m": 0.0625,
+      "grid_area_m2": 5419.69921875,
+      "grid_minus_continuous_mid_m2": 5.497242675763118
+    }
+  ]
+}

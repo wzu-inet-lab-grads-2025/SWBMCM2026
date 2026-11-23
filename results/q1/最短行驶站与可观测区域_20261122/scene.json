@@ -1,0 +1,35 @@
+{
+  "source": {
+    "authoritative": "problem/B/2026_“ShuWei Cup”B_Problem.pdf",
+    "pages": [1, 2, 3],
+    "translation_crosscheck": "problem/translations/B题-协同观测与调度.md",
+    "units": "metres, degrees",
+    "note": "Independent transcription from the five-page English original; not imported from another experiment."
+  },
+  "field": [0.0, 100.0, 0.0, 100.0],
+  "center": [50.0, 50.0],
+  "target_alert": [30.0, 40.0, 45.0],
+  "vehicle_radius": 1.5,
+  "camera_height": 2.0,
+  "elevation_bounds_deg": [-10.0, 80.0],
+  "vehicles": [
+    {"name": "V1", "xy": [15.0, 14.0]},
+    {"name": "V2", "xy": [88.0, 10.0]},
+    {"name": "V3", "xy": [14.0, 86.0]},
+    {"name": "V4", "xy": [88.0, 68.0]},
+    {"name": "V5", "xy": [50.0, 93.0]}
+  ],
+  "buildings": [
+    {"name": "B1", "bounds": [22.0, 34.0, 16.0, 26.0], "height": 20.0},
+    {"name": "B2", "bounds": [63.0, 79.0, 59.0, 71.0], "height": 28.0},
+    {"name": "B3", "bounds": [10.0, 24.0, 65.0, 76.0], "height": 12.0},
+    {"name": "B4", "bounds": [72.0, 86.0, 22.0, 34.0], "height": 24.0},
+    {"name": "B5", "bounds": [41.0, 51.0, 38.0, 46.0], "height": 32.0}
+  ],
+  "boundary_policy": {
+    "vehicle": "Field and building tangency allowed; the disk must not cross the field boundary or enter building interiors.",
+    "line_of_sight": "Any contact, including face/edge/vertex tangency, blocks observation; closed prisms and closed segments.",
+    "elevation": "The stated endpoints are included, in particular 80 degrees.",
+    "numerics": "Interior classification uses exact inequalities in double precision. Explicit contact tests use a stated 1e-10 m/t-parameter tolerance; tolerances are not physical clearance."
+  }
+}

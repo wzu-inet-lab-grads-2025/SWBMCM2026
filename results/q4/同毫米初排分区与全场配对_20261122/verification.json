@@ -1,0 +1,50 @@
+{
+  "scenario_protocol_counts": {
+    "main": 1751,
+    "strict_outage": 1314
+  },
+  "policy_records": 15325,
+  "local_independent_audits": 3065,
+  "local_native_main_parity": 1751,
+  "five_vehicle_timelines": 76625,
+  "field_archive_score_and_5s_parity": 12260,
+  "policies": {
+    "strict_frozen": "strict_retention",
+    "original_append": "retain_and_append",
+    "local_region": "local_region",
+    "recommended": "field_wide",
+    "fixed_stations": "fixed_station_control"
+  },
+  "min_center_separation_m": {
+    "strict_retention": 33.44584542211484,
+    "retain_and_append": 3.2416933846371117,
+    "local_region": 15.35418871549751,
+    "field_wide": 19.44779103137423,
+    "fixed_station_control": 3.2416933846371117
+  },
+  "q2_initial_latest_s": 10.391509639548051,
+  "initial_schedule_hash": "8a99235ce667519019b22755408eb671114eb18051efccaf040b80c65861e622",
+  "strict_before_s": 60.0,
+  "required_wall_clearance_m": 0.45,
+  "minimum_intersection_gap_deg": 5.0,
+  "score_tie_tolerance_s": 1e-08,
+  "project_head": "1a4374e0c28d55944a8dc69cd813075de6113486",
+  "peer_head": "30d54fa397c370742cd34e5cd79808ebdb59ae46",
+  "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:16:10) [GCC 11.2.0]",
+  "command": [
+    "/mnt/disk/yuanyilun/projects/SWBMCM2026/checks/q4_paired_panel.py",
+    "--output",
+    "runs/q4/同毫米初排_分区与全场_20261122_复核",
+    "--workers",
+    "8"
+  ],
+  "input_sha256": {
+    "scenario_inputs.jsonl.gz": "230d9a60a4126f52f012346e3ad91d673289940a77d362bfa5785bc1307cd838",
+    "plans_and_tracks.jsonl.gz": "624ae56ea4462a15d5cedde69628a59313ed909e0eb62d3a5430c9de859644f8",
+    "model_comparison.csv.gz": "d37f086f938ccf4072b33e766447304f3310c1ef9ceb28f457832c92f028e622",
+    "q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f",
+    "q4-reschedule.json": "4438b57253cc23c90660b8714760fb544755e5d744151d3506a00b51328bc295"
+  },
+  "adapter_sha256": "6cc44805eedf28e492f5c4bd9a476b7eb2310a6aeb0f45a4b1820f7dd879f018"
+}

@@ -1,0 +1,29 @@
+{
+  "command": "python3 -B -m src.run q3 --sensitivity --config 'results/q3/测向可靠性与80米定位约束_五方法对照_20261120/config.yaml'",
+  "git_head": "1a4374e0c28d55944a8dc69cd813075de6113486",
+  "profile": "full",
+  "method": "projected_normal",
+  "rows": 66,
+  "python": "3.13.9",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "PyYAML": "6.0.3"
+  },
+  "source_sha256": {
+    "src/run.py": "01518ecffc09a26712ae355a8b31389b43a269362d9240e917d54b3bc9e4eae2",
+    "src/q3/config.py": "b013298328ec26cd4eba09a860edc53424066ea2013fa3e05d3692c5430dafca",
+    "src/q3/model.py": "e4cd5b670f7630d13c2a9080b766dd32808a5d7f5ef36b298058d499c2f12557",
+    "src/q3/sensitivity.py": "b285406815305f8accd42564ae7a3b967fa75d415ae2e7b40a515caf385bf831",
+    "src/shared/b_figures/common.py": "a4621335dd6f06b64a094a01d865d79666a1a8edaf17c36ba2c32e2fe8bb3063"
+  },
+  "snapshot_sha256": {
+    "config.yaml": "4a7655cc975b80c4548cee9819e211af2c681825e19dc1810d9881f7ac02928f",
+    "nominal_config.yaml": "b3e43375dd4aac72f8baac15366c198a985369a580c1560f539e2f25dd166f4b",
+    "sensitivity.csv": "cdbebf99255a4e3b6e31af8d7f911a463e72d2cea495645b02aea15bf50f06c7",
+    "sensitivity.pdf": "4d9c508d24673905ef5a33abf850abe03972b5913ed3e41d09afa50efd7d1b08",
+    "sensitivity.png": "1c234274ee4428f91b821aa49df7e076aec3250d5af723c8549ad26ad9357e7e"
+  },
+  "ai_assistance": "OpenCode / Magpie group/gpt-6.2-sol, 2026-11-22 (release date not provided)"
+}

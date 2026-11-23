@@ -1,0 +1,31 @@
+{
+  "run_id": "20261122T071018Z_参数敏感性_cftd7wj2",
+  "git_head": "1a4374e0c28d55944a8dc69cd813075de6113486",
+  "command": "nohup python3 -B -m checks.q1_sensitivity",
+  "scenario_count_including_nominal": 17,
+  "env": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "pyyaml": "6.0.3"
+  },
+  "source_sha256": {
+    "checks/q1_sensitivity.py": "de1cf9e1ade3bdc4c515142d4241d2c21f85201bbe28c1f428579be8c6a8bb88",
+    "checks/q1_area.py": "5acd9d00883c4ddb78a81c3d6f1855dbf13b62ddb0c184f1b40129e355fa2379",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/optimize.py": "ce7c1fc2164ff7c996f337ac1b516dbe612bed2c8474e48a891d43645b232829",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688",
+    "src/shared/b_figures/common.py": "a4621335dd6f06b64a094a01d865d79666a1a8edaf17c36ba2c32e2fe8bb3063"
+  },
+  "input_sha256": {
+    "config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "sensitivity_config.yaml": "5ad663e484e80934ee0514a360ae48313623fbd36254491a9886cb33b2d06b49"
+  },
+  "result_sha256": {
+    "sensitivity.csv": "4dd8674fc5fdfe65f83d05e129a7c4b22bd4ded6a2d607494e5dc1fe966079a2",
+    "sensitivity.pdf": "1ac4c2e7dcb573a862ad7373c54e41408474fe1284ae03f2ed25fa9c6c3c4921",
+    "sensitivity.png": "03613e92253beed6a93eafcb063d0e1837959f0da741e9504beee351c9544d56"
+  }
+}

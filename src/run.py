@@ -1,7 +1,7 @@
 """数维杯 B 题统一运行入口，接入第一至第四问。
 输入为题号、YAML 和运行档，输出到 runs/<题号> 的独立运行目录。
 单独运行 nohup python3 -B -m src.run q4 --profile full。
-模型实验可选择 q1 模型对照、q2 站位细化或 q4 断联对照，输入各自的归档。
+补充实验可选 q1 模型对照、q2 站位细化、q3 参数敏感性或 q4 重调对照。
 AI 辅助：OpenCode / Magpie group/gpt-6.2-sol（版本发布日期未提供），2026-11-20。
 """
 
@@ -22,6 +22,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--compare-baseline", type=Path, help="运行 q1 替代模型，与指定的归档基线比较")
     parser.add_argument("--comparison-config", type=Path, help="替代模型实验设置 YAML")
     parser.add_argument("--refine-schedule", type=Path, help="细化指定 q2 归档的连续站位和并行车次")
+    parser.add_argument("--sensitivity", type=Path, nargs="?", const=root / "configs/q3_sensitivity.yaml",
+                        help="第三问参数敏感性，任选扰动设置 YAML；--config 指定标称模型")
     parser.add_argument("--outage-comparison", type=Path, help="在指定 q4 主归档的断联场景上复跑执行口径对照")
     parser.add_argument("--recourse", type=Path, help="在指定 q4 主归档的情景上重跑连续换站与调度")
     parser.add_argument("--initial-schedule", type=Path, help="连续重调使用的另一份已验收 q2 归档")
@@ -42,6 +44,8 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--initial-schedule 与 --peer-comparison 需要 --recourse")
     if args.question != "q2" and args.refine_schedule:
         parser.error("--refine-schedule 仅用于第二问")
+    if args.question != "q3" and args.sensitivity:
+        parser.error("--sensitivity 仅用于第三问")
 
     if args.compare_baseline:
         from src.q1.model_comparison import run_model_comparison
@@ -58,6 +62,11 @@ def main(argv: list[str] | None = None) -> int:
 
         settings = config if args.config else root / "configs/q2_refinement.yaml"
         print(run_refinement(args.refine_schedule.resolve(), settings, output, root, command))
+        return 0
+    if args.sensitivity:
+        from src.q3.sensitivity import run_sensitivity
+
+        print(run_sensitivity(config, args.sensitivity.resolve(), output, args.profile, root, command))
         return 0
     if args.outage_comparison:
         from src.q4.outage_comparison import run_outage_comparison

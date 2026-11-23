@@ -1,0 +1,2 @@
+vehicle,origin_x_m,origin_y_m,station_x_m,station_y_m,travel_m,target_range_m,elevation_deg,quality_per_m
+V4,88,68,91.15571085275944,66.12103243422642,3.672741496410114,7.582060170464001,80.0,0.13189027487483032

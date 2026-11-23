@@ -1,0 +1,86 @@
+{
+  "command": "python3 -B -m src.q2.sensitivity --config configs/q2_sensitivity.yaml",
+  "profile": "q2_sensitivity",
+  "elapsed_s": 1.7079661659663543,
+  "python": "3.13.9",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.10.8"
+  },
+  "source_sha256": {
+    "src/q1/archive_plots.py": "e26a9fcb94ae6dc4a690f7d4d4aa66b225516f185256164df1bbe1babf51900c",
+    "src/q1/config.py": "d3537bdc586354ca0370b9f98a15f5958567bfe38f4b778b83fcd8412bddc568",
+    "src/q1/experiment.py": "68f2492fedab77db2ff560712ff7209f70ef5aaa54df267ab2a8f48bb528fcdf",
+    "src/q1/geometry.py": "0e607019eb04140ca8ae8d793ce9ad5f6fb638b44d0e0216c9476751b963d84d",
+    "src/q1/model_comparison.py": "96c0d1d6f03d2accee860b385b95b84790a0b1c27eacf5bd2ab65d9598cc184f",
+    "src/q1/optimize.py": "ce7c1fc2164ff7c996f337ac1b516dbe612bed2c8474e48a891d43645b232829",
+    "src/q1/plots.py": "b851b909b4889f96e3bb0672901bc44e8d060edb4d69555d8185be2fd9a079d3",
+    "src/q1/region.py": "585cd8ccc38d5d7353fa146f8e6eb13ac69a6b53f43532b4294ae5fe5fbcc688",
+    "src/q2/archive_plots.py": "568c6c3634244eb65497bee1eb352ef856a5a82e17156324f0b5aafa6b9ba36e",
+    "src/q2/experiment.py": "094bcf7e3c54470be006fade9c84d76577f002aa3452b0f2f27e817376b10ac3",
+    "src/q2/paths.py": "a17cf6d6d85eeef9f5b28a9d4fd18a0cee6a6b0b1ba5ee3f0edb2ec7d3d6475f",
+    "src/q2/precision.py": "9ca51bfec297c535ec7896b441d0b8384dac1588dd06d28bf39822ba88ee6934",
+    "src/q2/refinement.py": "4112a5b4ada51e697d34aaa715942fc93a1335acf6626b62e6dc21d35e2f2152",
+    "src/q2/report.py": "318b5fe97893f5d7ca904fba0b73ce5468139ff046a54567f7d1ad4398235650",
+    "src/q2/scene.py": "80e2b87066afd2c0cb17c93fccf8ea403c8042891d8b98ef3167c200c15a1418",
+    "src/q2/schedule.py": "b59fc167323c64ed3dee3bee05a131b40722f269c87661f584c9b0c54ed9de0d",
+    "src/q2/sensitivity.py": "03cd4bf34725a559b6be7f234f95ce75e1638e1b16cd8a3316a46389ff88e6db",
+    "src/run.py": "01518ecffc09a26712ae355a8b31389b43a269362d9240e917d54b3bc9e4eae2",
+    "checks/q2_geometry.py": "fea8d48d1ba254b46a0ceb9adaa6420c55b58ebed38295304a5c7f6bc1b8ac06",
+    "checks/q2_validate.py": "747932a777ddb5d943d9de77301361825b2d36ee19c6b9d7576c23205bf5c5ed"
+  },
+  "git_head": "1a4374e0c28d55944a8dc69cd813075de6113486",
+  "git_worktree_status": [
+    " M src/run.py",
+    "?? checks/q1_sensitivity.py",
+    "?? checks/q2_scheme_compare.py",
+    "?? checks/q4_paired_panel.py",
+    "?? checks/test_q4_paired_panel.py",
+    "?? configs/q1_sensitivity.yaml",
+    "?? configs/q2_sensitivity.yaml",
+    "?? configs/q3_sensitivity.yaml",
+    "?? src/q2/sensitivity.py",
+    "?? src/q3/sensitivity.py"
+  ],
+  "ai_assistance": "OpenCode / Magpie group/gpt-6.2-sol, 2026-11-22. 供队内独立核对。",
+  "input_sha256": {
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/config.yaml": "a2b0477f48ed920ce8999705e911555a5f68934f81fbb042fa1baaf1aa1e3ed9",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/scene_config.yaml": "25e5725b4503d8cdfcc35970792ad6b475194e39cd16aa69a6600688a79982d4",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/refinement_config.yaml": "53af2073fc1b22580e003dff99f320a0417d308434bd9bc03281084d417a1f72",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q21_result.json": "ee853d2df9964bb94ba2b9ecc4ee2b01f1145950a004a8a064e6c6536a46849b",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q21_practical.json": "845fcf7c61cc6bba499f1eb1a1a63ff4535ddb50814a88fea781c6936bf0e0d8",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q22_routes.json": "2064936052d579b01daff09da6014b793c146e34cb4568df5e26b67692c56b73",
+    "results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q22_timeline.csv": "31b4f8ae3d6b72faae8f01215a04fb4b957f1d3aad1241480abe74761718f14f",
+    "sensitivity_config": "39d7b77902459331b2316e60c2af653d3289ad2170608634b58983a79c19c977"
+  },
+  "verification": {
+    "wall_clearance_m": 0.45,
+    "center_distance_m": 3.0,
+    "q21_cases": 10,
+    "q22_waypoint_decimals": 3,
+    "q22_case_counts": {
+      "timing": {
+        "practical": {
+          "passed": 125,
+          "total": 125
+        },
+        "greedy": {
+          "passed": 125,
+          "total": 125
+        }
+      },
+      "t3_height": {
+        "practical": {
+          "passed": 3,
+          "total": 4
+        },
+        "greedy": {
+          "passed": 4,
+          "total": 4
+        }
+      }
+    }
+  }
+}

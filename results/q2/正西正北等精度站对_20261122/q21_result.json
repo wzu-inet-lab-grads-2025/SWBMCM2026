@@ -1,0 +1,267 @@
+{
+  "target": "T2",
+  "target_xyz_m": [
+    11.02885682970026,
+    72.5,
+    35
+  ],
+  "routes": [
+    {
+      "vehicle": "V3",
+      "site": [
+        5.210066466320913,
+        72.5
+      ],
+      "waypoints": [
+        [
+          14.0,
+          86.0
+        ],
+        [
+          5.210066466320913,
+          72.5
+        ]
+      ],
+      "length_m": 16.109405064324882,
+      "travel_s": 5.369801688108294,
+      "min_distance_to_buildings_m": {
+        "B1": 49.43836433444539,
+        "B2": 51.24451190127583,
+        "B3": 2.104319507854621,
+        "B4": 76.9784196746984,
+        "B5": 44.53278951901808
+      },
+      "yaw_deg": 0.0,
+      "pitch_deg": 80.0,
+      "range_m": 5.818790363379347,
+      "slew_s": 2.6666666666666665
+    },
+    {
+      "vehicle": "V5",
+      "site": [
+        11.02885682970026,
+        78.31879036337935
+      ],
+      "waypoints": [
+        [
+          50.0,
+          93.0
+        ],
+        [
+          11.02885682970026,
+          78.31879036337935
+        ]
+      ],
+      "length_m": 41.644782583108814,
+      "travel_s": 13.881594194369605,
+      "min_distance_to_buildings_m": {
+        "B1": 53.456728365571074,
+        "B2": 25.553864678361276,
+        "B3": 2.3187903633793496,
+        "B4": 62.96788928649471,
+        "B5": 40.8097422260004
+      },
+      "yaw_deg": -90.0,
+      "pitch_deg": 80.0,
+      "range_m": 5.81879036337935,
+      "slew_s": 3.0
+    }
+  ],
+  "baseline_m": 8.229012248496945,
+  "angle_deg": 90.0,
+  "r1_m": 5.818790363379347,
+  "r2_m": 5.81879036337935,
+  "sin_gamma": 1.0,
+  "rmse_m": 0.14362335792321348,
+  "station_disks_overlap": false,
+  "inter_vehicle_separation": {
+    "minimum_required_center_distance_m": 3.0,
+    "pair_minima": [
+      {
+        "vehicles": [
+          "V1",
+          "V2"
+        ],
+        "distance_m": 73.10950690573696,
+        "time_s": 0.0
+      },
+      {
+        "vehicles": [
+          "V1",
+          "V3"
+        ],
+        "distance_m": 59.313512782449955,
+        "time_s": 5.369801688108294
+      },
+      {
+        "vehicles": [
+          "V1",
+          "V4"
+        ],
+        "distance_m": 90.80198235721508,
+        "time_s": 0.0
+      },
+      {
+        "vehicles": [
+          "V1",
+          "V5"
+        ],
+        "distance_m": 64.44126606365954,
+        "time_s": 13.881594194369605
+      },
+      {
+        "vehicles": [
+          "V2",
+          "V3"
+        ],
+        "distance_m": 103.7324592136473,
+        "time_s": 5.369801688108294
+      },
+      {
+        "vehicles": [
+          "V2",
+          "V4"
+        ],
+        "distance_m": 58.0,
+        "time_s": 0.0
+      },
+      {
+        "vehicles": [
+          "V2",
+          "V5"
+        ],
+        "distance_m": 91.28526715741155,
+        "time_s": 0.0
+      },
+      {
+        "vehicles": [
+          "V3",
+          "V4"
+        ],
+        "distance_m": 76.15773105863909,
+        "time_s": 0.0
+      },
+      {
+        "vehicles": [
+          "V3",
+          "V5"
+        ],
+        "distance_m": 8.229012248496943,
+        "time_s": 13.881594194369605
+      },
+      {
+        "vehicles": [
+          "V4",
+          "V5"
+        ],
+        "distance_m": 45.48626166217664,
+        "time_s": 0.0
+      }
+    ],
+    "overlapping_pairs": []
+  },
+  "min_center_distance_m": 8.229012248496943,
+  "peer_commit": "30d54fa397c370742cd34e5cd79808ebdb59ae46",
+  "analytic_witness": {
+    "target": "T2",
+    "target_xyz": [
+      11.02885682970026,
+      72.5,
+      35
+    ],
+    "legs": [
+      {
+        "vehicle": "V3",
+        "station": [
+          5.210066466320913,
+          72.5
+        ],
+        "path": [
+          [
+            14,
+            86
+          ],
+          [
+            5.210066466320913,
+            72.5
+          ]
+        ],
+        "distance_m": 16.109405064324882,
+        "travel_s": 5.369801688108294,
+        "azimuth_deg": 0.0,
+        "elevation_deg": 80.0,
+        "slew_s": 2.666666666666667,
+        "depart_s": 0.0,
+        "arrival_s": 5.369801688108294,
+        "ready_s": 8.03646835477496,
+        "vehicle_min_building_clearance_m": 0.6043195078546226
+      },
+      {
+        "vehicle": "V5",
+        "station": [
+          11.02885682970026,
+          78.31879036337935
+        ],
+        "path": [
+          [
+            50,
+            93
+          ],
+          [
+            11.02885682970026,
+            78.31879036337935
+          ]
+        ],
+        "distance_m": 41.644782583108814,
+        "travel_s": 13.881594194369605,
+        "azimuth_deg": -90.0,
+        "elevation_deg": 80.0,
+        "slew_s": 3.0,
+        "depart_s": 0.0,
+        "arrival_s": 13.881594194369605,
+        "ready_s": 16.881594194369605,
+        "vehicle_min_building_clearance_m": 0.8187903633793496
+      }
+    ],
+    "baseline_m": 8.229012248496945,
+    "gamma_deg": 90.0,
+    "ranges_m": [
+      5.818790363379347,
+      5.81879036337935
+    ],
+    "horizontal_rmse_m": 0.14362335792321348,
+    "covariance_m2": [
+      [
+        0.010313834470569747,
+        -6.315402185659431e-19
+      ],
+      [
+        -6.315402185659432e-19,
+        0.010313834470569737
+      ]
+    ],
+    "minimum_range_m": 5.818790363379347,
+    "continuous_rmse_lb_m": 0.14362335792321346
+  },
+  "peer_replay": {
+    "checks": [
+      {
+        "target": "T2",
+        "vehicle": "V3",
+        "body_building_margin_m": 0.6043195078546226,
+        "low_ray_xy_clearance_m": 3.0266637265944363
+      },
+      {
+        "target": "T2",
+        "vehicle": "V5",
+        "body_building_margin_m": 0.8187903633793496,
+        "low_ray_xy_clearance_m": 0.5555205562946952
+      }
+    ],
+    "minimum_vehicle_center_separation_m": 8.229012248496943
+  },
+  "peer_source_sha256": {
+    "experiments/b/snapshots/q2_analytic/summary.json": "8bcee8fce58ad4ea0879a1816f999de987ba3232d944e49706a83aac5a356de3",
+    "experiments/b/snapshots/q2_analytic/replay.json": "6817611425b20f197c5a62edc69a89fca440078de8687277175af1c0105748f9"
+  }
+}

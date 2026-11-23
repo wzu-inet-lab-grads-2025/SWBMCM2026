@@ -1,0 +1,20 @@
+{
+  "scenario_protocols": 3065,
+  "score_decision_timeline_records": 15325,
+  "vehicle_prefixes": 76625,
+  "verified": [
+    "score and 5 s joint collection from continuous phase boundaries",
+    "all five vehicles and no phase gaps",
+    "exact fault at 5 s; no subsequent active phases",
+    "shared position, angular and task history strictly before dispatch",
+    "locked alert identity, assignments, actual intervals and resets",
+    "decision times and healthy vehicle pairs"
+  ],
+  "shortened_locked_T1": {
+    "main_shortened_local_region": 584,
+    "main_shortened_field_wide": 584,
+    "strict_outage_shortened_local_region": 438,
+    "strict_outage_shortened_field_wide": 438
+  },
+  "tolerance": 1e-08
+}
