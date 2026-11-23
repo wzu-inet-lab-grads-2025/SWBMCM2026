@@ -26,7 +26,7 @@ name={Fig.},
 labelsep=period 
 }
 %%%%%%%%%%%%填写相关信息%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{The \LaTeX{} Template  for swmcm} %论文题目
+\title{Rapid UAV Localization via Coordinated Mobile Vehicles} %论文题目
 
 \baominghao{SWBMCM2619567}           %报名号，修改为自己的队号
 
@@ -76,7 +76,7 @@ Under each rule, FW starts every alert in all 1,314 scenarios and records every 
 
 % -------------------------正文开始
 \setcounter{page}{1}
-% 仅调第 1–6 章及参考文献的行距，给图表和后续段落留出同页排版空间。
+% 此行距用于正文及参考文献，给图表和后续段落留出同页排版空间。
 \begingroup
 \linespread{1.24}\selectfont
 % 页顶和页底图表与正文之间留出约一行，避免为浮动体额外断页。
@@ -170,12 +170,14 @@ Table~\ref{tab:ParemeterSetup} lists the main symbols used in the four problems.
 \end{table}
 
 \subsection{Fundamental assumptions}
+\label{sec:assumptions}
 
 In order to establish a more accurate mathematical model, we make the following reasonable assumptions based on the actual situation.
 
 (1) All UAV targets are treated as stationary during the deployment phase considered in this problem. The target altitude $H$ is provided directly by the alert message and is not solved through bearing intersection; only the target horizontal position is estimated by the intersection of the two bearing lines.
 
-(2) Each observation vehicle is modeled as a disk with an equivalent radius of 1.5 m, traveling at a constant speed of 3 m/s. Acceleration, deceleration, vehicle steering, and collision-avoidance time are neglected, and the vehicle must remain within the field boundary without entering building interiors.
+% OpenCode（Magpie，group/gpt-6.2-sol）于 2026-11-23 辅助按队员确认的措辞明示车体相切规则并统一图号引用，供 AI 使用报告记录。
+(2) Each observation vehicle is modeled as a disk with an equivalent radius of 1.5 m, traveling at a constant speed of 3 m/s. Acceleration, deceleration, vehicle steering, and collision-avoidance time are neglected. The vehicle disk may touch a building footprint boundary or the field boundary, but it must not enter a building interior or extend outside the field.
 
 (3) The operational field is a 100 m × 100 m planar region, with the x-axis pointing east and the y-axis pointing north. All buildings are axis-aligned rectangular prisms, and their planar extents and heights are known and fixed.
 
@@ -186,6 +188,9 @@ In order to establish a more accurate mathematical model, we make the following 
 (6) Any tangency or contact between the LOS segment and an edge, face, or vertex of a building prism is counted as occlusion. A joint observation of 5 s starts only after all vehicles assigned to the same mission have arrived at their stations and completed gimbal pointing.
 
 (7) When the schedule is made at t = 0, neither scheme has advance knowledge of later disturbances; rescheduling uses real-time information and is triggered only after a disturbance actually occurs. During a communication outage, vehicles continue executing their ongoing tasks and receive new scheduling commands only after communication is recovered.
+
+% OpenCode (Magpie, group/gpt-6.2-sol) 于 2026-11-23 辅助落实队友 PDF 批注、核对几何及断联口径和处理 Fig. 1，供 AI 使用报告记录。
+(8) In Problem~4's main outage model, the entire original queue is preauthorized at \(t=0\). The outage disables the link to the dispatcher, but original partners can still confirm each other's readiness and start an authorized joint observation without a new dispatch command.
 
 
 % OpenCode / Magpie group/gpt-6.2-sol assisted with drafting, checking numerical
@@ -198,47 +203,54 @@ In order to establish a more accurate mathematical model, we make the following 
 \label{sec:q1-model}
 
 An observation station must accommodate the vehicle disk and give the camera a clear line of sight within the gimbal's elevation range. For alert \(T_m=(\theta_m,R_m,H_m)\), the horizontal target position is \(T'_m=(50+R_m\cos\theta_m,50+R_m\sin\theta_m)\). A vehicle centered at \(p=(x,y)\) carries its camera at \((x,y,2)\). Let \(F_j\) and \(h_j\) denote the footprint and height of building \(B_j\). In the configuration-space representation~\cite{ref:configuration-space}, the admissible vehicle centers form the set
-\[
+\begin{equation}
+\label{eq:q1-admissible-centers}
 \mathcal V=\{p\in[1.5,98.5]^2 : \operatorname{dist}(p,F_j)\ge 1.5
     \text{ for }j=1,\ldots,5\}.
-\]
-Vehicle tangency is admissible. A sight segment that touches a building prism is blocked. All targets considered here lie above the roofs. If a point on the sight segment at height \(z\) projects to \(q\in F_j\), then the camera center satisfies \(p=T'_m+\lambda(q-T'_m)\), where \(\lambda=(H_m-2)/(H_m-z)\). As \(z\) varies from the camera height to the roof height, the blocked camera centers fill the closed polygon
-\[
+\end{equation}
+The set \(\mathcal V\) includes tangency as specified in Section~\ref{sec:assumptions}. A sight segment that touches a building prism is blocked. All targets considered here lie above the roofs. If a point on the sight segment at height \(z\) projects to \(q\in F_j\), then the camera center satisfies \(p=T'_m+\lambda(q-T'_m)\), where \(\lambda=(H_m-2)/(H_m-z)\). As \(z\) varies from the camera height to the roof height, the blocked camera centers fill the closed polygon
+\begin{equation}
+\label{eq:q1-building-shadow}
 \mathcal O_{jm}=\operatorname{conv}\!\left(
     F_j\cup\left[T'_m+\frac{H_m-2}{H_m-h_j}(F_j-T'_m)\right]\right).
-\]
+\end{equation}
 Convexity of \(F_j\) makes the convex hull of the two extreme projections equal to the union of the intermediate projections. The shadow calculation uses the original footprint. Vehicle clearance enters through \(\mathcal V\).
 
 Write \(r_m(p)=\|p-T'_m\|\). The elevation \(\beta_m(p)=\operatorname{atan2}(H_m-2,r_m(p))\) is positive, so the \(80^\circ\) upper limit gives \(r_m(p)\ge r_{0,m}=(H_m-2)\cot80^\circ\). Combining the constraints gives the observable region
-\[
+\begin{equation}
+\label{eq:q1-observable-region}
 \mathcal A_m=\{p\in\mathcal V:r_m(p)\ge r_{0,m}\}
     \setminus\bigcup_{j=1}^5\mathcal O_{jm}.
-\]
-Integrating vertical cross-section lengths gives an area of approximately \(5{,}608.77\,\mathrm{m^2}\) for \(\mathcal A_1\). Figure~\ref{fig:q1-observable-mtdc} shows the region and the constraints near \(T'_1=(50+20\sqrt{3},70)\).
+\end{equation}
+Integrating vertical cross-section lengths gives an area of approximately \(5{,}608.77\,\mathrm{m^2}\) for \(\mathcal A_1\). Fig.~\ref{fig:q1-observable-mtdc} shows the region and the constraints near \(T'_1=(50+20\sqrt{3},70)\).
 
 \begin{figure}[!htbp]
     \centering
+    % 归档 PNG 仅移除图底重复说明所在的像素行 [1410,1441)（从 0 起算），保留图例和网格说明。
     \includegraphics[width=\linewidth]{figures/Q1-Observable-Region.png}
     \caption{Observable vehicle centers for \(T_1\) and the continuous optimal arc. In (b), the dotted line shows the 3.673 m drive from \(V_4\) to the selected station (star). The green dots are the included endpoints of the optimal arc. Shading uses a 0.1 m grid.}
     \label{fig:q1-observable-mtdc}
 \end{figure}
 
-Maximizing \(Q(p)=1/r_1(p)\) over \(\mathcal A_1\) is equivalent to minimizing \(r_1(p)\). The point due east of \(T'_1\) at radius \(43\cot80^\circ\) is feasible, so the elevation bound is attained. The optimal values are
-\[
+Maximizing \(Q(p)=1/r_1(p)\) over \(\mathcal A_1\) is equivalent to minimizing \(r_1(p)\). The point due east of \(T'_1\) at radius \(43\cot80^\circ\) lies in \(\mathcal A_1\), so the elevation bound is attained. The optimal values are
+\begin{equation}
+\label{eq:q1-optimal-values}
 r^*=43\cot80^\circ\simeq 7.582060170\,\mathrm m,\qquad
 Q^*\simeq 0.131890275\,\mathrm{m^{-1}},\qquad \beta^*=80^\circ.
-\]
+\end{equation}
 On the optimal circle, the field boundary and four of the five vehicle exclusion regions impose no further restriction. The offset edges \(y=72.5\) and \(x=80.5\) of \(B_2\) determine the endpoints. Intersecting the circle with the five shadows gives only the blocked segment from \(B_2\), approximately \([169.947439^\circ,221.927136^\circ]\), wholly within the excluded vehicle arc. Write \(p(\varphi)=T'_1+r^*(\cos\varphi,\sin\varphi)\), with angles measured counterclockwise from east. The feasible angles are
-\[
+\begin{equation}
+\label{eq:q1-feasible-arc}
 [0^\circ,160.747873^\circ]\ \cup\ [236.896047^\circ,360^\circ),
-\]
+\end{equation}
 with endpoint angles rounded for display. These intervals join across \(0^\circ\) to form one arc that includes both vehicle tangency endpoints.
 
-Among stations attaining \(Q^*\), the minimum travel distance criterion (MTDC) selects the vehicle and station with the shortest feasible drive. Any remaining tie is resolved by vehicle index, then by \(x\) and \(y\) in ascending order. From an initial center \(p_i^0\), the reverse triangle inequality gives \(\bigl|\|p_i^0-T'_1\|-r^*\bigr|\) as a lower bound on travel to any point on the circle. This bound is smallest for \(V_4\), which starts at \((88,68)\,\mathrm m\). Its radial projection lies on the feasible arc, and a straight drive reaches it at the lower bound of \(3.672741496\,\mathrm m\). The station is
-\[
+Among stations attaining \(Q^*\), the minimum travel distance criterion (MTDC) selects the vehicle and station with the shortest feasible drive. Any remaining tie is resolved by vehicle index, then by \(x\) and \(y\) in ascending order. From an initial center \(p_i^0\), the reverse triangle inequality gives \(\bigl|\|p_i^0-T'_1\|-r^*\bigr|\) as a lower bound on travel to any point on the circle. This bound is smallest for \(V_4\), which starts at \((88,68)\,\mathrm m\). Its radial projection lies on the feasible arc. Along the straight segment to that station, the disk stays inside the field and never extends west of \(x=86.5\,\mathrm m\), while every building footprint ends at \(x\le 86\,\mathrm m\). The drive therefore attains the lower bound of \(3.672741496\,\mathrm m\). The station is
+\begin{equation}
+\label{eq:q1-selected-station}
 p^*=T'_1+r^*\frac{p_4^0-T'_1}{\|p_4^0-T'_1\|}
     \simeq(91.155710853,66.121032434)\,\mathrm m.
-\]
+\end{equation}
 \hyperref[app:q1-alternatives]{Appendix~B.1} gives the clearance-based tie-break and independent geometry checks.
 
 % 正西—正北站对底表见 results/q2/正西正北等精度站对_20261122/。
@@ -248,17 +260,19 @@ p^*=T'_1+r^*\frac{p_4^0-T'_1}{\|p_4^0-T'_1\|}
 Two intersecting bearing lines estimate the horizontal coordinates of \(T_2\). Its alert supplies the height used in the visibility and elevation tests in Section~\ref{sec:q1-model}. For station \(p_i\), let \(r_i=\|T'_2-p_i\|\) be the horizontal range and \(\alpha_i\) the bearing to the target. A small target displacement \(\delta t\) changes that bearing by \(n_i^{\mathsf T}\delta t/r_i\), where \(n_i=(-\sin\alpha_i,\cos\alpha_i)^{\mathsf T}\). The Jacobian \(J\) stacks the two rows \(n_i^{\mathsf T}/r_i\)~\cite{ref:bearing-geometry}. The bearing errors are independent, zero-mean Gaussian variables with standard deviation \(\sigma_\theta=\pi/180\) radians.
 
 For a noncollinear pair, first-order error propagation gives
-\[
+\begin{equation}
+\label{eq:q21-linearized-error}
 \Sigma_{\rm lin}=\sigma_\theta^2(J^{\mathsf T}J)^{-1},\qquad
 E_{\rm lin}=\sqrt{\operatorname{tr}\Sigma_{\rm lin}}
     =\frac{\sigma_\theta\sqrt{r_1^2+r_2^2}}{|\sin\gamma|},
-\]
+\end{equation}
 where \(\gamma\) is the angle between the two directed bearings. The trace measures the expected squared length of the linearized horizontal error, independent of the coordinate axes. Baseline length \(B=\|p_1-p_2\|\) enters through \(B^2=r_1^2+r_2^2-2r_1r_2\cos\gamma\). At fixed ranges, the error is smallest at \(B=\sqrt{r_1^2+r_2^2}\), where the bearings meet at \(90^\circ\). At a fixed angle, increasing either range increases the error.
 
 Since \(H_2=35\,\mathrm m\), each feasible station has \(r_i\ge r_0=33\cot80^\circ\simeq5.818790363\,\mathrm m\). Thus
-\[
+\begin{equation}
+\label{eq:q21-error-lower-bound}
 E_{\rm lin}\ge\sqrt{2}\,\sigma_\theta r_0\simeq0.143623358\,\mathrm m.
-\]
+\end{equation}
 Equality requires orthogonal bearings with both ranges equal to \(r_0\). A feasible pair places \(V_3\) due west of \(T'_2=(50-45\sqrt{3}/2,72.5)\) and \(V_5\) due north, at \(T'_2+(-r_0,0)\) and \(T'_2+(0,r_0)\), respectively. Below the roof height of \(B_3\), one sight segment passes west of the building and the other passes north. Both clear the remaining buildings. The straight routes in Table~\ref{tab:q21-west-north} each take less than the allowed 30 s. With simultaneous departures and the other three vehicles remaining at their origins, the minimum center separation throughout deployment is \(8.229012\,\mathrm m\). The pair attains the global minimum of \(E_{\rm lin}\) with an \(8.229012248\,\mathrm m\) baseline, a \(90^\circ\) intersection and two \(80^\circ\) elevations.
 
 \begin{table}[!htbp]
@@ -277,7 +291,7 @@ Equality requires orthogonal bearings with both ranges equal to \(r_0\). A feasi
     \end{tabular}
 \end{table}
 
-As \(\gamma\) approaches \(0^\circ\) or \(180^\circ\), \(1/|\sin\gamma|\) amplifies bearing error. At either endpoint \(J\) loses rank and the target's position along the common line is undetermined. Screening by intersection angle or condition number flags this geometric failure. Away from the linear regime, nearly parallel noisy bearings can give long-tailed intersection errors, which can be assessed with error quantiles. At the \(80^\circ\) limit, \(J\) remains full rank and inward rounding can make a station infeasible. The clearance-binding pair in \hyperref[app:q21-alternatives]{Appendix~B.2} attains the same RMSE and shortens the longer drive from \(13.882\) to \(13.294\,\mathrm s\). Moving both stations of that pair radially outward before rounding gives a verified millimeter deployment with an RMSE of \(0.146102\,\mathrm m\).
+As \(\gamma\) approaches \(0^\circ\) or \(180^\circ\), \(1/|\sin\gamma|\) amplifies bearing error. At either endpoint \(J\) loses rank and the target's position along the common line is undetermined. Screening by intersection angle or condition number flags this geometric failure. Away from the linear regime, nearly parallel noisy bearings can give long-tailed intersection errors, which can be assessed with error quantiles. A station on an included boundary of \(\mathcal A_2\) does not by itself cause rank loss: \(|\det J|=|\sin\gamma|/(r_1r_2)\). The west--north pair remains full rank at the \(80^\circ\) limit. A sight line that touches a building is infeasible. To avoid crossing a boundary when rounding, retain exact coordinates for the analysis and check rounded deployment coordinates after adding a margin toward the feasible interior. The clearance-binding pair in \hyperref[app:q21-alternatives]{Appendix~B.2} attains the same RMSE and shortens the longer drive from \(13.882\) to \(13.294\,\mathrm s\). Moving both stations of that pair radially outward before rounding gives a verified millimeter deployment with an RMSE of \(0.146102\,\mathrm m\).
 
 % 毫米与全精度排程、就近基线：results/q2/毫米部署与初排_全程净空四十五厘米_20261121/。
 % 连续下界：results/q2/等精度快速部署与并发排程_20261121/continuous_bound.json。
@@ -287,22 +301,26 @@ As \(\gamma\) approaches \(0^\circ\) or \(180^\circ\), \(1/|\sin\gamma|\) amplif
 Three alerts released at \(t=0\) create six observation slots for five vehicles. At least one vehicle must finish an observation, reset its gimbal and become ready for a second assignment. This dependency couples station selection and scheduling. The objective is to minimize the latest of the synchronized starts, \(t_{\rm last}=\max_m t_m^{\rm start}\).
 
 At station \(p\), let \(\alpha_m(p)\) be the shortest signed pan angle from due east and \(\beta_m(p)\) the elevation, both in degrees. Pan and tilt run concurrently. Slewing from the travel attitude of due east and level, and resetting to it after an observation, each take
-\[
+\begin{equation}
+\label{eq:q22-slew-time}
 \tau_m(p)=\frac{\max\{|\alpha_m(p)|,|\beta_m(p)|\}}{30^\circ/\mathrm s}.
-\]
+\end{equation}
 For \(V_i\) assigned to \(T_m\), write \(d_{im}\) for departure time, \(L_{im}\) for obstacle-avoiding route length and \(p_{im}\) for the station. The arrival time \(a_{im}\), readiness time \(u_{im}\) and joint start satisfy
-\[
+\begin{equation}
+\label{eq:q22-joint-start}
 a_{im}=d_{im}+\frac{L_{im}}{3\,\mathrm{m/s}},\qquad
 u_{im}=a_{im}+\tau_m(p_{im}),\qquad
 t_m^{\rm start}=\max_{i\in\mathcal K_m} u_{im},
-\]
-where \(\mathcal K_m\) is the assigned vehicle pair. Vehicles may depart at \(t=0\) for their first assignments. For a reused vehicle, the next departure follows the previous joint start, 5 s of observation and its own reset. Each station lies in \(\mathcal A_m\), and each pair must have noncollinear bearings. Vehicle centers must stay at least 3 m apart during travel and parking. The reported schedules require \(0.45\,\mathrm m\) of nominal vehicle-body clearance from buildings and the field boundary.
+\end{equation}
+where \(\mathcal K_m\) is the assigned vehicle pair. Vehicles may depart at \(t=0\) for their first assignments. For a reused vehicle, the next departure follows the previous joint start, 5 s of observation and its own reset. Each station lies in \(\mathcal A_m\), and each pair must have noncollinear bearings. Vehicle centers must stay at least 3 m apart during travel and parking.
+% 条件性净空算例见 docs/B题第二至四问_撞墙风险与净空验收.md；0.40 m 并非实测误差。
+To keep both schedules away from contact, we require \(0.45\,\mathrm m\) of nominal clearance from the vehicle body to buildings and the field boundary during travel and parking. This is an added planning margin, not a requirement in the problem. If combined map, vehicle-envelope and path-tracking errors were bounded by \(0.40\,\mathrm m\), at least \(0.05\,\mathrm m\) would remain; the error bound is illustrative, not measured.
 
 A branch-and-bound search~\cite{ref:branch-and-bound} considers the six alert orders and their vehicle and station assignments. Candidate grids have spacings of 5, 2.5 and 1.25 m and include the vehicle origins and supplementary stations. A visibility graph~\cite{ref:visibility-graph} around conservatively inflated footprints provides route lengths. Lower bounds on readiness and transfers prune assignments that cannot improve the best schedule found so far. The alert order constrains shared vehicles. Vehicles on separate assignments can prepare in parallel.
 
 The search identifies \(V_3:T_1\to T_3\) as the chain that determines the latest start. Sequential quadratic programming~\cite{ref:sqp} refines the two stations of \(V_3\) with its first partner, \(V_5\), fixed. The objective includes the first joint start, observation, reset, transfer and second slew. After refining the chain, the remaining three vehicles fill the other slots within its time limit. Shorter total driving distance determines the choice among the tested completions.
 
-A continuous-domain check uses the fact that the first two tasks on some reused vehicle must form one of \(5\times3\times2=30\) ordered chains. Straight-line distances lower-bound the route lengths. Bounding the first partner's readiness from below also bounds the first joint start from below. Subdivision of the two station domains bounds the travel and slew terms and discards rectangles strictly inside a building shadow. With conservative numerical allowances the check excludes a latest start of \(10.352100\,\mathrm s\) or earlier for all 30 chains. The full-precision feasible schedule attains \(10.352118514\,\mathrm s\), placing the continuous-domain infimum in an interval \(18.514\,\mu\mathrm s\) wide.
+At least one vehicle must serve twice, giving 30 possible ordered pairs of successive alerts across the five vehicles. Bounding travel and pointing times on each chain gives a continuous-domain lower bound of \(10.352100\,\mathrm s\) (\hyperref[app:q22-bound]{Appendix~C.1}). The full-precision schedule reaches \(10.352118514\,\mathrm s\), within \(18.514\,\mu\mathrm s\) of that bound.
 
 Before rounding the deployment to millimeters, the refinement adds \(0.10\,\mathrm m\) of station margin for parking, visibility and the radial elevation limit, with allowances for rounding. Independent replay at the rounded coordinates checks sight segments, gimbal phases, route clearance and continuous vehicle separation. The minimum optical margin is \(0.100852\,\mathrm m\). The minimum body clearances to buildings and the field boundary are \(5.780\,\mathrm m\) and \(5.500\,\mathrm m\), respectively, and the minimum vehicle-center separation is \(33.446\,\mathrm m\).
 
@@ -333,21 +351,11 @@ Before rounding the deployment to millimeters, the refinement adds \(0.10\,\math
     \end{tabular}
 \end{table}
 
-% q2（2）甘特图取自 results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q22_timeline.pdf；图中文字转为矢量轮廓。
-% OpenCode（Magpie, group/gpt-6.2-sol）于 2026-11-23 辅助图注和排版，供 AI 使用报告记录。
-% 提前登记页底浮动体，为对比段和图件共页留出空间。
-\begin{figure}[!b]
-    \centering
-    \includegraphics[width=0.90\linewidth]{figures/Q2-Five-Vehicle-Timelines.pdf}
-    \caption{Five-vehicle timelines for the millimeter-coordinate schedule (top) and the nearest-assignment baseline (bottom). Dashed lines mark the latest joint starts at \(10.392\,\mathrm s\) for \(T_3\) and \(10.969\,\mathrm s\) for \(T_2\), respectively.}
-    \label{fig:q22-timeline-comparison}
-\end{figure}
-
-Table~\ref{tab:q22-millimeter} lists the events of the millimeter-coordinate schedule. Figure~\ref{fig:q22-timeline-comparison} compares that schedule with the nearest-assignment baseline on a common time axis. A vehicle that finishes slewing before its partner waits until the joint start. Only \(V_3\) and \(V_4\) drive, on three straight legs totaling \(6.852140\,\mathrm m\). The first legs start at \((14,86)\) and \((88,68)\,\mathrm m\), respectively, and the second leg of \(V_3\) links its two stations in the table. The last alert starts at \(10.391510\,\mathrm s\), \(39.391\,\mathrm{ms}\) after the full-precision schedule.
+Table~\ref{tab:q22-millimeter} lists the events of the millimeter-coordinate schedule. Section~\ref{sec:test-scheduling} compares the two schedules on a common time axis. A vehicle that finishes slewing before its partner waits until the joint start. Only \(V_3\) and \(V_4\) drive, on three straight legs totaling \(6.852140\,\mathrm m\). The first legs start at \((14,86)\) and \((88,68)\,\mathrm m\), respectively, and the second leg of \(V_3\) links its two stations in the table. The last alert starts at \(10.391510\,\mathrm s\), \(39.391\,\mathrm{ms}\) after the full-precision schedule.
 
 The nearest-assignment baseline selects for each alert the feasible pair with the smallest sum of added route lengths from the vehicles' origins or previous stations. Earlier joint readiness breaks distance ties, followed by a fixed ordering of vehicles and stations. The search enforces the common timing and 0.45 m vehicle-body clearance requirements. Independent replay also confirms that the six resulting zero-drive plans meet the 0.10 m station margins. The best processing order is \(T_1,T_2,T_3\), with respective joint starts of \(1.532033\), \(10.968984\) and \(5.777589\,\mathrm s\) at the vehicles' initial positions. Its pairs are \(V_3,V_5\) for \(T_1\), \(V_1,V_3\) for \(T_2\), and \(V_2,V_4\) for \(T_3\).
 
-The millimeter schedule brings the last start forward by \(0.577475\,\mathrm s\), or \(5.26\%\). In the nearest assignment, \(V_3\) waits for \(V_5\) at \(T_1\) and needs another \(3.414\,\mathrm s\) after reset to point at \(T_2\). The millimeter schedule uses the slack before \(V_5\) is ready. Vehicle \(V_3\) leaves at \(t=0\) and drives for \(0.500\,\mathrm s\) before slewing for \(T_1\). The schedule assigns \(T_2\) to \(V_1,V_4\) in parallel, freeing \(V_3\) to take \(T_3\). Its transfer and second slew take \(2.827\,\mathrm s\) after reset. \hyperref[app:q22-alternatives]{Appendix~B.3} gives the fixed-partner and multistart schedules.
+\hyperref[app:q22-alternatives]{Appendix~B.3} gives the fixed-partner and multistart schedules.
 
 At its second observation, \(V_3\) has driven \(3.950\,\mathrm m\) cumulatively and its station lies \(86.862\,\mathrm m\) horizontally from \(T_3\). In Section~\ref{sec:q3-model}, cumulative travel controls how localization error grows, and station-to-target range controls how that error translates into an angle. Section~\ref{sec:q4-model} starts from the same schedule and reconstructs the vehicle states at the disturbance time.
 
@@ -356,30 +364,34 @@ At its second observation, \(V_3\) has driven \(3.950\,\mathrm m\) cumulatively 
 \label{sec:q3-model}
 
 Problem~3 fixes the horizontal station-to-target range at \(D=40\,\mathrm m\). Take the true vehicle position as the origin and align the positive \(x\)-axis with the true sight line. After cumulative travel \(s\), the two components \((\delta_x,\delta_y)\) of the position-estimation error are independent zero-mean Gaussian variables with per-axis standard deviation \(\sigma(s)=0.30+0.02s\) in meters. The estimated sight vector is \((D-\delta_x,-\delta_y)\). With \(W\) wrapping angles to \([-\pi,\pi)\), the deviations are
-\[
+\begin{equation}
+\label{eq:q3-bearing-deviations}
 \alpha=\operatorname{atan2}(-\delta_y,D-\delta_x),\qquad
 \Delta\psi_{\rm cmd}=W(\alpha),\qquad
 \Delta\psi_{\rm act}=W(\alpha+G).
-\]
+\end{equation}
 The problem defines \(\Delta\psi\) as the commanded-bearing deviation. For actual pointing, \(G\) adds the gimbal zero-offset and control errors. They are independent zero-mean Gaussian variables and are independent of the position error. Their standard deviations of \(0.8^\circ\) and \(0.6^\circ\) combine to \(g=1^\circ=\pi/180\) radians. These deviations describe the pointing at a single observation. Section~\ref{sec:q21-model} models the separate bearing measurement used for intersection.
 
 For \(\sigma>0\), integration of the Gaussian sight-vector density over the radius gives the projected-normal angular density~\cite{ref:projected-normal}. With \(\kappa=D/\sigma\) and standard normal distribution function \(\Phi\),
-\[
+\begin{equation}
+\label{eq:q3-projected-normal-density}
 f_\kappa(u)=\frac{e^{-\kappa^2/2}}{2\pi}
     +\frac{\kappa\cos u}{\sqrt{2\pi}}e^{-\kappa^2\sin^2 u/2}\Phi(\kappa\cos u),
     \qquad -\pi\le u<\pi.
-\]
+\end{equation}
 Set \(h=5\pi/180\). At a commanded deviation of \(u\), actual pointing meets the tolerance when \(u+G\) falls within \(h\) of an integer multiple of \(2\pi\). The conditional success probability is
-\[
+\begin{equation}
+\label{eq:q3-conditional-coverage}
 K_g(u)=\sum_{\ell\in\mathbb Z}\left[
 \Phi\!\left(\frac{h-u+2\ell\pi}{g}\right)
 -\Phi\!\left(\frac{-h-u+2\ell\pi}{g}\right)\right].
-\]
+\end{equation}
 The two coverage probabilities reduce to one-dimensional integrals,
-\[
+\begin{equation}
+\label{eq:q3-coverage-integrals}
 R_{\rm cmd}(\sigma)=\int_{-h}^h f_\kappa(u)\,\mathrm du,\qquad
 R_{\rm act}(\sigma)=\int_{-\pi}^{\pi} f_\kappa(u)K_g(u)\,\mathrm du.
-\]
+\end{equation}
 Using the same standard normal samples \(Z_x,Z_y\) at different \(\sigma\), the absolute commanded deviation is distributed as \(\operatorname{atan2}(|Z_y|,D/\sigma+Z_x)\). It increases almost surely with \(\sigma\), with positive probability of crossing the fixed tolerance between any two distinct positive values of \(\sigma\). Actual-pointing coverage also decreases strictly because \(K_g(u)\) decreases with angular distance from zero. Both probabilities start above 0.95 at \(\sigma=0\) and tend to \(h/\pi\), so each has a unique 95\% threshold.
 
 Adaptive quadrature~\cite{ref:adaptive-quadrature} uses symmetry and subdivisions near the narrow density peak and tolerance edges. At the nominal gimbal standard deviation, retaining the central window in \(K_g\) omits at most \(2\Phi(-175)\) of conditional probability. Brent's method~\cite{ref:brent} gives the root \(\sigma_*\) of \(R(\sigma_*)=0.95\), and \(s_{\max}=(\sigma_*-0.30)/0.02\). Evaluations \(0.01\,\mathrm m\) below and above each travel limit give probabilities on the corresponding sides of the threshold. \hyperref[app:q3-alternatives]{Appendix~B.4} gives the independent checks.
@@ -398,23 +410,26 @@ Adaptive quadrature~\cite{ref:adaptive-quadrature} uses symmetry and subdivision
     \end{tabular}
 \end{table}
 
+Fig.~\ref{fig:q3-travel-reliability} shows where each curve crosses the \(95\%\) requirement. At 80 m both curves lie below it, with the lower coverage for actual pointing because its error includes the two gimbal terms.
+
+% q3 以论文采用的 D=40 m 工况绘图，沿用归档 reliability.pdf 的曲线、阈值和 80 m 标记。
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.78\linewidth]{figures/Q3-Bearing-Reliability.pdf}
+    \caption{Probability of staying within \(5^\circ\) of the true bearing at a horizontal target range of 40 m. Circles mark the 95\% travel limits and diamonds mark coverage at 80 m.}
+    \label{fig:q3-travel-reliability}
+\end{figure}
+
 At 80 m the nominal per-axis standard deviation reaches \(1.90\,\mathrm m\). For \(\sigma(s)=a+bs\) with \(a,b\ge0\), the 95\% requirement at each given cumulative distance through 80 m is equivalent to
-\[
+\begin{equation}
+\label{eq:q3-parameter-domain}
 a+(80\,\mathrm m)b\le\sigma_*,\qquad
 \sigma_*\simeq\begin{cases}
 1.778721312\,\mathrm m & \text{for commanded bearing},\\
 1.636745169\,\mathrm m & \text{for actual pointing}.
 \end{cases}
-\]
-Figure~\ref{fig:q3-parameters-80m} shows both feasible regions and the nominal parameters. Holding \(a=0.30\,\mathrm m\) gives respective upper bounds of \(0.0184840\) and \(0.0167093\,\mathrm{m/m}\) on \(b\). Holding \(b=0.02\,\mathrm{m/m}\) gives upper bounds of \(0.178721\) and \(0.036745\,\mathrm m\) on \(a\). At whole-centimeter resolution, the travel limits in Table~\ref{tab:q3-limits} round down to \(73.93\,\mathrm m\) and \(66.83\,\mathrm m\).
-
-% 图与边界数据见 results/q3/80米参数域与误差贡献_蓝灰配色图集_20261121/。
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.9\linewidth]{figures/Q3-Parameters-at-80m.pdf}
-    \caption{Localization parameters that meet the 95\% requirement after 80 m of travel at a horizontal target range of 40 m. Each criterion includes its boundary.}
-    \label{fig:q3-parameters-80m}
-\end{figure}
+\end{equation}
+With the initial localization standard deviation fixed at \(a=0.30\,\mathrm m\), the drift coefficient \(b\) must be at most \(0.0184840\,\mathrm{m/m}\) for commanded bearing and \(0.0167093\,\mathrm{m/m}\) for actual pointing. The nominal value \(b=0.020\,\mathrm{m/m}\) exceeds both limits. Fig.~\ref{fig:q3-parameters-80m} in \hyperref[app:q3-alternatives]{Appendix~B.4} shows the two feasible regions.
 
 Transverse position error supplies the leading localization term because \(\alpha\simeq-\delta_y/D\). In squared degrees, the first-order variances from localization, zero offset and control are \((180\sigma/(\pi D))^2\), \(0.8^2\) and \(0.6^2\). Their shares of the actual-pointing variance are \(15.59\%\), \(54.02\%\) and \(30.39\%\) at departure, changing to \(88.10\%\), \(7.61\%\) and \(4.28\%\) after 80 m. Recomputing the nonlinear probability at 80 m after removing each source individually raises actual-pointing coverage by \(8.493\), \(1.181\) and \(0.665\) percentage points, respectively. Zero-offset calibration addresses the largest contribution at departure. Reducing localization drift or re-localizing before observation has the largest effect at 80 m. The commanded bearing depends only on the position estimate, so the two gimbal terms contribute zero to its variance.
 
@@ -429,22 +444,23 @@ With the same angular noise at other ranges, coverage depends on \(D\) and \(\si
 
 At \(t=5\,\mathrm s\) in Table~\ref{tab:q22-millimeter}, \(V_3\) and \(V_5\) are observing \(T_1\), \(V_1\) is waiting for its partner at the \(T_2\) station, and \(V_2\) and \(V_4\) are still slewing. Field-Wide Rescheduling (FW) and strict retention (SR) start from the same millimeter-coordinate schedule, without advance information about the disturbance. A failed vehicle immediately withdraws from service and leaves routes unobstructed. A new alert adds a two-vehicle task.
 
-The rescheduling policy is event-driven~\cite{ref:rescheduling}. With communication available, revised commands take effect at 5 s. During an outage, they take effect at \(t_{\rm rec}\). The Problem B author clarified that \(t_{\rm rec}\in(5,30]\,\mathrm s\) is the recovery time measured from \(t=0\), so the outage lasts \(t_{\rm rec}-5\,\mathrm s\)~\cite{ref:problem-b-outage}. Under the main rule, the original queue is authorized in full at \(t=0\), and original partners can confirm readiness during a dispatch-link outage. The joint restriction defers departures that have yet to occur at 5 s and new joint starts until recovery. If recovery coincides with a departure or a joint start, the dispatcher reads the state first.
+The rescheduling policy is event-driven~\cite{ref:rescheduling}. With communication available, revised commands take effect at 5 s. During an outage, they take effect at \(t_{\rm rec}\). The Problem B author clarified that \(t_{\rm rec}\in(5,30]\,\mathrm s\) is the recovery time measured from \(t=0\), so the outage lasts \(t_{\rm rec}-5\,\mathrm s\)~\cite{ref:problem-b-outage}. The main outage rule uses the queue authorization and readiness confirmation assumptions in Section~\ref{sec:assumptions}. The joint restriction defers departures that have yet to occur at 5 s and new joint starts until recovery; Section~\ref{sec:q4-outage-sensitivity} also examines each restriction separately. If recovery coincides with a departure or a joint start, the dispatcher reads the state first.
 
 At dispatch, replay reconstructs each vehicle's position, gimbal attitude, remaining route and task phase. Any observation started strictly before dispatch is locked, including starts confirmed by the original partners during an outage. If a failure interrupts a locked observation, its start still counts and the healthy partner remains committed through the original observation slot and its own reset.
 
 Let \(f_i\) be the earliest release time of a healthy vehicle and \(b_{im}\) its preparation time for a new assignment after release. A vehicle that leaves its position resets to due east and level if necessary, drives, then slews. A vehicle that stays can slew from its current attitude. When a moving vehicle retains its destination, it follows the remainder of the original route. The joint start and the next release time for a candidate pair are
-\[
+\begin{equation}
+\label{eq:q4-dispatch-times}
 t_m^{\rm start}=\max_{i\in\mathcal K_m}(f_i+b_{im}),\qquad
 f_i^{\rm next}=t_m^{\rm start}+5\,\mathrm s+\tau_m(p_{im}),\quad i\in\mathcal K_m.
-\]
+\end{equation}
 Reported times assume zero computation and command latency. Given \(N\) alerts, including \(T_4\) when present, \(k\) counts synchronized starts strictly before 60 s. Plans rank by higher \(\eta=k/N\), then by smaller \(t_{\rm last}\). If all alerts start, \(t_{\rm last}=\max_m t_m^{\rm start}\). Otherwise the score assigns \(t_{\rm last}=60\,\mathrm s\). A separate metric counts observations with 5 uninterrupted seconds of overlap between the two vehicle recordings within the window. SR follows the original assignments, stations, routes and order under the applicable communication rule. A failed partner's slot stays vacant, and a new alert stays unassigned.
 
 \subsubsection{Field-Wide Search and Replay}
 
-FW searches for vehicle pairs, station pairs and service orders for pending alerts. Its shared pool includes original stations, vehicle origins, current positions and \(4\times4\) samples from each of five predefined rectangles. Target-specific catalogs supply sites from a filtered 1 m field grid, 0.25 m refinements around promising grid points and samples near the elevation limit. The catalogs retain sites from pairs with early joint readiness or low first-order RMSE from Section~\ref{sec:q21-model}. New station pairs must satisfy observability, 3 m separation and \(5^\circ<\gamma<175^\circ\). For transfers, FW uses the visibility graph from Section~\ref{sec:q22-model}. Routes and stations must satisfy the \(0.45\,\mathrm m\) nominal body-clearance requirement. Post-dispatch stations are evaluated at their computed precision.
+FW selects vehicle pairs, stations and service order for pending alerts. Candidate stations include original stations, initial and current vehicle positions, and sites sampled across the field. New station pairs must satisfy observability, at least 3 m of separation and \(5^\circ<\gamma<175^\circ\). Transfers use the visibility graph from Section~\ref{sec:q22-model}, with \(0.45\,\mathrm m\) nominal body clearance along routes and at stations.
 
-Each beam-search layer~\cite{ref:beam-search} adds one pending alert and updates the assigned vehicles' last stations and release times. Two field-wide passes consider the eight earliest-ready stations per vehicle and retain up to two and eight station pairs per vehicle pair, respectively. If the shortlist contains no legal start within the window, the search checks the full available pool for that vehicle pair. Each layer keeps up to 36 distinct states and contributes up to eight of them for replay. Restricted passes also supply candidates, including schedules that keep the original stations. Finalists rank by the scenario score and then the sum of start times. Continuous replay checks station geometry, gimbal phases, route clearance and vehicle separation before accepting the first feasible finalist.
+Each beam-search layer~\cite{ref:beam-search} assigns one pending alert to a vehicle pair and updates both vehicles' stations and release times. Finalists rank by scenario score, with ties broken by the smaller sum of start times. In that order, continuous replay checks station geometry, gimbal timing, route clearance and vehicle separation until a feasible schedule is found. \hyperref[app:q4-search-settings]{Appendix~D.5} gives the sampling and search settings.
 
 \subsubsection{Disturbance Scenarios and Scores}
 
@@ -480,11 +496,62 @@ By the start of \(T_4\) in Case~12R, \(V_3\) has accumulated \(10.167\,\mathrm m
 
 \hyperref[app:q4]{Appendix~A} gives the dispatch decisions, stations and complete vehicle timelines for representative cases. \hyperref[app:q4-alternatives]{Appendix~B.5} compares the additional policies. Supplement~S4 in the supporting materials covers all 1,751 main scenarios and 1,314 joint-restriction replays. It provides the scores in \path{panel/scenario_scores.csv}, the decisions in \path{panel/decisions.jsonl.gz}, and the five-vehicle timelines in \path{panel/vehicle_timelines.csv.gz}.
 
+\section{Test the Models}
+\label{sec:model-tests}
+
+% 据队员确认的提纲和讨论稿同步。GPT-6.2 Sol 辅助整理已有证据、英文措辞与排版。
+\subsection{Observable Region and Station Selection}
+
+% 遮挡对照及直达路线见 results/q1/最短行驶站与可观测区域_20261122/result.json。
+% 面积上下界见 results/q1/可观测区域与最优站位_连续圆弧_20261120/area_check_continuous.json。
+For \(T_1\), we tested the projected shadows in Fig.~\ref{fig:q1-observable-mtdc} by intersecting each three-dimensional sight segment with each building. The two methods agreed for all five buildings at all 250,000 sampled vehicle centers. A separate check of 36,000 points on the minimum-range circle reproduced the predicted arc membership. The radial projection of \(V_4\)'s initial position lay on the feasible arc, and the straight drive to it attained the smallest travel lower bound, \(3.673\,\mathrm m\).\footnote{GPT-6.2 Sol and GPT-6.2 Astra (OpenAI) assisted with organizing the archived checks, editing the English and presenting the figures in this section.}
+
+To check how the shading in Fig.~\ref{fig:q1-observable-mtdc} represents area, we counted feasible cell centers on three grids. At spacings of 0.20, 0.10 and 0.05 m the estimates were \(5{,}649.440\), \(5{,}610.400\) and \(5{,}608.528\,\mathrm{m^2}\), respectively. Bounding the feasible length in each vertical strip gave a continuous-area interval of \([5{,}608.767083,\,5{,}608.774146]\,\mathrm{m^2}\) (\hyperref[app:q1-alternatives]{Appendix~B.1}). The grid used for the figure thus overestimates the area by about \(1.63\,\mathrm{m^2}\).
+
+\subsection{Two-Station Localization}
+
+% 采用正文的全精度正西—正北构型，见 results/q2/正西正北等精度站对_20261122/q21_result.json。
+% 仿真以相同半径、交会角和测角噪声复算几何，不含行驶过程。见 results/q2/双站定位与并发调度_连续站位_20261120/q21_sensitivity.csv。
+Both sight lines from the west and north stations to \(T_2\) were clear, and the drives took \(5.370\) and \(13.882\,\mathrm s\), within the \(30\,\mathrm s\) limit (Table~\ref{tab:q21-west-north}). To test the first-order error estimate, we fixed both ranges at \(5.819\,\mathrm m\) (rounded) and intersected the rays after adding independent Gaussian errors of standard deviation \(1^\circ\) to the two bearings. At the nominal \(90^\circ\) angle all 100,000 trials yielded a forward intersection. The sample horizontal RMSE was \(0.144079\,\mathrm m\), about \(0.32\%\) above the first-order prediction of \(0.143623\,\mathrm m\).
+
+Repeating the geometric test at the same ranges with a \(1^\circ\) or \(179^\circ\) intersection angle put the intersection behind at least one station in \(23.855\%\) and \(42.634\%\) of trials, respectively. An error calculated only for the remaining intersections would omit these failures.
+
+\subsection{Concurrent Scheduling}
+\label{sec:test-scheduling}
+
+% 毫米初排回放见 results/q2/毫米部署与初排_全程净空四十五厘米_20261121/independent_validation.json。
+% 18.514 微秒的间隙对应全精度排程，见 results/q2/等精度快速部署与并发排程_20261121/continuous_bound.json。
+Independent replay at the millimeter coordinates reconstructed each joint observation from the two vehicles' arrival and slew times. In the upper panel of Fig.~\ref{fig:q22-timeline-comparison}, \(V_2\) finished pointing at \(T_3\) at \(5.777589\,\mathrm s\) and waited for \(V_3\) until \(10.391510\,\mathrm s\). Both then observed through \(15.391510\,\mathrm s\) before resetting. Over the full trajectories the minimum vehicle-center separation was \(33.446\,\mathrm m\).
+
+% 图来自 results/q2/毫米初排与就近基线_五车时序蓝灰配色_20261123/q22_timeline.pdf，与 4.3 的毫米部署表共用开测口径。
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.87\linewidth]{figures/Q2-Five-Vehicle-Timelines.pdf}
+    \caption{Five-vehicle timelines for the millimeter-coordinate schedule (top) and the nearest-assignment baseline (bottom). Dashed lines mark the latest joint starts at \(10.392\,\mathrm s\) for \(T_3\) and \(10.969\,\mathrm s\) for \(T_2\), respectively.}
+    \label{fig:q22-timeline-comparison}
+\end{figure}
+
+In the baseline, \(V_3\) waits for \(V_5\) at \(T_1\) and needs another \(3.414\,\mathrm s\) after reset to point at \(T_2\). In the millimeter schedule, \(V_3\) uses part of that initial wait to drive for \(0.500\,\mathrm s\) before its first slew. Vehicles \(V_1,V_4\) take \(T_2\) in parallel, freeing \(V_3\) to take \(T_3\). Its transfer and second slew take \(2.827\,\mathrm s\) after reset. The last start moves from \(10.968984\) to \(10.391510\,\mathrm s\), a gain of \(0.577475\,\mathrm s\) (\(5.26\%\)). For the separate full-precision schedule, the latest start was \(18.514\,\mu\mathrm s\) above the continuous-domain lower bound (\hyperref[app:q22-bound]{Appendix~C.1}).
+
+\subsection{Bearing Reliability}
+
+% 半平面独立复算和临界值两侧检查见 results/q3/测向可靠性与80米定位约束_五方法对照_20261120/。
+At a horizontal target range of \(40\,\mathrm m\), we checked the two crossings in Fig.~\ref{fig:q3-travel-reliability} by computing the acceptance probability from Gaussian half-planes. This calculation reproduced the travel limits of \(73.936066\,\mathrm m\) for commanded bearing and \(66.837258\,\mathrm m\) for actual pointing. For actual pointing, moving \(0.01\,\mathrm m\) below and above its limit gave probabilities of \(95.00237\%\) and \(94.99763\%\), respectively. The commanded-bearing check crossed the threshold in the same direction (\hyperref[app:q3-alternatives]{Appendix~B.4}).
+
+Monte Carlo simulation used five million draws per test point. For both bearing definitions, the simultaneous confidence interval for coverage contained \(95\%\) at the calculated travel limit. It lay wholly above \(95\%\) at \(0.50\,\mathrm m\) below the limit and wholly below \(95\%\) at \(0.50\,\mathrm m\) above it (Fig.~\ref{fig:q3-test-mc} in \hyperref[app:q3-alternatives]{Appendix~B.4}).
+
+\subsection{Rescheduling under Disturbances}
+
+% 四种通信规则的完整验收见 results/q4/毫米初排与联合断联限制_全程净空四十五厘米_20261121/full_run_validation.json。
+The rescheduling audit reconstructed \((\eta,t_{\mathrm{last}})\) from the vehicle timelines for 28,465 plans across 5,693 combinations of disturbance scenario and communication rule. Counting synchronized starts strictly before \(60\,\mathrm s\) reproduced the archived scores. Observations already underway retained their vehicle and station assignments, and revised commands took effect at or after communication recovery in the outage cases. The smallest vehicle-center separation over the continuous trajectories was \(3.241693\,\mathrm m\), against the required \(3\,\mathrm m\).
+
+We also intersected the two vehicles' recording intervals to check how much data each scored start delivered. For example, \(T_1\) started at \(1.532122\,\mathrm s\). When either member of its pair failed at \(5\,\mathrm s\), the start still counted, but the uninterrupted joint recording lasted only \(3.467878\,\mathrm s\). This accounts for the difference in Table~\ref{tab:q4-main-scores} between the 1,751 main-rule scenarios in which field-wide rescheduling started every alert and the 1,167 in which every recording lasted the full five seconds.
+
 \section{Sensitivity Analysis}
 \label{sec:sensitivity}
 
 % 经队员确认同步。OpenCode（Magpie, group/gpt-6.2-sol）于 2026-11-23 辅助数字复核、英文修订、热图和排版，供 AI 使用报告记录。
-The sensitivity tests use the solutions in Section~\ref{sec:models} as nominal references. Each test specifies the change in geometry, timing parameters, error parameters, or operating rules and evaluates its effect on the corresponding performance measure. \hyperref[app:alternatives]{Appendix~B} presents the results for the alternative solutions.
+The sensitivity tests use the solutions in Section~\ref{sec:models} as baselines, with alternative solutions in \hyperref[app:alternatives]{Appendix~B}.
 
 \subsection{Observable Area and Minimum-Travel Station Selection}
 \label{sec:q1-sensitivity}
@@ -529,9 +596,10 @@ For commanded bearing and actual pointing, the projected-normal integrals in Sec
 
 The actual-pointing results showed the largest responses to \(D\) and \(b\) over the tested changes. Increasing \(D\) by \(10\%\) extended the travel limit from \(66.837\) to \(75.021\,\mathrm m\). At the prescribed \(D=40\,\mathrm m\), a \(10\%\) reduction in \(b\) lowers the per-axis localization standard deviation at \(80\,\mathrm m\) by \(0.16\,\mathrm m\). An equal relative reduction in \(a\) lowers it by \(0.03\,\mathrm m\). Reductions of \(10\%\) and \(20\%\) in \(b\) alone gave actual-pointing coverage of \(93.71\%\) and \(95.65\%\) at \(80\,\mathrm m\), respectively. With the other parameters at their nominal values, the \(95\%\) boundary corresponds to \(b\leq 0.0167093\,\mathrm{m/m}\), approximately \(16.45\%\) below the nominal coefficient.
 
-A joint reduction of \(10\%\) in the four error parameters, coupled with a \(10\%\) increase in \(D\), yielded an actual-pointing limit of \(86.730\,\mathrm m\) and coverage of \(96.25\%\) at \(80\,\mathrm m\). Reversing the perturbations gave \(50.672\,\mathrm m\) and \(84.60\%\). The corresponding commanded-bearing probabilities at \(80\,\mathrm m\) were \(97.51\%\) and \(86.67\%\). Figure~\ref{fig:q3-sensitivity} and Table~\ref{tab:q3-joint-sensitivity} give the extended results.
+At \(80\,\mathrm m\), actual-pointing coverage was \(96.25\%\) under the favorable joint perturbation and \(84.60\%\) under the adverse one (Table~\ref{tab:q3-joint-sensitivity} in \hyperref[app:q3-alternatives]{Appendix~B.4}).
 
 \subsection{Field-Wide Rescheduling under Outage Restrictions}
+\label{sec:q4-outage-sensitivity}
 
 The four operating rules were evaluated for field-wide rescheduling (FW) on the same 1,314 outage scenarios, starting from the millimeter-coordinate schedule in Section~\ref{sec:q22-model}. Under the main rule, the original queue is preauthorized, and the original partners may confirm readiness during an outage. The first restriction defers original departures scheduled to begin during the outage. The second defers new synchronized starts until communication recovers. For each rule, schedule replay determined the vehicle states and the alerts already started at recovery.
 
@@ -556,51 +624,41 @@ In Table~\ref{tab:q4-outage-sensitivity}, deferring readiness confirmation alone
 
 Under each rule, all alerts achieved synchronized starts before \(60\,\mathrm s\) in every scenario, yielding \(\eta=1\). All alerts completed five uninterrupted seconds of joint recording by \(60\,\mathrm s\) in 876 scenarios. In the other 438, failure of \(V_3\) or \(V_5\) at \(5\,\mathrm s\) interrupted the joint recording of \(T_1\) after \(3.468\,\mathrm s\). Its synchronized start had already qualified for the score.
 
-\section{Model Evaluation}
+\section{Strengths and Weakness}
 
 % OpenCode (Magpie, group/gpt-6.2-sol) assisted with drafting, checking the wording against the reported results, and typesetting this section on 2026-11-22; retain for the team's AI-use report.
 % OpenCode（Magpie, group/gpt-6.2-sol）于 2026-11-23 辅助复核和同步队员确认的编号段落，供 AI 使用报告记录。
 \subsection{Strengths}
 
 \noindent\hspace*{\parindent}(1)~\textbf{Observable-region analysis} identifies the full optimal arc for \(T_1\). A straight drive of 3.673~m from \(V_4\) attains the shortest feasible travel distance to that arc.
-
 (2)~\textbf{Two-station localization} uses a feasible west--north pair for \(T_2\) to attain the first-order horizontal RMSE bound of 0.143623~m.
-
 (3)~\textbf{Concurrent scheduling} accounts for travel, gimbal motion, and the readiness of both vehicles. Under nominal conditions, the millimeter-coordinate schedule starts the last alert 5.26\% earlier than nearest assignment.
-
 (4)~\textbf{Projected-normal integration} retains the nonlinear bearing geometry and gives the 95\% travel limits for commanded bearing and actual pointing.
-
 (5)~\textbf{Field-wide rescheduling} uses vehicle states at dispatch to reassign pending alerts. Under the main communication rule, all alerts start in 1,751 scenarios with rescheduling and in seven with strict retention.
 
-\subsection{Limitations}
+% 只收紧局限与结论的行距，给两节的同页排版留出空间。
+\begingroup
+\linespread{1.04}\selectfont
+\subsection{Weakness}
 
 \noindent\hspace*{\parindent}(1)~\textbf{Minimum-travel station selection} places the \(T_1\) station at the \(80^\circ\) elevation limit. At that fixed station, the required elevation exceeds the applicable limit in six of the 16 sensitivity tests.
-
 (2)~\textbf{First-order localization RMSE} describes local error around the nominal geometry. Near collinearity, noisy bearings can produce distant intersections or fail to form a valid forward intersection.
-
 (3)~\textbf{Nominal visibility} can be sensitive to target height. With stations and horizontal target coordinates fixed, lowering \(T_3\) by about 54.4~mm brings the sight line from \(V_3\) into contact with the roof of \(B_5\).
-
 (4)~\textbf{Pointing reliability} assumes independent Gaussian errors for a single observation. Using the travel distance and target range in Case~12R, the model estimates an actual-pointing success probability of 84.04\% for \(V_3\) observing \(T_4\).
-
 (5)~\textbf{Rescheduling times} assume zero computation and command-transmission delay. All alerts yield five uninterrupted seconds of joint recording in 1,167 of the 1,751 main-rule scenarios.
 
-\subsection{Model Extensions}
+% 队员确认的结论讨论稿。样文核对见 research/B题结论写法参考_2025优秀论文.md。
+% 初排数值见 results/q2/毫米部署与初排_全程净空四十五厘米_20261121/q22_refinement.csv。
+% 重调度数值见 results/q4/毫米初排与联合断联限制_全程净空四十五厘米_20261121/conclusions.md。
+\section{Conclusion}
 
-\noindent\hspace*{\parindent}(1)~Measured target-position errors could guide the choice of elevation margin. Reselecting the \(T_1\) station with that margin would quantify the cost in observation quality.
-
-(2)~Candidate station pairs could be evaluated by the probability of obtaining a valid forward intersection within a specified horizontal error tolerance.
-
-(3)~Scheduling could require sight lines to clear roofs over an estimated range of target heights. Replaying the resulting plans would show how that requirement affects the latest start.
-
-(4)~Paired error measurements could be used to estimate the probability that both vehicles meet the pointing tolerance at their respective ranges and cumulative travel distances.
-
-(5)~Replay could include computation and transmission delays and test whether interrupted observations can be repeated in time. Counting alerts with five uninterrupted seconds of joint recording by 60~s would complement the original start-based score.
-
-% \section{Test the Models}
-% \lipsum[1-2]
-
-% \section{Conclusion}
-% \lipsum[1-2]
+For \(T_1\) and \(T_2\), feasible stations attain the minimum horizontal ranges set by the gimbal elevation limit.
+At a fixed bearing intersection angle and noise level, shorter ranges reduce first-order horizontal localization error. With vehicle-position uncertainty and gimbal errors held fixed, however, shorter ranges also lower the probability of meeting the pointing tolerance.
+In the nominal three-alert case, coordinating vehicle reuse with travel and gimbal motion advanced the latest joint start by 0.577~s relative to nearest assignment.
+Under the main communication rule, field-wide rescheduling started every alert jointly before 60~s in all 1,751 tested scenarios. In 1,167 scenarios, every alert also yielded five uninterrupted seconds of joint recording within the window. In the rest, a vehicle failure interrupted \(T_1\) after its start had counted.
+Operational assessments should therefore track pointing reliability and uninterrupted recordings alongside start times. Replay with computation and command transmission delays could test whether interrupted observations can be repeated within 60~s.
+\par
+\endgroup
 
 % 参考文献独占一页；给两位数编号预留宽度。
 \clearpage
@@ -639,7 +697,26 @@ Problem B Author, Clarification on Communication Outage Duration in Problem B, Q
 
 \bibitem{ref:beam-search}
 I. Sabuncuoglu, M. Bayiz, Job shop scheduling with beam search, European Journal of Operational Research, 118(2):390--412, 1999.
+
 \end{thebibliography}
+
+% 组委会《人工智能工具使用规定（2026 年修订）》第 5、6 条：工具入参考文献，报告单页且不计正文限页。
+\clearpage
+\section*{AI Tool Use Report}
+\addcontentsline{toc}{section}{AI Tool Use Report}
+
+We used OpenAI's GPT-6.2 Astra and GPT-6.2 Sol to revise selected sections of the manuscript, improve the presentation of figures, and assist with developing and organizing the accompanying code.
+
+\noindent\textbf{GPT-6.2 Astra (gpt-6.2-astra, OpenAI), 20--23 November 2026.}
+We asked the model to polish the English in Sections~4 and~6 and the appendices. It proposed wording changes to selected passages. We adopted selected language edits and made the remaining editorial changes by hand.
+For the revised model tests, the tool helped compare the archived checks, expand the English discussion, move the five-vehicle timeline and prepare the Monte Carlo panel and its caption.
+
+\noindent\textbf{GPT-6.2 Sol (gpt-6.2-sol, OpenAI), 20--23 November 2026.}
+In the recorded OpenCode sessions, we asked the tool to align the Summary with the main text, apply team feedback to Fig.~\ref{fig:q1-observable-mtdc}, and assemble reproducible materials with solver code, verification scripts, and run instructions. It helped draft and revise passages, refine figures and captions, and implement, check, and organize Python scripts. We incorporated selected wording changes in the Summary, Sections~4 and~6, and the appendices, applied the agreed figure edits, and included the organized code and verification materials in the supporting archive. The team selected the solution variants, reviewed the proposed wording, requested specific removals from Fig.~\ref{fig:q1-observable-mtdc}, and specified the contents of the reproducibility package.
+
+For \hyperref[sec:model-tests]{the model tests}, we asked the tool to organize the existing checks into five subsections that follow the model chapter. The tool proposed English wording for the checks and typeset the discussion draft after team feedback on the structure and paragraph openings.
+
+We are responsible for the submitted manuscript, figures, and code.
 
 % ---------------------开始附录
 
@@ -647,8 +724,9 @@ I. Sabuncuoglu, M. Bayiz, Job shop scheduling with beam search, European Journal
 \endgroup
 
 \section*{Appendix}
-% 在目录中添加Appendix
+% 纸面目录在附录处只显示一级标题，各附录小节仍生成 PDF 书签。
 \addcontentsline{toc}{section}{Appendix}
+\addtocontents{toc}{\protect\value{tocdepth}=1\relax}
 
 \subsection*{Appendix A. Per-Scenario Dispatch Decisions and Vehicle Timelines}
 \label{app:q4}
@@ -954,13 +1032,14 @@ For example, in Case 10 under LR or FW, $V_3$ follows continuation 3m: it comple
 \label{app:q1-alternatives}
 
 The maximum minimum clearance criterion (MMCC) selects a quality-optimal station with the greatest minimum distance from the vehicle body to buildings and the field boundary. For \(p=(x,y)\), the secondary problem is
-\[
+\begin{equation}
+\label{eq:q1-mmcc-objective}
 \begin{aligned}
 &\max_{p\in\mathcal A_1:\,r_1(p)=r^*} c(p),\\
 &c(p)=\min\!\left\{x-1.5,\,98.5-x,\,y-1.5,\,98.5-y,\,
       \min_j\bigl[\operatorname{dist}(p,F_j)-1.5\bigr]\right\}.
 \end{aligned}
-\]
+\end{equation}
 The eastern field boundary and the northeast corner of \(B_2\) impose the two active limits on clearance. Equating the two distances on the optimal arc gives a station at \(\varphi\simeq56.503855631^\circ\), or \((88.825410107,76.322854075)\,\mathrm m\), with minimum clearance \(9.674589893\,\mathrm m\). An upper bound based on these distances and interval subdivision of the arc differs from the achieved clearance by less than \(10^{-8}\,\mathrm m\). The station retains the same \(Q^*\) and \(80^\circ\) elevation as the MTDC station. The reported coordinates are display values because inward rounding can violate the elevation limit.
 
 \begin{figure}[!htbp]
@@ -1046,12 +1125,13 @@ At fixed geometry, the first-order horizontal RMSE varies linearly with the comm
 \label{app:q22-alternatives}
 
 The multistart search begins with the 15 vehicle--alert combinations. For each combination, constrained sequential quadratic programming finds observable stations with short travel-plus-slew times on feasible straight legs. The search then enumerates the reused vehicle \(V_k\), its ordered alerts \(T_m,T_n\), and its two partners. The remaining two vehicles serve the third alert. If the first partner is ready at time \(u\), the solver minimizes the reused vehicle's second readiness over its first and second stations \(p,q\). With origin \(p_k^0\) and speed \(v\), the objective is
-\[
+\begin{equation}
+\label{eq:q22-multistart-objective}
 \begin{aligned}
 \Phi_{kmn}(p,q;u)={}&\max\!\left\{\frac{\|p_k^0-p\|}{v}+\tau_m(p),\,u\right\}\\
 &+5\,\mathrm s+\tau_m(p)+\frac{\|p-q\|}{v}+\tau_n(q).
 \end{aligned}
-\]
+\end{equation}
 Independent replay checks visibility, straight legs, synchronized events and continuous separation. The fixed-partner construction holds \(V_5\) and \(V_2\) at their origins for \(T_1\) and \(T_3\), respectively, and refines the two stations of \(V_3\). For \(T_2\), \(V_1\) observes from its origin and \(V_4\) drives 3 m due north. Both constructions reuse \(V_3:T_1\to T_3\).
 
 \begin{table}[!htbp]
@@ -1109,10 +1189,11 @@ The independent angular implementation integrates the projected-normal density w
 The monotonicity of the conditional success probability in Section~\ref{sec:q3-model} follows from the wrapped normal density \(w_g\). In its Jacobi product, the positive factors containing \(\cos u\) decrease on \((0,\pi)\). Since \(\cos(u-h)>\cos(u+h)\) for \(0<u<\pi\), the derivative \(K'_g(u)=w_g(u+h)-w_g(u-h)\) is negative there.
 
 The Gaussian half-plane method conditions on a gimbal deviation \(G=e\). The accepted sight vectors lie in the intersection of two half-planes, a sector centered at \(-e\) with half-angle \(h\). The inward projections have Gaussian means \(D\sin(h-e)\) and \(D\sin(h+e)\), each with standard deviation \(\sigma\). Summing their positive-projection probabilities and subtracting one gives
-\[
+\begin{equation}
+\label{eq:q3-half-plane-coverage}
 F(e;\sigma)=\Phi\!\left(\frac{D\sin(h-e)}{\sigma}\right)
              +\Phi\!\left(\frac{D\sin(h+e)}{\sigma}\right)-1.
-\]
+\end{equation}
 By inclusion--exclusion the exact sector probability adds the probability of the opposite sector. With \(|e|\le10g\) and \(h+10g=15^\circ\), that sector lies in the negative horizontal half-plane, with mass at most \(\Phi(-D/\sigma)\). The check evaluates \(F(0;\sigma)\) for commanded bearing and integrates \(F(gz;\sigma)\phi(z)\) over \([-10,10]\) for actual pointing, where \(\phi\) is the standard normal density. At \(D=40\,\mathrm m\) and \(0<\sigma\le2\,\mathrm m\), the omitted probability from the opposite sector and gimbal tails is less than \(1.53\times10^{-23}\), separately from numerical integration error. The half-plane and wrapped angular roots agree within \(8\times10^{-15}\,\mathrm m\) in critical \(\sigma_*\).
 
 Table~\ref{tab:q3-alternatives} compares deterministic roots and an independent simulation. The first-order normal calculation uses \(\sigma^2/D^2\) for the command variance and adds \(g^2\) for actual pointing. It overestimates the respective travel limits by 0.113 and 0.085 m. The simulation used four million error samples to estimate the thresholds and another four million to check coverage at them. The intervals describe sampling uncertainty in the travel estimates.
@@ -1137,8 +1218,27 @@ Table~\ref{tab:q3-alternatives} compares deterministic roots and an independent 
 
 At the archived check points, Gaussian-coordinate Gauss--Hermite quadrature agreed with the main angular integration within \(1.67\times10^{-15}\) in probability. For commanded bearing it uses conditional normal probabilities to integrate across the sharp acceptance boundary. A separate direct Monte Carlo check used five million draws per condition. Its Bonferroni-adjusted exact binomial intervals at 95\% simultaneous confidence contained all 10 reference probabilities. Scrambled Sobol integration gave a probability RMSE of \(1.79\times10^{-6}\) at the largest tested sample size. Changing the subdivisions of the main integral shifted the results by at most \(2.22\times10^{-16}\) at the checked points.
 
+% q3 方法检验原图 method_validation.pdf 仅取 x>=502 bp 的蒙特卡洛面板，四周加 4 bp 留白。
+% 深色为逐点 Wilson 区间，浅色为十个测点一起校正的区间；图中展示其中六点。
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.55\linewidth]{figures/Q3-Monte-Carlo-Thresholds.pdf}
+    \caption{Simulated coverage relative to the 95\% requirement at each travel limit and \(0.50\,\mathrm m\) below and above it. Dark bars show pointwise Wilson intervals and light bars show 95\% simultaneous intervals across all ten test points. Vertical ticks mark the integral estimates.}
+    \label{fig:q3-test-mc}
+\end{figure}
+
+Fig.~\ref{fig:q3-parameters-80m} plots the parameter bounds in Eq.~(\ref{eq:q3-parameter-domain}). Holding \(b=0.02\,\mathrm{m/m}\) gives upper bounds on \(a\) of \(0.178721\,\mathrm m\) for commanded bearing and \(0.036745\,\mathrm m\) for actual pointing. At whole-centimeter resolution, the travel limits in Table~\ref{tab:q3-limits} round down to \(73.93\,\mathrm m\) and \(66.83\,\mathrm m\), respectively.
+
+% 图与边界数据见 results/q3/80米参数域与误差贡献_蓝灰配色图集_20261121/。
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Q3-Parameters-at-80m.pdf}
+    \caption{Localization parameters that meet the 95\% requirement after 80 m of travel at a horizontal target range of 40 m. Each criterion includes its boundary.}
+    \label{fig:q3-parameters-80m}
+\end{figure}
+
 % 响应曲线、联合扰动及独立积分误差见 results/q3/测向参数敏感性与联合情景_20261122/。
-Figure~\ref{fig:q3-sensitivity} reports the changes in the actual-pointing travel limit and coverage at \(80\,\mathrm m\) under individual perturbations. The joint cases in Table~\ref{tab:q3-joint-sensitivity} apply all specified changes simultaneously. Gaussian half-plane integration confirmed the threshold classifications of all 66 evaluations and agreed with the projected-normal travel limits to within \(1.3\times10^{-10}\,\mathrm m\). Across these settings, the first-order normal approximation overestimated the travel limits by \(0.065\)--\(0.141\,\mathrm m\) and agreed on whether the coverage requirement was met at \(80\,\mathrm m\).
+Fig.~\ref{fig:q3-sensitivity} reports the changes in the actual-pointing travel limit and coverage at \(80\,\mathrm m\) under individual perturbations. The joint cases in Table~\ref{tab:q3-joint-sensitivity} apply all specified changes simultaneously. Gaussian half-plane integration confirmed the threshold classifications of all 66 evaluations and agreed with the projected-normal travel limits to within \(1.3\times10^{-10}\,\mathrm m\). Across these settings, the first-order normal approximation overestimated the travel limits by \(0.065\)--\(0.141\,\mathrm m\) and agreed on whether the coverage requirement was met at \(80\,\mathrm m\).
 
 \begin{figure}[!htbp]
     \centering
@@ -1173,12 +1273,13 @@ Figure~\ref{fig:q3-sensitivity} reports the changes in the actual-pointing trave
 \label{app:q4-alternatives}
 
 Local-Region Rescheduling (LR) builds a separate set of stations for each vehicle. Each set takes a \(4\times4\) grid in the vehicle's rectangle and includes its initial station, its in-region nominal stations and its position at dispatch. The rectangles, in meters and in vehicle order, are
-\[
+\begin{equation}
+\label{eq:q4-local-search-rectangles}
 \begin{gathered}
 \relax[2,32]\times[2,32],\qquad [66,98]\times[1.5,20],\qquad [2,30]\times[77.6,98],\\
 \relax[81,98]\times[48,85],\qquad [36,67]\times[80,98].
 \end{gathered}
-\]
+\end{equation}
 In the matched replay, field-edge sites are clipped to the inset boundary for \(0.45\,\mathrm m\) of body clearance. Transfers use feasible straight segments. A vehicle that keeps the same station and target completes any remaining slew. A vehicle that changes assignment first resets if its gimbal has not reached the travel attitude. For each pending alert and healthy pair, LR keeps the station pair with the earliest joint readiness. Each search layer adds an alert, updates vehicle stations and release times and retains up to 36 distinct states. States rank by latest start and then by the sum of release times. The best result at the deepest layer replaces the original queue if it improves the strict-retention score. The matched replay verifies the choice under the common prefix, lock and feasibility rules of Section~\ref{sec:q4-model}. The implementation returns the original queue when a healthy vehicle's dispatch position falls outside its assigned rectangle.
 
 Fixed stations (FS) uses the field-wide search while keeping the two original stations for each pending old alert. It may change vehicles and service order. Retain and append (RA) preserves the original queue and attempts to add \(T_4\) once the selected vehicles are free of their original commitments and communication is available. Table~\ref{tab:q4-alternatives} summarizes the matched results. The mean uses the prescribed \(60\,\mathrm s\) score for any scenario in which an alert misses the window.
@@ -1242,12 +1343,13 @@ In Case~10, FS replaces the failed \(V_2\) by sending \(V_4\) from its \(T_2\) s
 \label{app:q22-bound}
 
 Six observation slots and five vehicles force at least one reuse in Section~\ref{sec:q22-model}. The reused vehicle's first two alerts define one of 30 chains \(V_i:T_m\to T_n\). Let \(X,Y\) be station rectangles, \(d\) the Euclidean set distance and \(\underline{\tau}_j(X)\) a slew-time lower bound on \(X\) for \(T_j\). Let \(u_{-i,m}\) be the smallest readiness lower bound for \(T_m\) among the other four vehicles. With initial center \(p_i^0\) and speed \(v\), the second joint start is bounded below by
-\[
+\begin{equation}
+\label{eq:q22-continuous-bound}
 \begin{aligned}
 \underline{S}_{imn}(X,Y)={}&\max\!\left\{\frac{d(p_i^0,X)}{v}+\underline{\tau}_m(X),\ u_{-i,m}\right\}\\
 &+5\,\mathrm s+\underline{\tau}_m(X)+\frac{d(X,Y)}{v}+\underline{\tau}_n(Y).
 \end{aligned}
-\]
+\end{equation}
 The set distances bound route lengths from below. The first slew and its reset share the same lower bound.
 
 The check subdivides the vehicle-center domain with body-clearance and pairing constraints relaxed. Visibility filtering discards rectangles wholly inside a building shadow with a \(10^{-8}\,\mathrm m\) allowance. A rectangle pair is discarded when its bound exceeds the trial by more than \(10^{-8}\,\mathrm s\). At \(10.352100\,\mathrm s\), the readiness and slew screen excludes 24 chains. Table~\ref{tab:q22-bound-chains} gives the remaining transfer-distance checks.
@@ -1313,10 +1415,11 @@ LR uses the same station for both alerts on the \(V_3\) chain. FW moves \(V_3\) 
 \label{app:q4-pointing}
 
 For each \(T_4\) vehicle in S4, let \(s_i\) be the sum of recorded travel segment lengths through the joint start and \(D_i\) the horizontal range from its archived station to the target. Table~\ref{tab:q4-pointing-coverage} counts scenarios where both vehicles meet the individual 95\% actual-pointing criterion from Section~\ref{sec:q3-model},
-\[
+\begin{equation}
+\label{eq:q4-new-station-coverage}
 0.30\,\mathrm m+0.02s_i\ \le\ \sigma_{*,\mathrm{act}}(40\,\mathrm m)\frac{D_i}{40\,\mathrm m},
 \qquad \sigma_{*,\mathrm{act}}(40\,\mathrm m)\simeq 1.636745169\,\mathrm m.
-\]
+\end{equation}
 \begin{center}
     \begin{minipage}{\linewidth}
     \centering
@@ -1338,32 +1441,362 @@ For each \(T_4\) vehicle in S4, let \(s_i\) be the sum of recorded travel segmen
 In Case~12R of Table~\ref{tab:q4-representative-scores}, FW reaches the last start \(1.387\,\mathrm s\) earlier than LR. At the \(T_4\) start, \(V_3\) has traveled \(10.167\,\mathrm m\) in FW and \(14.699\,\mathrm m\) in LR. Its target range is \(8.464\,\mathrm m\) in FW and \(13.071\,\mathrm m\) in LR. The shorter range in FW gives a smaller ratio \(D_i/\sigma(s_i)\), and the individual pointing coverage is \(84.04\%\) in FW and \(92.67\%\) in LR. The other vehicle, \(V_4\), uses the same station and has coverage above \(99.99\%\) under both policies.
 
 \clearpage
-% 附录 D 的软件与命令按提交包根目录 README.md 和 S4/README.md 核对。
-% OpenCode（Magpie, group/gpt-6.2-sol）于 2026-11-23 辅助核对命令、修订摘要与相关附录，供 AI 使用报告记录。
-\subsection*{Appendix D. Software and Reproduction}
+% 代码取自队员确认的支撑材料工作包，按其 README 的正文采用版核对。
+% OpenCode（Magpie, group/gpt-6.2-sol）于 2026-11-23 辅助摘录、核对与排版，供 AI 使用报告记录。
+\begingroup
+\linespread{1}\selectfont
+% 同一源码行折行后仍留在同一页，连续空行在 PDF 中合成一行。
+\lstset{language=Python,
+    basicstyle={\fontsize{10pt}{11pt}\selectfont\ttfamily\interlinepenalty=10000\relax},
+    columns=fullflexible,keepspaces=true,breakindent=1em,emptylines=1,
+    aboveskip=1.5mm,belowskip=1.5mm}
+
+\subsection*{Appendix D. Key Python Code}
 \label{app:reproduction}
-\addcontentsline{toc}{subsection}{Appendix D. Software and Reproduction}
+\addcontentsline{toc}{subsection}{Appendix D. Key Python Code}
 
-Use Python 3.13 on Linux. The supporting archive is \texttt{BSWBMCM2619567fj.zip}. Its \path{configs/requirements-b.txt} pins the versions of NumPy, SciPy, Matplotlib, PyYAML and OR-Tools. The solver source is in \path{src/}, the verification scripts in \path{checks/}, and the archived comparison implementations in \path{peer_methods/} and \path{S4/}.
+The file paths refer to the supporting archive \texttt{BSWBMCM2619567fj.zip}. Diagnostic messages in the excerpts are translated into English where needed.
 
-Run the following commands from the extracted archive root. The checks verify the west--north station pair in Question~2(1) and independently recompute the bearing thresholds in Question~3.
+\subsubsection*{D.1 Observable Region and Station Selection}
 
-\begin{lstlisting}[language=bash]
-nohup python3 -m pip install -r configs/requirements-b.txt
-nohup python3 -B -m checks.q2_validate \
-  --q21 results/q2/*_20261122/q21_result.json \
-  --require-vehicle-separation --wall-clearance-m 0.45
-nohup python3 -B -m checks.q3_reference results/q3/*_20261120/
+The feasibility masks test the field boundary, vehicle clearance, elevation and line of sight. The radial projection gives the selected station for the \(T_1\) scene in Section~\ref{sec:q1-model}.
+The shadow is the convex hull of the footprint and its scaled projection. A point is blocked when it lies in every defining half-plane.
+
+\noindent\path{peer_methods/experiments/b/q1_independent/solve.py}
+\begin{lstlisting}
+def shadow_hull(b):
+    """Exact camera-plane projection of a closed prism, h_camera < h < H."""
+    k = DZ / (HEIGHT - b["height"])
+    corners = rectangle_corners(b)
+    eight = np.vstack([corners, TARGET + k * (corners - TARGET)])
+    hull = ConvexHull(eight)
+    return k, eight[hull.vertices], hull.equations
+
+
+def blocked_polygon(points, shadow, tol=0.0):
+    """Halfspace test in the analytically projected convex shadow."""
+    points = np.atleast_2d(points)
+    equations = shadow[2]
+    inside = np.ones(len(points), dtype=bool)
+    for nx, ny, c in equations:
+        inside &= nx * points[:, 0] + ny * points[:, 1] + c <= tol
+    return inside
+
+
+def masks(points, tol=0.0, oracle="polygon"):
+    points = np.atleast_2d(points)
+    field, obstacle = vehicle_geometry(points, tol)
+    radius = np.linalg.norm(points - TARGET, axis=1)
+    elevation = radius >= RMIN - tol
+    blocked = np.zeros(len(points), dtype=bool)
+    for b, shadow in zip(BUILDINGS, SHADOWS):
+        if oracle == "polygon":
+            blocked |= blocked_polygon(points, shadow, tol)
+        else:
+            blocked |= blocked_slab(points, b, tol_t=tol)
+    return field, obstacle, elevation, ~blocked
+
+
+def feasible(points, tol=0.0, oracle="polygon"):
+    return np.logical_and.reduce(masks(points, tol, oracle))
+
+
+def analytic_solution():
+    phi_top = math.pi - math.asin((71 + RHO - TARGET[1]) / RMIN)
+    phi_east = 2 * math.pi - math.acos((79 + RHO - TARGET[0]) / RMIN)
+    ds = np.linalg.norm(VEHICLES - TARGET, axis=1)
+    lower_bounds = np.abs(ds - RMIN)
+    winner = int(np.argmin(lower_bounds))
+    direction = (VEHICLES[winner] - TARGET) / ds[winner]
+    point = TARGET + RMIN * direction
+    return point, winner, lower_bounds, phi_top, phi_east
 \end{lstlisting}
 
-The archive's \path{README.md} indexes the results for Questions~1--3. Each result's \path{run_record.md} records the input files, commands and code version. For Question~4, \path{S4/README.md} gives the commands to rerun the field-wide search, validate the trajectories and replay the matched policy comparison. The scores, decisions and five-vehicle histories in \path{S4/panel/} share the keys \path{scenario_id}, \path{protocol} and \path{policy}. File checksums are listed in \path{MANIFEST.sha256}.
+\subsubsection*{D.2 West--North Station Pair}
 
-% ----------------
-% 在目录中添加格式规范，可以删掉
+The west--north construction places both stations at the elevation-limited range. The bearing Jacobian gives the first-order position covariance in Section~\ref{sec:q21-model}.
 
-% \section*{Format specification}
-%\addcontentsline{toc}{section}{Format specification}
-%
-%\includepdfmerge{2024shuweibei,1-3}
+\noindent\path{peer_methods/experiments/b/q2_analytic/solve.py}
+\begin{lstlisting}
+def solve_precision():
+    t = TGT['T2']
+    r = (t[2]-H0)/math.tan(math.radians(SCENE['elevation_deg'][1]))
+    p, q = (t[0]-r,t[1]), (t[0],t[1]+r)
+    legs = [make_leg(v,VEH[v],s,0.,'T2') for v,s in zip(('V3','V5'),(p,q))]
+    assert max(l['travel_s'] for l in legs) <= SCENE['q2_1']['travel_limit_s']
+    geo = geometry(p,q,'T2')
+    normals = np.array([[-math.sin(angles(s,'T2')[0]), math.cos(angles(s,'T2')[0])] for s in (p,q)])
+    jacobian = normals/np.array(geo['ranges_m'])[:,None]
+    sigma = math.radians(SCENE['q2_1']['bearing_sd_deg'])
+    cov = sigma**2 * np.linalg.inv(jacobian.T @ jacobian)
+    for l in legs:
+        l['vehicle_min_building_clearance_m'] = min(segment_clearance(*l['path'],b) for b in BLD.values())-R
+    return dict(target='T2',target_xyz=t,legs=legs,**geo,covariance_m2=cov.tolist(),
+                minimum_range_m=r,continuous_rmse_lb_m=sigma*math.sqrt(2)*r)
+\end{lstlisting}
+
+\subsubsection*{D.3 Concurrent Scheduling and Station Refinement}
+
+The grid search prunes station pairs whose lower bound exceeds the incumbent. Sequential quadratic programming then refines the two stations of the reused vehicle in Section~\ref{sec:q22-model}.
+
+\noindent\path{src/q2/schedule.py} (inside \texttt{search\_assignment})
+\begin{lstlisting}[gobble=12]
+            start = np.maximum(durations[0][:, None], durations[1])
+            future = np.maximum(tail[target], np.maximum(remaining[0][:, None], remaining[1]))
+            allowed = (start + future <= deadline) & self.problem.pair_mask(target, *site_ids)
+            start[~allowed] = np.inf
+            reused = [(target, v) in succ for v in vehicles]
+            if all(reused):
+                i, j = np.where(allowed)
+            elif reused[0]:
+                i, j = np.arange(start.shape[0]), np.argmin(start, axis=1)
+            elif reused[1]:
+                i, j = np.argmin(start, axis=0), np.arange(start.shape[1])
+            else:
+                row, col = np.unravel_index(np.argmin(start), start.shape)
+                i, j = np.array([row]), np.array([col])
+            bounds = (start + future)[i, j]
+            for idx in np.argsort(bounds, kind="stable"):
+                if bounds[idx] > self.best.latest_s + SELECT_TOL_S:
+                    break
+                a, b = i[idx], j[idx]
+                starts[target] = float(start[a, b])
+                selected[target] = ((vehicles[0], kept[0][a]), (vehicles[1], kept[1][b]))
+                visit(depth + 1)
+\end{lstlisting}
+
+\noindent\path{src/q2/refinement.py}
+\begin{lstlisting}
+def _chain(scene, domains, reused, first, second, seeds, partner_ready, settings, decimals):
+    first_domain, second_domain = domains[first], domains[second]
+    home = scene.origins[reused]
+    rounding = math.sqrt(2) * 0.5 * 10**-decimals if decimals is not None else 0.0
+    buffer = settings["practical_station_gap_m"] + rounding if decimals is not None else 0.0
+    los_gap = buffer + settings["nominal_visibility_gap_m"]
+    wall = settings.get("wall_clearance_m", 0.0)
+    wall_buffer = wall + rounding + 2 * PADDING_M if wall else 0.0
+    first_ok, second_ok = (d.local_constraints(p, buffer, los_gap, wall_clearance_m=wall_buffer)
+                           for d, p in zip((first_domain, second_domain), seeds))
+
+    def limits(x):
+        p, q, latest = x[:2], x[2:4], x[4]
+        turn = first_domain.slew(p, scene.gimbal_deg_s)
+        reused_ready = math.dist(home, p) / scene.speed_m_s + turn
+        tail = scene.observation_s + turn + math.dist(p, q) / scene.speed_m_s
+        tail += second_domain.slew(q, scene.gimbal_deg_s)
+        return np.r_[latest - tail - partner_ready, latest - tail - reused_ready, first_ok(p), second_ok(q)]
+
+    coordinates = np.ravel(seeds)
+    radius = settings["search_radius_m"]
+    fit = minimize(lambda x: x[-1], np.r_[coordinates, 12.0], method="SLSQP",
+                   bounds=[*((x - radius, x + radius) for x in coordinates), (0, None)],
+                   constraints={"type": "ineq", "fun": limits}, options={"ftol": 1e-12, "maxiter": 250})
+    if not fit.success or limits(fit.x).min() < -1e-9:
+        raise RuntimeError(f"Continuous refinement of the reuse chain failed ({fit.message})")
+    sites = fit.x[:4].reshape(2, 2)
+    return np.round(sites, decimals) if decimals is not None else sites
+\end{lstlisting}
+
+\subsubsection*{D.4 Bearing Reliability and Threshold}
+
+Adaptive integration evaluates the projected-normal bearing density with the gimbal-error weight for actual pointing. Brent's method finds the localization standard deviation at the required coverage in Section~\ref{sec:q3-model}.
+
+\noindent\path{src/q3/model.py}
+\begin{lstlisting}
+def projected_normal_angle_pdf(alpha_rad: float, sigma_m: float, range_m: float) -> float:
+    if sigma_m <= 0.0:
+        raise ValueError("Localization standard deviation must be positive for the density")
+    kappa = range_m / sigma_m
+    longitudinal = kappa * math.cos(alpha_rad)
+    base = math.exp(-0.5 * kappa * kappa) / math.tau
+    if longitudinal < 0.0:
+        if base == 0.0:
+            return 0.0
+        c = -longitudinal
+        return base * (1.0 - c * math.sqrt(math.pi / 2.0) * float(erfcx(c / math.sqrt(2.0))))
+    transverse = kappa * math.sin(alpha_rad)
+    return base + longitudinal / math.sqrt(math.tau) * math.exp(-0.5 * transverse * transverse) * float(ndtr(longitudinal))
+
+
+def gimbal_success_probability_given_alpha(alpha_deg, threshold_deg: float, gimbal_deg: float,
+                                           tail_tolerance: float = 1e-16):
+    magnitude = np.abs(wrap180_deg(alpha_deg))
+    if gimbal_deg == 0.0:
+        return (magnitude <= threshold_deg).astype(float)
+
+    def window(center):
+        high = (threshold_deg - center) / gimbal_deg
+        low = (-threshold_deg - center) / gimbal_deg
+        return ndtr(high) - ndtr(low)
+
+    periods, _ = wrap_window_count(threshold_deg, gimbal_deg, tail_tolerance)
+    result = window(magnitude)
+    for k in range(1, periods + 1):
+        result = result + window(360.0 * k - magnitude) + window(360.0 * k + magnitude)
+    return result
+
+
+def _integrate_even(sigma_m: float, model: BearingModel, upper_rad: float, weight: Callable[[float], float],
+                    tolerance: float, alternate: bool, extra_splits: tuple[float, ...] = ()) -> Integral:
+    scales = (0.5, 2.0, 6.0, 13.0) if alternate else (1.0, 4.0, 12.0)
+    breaks = [scale * sigma_m / model.range_m for scale in scales]
+    interior = {point for point in (*breaks, math.pi / 2.0, *extra_splits) if 0.0 < point < upper_rad}
+    edges = (0.0, *sorted(interior), upper_rad)
+    segments = []
+    for start, end in zip(edges, edges[1:]):
+        width = end - start
+
+        def integrand(t):
+            angle = start + width * t
+            pdf = projected_normal_angle_pdf(angle, sigma_m, model.range_m)
+            return (2.0 * width * pdf) * weight(angle)
+
+        outcome = quad(integrand, 0.0, 1.0, epsabs=tolerance / (len(edges) - 1),
+                       epsrel=tolerance, full_output=True)
+        if len(outcome) != 3:
+            raise RuntimeError(f"Angular quadrature did not converge (sigma={sigma_m:g} m, [{start:g}, {end:g}] rad)\n{outcome[3]}")
+        value, error, _ = outcome
+        segments.append(AngleSegment(start, end, value, error))
+    return Integral(math.fsum(seg.value for seg in segments),
+                    math.fsum(seg.error for seg in segments), tuple(segments))
+
+
+def reliability_1d_adaptive(sigma_m: float, model: BearingModel, mode: Mode,
+                            tolerance: float = 2e-12, alternate: bool = False) -> Integral:
+    gimbal = model.gimbal_sd_deg(mode)
+    theta = model.threshold_deg
+    if sigma_m < 0.0:
+        raise ValueError("Localization standard deviation must be nonnegative")
+    if sigma_m == 0.0:
+        value = gimbal_success_probability_given_alpha(0.0, theta, gimbal, model.wrap_tail_tolerance)
+        return Integral(float(value), 0.0)
+    if gimbal == 0.0:
+        result = _integrate_even(sigma_m, model, math.radians(theta), lambda _: 1.0, tolerance, alternate)
+    else:
+        def weight(angle):
+            return float(gimbal_success_probability_given_alpha(
+                math.degrees(angle), theta, gimbal, model.wrap_tail_tolerance,
+            ))
+
+        splits = tuple(math.radians(theta + k * gimbal) for k in (-3.0, 0.0, 3.0))
+        result = _integrate_even(sigma_m, model, math.pi, weight, tolerance, alternate, splits)
+    if not 0.0 <= result.value <= 1.0 + tolerance:
+        raise RuntimeError(f"Integrated probability out of bounds ({result.value:g})")
+    return replace(result, value=min(result.value, 1.0))
+
+
+def solve_sigma_critical(probability: Callable[[float], float], minimum: float, start_m: float,
+                         root_tolerance_m: float) -> float:
+    at_zero = probability(0.0)
+    if at_zero < minimum:
+        raise ValueError("Gimbal error alone prevents the required coverage")
+    if at_zero == minimum:
+        return 0.0
+    upper = start_m
+    for _ in range(40):
+        if probability(upper) < minimum:
+            return brentq(lambda sigma: probability(sigma) - minimum, 0.0, upper, xtol=root_tolerance_m)
+        upper *= 2.0
+    raise RuntimeError("Failed to bracket the critical localization standard deviation")
+\end{lstlisting}
+
+\subsubsection*{D.5 Field-Wide Rescheduling}
+\label{app:q4-search-settings}
+
+At dispatch, joint starts strictly before the dispatch time are locked. The replayed phases determine each vehicle's position, gimbal pose and release time.
+
+The shared station pool includes \(4\times4\) samples from each of five predefined rectangles. Each target's catalog draws on a filtered 1 m field grid, 0.25 m refinements around promising grid points and samples near the elevation limit. It retains sites from pairs with early joint readiness or low first-order RMSE (Section~\ref{sec:q21-model}). Post-dispatch stations are evaluated at their computed precision.
+
+Both field-wide passes consider the eight earliest-ready stations per vehicle. For each vehicle pair, the first pass retains up to two station pairs and the second up to eight. If the shortlist yields no legal start within the window, the search checks the full available pool for that vehicle pair. Each layer keeps up to 36 distinct states and sends up to eight of them for replay. Restricted passes also supply candidates, including schedules that keep the original stations.
+
+\noindent\path{src/q4/physics.py}
+\begin{lstlisting}
+def build_prefix(archive: Archive, failed: int | None, dispatch_s: float, *,
+                 outage_rule: OutageRule | str = OutageRule.FULL_QUEUE) -> Prefix:
+    if not DISTURBANCE_S <= dispatch_s <= 30 or (failed is not None and not 0 <= failed < len(archive.legs)):
+        raise ValueError("Dispatch time or failed vehicle index is outside the problem bounds")
+    rule = OutageRule(outage_rule)
+    original, starts = _original_tracks(archive, failed, dispatch_s, rule)
+    starts = dict(sorted(starts.items()))
+    locked = {a: at for a, at in starts.items() if at < dispatch_s}
+    states, fixed = [], []
+    for v, phases in enumerate(original):
+        phase = next(p for p in phases if p.start <= dispatch_s < p.end)
+        if phase.kind == "OBSERVING" and phase.alert not in locked:
+            phase = parking("READY_WAITING", dispatch_s, math.inf, phase.alert, phase.points[0], phase.pose0)
+        if (rule.current_trip_only and phase.start == dispatch_s and phase.kind in {"TRAVELING", "SLEWING"}
+                and any(row["target"] == archive.scene.targets[phase.alert] and row["depart_s"] >= DISTURBANCE_S
+                        for row in archive.legs[v])):
+            phase = parking("IDLE", dispatch_s, math.inf, None, phase.points[0])
+        _, remaining = split_route(phase.points, (dispatch_s - phase.start) * archive.scene.speed_m_s)
+        release = dispatch_s
+        if phase.alert in locked and phase.kind in {"OBSERVING", "RESETTING"}:
+            release = next(p.end for p in phases if p.alert == phase.alert and p.kind == "RESETTING")
+        states.append(State(remaining[0], phase.pose(dispatch_s, archive.scene.gimbal_deg_s), phase.kind, phase.alert,
+                            phase.end - dispatch_s if math.isfinite(phase.end) else None, remaining, release))
+        fixed.append(_until(phases, release, archive.scene))
+    return Prefix(failed, dispatch_s, locked, tuple(states), tuple(fixed), original, starts)
+\end{lstlisting}
+
+The beam search expands pending alerts from the replayed vehicle states, updating the assigned vehicles' release times. Finalists rank by the number of joint starts and the latest-start score. The continuous replay in \path{src/q4/recourse_experiment.py} checks them before selection in Section~\ref{sec:q4-model}.
+
+\noindent\path{src/q4/recourse.py}
+\begin{lstlisting}
+def _beam(table, prefix, first, allowed, vehicles, settings, *, stations, alternatives):
+    pending = tuple(a for a in range(len(table.pose)) if a not in prefix.locked)
+    initial = Branch((), (-1,) * len(prefix.states), tuple(s.release for s in prefix.states), pending,
+                     max(prefix.locked.values(), default=0.0), math.fsum(prefix.locked.values()))
+    frontier = [initial]
+    finalists = [initial]
+    lim = settings["replay_candidates"]
+    width = settings["beam_width"]
+    counts = 0
+    for _ in pending:
+        children = []
+        for node in frontier:
+            for a in node.remaining:
+                ready = np.array([first[v, a] if p < 0 else node.available[v] + table.distance_s[p] + table.slew[a]
+                                  for v, p in enumerate(node.stations)])
+                ready[~allowed[a]] = np.inf
+                future = tuple(other for other in node.remaining if a != other)
+                for v, w, p, q, start in _pairs(ready, table.pair_ok[a], vehicles, stations, alternatives):
+                    last, release = list(node.stations), list(node.available)
+                    last[v], last[w] = p, q
+                    release[v] = start + table.scene.observation_s + float(table.slew[a, p])
+                    release[w] = start + table.scene.observation_s + float(table.slew[a, q])
+                    visit = Visit(a, v, w, p, q)
+                    children.append(Branch((*node.visits, visit), tuple(last), tuple(release), future,
+                                           max(node.latest, start), node.total + start))
+        counts += len(children)
+        frontier, seen = [], set()
+        for node in sorted(children, key=Branch.rank):
+            key = node.remaining, node.stations, tuple(round(t, 9) for t in node.available)
+            if key in seen:
+                continue
+            seen.add(key)
+            frontier.append(node)
+            if len(frontier) == width:
+                break
+        if not frontier:
+            break
+        finalists.extend(frontier[:lim])
+    return finalists, counts
+\end{lstlisting}
+
+\noindent Finalist selection in \texttt{propose}
+\begin{lstlisting}[gobble=4]
+    def ordered(cases):
+        pending = len(table.pose) - len(prefix.locked)
+        unique = {branch.visits: branch for branch in cases}
+        return sorted(unique.values(), key=lambda b: (-len(b.visits),
+                      round(b.latest, 8) if len(b.visits) == pending else HORIZON_S,
+                      round(b.total, 8), b.visits))
+
+    fixed, fixed_counts = search(table.fixed_allowed)
+    flexible, flexible_counts = search(True)
+    return {"fixed_stations": (ordered(fixed), fixed_counts),
+            "recourse": (ordered(flexible + fixed), flexible_counts)}
+\end{lstlisting}
+\endgroup
 
 \end{document}
